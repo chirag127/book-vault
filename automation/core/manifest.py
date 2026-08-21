@@ -107,10 +107,15 @@ def load_manifest(path: Path) -> list[dict[str, str]]:
 
 def category_folder(pillar: str, category: str) -> str:
     """Level-2 category folder name inside a pillar folder."""
-    choices = _taxonomy().get(pillar, [])
-    try:
-        order = choices.index(category) + 1
-    except ValueError as exc:
-        raise ManifestError(f"Unknown category '{category}' for pillar '{pillar}'.") from exc
-    slug = re.sub(r"[^A-Za-z0-9]+", "-", category).strip("-")
-    return f"{order:02d}-{slug}"
+    clean = re.sub(r"[^A-Za-z0-9]+", "-", category).strip("-")
+    manifest_path = ROOT / "automation" / "manifest.csv"
+    if manifest_path.exists():
+        with manifest_path.open("r", encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            for row in reader:
+                if row.get("pillar", "").strip() == pillar and row.get("category", "").strip() == category:
+                    parts = row.get("path", "").replace("\\", "/").split("/")
+                    if len(parts) >= 3:
+                        return parts[2]
+    return clean
+
