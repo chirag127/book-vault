@@ -633,58 +633,9 @@ function exportUserProgress() {
 }
 
 // -----------------------------------------------------------------------------
-// Audio Narration Bar
+// Knowledge Graph Visualizer
 // -----------------------------------------------------------------------------
-let currentUtterance = null;
-let isAudioPlaying = false;
-let playbackRate = 1.0;
 
-function playBookAudio(slug) {
-  const book = vaultData.books.find(b => b.slug === slug);
-  if (!book || !book.audio_content) return;
-
-  const bar = document.getElementById("audio-player-bar");
-  bar.classList.add("active");
-  document.getElementById("audio-player-title").textContent = book.title;
-  document.getElementById("audio-player-status").textContent = "Speaking...";
-
-  window.speechSynthesis.cancel();
-  const cleanText = book.audio_content.replace(/---[\s\S]*?---/, "").replace(/#.*?\n/g, "").trim();
-  
-  currentUtterance = new SpeechSynthesisUtterance(cleanText);
-  currentUtterance.rate = playbackRate;
-  currentUtterance.onend = () => {
-    isAudioPlaying = false;
-    document.getElementById("btn-play-icon").textContent = "▶️";
-    document.getElementById("audio-player-status").textContent = "Finished";
-  };
-
-  window.speechSynthesis.speak(currentUtterance);
-  isAudioPlaying = true;
-  document.getElementById("btn-play-icon").textContent = "⏸️";
-}
-
-function togglePlayPause() {
-  if (isAudioPlaying) {
-    window.speechSynthesis.pause();
-    isAudioPlaying = false;
-    document.getElementById("btn-play-icon").textContent = "▶️";
-  } else {
-    window.speechSynthesis.resume();
-    isAudioPlaying = true;
-    document.getElementById("btn-play-icon").textContent = "⏸️";
-  }
-}
-
-function cycleSpeed() {
-  const speeds = [1.0, 1.25, 1.5, 2.0];
-  const nextIdx = (speeds.indexOf(playbackRate) + 1) % speeds.length;
-  playbackRate = speeds[nextIdx];
-  document.getElementById("btn-speed").textContent = `${playbackRate}x`;
-  if (currentUtterance) currentUtterance.rate = playbackRate;
-}
-
-// -----------------------------------------------------------------------------
 // Knowledge Graph Visualizer
 // -----------------------------------------------------------------------------
 function setViewMode(mode) {
@@ -816,12 +767,12 @@ function seekAudioTime(timeStr) {
   if (speechSynthesis.speaking) {
     speechSynthesis.cancel();
   }
-  // If active audio narration element exists
-  const activeBook = currentReaderBook;
-  if (activeBook) {
-    startAudioNarration(activeBook.slug, seconds);
+  // If active audio narration exists
+  if (currentActiveBook) {
+    playBookAudio(currentActiveBook.slug);
   }
 }
+
 
 
 

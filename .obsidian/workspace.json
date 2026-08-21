@@ -208,6 +208,7 @@
   },
   "active": "a5ba6c55e2bf9b87",
   "lastOpenFiles": [
+    "cache/research/How-We-Learn.json",
     "automation/exporters/__pycache__/export_audiobookshelf.cpython-311.pyc",
     "run_overnight.ps1",
     "md/cross_pillar_graph.json",
@@ -221,7 +222,6 @@
     "MOCs/READING-LOG.md",
     "automation/audio/__pycache__/synthesize_audiobook.cpython-311.pyc",
     "tests/__pycache__/test_audiobook.cpython-311-pytest-9.1.1.pyc",
-    "tests/test_audiobook.py",
     "MOCs/READING-KANBAN.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/Audio-Listening-Edition.md",
