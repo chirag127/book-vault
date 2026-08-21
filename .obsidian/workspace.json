@@ -194,6 +194,7 @@
   },
   "active": "f035363d78ede9d2",
   "lastOpenFiles": [
+    "MOCs/READING-LOG.md",
     "automation/audio/__pycache__/synthesize_audiobook.cpython-311.pyc",
     "tests/__pycache__/test_audiobook.cpython-311-pytest-9.1.1.pyc",
     "tests/test_audiobook.py",
@@ -205,7 +206,6 @@
     "automation/core/recommendations.py",
     "MOCs/READING-KANBAN.md",
     "automation/exporters/__pycache__/generate_kanban.cpython-311.pyc",
-    "automation/exporters/generate_kanban.py",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/Audio-Listening-Edition.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/02-Key-Concepts-and-Chapters.md",

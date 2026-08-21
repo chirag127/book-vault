@@ -25,6 +25,14 @@ let readerFontFamily = "sans";
 let userReadingStatus = JSON.parse(localStorage.getItem("user-reading-status") || "{}");
 let userBookRatings = JSON.parse(localStorage.getItem("user-book-ratings") || "{}");
 let userSrsCards = JSON.parse(localStorage.getItem("user-srs-deck") || "[]");
+let userReadingActivity = JSON.parse(localStorage.getItem("user-reading-activity") || "{}");
+
+// Ensure today has initial seed if empty
+const todayStr = new Date().toISOString().split("T")[0];
+if (!userReadingActivity[todayStr]) {
+  userReadingActivity[todayStr] = { count: 1, mins: 15 };
+  localStorage.setItem("user-reading-activity", JSON.stringify(userReadingActivity));
+}
 
 // SRS Quiz State
 let srsQuizCards = [];
@@ -41,7 +49,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupEventListeners();
   initTheme();
   initForceGraph();
+  renderHeatmap();
 });
+
 
 async function loadVaultData() {
   if (window.VAULT_DATA && window.VAULT_DATA.books) {
@@ -308,7 +318,10 @@ function renderChapterContent(idx) {
   if (timeBadge) {
     timeBadge.textContent = `⏱️ ~${mins} min read (${words.toLocaleString()} words)`;
   }
+  // Record Reading Activity for Heatmap
+  recordReadingActivity(mins);
 }
+
 
 function copyBookCitation() {
   if (!currentActiveBook) return;
@@ -322,7 +335,86 @@ function copyBookCitation() {
 }
 
 // -----------------------------------------------------------------------------
-// Audio Narration Bar & Sleep Timer
+// 365-Day Contribution Heatmap & Habit Streak Engine
+// -----------------------------------------------------------------------------
+function recordReadingActivity(mins = 10) {
+  const today = new Date().toISOString().split("T")[0];
+  if (!userReadingActivity[today]) {
+    userReadingActivity[today] = { count: 0, mins: 0 };
+  }
+  userReadingActivity[today].count += 1;
+  userReadingActivity[today].mins += mins;
+  localStorage.setItem("user-reading-activity", JSON.stringify(userReadingActivity));
+  renderHeatmap();
+}
+
+function renderHeatmap() {
+  const svg = document.getElementById("heatmap-svg");
+  if (!svg) return;
+  svg.innerHTML = "";
+
+  const totalDays = 52 * 7;
+  const now = new Date();
+  const daySize = 10;
+  const gap = 3;
+
+  let streak = 0;
+  let totalMins = 0;
+
+  for (let i = 0; i < totalDays; i++) {
+    const d = new Date(now);
+    d.setDate(d.getDate() - (totalDays - 1 - i));
+    const dateKey = d.toISOString().split("T")[0];
+    const act = userReadingActivity[dateKey];
+
+    const weekIdx = Math.floor(i / 7);
+    const dayIdx = i % 7;
+
+    const x = weekIdx * (daySize + gap);
+    const y = dayIdx * (daySize + gap);
+
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rect.setAttribute("x", x);
+    rect.setAttribute("y", y);
+    rect.setAttribute("width", daySize);
+    rect.setAttribute("height", daySize);
+    rect.setAttribute("rx", 2);
+
+    let color = "rgba(255, 255, 255, 0.06)";
+    if (act && act.count > 0) {
+      totalMins += act.mins;
+      if (act.count === 1) color = "rgba(0, 242, 254, 0.35)";
+      else if (act.count === 2) color = "rgba(0, 242, 254, 0.7)";
+      else color = "rgba(0, 242, 254, 1.0)";
+    }
+
+    rect.setAttribute("fill", color);
+
+    const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    title.textContent = `${dateKey}: ${act ? `${act.count} items, ${act.mins} mins` : 'No reading logged'}`;
+    rect.appendChild(title);
+    svg.appendChild(rect);
+  }
+
+  // Calculate Streak
+  for (let i = 0; i < 365; i++) {
+    const d = new Date(now);
+    d.setDate(d.getDate() - i);
+    const key = d.toISOString().split("T")[0];
+    if (userReadingActivity[key] && userReadingActivity[key].count > 0) {
+      streak++;
+    } else if (i > 0) {
+      break;
+    }
+  }
+
+  const streakEl = document.getElementById("stat-current-streak");
+  if (streakEl) streakEl.textContent = `${streak} ${streak === 1 ? 'Day' : 'Days'}`;
+  
+  const minsEl = document.getElementById("stat-total-mins");
+  if (minsEl) minsEl.textContent = `${totalMins} Min`;
+}
+
 // -----------------------------------------------------------------------------
 let currentUtterance = null;
 let isAudioPlaying = false;

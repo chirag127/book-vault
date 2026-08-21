@@ -67,8 +67,37 @@
       </div>
     </section>
 
+    <!-- 365-Day Reading Habit Streak & Contribution Heatmap -->
+    <section class="hero-card" style="margin-bottom: 2rem; padding: 1.5rem; flex-direction: column;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; width: 100%;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="font-size: 1.4rem;">🔥</span>
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 800; margin: 0;">Reading Velocity & Habit Heatmap</h3>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">365-Day active recall & reading consistency</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 1.5rem;">
+          <div style="text-align: right;">
+            <span id="stat-current-streak" style="font-size: 1.25rem; font-weight: 900; color: var(--c-amber);">1 Day</span>
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Current Streak</div>
+          </div>
+          <div style="text-align: right;">
+            <span id="stat-total-mins" style="font-size: 1.25rem; font-weight: 900; color: var(--c-cyan);">45 Min</span>
+            <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Time Invested</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SVG Heatmap Grid Container -->
+      <div id="heatmap-grid-container" style="overflow-x: auto; width: 100%; padding-bottom: 0.5rem;">
+        <svg id="heatmap-svg" style="width: 100%; min-width: 720px; height: 110px;"></svg>
+      </div>
+    </section>
+
     <!-- Pillar Filter Tabs -->
     <nav class="pillar-tabs-container" id="pillar-tabs">
+
       <button class="pillar-pill active" data-pillar="all">✨ All Knowledge Pillars</button>
       <!-- Populated dynamically via JavaScript -->
     </nav>
