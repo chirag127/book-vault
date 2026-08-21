@@ -62,27 +62,26 @@ Research sources:
 {sources}
 {knowledge_graph}
 
-DYNAMIC MODULARIZATION ARCHITECTURE:
-You have complete editorial and creative autonomy to analyze this book based on its own unique nature, thesis, structure, and domain (e.g. historical periods, philosophical dialogues, cognitive frameworks, mathematical proofs, or narrative case studies). Do NOT force a generic or rigid template onto the book. Tailor the structure, chapter breakdowns, and analytical depth organically to this specific work.
+UNIVERSAL PKM & ZETTELKASTEN ARCHITECTURE:
+You have full autonomy to structure the knowledge across interconnected PKM notes (Hub MOC + Atomic Concept Notes). The structure must accommodate any domain of human knowledge (scientific equations, historical timelines, philosophical dialetics, architectural designs, cognitive heuristics, software systems, or financial models) using modern PKM standards:
 
-Requirements:
-1. Always start with === FILE: README.md === (The Hub):
-   - YAML front matter (`title`, `author`, `published`, `pillar`, `category`, `subcategory`, `slug`, `difficulty`, `status: complete`).
-   - `# {book['title']} — Executive Summary & Reading Guide`
+1. The Hub & Map of Content (=== FILE: README.md ===):
+   - Comprehensive YAML frontmatter (`title`, `author`, `published`, `pillar`, `category`, `subcategory`, `slug`, `difficulty`, `status: complete`, `note_type: literature-hub`).
+   - `# {book['title']} — Executive Summary & PKM Knowledge Hub`
    - `*By {book['author']} ({book['published']})*`
-   - Organic synthesis of the core thesis, main insights, and practical significance.
-   - Master Table of Contents with Markdown links to EVERY contextual spoke file you decide to create (e.g. `./01-[Topic].md`, `./02-[Topic].md`...) + link to `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]`.
-   - `## 📚 External References & Book Trackers` with markdown links to Open Library, Goodreads, Google Books, Hardcover, and StoryGraph search queries for this book.
+   - Dense executive synthesis of the work's primary thesis, philosophical foundations, and epistemic contribution.
+   - Master Map of Content (MOC) with wikilinks to EVERY atomic concept note (`[[01-Concept-Name]]`, `[[02-Concept-Name]]`...) and `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]`.
+   - `## 📚 External References & Book Trackers` (1-click search links for Open Library, Goodreads, Google Books, Hardcover, and StoryGraph).
    - {navigation}
 
-2. Generate 2 to 6 Contextual Chapter/Concept Files (The Spokes):
-   - Format: `=== FILE: 01-[Contextual-Name].md ===`, `=== FILE: 02-[Contextual-Name].md ===`, etc.
-   - EVERY file must begin with YAML front matter (`title`, `author`, `book_slug`), followed by `# {book['title']} — [Chapter/Concept Name]` and `*By {book['author']}*`.
-   - Focus on deep, high-signal explanation of that specific topic/phase/framework without generic filler.
-   - One of the practical/action chapters MUST include a section titled `## Active Recall & Spaced Repetition Flashcards` with 3 to 5 `Q: ... ? / A: ...` pairs.
-   - The final chapter should cover critical analysis, boundary conditions, and `## Related Books` wikilinks.
-
-
+2. Contextual Atomic Concept / Spoke Notes (=== FILE: 01-[Concept-Name].md ===, === FILE: 02-[Concept-Name].md ===, etc.):
+   - Generate 2 to 6 atomic, durable knowledge notes tailored to the book's domain.
+   - YAML frontmatter on EVERY note (`title`, `author`, `book_slug`, `parent_hub: "[[README]]"`, `note_type: permanent-note`).
+   - `# {book['title']} — [Concept Name]` and `*By {book['author']}*`.
+   - High-density exposition of that specific framework, model, or paradigm. Use appropriate domain representations (e.g. LaTeX math formulas for quantitative concepts, markdown tables for comparisons, sequential checklists for protocols, code blocks for technical methods).
+   - Rich Bidirectional Interlinking: Include inline wikilinks to related concept notes within the book and cross-domain bridges (`[[Book-Slug]]` or `[[Concept-Name]]`).
+   - One practical/action chapter MUST include a dedicated section titled `## Active Recall & Spaced Repetition Flashcards` containing 3 to 5 `Q: ... ? / A: ...` flashcard pairs for spaced repetition retrieval.
+   - The concluding note should analyze limitations, counter-arguments, historical context, and `## Cross-Domain Knowledge Bridges`.
 
 Quality Guidelines:
 - High-signal density, no fluff, no repetitive filler.
@@ -92,9 +91,10 @@ Quality Guidelines:
   3. All fenced code blocks must specify a language identifier (e.g. `dataview`, `markdown`, `python`, `text`) (MD040).
   4. No trailing spaces at the end of lines (MD009) and single trailing newline at end of file (MD047).
   5. Lists must use consistent bullet markers (`-`) with proper indentation.
-- Use Callouts (`> [!TIP]`, `> [!IMPORTANT]`, `> [!QUOTE]`), Tables, Checklists, and LaTeX where relevant.
+- Rich PKM Syntax: Use Callouts (`> [!TIP]`, `> [!IMPORTANT]`, `> [!QUOTE]`, `> [!NOTE]`), Tables, LaTeX, Checklists, and Wikilinks where relevant.
 - Target total word count across all files: {min_words} to {max_words} words.
 """
+
 
     return [
         {"role": "system", "content": SYSTEM_PROMPT},
