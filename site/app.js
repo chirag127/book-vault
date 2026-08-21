@@ -797,11 +797,31 @@ function parseMarkdownToHtml(md) {
   html = html.replace(/## (.*)/g, "<h2>$1</h2>");
   html = html.replace(/### (.*)/g, "<h3>$1</h3>");
   html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-  html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
   html = html.replace(/\[\[(.*?)\]\]/g, '<span class="wikilink">[[ $1 ]]</span>');
   html = html.replace(/> \[\!(NOTE|TIP|IMPORTANT|WARNING)\]\n> (.*)/g, '<div class="callout callout-$1"><strong>$1:</strong> $2</div>');
+  html = html.replace(/> \[\!QUOTE\]\s*(?:\[(\d{1,2}:\d{2}(?::\d{2})?)\])?\s*(.*)\n> (.*)/g, (match, time, title, body) => {
+    const timeBtn = time ? `<button class="btn-utility" style="padding: 0.15rem 0.5rem; font-size: 0.75rem; margin-left: 0.5rem;" onclick="seekAudioTime('${time}')">▶ ${time}</button>` : '';
+    return `<div class="callout callout-QUOTE" style="border-left: 3px solid var(--c-amber); background: var(--bg-surface-raised); padding: 0.75rem 1rem; margin: 1rem 0; border-radius: 6px;"><strong>QUOTE: ${title}</strong> ${timeBtn}<p style="margin: 0.5rem 0 0 0; font-style: italic;">${body}</p></div>`;
+  });
   html = html.replace(/\n\n/g, "<p></p>");
   return html;
 }
+
+function seekAudioTime(timeStr) {
+  const parts = timeStr.split(":").map(Number);
+  let seconds = 0;
+  if (parts.length === 2) seconds = parts[0] * 60 + parts[1];
+  else if (parts.length === 3) seconds = parts[0] * 3600 + parts[1] * 60 + parts[2];
+  
+  if (speechSynthesis.speaking) {
+    speechSynthesis.cancel();
+  }
+  // If active audio narration element exists
+  const activeBook = currentReaderBook;
+  if (activeBook) {
+    startAudioNarration(activeBook.slug, seconds);
+  }
+}
+
 
 
