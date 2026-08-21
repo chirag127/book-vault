@@ -1,11 +1,10 @@
 [
   "hardcover-sync",
   "dataview",
-  "obsidian-kanban",
-  "spaced-repetition",
+  "aloud-tts",
+  "obsidian-spaced-repetition",
   "omnisearch",
   "obsidian-book-search-plugin",
   "obsidian-excalidraw-plugin",
-  "templater-obsidian",
-  "smart-connections"
+  "templater-obsidian"
 ]

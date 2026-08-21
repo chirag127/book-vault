@@ -168,8 +168,19 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "a5ba6c55e2bf9b87",
+            "type": "leaf",
+            "state": {
+              "type": "review-queue-list-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "review-queue-list-view"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -189,11 +200,13 @@
       "bases:Create new base": false,
       "obsidian-excalidraw-plugin:New drawing": false,
       "obsidian-book-search-plugin:Create new book note": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "obsidian-spaced-repetition:Review flashcards": false
     }
   },
-  "active": "f035363d78ede9d2",
+  "active": "a5ba6c55e2bf9b87",
   "lastOpenFiles": [
+    "Untitled.base",
     "MOCs/BOOK-GALLERY.md",
     "MOCs/MENTAL-MODELS-LATTICEWORK.md",
     "automation/tools/vault_chat.py",
@@ -239,7 +252,6 @@
     "md/11-History-Geopolitics-and-Civilization/05-Political-Philosophy-Law-Governance/README.md",
     "md/11-History-Geopolitics-and-Civilization/04-Warfare-Military-Strategy-Conflict/README.md",
     "md/11-History-Geopolitics-and-Civilization/03-Geopolitics-Grand-Strategy/README.md",
-    "md/11-History-Geopolitics-and-Civilization/02-Regional-National-Histories/README.md",
     "_assets/book-vault-icon.svg"
   ]
 }
