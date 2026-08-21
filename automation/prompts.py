@@ -48,7 +48,7 @@ Knowledge-graph context:
 
     user = f"""Create the complete, modular multi-file Reading Edition for "{book['title']}" by {book['author']}.
 
-Metadata:
+Book Metadata:
 - Title: {book['title']}
 - Author: {book['author']}
 - Publication year: {book['published']}
@@ -62,21 +62,73 @@ Research sources:
 {sources}
 {knowledge_graph}
 
-You MUST divide this summary into 5 separate, modular files separated by exact demarcation headers:
+You MUST divide this summary into 5 separate, modular files separated by exact demarcation headers.
+EVERY file must begin with valid YAML front matter containing `title`, `author`, `published`, `pillar`, `category`, and `book_slug`, followed immediately by a proper `# {book['title']} — [Part Name]` header and `*By {book['author']}*`:
 
 === FILE: README.md ===
-(YAML front matter + Executive Overview + Core Takeaway + Master Table of Contents linking to `./01-Core-Thesis-and-Mental-Models.md`, `./02-Key-Concepts-and-Chapters.md`, `./03-Practical-Protocols-and-Action.md`, `./04-Critical-Analysis-and-Limits.md`, and `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]` + {navigation})
+---
+title: "{book['title']} — Executive Summary & Reading Guide"
+author: "{book['author']}"
+published: {book['published']}
+pillar: "{book.get('pillar', '')}"
+category: "{book['category']}"
+subcategory: "{book['subcategory']}"
+slug: "{book['slug']}"
+difficulty: "{book['difficulty']}"
+status: complete
+---
+
+# {book['title']} — Executive Summary
+*By {book['author']}*
+
+(Executive Overview + Core Mental Models + Master Table of Contents with Markdown links to `./01-Core-Thesis-and-Mental-Models.md`, `./02-Key-Concepts-and-Chapters.md`, `./03-Practical-Protocols-and-Action.md`, `./04-Critical-Analysis-and-Limits.md`, and `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]` + {navigation})
 
 === FILE: 01-Core-Thesis-and-Mental-Models.md ===
-(Deep dive on the book's central governing thesis, foundational mental models, and overarching paradigm shifts. Include Callout boxes and diagrams if helpful.)
+---
+title: "{book['title']} — Core Thesis & Mental Models"
+author: "{book['author']}"
+book_slug: "{book['slug']}"
+---
+
+# {book['title']} — Core Thesis & Mental Models
+*By {book['author']}*
+
+(Deep dive on the book's central governing thesis, foundational mental models, and overarching paradigm shifts. Include Callout boxes and diagrams where helpful.)
 
 === FILE: 02-Key-Concepts-and-Chapters.md ===
+---
+title: "{book['title']} — Key Concepts & Chapter Synthesis"
+author: "{book['author']}"
+book_slug: "{book['slug']}"
+---
+
+# {book['title']} — Key Concepts & Chapter Synthesis
+*By {book['author']}*
+
 (Comprehensive chapter-by-chapter / concept-by-concept breakdown of the core principles, supporting evidence, and scientific/historical examples.)
 
 === FILE: 03-Practical-Protocols-and-Action.md ===
+---
+title: "{book['title']} — Actionable Protocols & Checklists"
+author: "{book['author']}"
+book_slug: "{book['slug']}"
+---
+
+# {book['title']} — Actionable Protocols & Checklists
+*By {book['author']}*
+
 (Step-by-step practical guides, actionable implementation workflows, heuristics, and `- [ ]` checklist exercises.)
 
 === FILE: 04-Critical-Analysis-and-Limits.md ===
+---
+title: "{book['title']} — Critical Analysis & Limitations"
+author: "{book['author']}"
+book_slug: "{book['slug']}"
+---
+
+# {book['title']} — Critical Analysis & Limitations
+*By {book['author']}*
+
 (Objective critique: empirical rigor, evidence quality, boundary conditions, counterarguments, and `## Related Books` wikilinks.)
 
 Quality Guidelines:
@@ -107,7 +159,7 @@ Research sources:
 
 Audio/TTS Script Guidelines:
 1. Written specifically for spoken voice narration and Text-to-Speech (TTS) listening apps.
-2. Natural, engaging spoken prose with conversational transitions ("In the opening chapter...", "The pivotal takeaway here is...").
+2. Natural, engaging spoken prose with conversational transitions ("In this opening section...", "The pivotal takeaway here is...").
 3. DO NOT include Markdown tables, ASCII diagrams, raw bullet symbols, or visual formatting that sounds awkward when read aloud by a screen reader.
 4. Structure the audio script into clearly spoken narration sections:
    - Part 1: Welcome & Executive Core Thesis
@@ -115,7 +167,19 @@ Audio/TTS Script Guidelines:
    - Part 3: Real-World Applications & Practical Protocols
    - Part 4: Critical Perspectives & What to Watch Out For
    - Part 5: Final Summary & Takeaway
-5. Start with YAML frontmatter containing `title: "{book['title']} (Audio Edition)"` and `status: complete`.
+5. Start with YAML frontmatter:
+---
+title: "{book['title']} (Audio Listening Edition)"
+author: "{book['author']}"
+published: {book['published']}
+book_slug: "{book['slug']}"
+edition: "Audio-TTS"
+status: complete
+---
+
+# {book['title']} — Audio Listening Edition
+*By {book['author']}*
+
 
 Length: 1,200 to 2,500 spoken words of smooth, engaging audio narration.
 """
