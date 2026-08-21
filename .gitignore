@@ -1,25 +1,40 @@
-# Secrets
+# Secrets & Credentials
 .env
 .env.*
 !.env.example
 
-# Python
+# Python Runtime & Caches
 .venv/
 venv/
 __pycache__/
 *.py[cod]
+*$py.class
 .pytest_cache/
 .mypy_cache/
+.ruff_cache/
+*.tmp
+*.bak
 
-# Automation artifacts
+# Automation & Persistent Caches
+automation/cache/
 automation/research/
 automation/generated/
 automation/logs/
 automation/state/
 automation/.pipeline.lock
+.pipeline.lock
 .freebuff/
 *.jsonl
 
-# Local editor files
-.vscode/
+# Generated Media & Export Artifacts
+audio/
+*.mp3
+*.wav
+ebooks/
+vault_anki_deck.tsv
 
+# OS & Editor Artifacts
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
