@@ -6,12 +6,12 @@ const DEFAULT_SETTINGS = {
   enablePdfIndexing: true,
 };
 
-class BookVaultPlugin extends Plugin {
+class BookVaultCompanionPlugin extends Plugin {
   async onload() {
     await this.loadSettings();
 
     // Add Left Ribbon Icon
-    this.addRibbonIcon("book-open", "Book Vault & Hardcover Sync", (evt) => {
+    this.addRibbonIcon("book-open", "Book Vault Companion: Hardcover Sync", (evt) => {
       this.syncHardcover();
     });
 
@@ -32,12 +32,12 @@ class BookVaultPlugin extends Plugin {
     });
 
     // Add Settings Tab
-    this.addSettingTab(new BookVaultSettingTab(this.app, this));
-    console.log("Book Vault & Hardcover Plugin loaded successfully.");
+    this.addSettingTab(new BookVaultCompanionSettingTab(this.app, this));
+    console.log("Book Vault Companion Plugin loaded.");
   }
 
   onunload() {
-    console.log("Book Vault Plugin unloaded.");
+    console.log("Book Vault Companion Plugin unloaded.");
   }
 
   async loadSettings() {
@@ -50,7 +50,7 @@ class BookVaultPlugin extends Plugin {
 
   async syncHardcover() {
     if (!this.settings.hardcoverApiKey) {
-      new Notice("⚠️ Hardcover API Key missing. Please set it in Settings -> Book Vault.");
+      new Notice("⚠️ Hardcover API Key missing. Please set it in Settings -> Book Vault Companion.");
       return;
     }
 
@@ -104,7 +104,7 @@ class BookVaultPlugin extends Plugin {
   }
 }
 
-class BookVaultSettingTab extends PluginSettingTab {
+class BookVaultCompanionSettingTab extends PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.plugin = plugin;
@@ -114,11 +114,11 @@ class BookVaultSettingTab extends PluginSettingTab {
     const { containerEl } = this;
     containerEl.empty();
 
-    containerEl.createEl("h2", { text: "Universal Book Vault & Hardcover Settings" });
+    containerEl.createEl("h2", { text: "Book Vault Companion Settings" });
 
     new Setting(containerEl)
       .setName("Hardcover API Key")
-      .setDesc("Get your free personal GraphQL API key from https://hardcover.app/account/api")
+      .setDesc("Get your free personal GraphQL API key from https://hardcover.app/account/api for automated reading sync")
       .addText((text) =>
         text
           .setPlaceholder("Bearer token or API key")
@@ -155,4 +155,4 @@ class BookVaultSettingTab extends PluginSettingTab {
   }
 }
 
-module.exports = BookVaultPlugin;
+module.exports = BookVaultCompanionPlugin;
