@@ -16,17 +16,20 @@ class HardcoverSyncPlugin extends Plugin {
     // 1. Register Bookshelf Visual Gallery View
     this.registerView(BOOKSHELF_VIEW_TYPE, (leaf) => new BookshelfGalleryView(leaf, this));
 
-    // 2. Ribbon Icon: Sync Reading Status
+    // 2. Ribbon Icons
     this.addRibbonIcon("book-open", "Hardcover Sync: Update Reading Progress", () => {
       this.syncHardcover();
     });
 
-    // 3. Ribbon Icon: Open Visual Bookshelf Gallery
     this.addRibbonIcon("layout-grid", "Open Visual Bookshelf Gallery", () => {
       this.activateBookshelfView();
     });
 
-    // 4. Commands
+    this.addRibbonIcon("headphones", "Play Active Book Narration", () => {
+      this.playCurrentNoteAudio();
+    });
+
+    // 3. Commands
     this.addCommand({
       id: "hardcover-sync-library",
       name: "Hardcover: Sync Reading Progress & Shelves",
@@ -45,9 +48,32 @@ class HardcoverSyncPlugin extends Plugin {
       callback: () => this.playCurrentNoteAudio(),
     });
 
-    // 5. Register Markdown Code Block Processor: ```book-audio
+    // 4. Register Markdown Code Block Processor: ```book-audio
     this.registerMarkdownCodeBlockProcessor("book-audio", (source, el, ctx) => {
       this.renderAudioPlayerWidget(source.trim(), el);
+    });
+
+    // 5. Register Markdown Post-Processor for Interactive Marginalia Quotes (> [!QUOTE|01:25])
+    this.registerMarkdownPostProcessor((element, context) => {
+      const callouts = element.querySelectorAll(".callout[data-callout='quote'], .callout-quote");
+      callouts.forEach((callout) => {
+        const titleEl = callout.querySelector(".callout-title-inner");
+        if (titleEl && titleEl.textContent) {
+          const match = titleEl.textContent.match(/\[(\d{1,2}:\d{2}(?::\d{2})?)\]/);
+          if (match) {
+            const timeStr = match[1];
+            const jumpBtn = document.createElement("button");
+            jumpBtn.textContent = `▶ Seek ${timeStr}`;
+            jumpBtn.className = "marginalia-seek-btn";
+            jumpBtn.style.cssText = "margin-left: 0.5rem; font-size: 0.75rem; padding: 0.15rem 0.4rem; border-radius: 4px; border: 1px solid var(--interactive-accent); cursor: pointer; background: var(--background-secondary);";
+            jumpBtn.onclick = () => {
+              new Notice(`🎧 Seeking narration to ${timeStr}...`);
+              this.seekNarrationTo(timeStr);
+            };
+            titleEl.appendChild(jumpBtn);
+          }
+        }
+      });
     });
 
     // 6. Settings Tab
@@ -94,7 +120,6 @@ class HardcoverSyncPlugin extends Plugin {
       attr: { controls: "", style: "width: 100%; margin-top: 0.25rem;" }
     });
     
-    // Auto-detect local audio file if path passed, else default to speech
     if (source) {
       audio.src = source;
     }
@@ -102,6 +127,21 @@ class HardcoverSyncPlugin extends Plugin {
     speedSelect.addEventListener("change", (e) => {
       audio.playbackRate = parseFloat(e.target.value);
     });
+  }
+
+  seekNarrationTo(timeStr) {
+    const parts = timeStr.split(":").map(Number);
+    let seconds = 0;
+    if (parts.length === 2) {
+      seconds = parts[0] * 60 + parts[1];
+    } else if (parts.length === 3) {
+      seconds = parts[0] * 3600 + parts[1] * 60 + parts[2];
+    }
+    const audioEl = document.querySelector("audio");
+    if (audioEl) {
+      audioEl.currentTime = seconds;
+      audioEl.play();
+    }
   }
 
   async playCurrentNoteAudio() {
