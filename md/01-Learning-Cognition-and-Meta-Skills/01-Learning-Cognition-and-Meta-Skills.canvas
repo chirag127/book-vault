@@ -1,7 +1,7 @@
 {
   "nodes": [
     {
-      "id": "e88ce0c7521440d8",
+      "id": "109241b2abfa4e0d",
       "type": "text",
       "text": "# \ud83c\udfdb\ufe0f Learning, Cognition & Meta-Skills\n\n**Total Books**: 1 | **Curriculum Track**: MECE 3-Level",
       "x": 0,
@@ -11,7 +11,7 @@
       "color": "1"
     },
     {
-      "id": "832a9a41000a4baa",
+      "id": "b357a516f3764979",
       "type": "text",
       "text": "## \ud83d\udcc2 Learning Science & Cognitive Load\n*1 books*",
       "x": 0,
@@ -21,7 +21,7 @@
       "color": "3"
     },
     {
-      "id": "f008fa3c32a74b89",
+      "id": "e73d98007dfd4f53",
       "type": "text",
       "text": "### \ud83d\udcd6 Make It Stick\n*By Peter C. Brown*\n\n- **Difficulty**: `Introductory`\n- **Type**: Core Text\n- \ud83d\udd17 [[Make-It-Stick/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Make-It-Stick/Audio-Listening-Edition|Open Audio Edition]]",
       "x": 460,
@@ -33,17 +33,17 @@
   ],
   "edges": [
     {
-      "id": "a9bf6a0422054626",
-      "fromNode": "e88ce0c7521440d8",
+      "id": "aba8971ee0cd4642",
+      "fromNode": "109241b2abfa4e0d",
       "fromSide": "bottom",
-      "toNode": "832a9a41000a4baa",
+      "toNode": "b357a516f3764979",
       "toSide": "top"
     },
     {
-      "id": "0d1580e0d7dd493e",
-      "fromNode": "832a9a41000a4baa",
+      "id": "ba72e33781fd48b4",
+      "fromNode": "b357a516f3764979",
       "fromSide": "right",
-      "toNode": "f008fa3c32a74b89",
+      "toNode": "e73d98007dfd4f53",
       "toSide": "left"
     }
   ]
