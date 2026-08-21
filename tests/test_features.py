@@ -55,3 +55,23 @@ Here is a paragraph with a [[Make-It-Stick|link]] and a [regular link](https://e
     assert "---" not in cleaned
     assert "[[" not in cleaned
     assert "https://" not in cleaned
+
+
+def test_extract_flashcards():
+    from automation.export_anki import extract_flashcards_from_markdown
+
+    sample_md = """
+## Active Recall & Spaced Repetition Flashcards
+
+Q: Why is retrieval practice superior to repeated reading?
+A: Retrieval practice forces cognitive reconstruction of neural pathways, producing long-term storage strength.
+
+Q: What is interleaving?
+A: Interleaving mixes related problem types during practice to train problem discrimination.
+"""
+    cards = extract_flashcards_from_markdown(sample_md)
+    assert len(cards) == 2
+    assert "retrieval practice" in cards[0][0]
+    assert "cognitive reconstruction" in cards[0][1]
+    assert "interleaving" in cards[1][0]
+

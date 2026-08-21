@@ -423,13 +423,112 @@ header {
 }
 
 /* Callout styling in reader */
-.callout {
-  padding: 1rem 1.25rem;
+/* Reading Status Selector */
+.status-select {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
-  margin: 1.5rem 0;
-  border-left: 4px solid var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.08);
+  outline: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.2s ease;
 }
+
+.status-select:hover {
+  border-color: var(--accent-cyan);
+}
+
+/* Flashcard Quiz Modal Tab */
+.flashcards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.flashcard-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.flashcard-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.flashcard-q {
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 0.5rem;
+}
+
+.flashcard-a {
+  color: var(--text-primary);
+  display: none;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border);
+  line-height: 1.6;
+}
+
+.flashcard-card.revealed .flashcard-a {
+  display: block;
+}
+
+/* Graph Canvas View */
+.graph-container {
+  display: none;
+  width: 100%;
+  height: 650px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.graph-container.active {
+  display: block;
+}
+
+#graphCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.view-toggles {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-view-toggle {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-view-toggle.active {
+  background: var(--accent-cyan);
+  color: #0f172a;
+  border-color: transparent;
+}
+
 
 /* Bottom Audio Bar */
 .audio-bar {

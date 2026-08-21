@@ -8,12 +8,14 @@ let synth = window.speechSynthesis;
 let speechUtterance = null;
 let isPlaying = false;
 let playbackRate = 1.0;
+let userReadingStatus = JSON.parse(localStorage.getItem("user-reading-status") || "{}");
 
 // Initialize App
 document.addEventListener("DOMContentLoaded", async () => {
   await loadVaultData();
   setupEventListeners();
   initTheme();
+  initGraph();
 });
 
 async function loadVaultData() {
@@ -39,6 +41,9 @@ function renderStats() {
   document.getElementById("stat-total").textContent = vaultData.total_books;
   document.getElementById("stat-pillars").textContent = Object.keys(vaultData.pillars).length;
   document.getElementById("stat-generated").textContent = vaultData.generated_books;
+  
+  const completedCount = Object.values(userReadingStatus).filter(s => s === "Completed").length;
+  document.getElementById("stat-user-read").textContent = completedCount;
 }
 
 function renderPillarTabs() {
@@ -85,7 +90,9 @@ function renderBooks() {
     return;
   }
 
-  grid.innerHTML = filtered.map(b => `
+  grid.innerHTML = filtered.map(b => {
+    const status = userReadingStatus[b.slug] || "Unread";
+    return `
     <div class="book-card">
       <div>
         <div class="book-number">#${b.number} • ${b.pillar}</div>
@@ -94,17 +101,29 @@ function renderBooks() {
         <div class="book-meta-tags">
           <span class="meta-tag difficulty-${b.difficulty}">${b.difficulty}</span>
           <span class="meta-tag">${b.category}</span>
-          <span class="meta-tag">${b.book_type}</span>
           <span class="meta-tag" style="color: ${b.status === 'Generated' ? 'var(--accent-emerald)' : 'var(--text-muted)'}">${b.status}</span>
         </div>
+        <select class="status-select" onchange="updateBookStatus('${b.slug}', this.value)">
+          <option value="Unread" ${status === 'Unread' ? 'selected' : ''}>⏳ Unread</option>
+          <option value="Want to Read" ${status === 'Want to Read' ? 'selected' : ''}>🎯 Want to Read</option>
+          <option value="Reading" ${status === 'Reading' ? 'selected' : ''}>📖 Reading</option>
+          <option value="Completed" ${status === 'Completed' ? 'selected' : ''}>✅ Completed</option>
+        </select>
       </div>
-      <div class="card-actions">
-        <button class="btn-read" onclick="openReader('${b.slug}')">📖 Read Summary</button>
+      <div class="card-actions" style="margin-top: 1rem;">
+        <button class="btn-read" onclick="openReader('${b.slug}')">📖 Read</button>
         <button class="btn-audio" onclick="playAudioEdition('${b.slug}')">🎧 Listen</button>
       </div>
     </div>
-  `).join("");
+  `;
+  }).join("");
 }
+
+window.updateBookStatus = function(slug, status) {
+  userReadingStatus[slug] = status;
+  localStorage.setItem("user-reading-status", JSON.stringify(userReadingStatus));
+  renderStats();
+};
 
 // Markdown Parser for reader view
 function parseMarkdown(md) {
@@ -138,14 +157,18 @@ window.openReader = function(slug) {
       <div class="chapter-link ${idx === 0 ? 'active' : ''}" onclick="switchChapter(${idx})">
         ${ch.title}
       </div>
-    `).join("");
+    `).join("") + `
+      <div class="chapter-link" onclick="openFlashcardTab()" style="margin-top: 1rem; border: 1px dashed var(--accent-cyan); color: var(--accent-cyan);">
+        🧠 Active Recall Quiz
+      </div>
+    `;
     displayChapter(0);
   } else {
     sidebar.innerHTML = `<div class="chapter-link active">Complete Overview</div>`;
     document.getElementById("reader-content").innerHTML = `
       <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
         <h3>Pending Generation</h3>
-        <p>This book is currently in the curriculum queue. Run <code>python -m automation.generate --slug ${book.slug}</code> to generate it.</p>
+        <p>This book is in the curriculum queue. Run <code>python -m automation.generate --slug ${book.slug}</code> to generate it.</p>
       </div>
     `;
   }
@@ -168,6 +191,38 @@ function displayChapter(index) {
   document.getElementById("reader-content").scrollTop = 0;
 }
 
+window.openFlashcardTab = function() {
+  document.querySelectorAll(".chapter-link").forEach(el => el.classList.remove("active"));
+  
+  let allText = currentBook.chapters.map(c => c.content).join("\n\n");
+  let regex = /Q:\s*(.+?)\s*\n+A:\s*(.+?)(?=\n\s*(?:Q:|#|$))/g;
+  let matches = [...allText.matchAll(regex)];
+
+  if (matches.length === 0) {
+    document.getElementById("reader-content").innerHTML = `
+      <div style="text-align: center; padding: 3rem; color: var(--text-muted);">
+        <h3>🧠 Spaced Repetition Flashcards</h3>
+        <p>No flashcards found for this note yet. Generate the full note to enable active recall.</p>
+      </div>
+    `;
+    return;
+  }
+
+  let cardsHtml = matches.map((m, i) => `
+    <div class="flashcard-card" onclick="this.classList.toggle('revealed')">
+      <div class="flashcard-q">Card ${i+1}: ${m[1].trim()}</div>
+      <div class="flashcard-a"><strong>Answer:</strong> ${m[2].trim()}</div>
+      <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">(Click to flip / reveal answer)</div>
+    </div>
+  `).join("");
+
+  document.getElementById("reader-content").innerHTML = `
+    <h2>🧠 Active Recall & Spaced Repetition Practice</h2>
+    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Test your retention of core concepts before revealing the answers:</p>
+    <div class="flashcards-container">${cardsHtml}</div>
+  `;
+};
+
 window.closeReader = function() {
   document.getElementById("reader-modal").classList.remove("active");
 };
@@ -187,7 +242,6 @@ window.playAudioEdition = function(slug) {
     return;
   }
 
-  // Clean text for speech
   textToRead = textToRead.replace(/^---[\s\S]*?---\n/, "")
     .replace(/[#*`_>]/g, " ")
     .replace(/\[\[(?:[^\]|]+\|)?([^\]]+)\]\]/g, "$1");
@@ -237,8 +291,85 @@ window.cycleSpeed = function() {
   playbackRate = rates[nextIdx];
   document.getElementById("btn-speed").textContent = `${playbackRate}x`;
   if (synth.speaking && isPlaying) {
-    // restart from current pos
     window.playAudioEdition(currentBook ? currentBook.slug : vaultData.books[0].slug);
+  }
+};
+
+// 2D Force-Directed Knowledge Graph Visualizer
+function initGraph() {
+  const canvas = document.getElementById("graphCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  function resize() {
+    canvas.width = canvas.parentElement.clientWidth;
+    canvas.height = canvas.parentElement.clientHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  let nodes = [];
+  const colors = ["#38bdf8", "#818cf8", "#34d399", "#fbbf24", "#f43f5e"];
+
+  for (let i = 0; i < 40; i++) {
+    nodes.push({
+      x: Math.random() * (canvas.width || 800),
+      y: Math.random() * (canvas.height || 600),
+      vx: (Math.random() - 0.5) * 0.8,
+      vy: (Math.random() - 0.5) * 0.8,
+      radius: Math.random() * 4 + 3,
+      color: colors[i % colors.length],
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw edges
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130) {
+          ctx.strokeStyle = `rgba(56, 189, 248, ${1 - dist / 130 * 0.85})`;
+          ctx.lineWidth = 0.6;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw nodes
+    nodes.forEach(n => {
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+      if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+
+      ctx.fillStyle = n.color;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+window.toggleView = function(view) {
+  document.querySelectorAll(".btn-view-toggle").forEach(b => b.classList.remove("active"));
+  if (view === "grid") {
+    document.getElementById("btn-view-grid").classList.add("active");
+    document.getElementById("books-grid").style.display = "grid";
+    document.getElementById("graph-container").classList.remove("active");
+  } else {
+    document.getElementById("btn-view-graph").classList.add("active");
+    document.getElementById("books-grid").style.display = "none";
+    document.getElementById("graph-container").classList.add("active");
   }
 };
 

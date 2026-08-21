@@ -33,7 +33,7 @@
     <section class="stats-banner">
       <div class="stat-item">
         <span id="stat-total" class="stat-value">775</span>
-        <span class="stat-label">Total Curriculum Books</span>
+        <span class="stat-label">Curriculum Books</span>
       </div>
       <div class="stat-item">
         <span id="stat-pillars" class="stat-value">12</span>
@@ -44,15 +44,26 @@
         <span class="stat-label">Generated Modular Summaries</span>
       </div>
       <div class="stat-item">
-        <span class="stat-value" style="color: var(--accent-emerald);">100%</span>
-        <span class="stat-label">Dual-Edition & Audio Ready</span>
+        <span id="stat-user-read" class="stat-value" style="color: var(--accent-emerald);">0</span>
+        <span class="stat-label">Books Completed By You</span>
       </div>
     </section>
+
+    <!-- View Toggle -->
+    <div class="view-toggles">
+      <button id="btn-view-grid" class="btn-view-toggle active" onclick="toggleView('grid')">📚 Grid View</button>
+      <button id="btn-view-graph" class="btn-view-toggle" onclick="toggleView('graph')">🕸️ 2D Knowledge Graph</button>
+    </div>
 
     <!-- Pillar Tabs Filter -->
     <nav id="pillar-tabs" class="pillar-tabs">
       <!-- Injected via JavaScript -->
     </nav>
+
+    <!-- Interactive Graph Container -->
+    <div id="graph-container" class="graph-container">
+      <canvas id="graphCanvas"></canvas>
+    </div>
 
     <!-- Books Grid -->
     <section id="books-grid" class="books-grid">
