@@ -47,18 +47,22 @@ class ManifestError(ValueError):
 
 def _taxonomy() -> dict[str, list[str]]:
     taxonomy: dict[str, list[str]] = {}
-    current: str | None = None
-    map_path = ROOT / "SUBCATEGORY-MAP.md"
-    for line in map_path.read_text(encoding="utf-8").splitlines():
-        category_match = re.match(r"^## \d+ — (.+)$", line)
-        if category_match:
-            current = category_match.group(1).strip()
-            taxonomy[current] = []
-            continue
-        subcategory_match = re.match(r"^(\d+)\. (.+)$", line)
-        if current and subcategory_match:
-            taxonomy[current].append(subcategory_match.group(2).strip())
+    manifest_path = ROOT / "automation" / "manifest.csv"
+    if not manifest_path.exists():
+        return {}
+    import csv
+    with manifest_path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        for row in reader:
+            p = row.get("pillar", "").strip()
+            c = row.get("category", "").strip()
+            if p and c:
+                if p not in taxonomy:
+                    taxonomy[p] = []
+                if c not in taxonomy[p]:
+                    taxonomy[p].append(c)
     return taxonomy
+
 
 
 def load_manifest(path: Path) -> list[dict[str, str]]:
