@@ -201,11 +201,14 @@
       "obsidian-excalidraw-plugin:New drawing": false,
       "obsidian-book-search-plugin:Create new book note": false,
       "templater-obsidian:Templater": false,
-      "obsidian-spaced-repetition:Review flashcards": false
+      "obsidian-spaced-repetition:Review flashcards": false,
+      "omnisearch:Omnisearch": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "a5ba6c55e2bf9b87",
   "lastOpenFiles": [
+    "automation/exporters/export_audiobookshelf.py",
     "Untitled.base",
     "MOCs/BOOK-GALLERY.md",
     "MOCs/MENTAL-MODELS-LATTICEWORK.md",
@@ -219,7 +222,6 @@
     "automation/exporters/export_tracker_csv.py",
     "automation/tools/import_highlights.py",
     "automation/core/__pycache__/recommendations.cpython-311.pyc",
-    "automation/core/recommendations.py",
     "MOCs/READING-KANBAN.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/Audio-Listening-Edition.md",
