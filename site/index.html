@@ -3,115 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universal Book Vault — Interactive Knowledge Explorer</title>
+  <title>Universal Book Vault — State-of-the-Art Knowledge Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Top Glass Header -->
   <header>
-    <div class="logo-group">
-      <span class="logo-icon">🏛️</span>
-      <span class="logo-title">Universal Book Vault</span>
-    </div>
-    <div class="header-controls">
-      <div class="search-wrapper">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="search-input" class="search-input" placeholder="Search 775 books, authors, concepts...">
+    <div class="brand-group" onclick="location.reload()">
+      <div class="brand-badge">🏛️</div>
+      <div class="brand-text">
+        <h1>Universal Book Vault</h1>
+        <span>MECE Knowledge Architecture</span>
       </div>
-      <button id="theme-toggle" class="btn-icon" title="Toggle Theme">☀️</button>
+    </div>
+
+    <div class="header-actions">
+      <div class="search-container">
+        <span class="search-icon-left">🔍</span>
+        <input type="text" id="search-input" class="search-box" placeholder="Search 775 books, authors, concepts...">
+        <span class="search-kbd">⌘K</span>
+      </div>
+      <button id="theme-toggle" class="btn-utility" title="Toggle Light / Dark Mode">☀️ Theme</button>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="container">
+  <!-- Main Content Dashboard -->
+  <main class="main-container">
     
-    <!-- Hero Stats Banner -->
-    <section class="stats-banner">
-      <div class="stat-item">
-        <span id="stat-total" class="stat-value">775</span>
-        <span class="stat-label">Curriculum Books</span>
+    <!-- Hero Dashboard Metrics -->
+    <section class="hero-dashboard">
+      <div class="hero-card">
+        <div>
+          <h2 class="hero-banner-title">Architected for Deep Understanding</h2>
+          <p class="hero-banner-desc">
+            A researched, interconnected reading system organized by foundational learning dependency rather than arbitrary catalogs — spanning 775 canonical works across 12 mutually-exclusive knowledge domains.
+          </p>
+        </div>
       </div>
-      <div class="stat-item">
-        <span id="stat-pillars" class="stat-value">12</span>
-        <span class="stat-label">Knowledge Pillars</span>
+
+      <div class="hero-card stat-box">
+        <span id="stat-total" class="stat-digit">775</span>
+        <span class="stat-title">Curriculum Books</span>
+        <span class="stat-subtext">Canonically Verified</span>
       </div>
-      <div class="stat-item">
-        <span id="stat-generated" class="stat-value">0</span>
-        <span class="stat-label">Generated Modular Summaries</span>
+
+      <div class="hero-card stat-box">
+        <span id="stat-pillars" class="stat-digit">12</span>
+        <span class="stat-title">Knowledge Pillars</span>
+        <span class="stat-subtext">3-Level Hierarchy</span>
       </div>
-      <div class="stat-item">
-        <span id="stat-user-read" class="stat-value" style="color: var(--accent-emerald);">0</span>
-        <span class="stat-label">Books Completed By You</span>
+
+      <div class="hero-card stat-box">
+        <span id="stat-user-read" class="stat-digit" style="color: var(--c-emerald);">0</span>
+        <span class="stat-title">Completed by You</span>
+        <span class="stat-subtext">Saved in LocalStorage</span>
       </div>
     </section>
 
-    <!-- View Toggle -->
-    <div class="view-toggles">
-      <button id="btn-view-grid" class="btn-view-toggle active" onclick="toggleView('grid')">📚 Grid View</button>
-      <button id="btn-view-graph" class="btn-view-toggle" onclick="toggleView('graph')">🕸️ 2D Knowledge Graph</button>
+    <!-- Toolbar Controls (Views & Secondary Filters) -->
+    <div class="controls-toolbar">
+      <!-- View Mode Tabs -->
+      <div class="view-mode-tabs">
+        <button id="btn-view-grid" class="btn-view-tab active" onclick="toggleView('grid')">
+          <span>📚</span> Grid Cards
+        </button>
+        <button id="btn-view-graph" class="btn-view-tab" onclick="toggleView('graph')">
+          <span>🕸️</span> 2D Knowledge Graph
+        </button>
+      </div>
+
+      <!-- Secondary Filters -->
+      <div class="secondary-filters" style="margin-bottom: 0;">
+        <select class="filter-select" onchange="filterDifficulty(this.value)">
+          <option value="ALL">🎯 All Difficulties</option>
+          <option value="Introductory">🟢 Introductory</option>
+          <option value="Intermediate">🟡 Intermediate</option>
+          <option value="Advanced">🔴 Advanced</option>
+        </select>
+
+        <select class="filter-select" onchange="filterStatus(this.value)">
+          <option value="ALL">🔖 All Reading States</option>
+          <option value="Completed">✅ Completed</option>
+          <option value="Reading">📖 Reading</option>
+          <option value="Want to Read">🎯 Want to Read</option>
+          <option value="Unread">⏳ Unread</option>
+        </select>
+      </div>
     </div>
 
-    <!-- Pillar Tabs Filter -->
-    <nav id="pillar-tabs" class="pillar-tabs">
-      <!-- Injected via JavaScript -->
+    <!-- 12-Pillars Horizontal Pill Bar -->
+    <nav id="pillar-tabs" class="filter-pills-bar">
+      <!-- Injected dynamically via JavaScript -->
     </nav>
 
-    <!-- Interactive Graph Container -->
-    <div id="graph-container" class="graph-container">
+    <!-- 2D Force-Directed Knowledge Graph Viewport -->
+    <div id="graph-viewport" class="graph-viewport">
       <canvas id="graphCanvas"></canvas>
+      <div class="graph-overlay-info">
+        <h4 style="font-size: 0.9rem; color: var(--c-cyan); margin-bottom: 0.25rem;">Interactive Physics Graph</h4>
+        <p style="font-size: 0.78rem; color: var(--text-secondary);">Simulating knowledge clusters and topic bridges across the 12 master pillars in real-time.</p>
+      </div>
     </div>
 
-    <!-- Books Grid -->
+    <!-- Books Grid Viewport -->
     <section id="books-grid" class="books-grid">
-      <!-- Injected via JavaScript -->
+      <!-- Injected dynamically via JavaScript -->
     </section>
 
   </main>
 
-  <!-- Chapter Reader Modal -->
-  <div id="reader-modal" class="modal-overlay">
-    <div class="reader-container">
+  <!-- Modal Chapter Reader & Split-View Window -->
+  <div id="reader-modal" class="modal-backdrop">
+    <div class="reader-window">
       
-      <!-- Sidebar Chapter Selector -->
-      <aside class="reader-sidebar">
-        <h4>Modular Chapters</h4>
-        <div id="reader-sidebar-links">
-          <!-- Injected via JavaScript -->
+      <!-- Left Sidebar Table of Contents -->
+      <aside class="reader-toc-sidebar">
+        <div class="reader-book-header">
+          <h3 id="modal-book-title" class="reader-book-title">Book Title</h3>
+          <p id="modal-book-author" class="reader-book-author">Author</p>
         </div>
+        <nav id="reader-sidebar-links" class="toc-nav-list">
+          <!-- Injected dynamically via JavaScript -->
+        </nav>
       </aside>
 
-      <!-- Main Chapter Content Area -->
-      <section class="reader-main">
-        <div class="reader-header">
-          <div>
-            <h2 id="modal-book-title" style="font-size: 1.25rem;">Book Title</h2>
-            <p id="modal-book-author" style="font-size: 0.85rem; color: var(--text-muted);">Author</p>
+      <!-- Main Reader Viewport -->
+      <section class="reader-viewport">
+        <!-- Top Toolbar -->
+        <div class="reader-top-controls">
+          <div class="reader-typography-controls">
+            <button class="btn-typo" onclick="adjustFontSize(-0.08)" title="Decrease Text Size">A-</button>
+            <button class="btn-typo" onclick="adjustFontSize(0.08)" title="Increase Text Size">A+</button>
+            <button id="btn-font-serif" class="btn-typo" onclick="toggleFontSerif()" title="Toggle Serif / Sans Font">Serif</button>
           </div>
-          <button class="btn-icon" onclick="closeReader()" title="Close Reader">✖</button>
+          <button class="btn-utility" onclick="closeReader()" title="Close Reader (Esc)">✖ Close</button>
         </div>
-        <article id="reader-content" class="reader-body">
-          <!-- Injected via JavaScript -->
+
+        <!-- Scrollable Article Content -->
+        <article id="reader-content" class="reader-prose-container">
+          <!-- Injected dynamically via JavaScript -->
         </article>
       </section>
 
     </div>
   </div>
 
-  <!-- Sticky Bottom Audio Player -->
-  <footer id="audio-bar" class="audio-bar">
-    <div class="audio-info">
-      <span id="audio-bar-title" class="audio-title">Book Narration</span>
-      <span id="audio-bar-status" class="audio-status">Ready</span>
+  <!-- Floating Master Audio Narration Bar -->
+  <footer id="audio-player-bar" class="master-audio-player">
+    <div class="audio-track-info">
+      <div class="audio-track-badge">🎧</div>
+      <div class="audio-track-meta">
+        <h4 id="audio-player-title">Book Narration</h4>
+        <p id="audio-player-status">Ready to Speak</p>
+      </div>
     </div>
-    <div class="audio-controls">
-      <button id="btn-speed" class="btn-icon" onclick="cycleSpeed()" title="Playback Speed">1.0x</button>
-      <button class="btn-play" onclick="togglePlayPause()" title="Play / Pause">
+
+    <div class="audio-main-controls">
+      <button class="btn-audio-circle" onclick="togglePlayPause()" title="Play / Pause">
         <span id="btn-play-icon">▶️</span>
       </button>
+    </div>
+
+    <div class="audio-extra-controls">
+      <button id="btn-speed" class="btn-utility" onclick="cycleSpeed()" title="Playback Speed">1.0x</button>
     </div>
   </footer>
 
