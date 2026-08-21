@@ -62,86 +62,35 @@ Research sources:
 {sources}
 {knowledge_graph}
 
-You MUST divide this summary into 5 separate, modular files separated by exact demarcation headers.
-EVERY file must begin with valid YAML front matter containing `title`, `author`, `published`, `pillar`, `category`, and `book_slug`, followed immediately by a proper `# {book['title']} — [Part Name]` header and `*By {book['author']}*`:
+DYNAMIC MODULARIZATION ARCHITECTURE:
+You have full editorial autonomy to decide the optimal number of modular chapter/concept files (between 2 to 7 files) and their exact contextual filenames based on this book's specific genre, thesis, and structure (e.g., historical periods, mathematical proofs, business case studies, or cognitive frameworks).
 
-=== FILE: README.md ===
----
-title: "{book['title']} — Executive Summary & Reading Guide"
-author: "{book['author']}"
-published: {book['published']}
-pillar: "{book.get('pillar', '')}"
-category: "{book['category']}"
-subcategory: "{book['subcategory']}"
-slug: "{book['slug']}"
-difficulty: "{book['difficulty']}"
-status: complete
----
+Requirements:
+1. Always start with === FILE: README.md === (The Hub):
+   - YAML front matter (`title`, `author`, `published`, `pillar`, `category`, `subcategory`, `slug`, `difficulty`, `status: complete`).
+   - `# {book['title']} — Executive Summary & Reading Guide`
+   - *By {book['author']}*
+   - Executive Overview & Core Mental Model (high-level synthesis).
+   - Master Table of Contents with Markdown links to EVERY modular chapter file you decide to create (e.g. `./01-Mental-Models.md`, `./02-Cognitive-Biases.md`...) + link to `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]`.
+   - {navigation}
 
-# {book['title']} — Executive Summary
-*By {book['author']}*
-
-(Executive Overview + Core Mental Models + Master Table of Contents with Markdown links to `./01-Core-Thesis-and-Mental-Models.md`, `./02-Key-Concepts-and-Chapters.md`, `./03-Practical-Protocols-and-Action.md`, `./04-Critical-Analysis-and-Limits.md`, and `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]` + {navigation})
-
-=== FILE: 01-Core-Thesis-and-Mental-Models.md ===
----
-title: "{book['title']} — Core Thesis & Mental Models"
-author: "{book['author']}"
-book_slug: "{book['slug']}"
----
-
-# {book['title']} — Core Thesis & Mental Models
-*By {book['author']}*
-
-(Deep dive on the book's central governing thesis, foundational mental models, and overarching paradigm shifts. Include Callout boxes and diagrams where helpful.)
-
-=== FILE: 02-Key-Concepts-and-Chapters.md ===
----
-title: "{book['title']} — Key Concepts & Chapter Synthesis"
-author: "{book['author']}"
-book_slug: "{book['slug']}"
----
-
-# {book['title']} — Key Concepts & Chapter Synthesis
-*By {book['author']}*
-
-(Comprehensive chapter-by-chapter / concept-by-concept breakdown of the core principles, supporting evidence, and scientific/historical examples.)
-
-=== FILE: 03-Practical-Protocols-and-Action.md ===
----
-title: "{book['title']} — Actionable Protocols & Checklists"
-author: "{book['author']}"
-book_slug: "{book['slug']}"
----
-
-# {book['title']} — Actionable Protocols & Checklists
-*By {book['author']}*
-
-(Step-by-step practical guides, actionable implementation workflows, heuristics, and `- [ ]` checklist exercises.
-Must include a dedicated section titled `## Active Recall & Spaced Repetition Flashcards` containing 3 to 5 high-impact `Q: ... ? / A: ...` flashcard pairs for spaced repetition.)
-
-
-=== FILE: 04-Critical-Analysis-and-Limits.md ===
----
-title: "{book['title']} — Critical Analysis & Limitations"
-author: "{book['author']}"
-book_slug: "{book['slug']}"
----
-
-# {book['title']} — Critical Analysis & Limitations
-*By {book['author']}*
-
-(Objective critique: empirical rigor, evidence quality, boundary conditions, counterarguments, and `## Related Books` wikilinks.)
+2. Generate 2 to 6 Contextual Chapter/Concept Files (The Spokes):
+   - Format: `=== FILE: 01-[Contextual-Name].md ===`, `=== FILE: 02-[Contextual-Name].md ===`, etc.
+   - EVERY file must begin with YAML front matter (`title`, `author`, `book_slug`), followed by `# {book['title']} — [Chapter/Concept Name]` and `*By {book['author']}*`.
+   - Focus on deep, high-signal explanation of that specific topic/phase/framework.
+   - One of the practical/action chapters MUST include a section titled `## Active Recall & Spaced Repetition Flashcards` with 3 to 5 `Q: ... ? / A: ...` pairs.
+   - The final chapter should cover critical analysis, boundary conditions, and `## Related Books` wikilinks.
 
 Quality Guidelines:
 - High-signal density, no fluff, no repetitive filler.
-- Use Callouts (`> [!TIP]`, `> [!IMPORTANT]`), Tables, Checklists, and LaTeX where relevant.
-- Target total word count across all 5 files: {min_words} to {max_words} words.
+- Use Callouts (`> [!TIP]`, `> [!IMPORTANT]`, `> [!QUOTE]`), Tables, Checklists, and LaTeX where relevant.
+- Target total word count across all files: {min_words} to {max_words} words.
 """
     return [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user},
     ]
+
 
 
 def build_audio_tts_prompt(

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universal Book Vault — Interactive Knowledge Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-group">
+      <span class="logo-icon">🏛️</span>
+      <span class="logo-title">Universal Book Vault</span>
+    </div>
+    <div class="header-controls">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" class="search-input" placeholder="Search 775 books, authors, concepts...">
+      </div>
+      <button id="theme-toggle" class="btn-icon" title="Toggle Theme">☀️</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Hero Stats Banner -->
+    <section class="stats-banner">
+      <div class="stat-item">
+        <span id="stat-total" class="stat-value">775</span>
+        <span class="stat-label">Total Curriculum Books</span>
+      </div>
+      <div class="stat-item">
+        <span id="stat-pillars" class="stat-value">12</span>
+        <span class="stat-label">Knowledge Pillars</span>
+      </div>
+      <div class="stat-item">
+        <span id="stat-generated" class="stat-value">0</span>
+        <span class="stat-label">Generated Modular Summaries</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" style="color: var(--accent-emerald);">100%</span>
+        <span class="stat-label">Dual-Edition & Audio Ready</span>
+      </div>
+    </section>
+
+    <!-- Pillar Tabs Filter -->
+    <nav id="pillar-tabs" class="pillar-tabs">
+      <!-- Injected via JavaScript -->
+    </nav>
+
+    <!-- Books Grid -->
+    <section id="books-grid" class="books-grid">
+      <!-- Injected via JavaScript -->
+    </section>
+
+  </main>
+
+  <!-- Chapter Reader Modal -->
+  <div id="reader-modal" class="modal-overlay">
+    <div class="reader-container">
+      
+      <!-- Sidebar Chapter Selector -->
+      <aside class="reader-sidebar">
+        <h4>Modular Chapters</h4>
+        <div id="reader-sidebar-links">
+          <!-- Injected via JavaScript -->
+        </div>
+      </aside>
+
+      <!-- Main Chapter Content Area -->
+      <section class="reader-main">
+        <div class="reader-header">
+          <div>
+            <h2 id="modal-book-title" style="font-size: 1.25rem;">Book Title</h2>
+            <p id="modal-book-author" style="font-size: 0.85rem; color: var(--text-muted);">Author</p>
+          </div>
+          <button class="btn-icon" onclick="closeReader()" title="Close Reader">✖</button>
+        </div>
+        <article id="reader-content" class="reader-body">
+          <!-- Injected via JavaScript -->
+        </article>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Sticky Bottom Audio Player -->
+  <footer id="audio-bar" class="audio-bar">
+    <div class="audio-info">
+      <span id="audio-bar-title" class="audio-title">Book Narration</span>
+      <span id="audio-bar-status" class="audio-status">Ready</span>
+    </div>
+    <div class="audio-controls">
+      <button id="btn-speed" class="btn-icon" onclick="cycleSpeed()" title="Playback Speed">1.0x</button>
+      <button class="btn-play" onclick="togglePlayPause()" title="Play / Pause">
+        <span id="btn-play-icon">▶️</span>
+      </button>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
