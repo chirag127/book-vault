@@ -86,6 +86,25 @@ def navigation_for(book: dict[str, str], books: list[dict[str, str]]) -> dict[st
     }
 
 
+def _clean_markdown(text: str) -> str:
+    """Ensure output is pure Markdown without outer wrapping fences."""
+    text = text.strip()
+    if text.startswith("```markdown"):
+        text = text[11:].lstrip("\r\n")
+        if text.endswith("```"):
+            text = text[:-3].rstrip()
+    elif text.startswith("```md"):
+        text = text[5:].lstrip("\r\n")
+        if text.endswith("```"):
+            text = text[:-3].rstrip()
+    elif text.startswith("```") and not text.startswith("```mermaid") and not text.startswith("---"):
+        text = text[3:].lstrip("\r\n")
+        if text.endswith("```"):
+            text = text[:-3].rstrip()
+    return text.rstrip() + "\n"
+
+
+
 def _pid_alive(pid: int) -> bool:
     try:
         os.kill(pid, 0)
@@ -260,13 +279,14 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
                 ),
                 cache_key=f"book-{book['slug']}-{TEMPLATE_VERSION}",
             )
+            content = _clean_markdown(content)
             say(f"        generated {_words(content)} words")
         except Exception as exc:
             say(f"        GENERATION FAILED: {exc}")
             say("        skipping this book; the run continues with the next one.")
             return
     if not reused:
-        draft.write_text(content.rstrip() + "\n", encoding="utf-8")
+        draft.write_text(_clean_markdown(content), encoding="utf-8")
 
     # ---- Step 3: validation + self-repair -------------------------------------
     errors = validate_note(draft, min_words, max_words)
@@ -278,22 +298,24 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
             break
         say(f"        REPAIR pass {attempt}/2: sending draft + exact errors back to the model")
         try:
-            content = generate_markdown(
-                settings,
-                build_repair_prompt(
-                    book,
-                    draft.read_text(encoding="utf-8"),
-                    errors,
-                    min_words,
-                    max_words,
-                    graph=graph_context,
-                    nav=nav,
-                ),
+            content = _clean_markdown(
+                generate_markdown(
+                    settings,
+                    build_repair_prompt(
+                        book,
+                        draft.read_text(encoding="utf-8"),
+                        errors,
+                        min_words,
+                        max_words,
+                        graph=graph_context,
+                        nav=nav,
+                    ),
+                )
             )
         except Exception as exc:
             say(f"        REPAIR FAILED: {exc}")
             break
-        draft.write_text(content.rstrip() + "\n", encoding="utf-8")
+        draft.write_text(content, encoding="utf-8")
         errors = validate_note(draft, min_words, max_words)
         say(f"        after repair: {'PASS' if not errors else f'{len(errors)} issue(s) remain'}")
         for error in errors:
@@ -305,9 +327,10 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
     # ---- Step 4: atomic write --------------------------------------------------
     destination.parent.mkdir(parents=True, exist_ok=True)
     temporary = destination.with_suffix(".md.tmp")
-    temporary.write_text(content.rstrip() + "\n", encoding="utf-8")
+    temporary.write_text(_clean_markdown(content), encoding="utf-8")
     temporary.replace(destination)
     say(f"  [4/4] WROTE {destination.relative_to(ROOT)} ({_words(content)} words)")
+
 
 
 def run() -> int:
