@@ -6,11 +6,13 @@
 
 ## Start here
 
-1. Begin with [[md/01-Learning-Cognition-and-Meta-Skills/README|Learning, Cognition & Meta-Skills]] — the vault opens with how to read, take notes, and learn.
-2. Follow the 12-pillar sequence in [[READING-ORDER]].
-3. Explore the four-level classification in [[SUBCATEGORY-MAP]].
-4. Browse the live dashboards in [[MOCs/00-MASTER-INDEX|MOCs]] (Obsidian Dataview) or the static catalog in [[ALL-BOOKS]].
-5. Use [[START-HERE]] for a quick goal-based route.
+1. Open the interactive **[[MOCs/VAULT-DASHBOARD|📊 Vault Dashboard]]** for live reading progress and audio edition toggles.
+2. Explore the **12 Visual Canvas Mind-Maps** (e.g. [[md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Cognition-and-Meta-Skills.canvas|Pillar 01 Canvas]]).
+3. Begin with [[md/01-Learning-Cognition-and-Meta-Skills/README|Learning, Cognition & Meta-Skills]] — the vault opens with how to read, take notes, and learn.
+4. Search the vault anytime via CLI: `python -m automation.vault_search "concept or question"`
+5. Generate neural MP3 audiobooks: `python -m automation.synthesize_audio --slug Book-Slug`
+6. Follow the 12-pillar sequence in [[READING-ORDER]] and goal-based routes in [[START-HERE]].
+
 
 ## Four-level classification (Faceted / MECE)
 

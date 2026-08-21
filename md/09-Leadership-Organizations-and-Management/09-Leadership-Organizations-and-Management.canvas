@@ -1,0 +1,696 @@
+{
+  "nodes": [
+    {
+      "id": "12af3cf2c5f94243",
+      "type": "text",
+      "text": "# \ud83c\udfdb\ufe0f Leadership, Organizations & Management\n\n**Total Books**: 35 | **Curriculum Track**: MECE 3-Level",
+      "x": 0,
+      "y": 0,
+      "width": 600,
+      "height": 180,
+      "color": "1"
+    },
+    {
+      "id": "6ef0e8e71b704c70",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Negotiation & Dealmaking\n*2 books*",
+      "x": 0,
+      "y": 260,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "c59e9401e3d8421a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Never Split the Difference\n*By Chris Voss*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Never-Split-the-Difference/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Never-Split-the-Difference/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d65d19a1e7114b72",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Getting to Yes\n*By Roger Fisher; William Ury; Bruce Patton*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Getting-to-Yes/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Getting-to-Yes/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7c23db185b7c46e7",
+      "type": "text",
+      "text": "## \ud83d\udcc2 High-Output Management\n*17 books*",
+      "x": 0,
+      "y": 4590,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "bd38290242544682",
+      "type": "text",
+      "text": "### \ud83d\udcd6 High Output Management\n*By Andrew Grove*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[High-Output-Management/README|Open Reading Guide]]\n- \ud83c\udfa7 [[High-Output-Management/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "9f2cfe09d2604623",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Effective Executive\n*By Peter Drucker*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Effective-Executive/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Effective-Executive/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "af194b88c8a94dea",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Practice of Management\n*By Peter Drucker*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Practice-of-Management/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Practice-of-Management/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "957b12dc5689460e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Good to Great\n*By Jim Collins*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Good-to-Great/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Good-to-Great/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "69992deb77164248",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Built to Last\n*By Jim Collins; Jerry Porras*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Built-to-Last/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Built-to-Last/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c3113f50397b432c",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Great by Choice\n*By Jim Collins; Morten Hansen*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Great-by-Choice/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Great-by-Choice/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "e7430d379e914763",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Goal\n*By Eliyahu Goldratt*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Goal/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Goal/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "65ba0d0efd7c48a5",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Toyota Way\n*By Jeffrey Liker*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Toyota-Way/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Toyota-Way/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "07850ff574cf45f4",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Measure What Matters\n*By John Doerr*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Measure-What-Matters/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Measure-What-Matters/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7906a42c950b4e9c",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Working Backwards\n*By Colin Bryar; Bill Carr*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Working-Backwards/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Working-Backwards/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c646ace027624c70",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Management\n*By Peter Drucker*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Management/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Management/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "41d94739ed74487e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Principles\n*By Ray Dalio*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Principles/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Principles/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "2d919b79f2184d0c",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Turn the Ship Around!\n*By L. David Marquet*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Turn-the-Ship-Around/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Turn-the-Ship-Around/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8db8bccd39564b03",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Radical Candor\n*By Kim Scott*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Radical-Candor/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Radical-Candor/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7beeac4dd746456d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 First, Break All the Rules\n*By Marcus Buckingham; Curt Coffman*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[First-Break-All-the-Rules/README|Open Reading Guide]]\n- \ud83c\udfa7 [[First-Break-All-the-Rules/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b1d20647e4794a8d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Making of a Manager\n*By Julie Zhuo*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Making-of-a-Manager/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Making-of-a-Manager/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ded18214c1e5459f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 High Growth Handbook\n*By Elad Gil*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[High-Growth-Handbook/README|Open Reading Guide]]\n- \ud83c\udfa7 [[High-Growth-Handbook/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "965a85b1543a4d02",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Organizational Culture & Structure\n*7 books*",
+      "x": 0,
+      "y": 3920,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "54813026d06542ab",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Culture Code\n*By Daniel Coyle*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Culture-Code/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Culture-Code/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3920,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "9bb4cd864b9f4435",
+      "type": "text",
+      "text": "### \ud83d\udcd6 No Rules Rules\n*By Reed Hastings; Erin Meyer*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[No-Rules-Rules/README|Open Reading Guide]]\n- \ud83c\udfa7 [[No-Rules-Rules/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4170,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "2696173783fa48f4",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Team of Teams\n*By Stanley McChrystal et al.*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Team-of-Teams/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Team-of-Teams/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4420,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d6db13b1a2d2493e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Powerful\n*By Patty McCord*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Powerful/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Powerful/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4670,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "98d9eee1ff7f4d25",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Reinventing Organizations\n*By Frederic Laloux*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Reinventing-Organizations/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Reinventing-Organizations/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4920,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b71f22b5f3474116",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Infinite Game\n*By Simon Sinek*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Infinite-Game/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Infinite-Game/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5170,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ddd97685a58043ca",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Culture Map\n*By Erin Meyer*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Culture-Map/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Culture-Map/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5420,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "63f243120ceb4ea5",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Executive Leadership & Strategy Execution\n*7 books*",
+      "x": 0,
+      "y": 5750,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "7307e6da5ec74510",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Creativity, Inc.\n*By Ed Catmull*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Creativity-Inc/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Creativity-Inc/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5750,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "6dd46b929261496e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Multipliers\n*By Liz Wiseman*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Multipliers/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Multipliers/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ee479b6b5e304c52",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Extreme Ownership\n*By Jocko Willink; Leif Babin*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Extreme-Ownership/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Extreme-Ownership/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b01a811fcbbe41b3",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Dare to Lead\n*By Bren\u00e9 Brown*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Dare-to-Lead/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Dare-to-Lead/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6500,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "343c4cd13fce4dfc",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Leadership on the Line\n*By Ronald Heifetz; Marty Linsky*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Leadership-on-the-Line/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Leadership-on-the-Line/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6750,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d18d938246a648cc",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Leadership Challenge\n*By James Kouzes; Barry Posner*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Leadership-Challenge/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Leadership-Challenge/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c2d17ca740e3455e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Leadership Strategy and Tactics\n*By Jocko Willink*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Leadership-Strategy-and-Tactics/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Leadership-Strategy-and-Tactics/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ec3085b96b944416",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Team Dynamics & Collaboration\n*2 books*",
+      "x": 0,
+      "y": 2580,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "457859b771b64690",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Five Dysfunctions of a Team\n*By Patrick Lencioni*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Five-Dysfunctions-of-a-Team/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Five-Dysfunctions-of-a-Team/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c1a62d01551e432d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Fearless Organization\n*By Amy Edmondson*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Fearless-Organization/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Fearless-Organization/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    }
+  ],
+  "edges": [
+    {
+      "id": "da097c5162b74f59",
+      "fromNode": "12af3cf2c5f94243",
+      "fromSide": "bottom",
+      "toNode": "6ef0e8e71b704c70",
+      "toSide": "top"
+    },
+    {
+      "id": "82acb3ed1dd246b1",
+      "fromNode": "6ef0e8e71b704c70",
+      "fromSide": "right",
+      "toNode": "c59e9401e3d8421a",
+      "toSide": "left"
+    },
+    {
+      "id": "d7c772df12a54264",
+      "fromNode": "c59e9401e3d8421a",
+      "fromSide": "bottom",
+      "toNode": "d65d19a1e7114b72",
+      "toSide": "top"
+    },
+    {
+      "id": "a8a3a77245254e43",
+      "fromNode": "6ef0e8e71b704c70",
+      "fromSide": "bottom",
+      "toNode": "7c23db185b7c46e7",
+      "toSide": "top"
+    },
+    {
+      "id": "924de303b80a40a3",
+      "fromNode": "7c23db185b7c46e7",
+      "fromSide": "right",
+      "toNode": "bd38290242544682",
+      "toSide": "left"
+    },
+    {
+      "id": "bb48363fb5d54507",
+      "fromNode": "bd38290242544682",
+      "fromSide": "bottom",
+      "toNode": "9f2cfe09d2604623",
+      "toSide": "top"
+    },
+    {
+      "id": "d5d98120f7804260",
+      "fromNode": "9f2cfe09d2604623",
+      "fromSide": "bottom",
+      "toNode": "af194b88c8a94dea",
+      "toSide": "top"
+    },
+    {
+      "id": "66e6ca87236a47c9",
+      "fromNode": "af194b88c8a94dea",
+      "fromSide": "bottom",
+      "toNode": "957b12dc5689460e",
+      "toSide": "top"
+    },
+    {
+      "id": "797c9f5e71b24a5f",
+      "fromNode": "957b12dc5689460e",
+      "fromSide": "bottom",
+      "toNode": "69992deb77164248",
+      "toSide": "top"
+    },
+    {
+      "id": "3744c5176fd84a84",
+      "fromNode": "69992deb77164248",
+      "fromSide": "bottom",
+      "toNode": "c3113f50397b432c",
+      "toSide": "top"
+    },
+    {
+      "id": "c2ed398e08fe4eea",
+      "fromNode": "c3113f50397b432c",
+      "fromSide": "bottom",
+      "toNode": "e7430d379e914763",
+      "toSide": "top"
+    },
+    {
+      "id": "8e8756a5c6704bb0",
+      "fromNode": "e7430d379e914763",
+      "fromSide": "bottom",
+      "toNode": "65ba0d0efd7c48a5",
+      "toSide": "top"
+    },
+    {
+      "id": "90ece7057cba4839",
+      "fromNode": "65ba0d0efd7c48a5",
+      "fromSide": "bottom",
+      "toNode": "07850ff574cf45f4",
+      "toSide": "top"
+    },
+    {
+      "id": "07770623931e4948",
+      "fromNode": "07850ff574cf45f4",
+      "fromSide": "bottom",
+      "toNode": "7906a42c950b4e9c",
+      "toSide": "top"
+    },
+    {
+      "id": "48176459e1834f95",
+      "fromNode": "7906a42c950b4e9c",
+      "fromSide": "bottom",
+      "toNode": "c646ace027624c70",
+      "toSide": "top"
+    },
+    {
+      "id": "ca9ff809f4bb4788",
+      "fromNode": "c646ace027624c70",
+      "fromSide": "bottom",
+      "toNode": "41d94739ed74487e",
+      "toSide": "top"
+    },
+    {
+      "id": "ccf392dd2df046c0",
+      "fromNode": "41d94739ed74487e",
+      "fromSide": "bottom",
+      "toNode": "2d919b79f2184d0c",
+      "toSide": "top"
+    },
+    {
+      "id": "013b93cadfcb4ae8",
+      "fromNode": "2d919b79f2184d0c",
+      "fromSide": "bottom",
+      "toNode": "8db8bccd39564b03",
+      "toSide": "top"
+    },
+    {
+      "id": "b5e8df6a35184cf9",
+      "fromNode": "8db8bccd39564b03",
+      "fromSide": "bottom",
+      "toNode": "7beeac4dd746456d",
+      "toSide": "top"
+    },
+    {
+      "id": "31578f426f8c4431",
+      "fromNode": "7beeac4dd746456d",
+      "fromSide": "bottom",
+      "toNode": "b1d20647e4794a8d",
+      "toSide": "top"
+    },
+    {
+      "id": "4a1de009156d4722",
+      "fromNode": "b1d20647e4794a8d",
+      "fromSide": "bottom",
+      "toNode": "ded18214c1e5459f",
+      "toSide": "top"
+    },
+    {
+      "id": "b207f18fd7854ce6",
+      "fromNode": "7c23db185b7c46e7",
+      "fromSide": "bottom",
+      "toNode": "965a85b1543a4d02",
+      "toSide": "top"
+    },
+    {
+      "id": "8f4fbe2b82b6450b",
+      "fromNode": "965a85b1543a4d02",
+      "fromSide": "right",
+      "toNode": "54813026d06542ab",
+      "toSide": "left"
+    },
+    {
+      "id": "170eb8d5119e4f16",
+      "fromNode": "54813026d06542ab",
+      "fromSide": "bottom",
+      "toNode": "9bb4cd864b9f4435",
+      "toSide": "top"
+    },
+    {
+      "id": "27e6166d3e164b87",
+      "fromNode": "9bb4cd864b9f4435",
+      "fromSide": "bottom",
+      "toNode": "2696173783fa48f4",
+      "toSide": "top"
+    },
+    {
+      "id": "f70dd8a3695a4adf",
+      "fromNode": "2696173783fa48f4",
+      "fromSide": "bottom",
+      "toNode": "d6db13b1a2d2493e",
+      "toSide": "top"
+    },
+    {
+      "id": "0b48a2f3fc074130",
+      "fromNode": "d6db13b1a2d2493e",
+      "fromSide": "bottom",
+      "toNode": "98d9eee1ff7f4d25",
+      "toSide": "top"
+    },
+    {
+      "id": "9ad3ffcc8993447f",
+      "fromNode": "98d9eee1ff7f4d25",
+      "fromSide": "bottom",
+      "toNode": "b71f22b5f3474116",
+      "toSide": "top"
+    },
+    {
+      "id": "135841275d5b4b4e",
+      "fromNode": "b71f22b5f3474116",
+      "fromSide": "bottom",
+      "toNode": "ddd97685a58043ca",
+      "toSide": "top"
+    },
+    {
+      "id": "fc87330c8d5f4d1a",
+      "fromNode": "965a85b1543a4d02",
+      "fromSide": "bottom",
+      "toNode": "63f243120ceb4ea5",
+      "toSide": "top"
+    },
+    {
+      "id": "361c2a440ffa4c53",
+      "fromNode": "63f243120ceb4ea5",
+      "fromSide": "right",
+      "toNode": "7307e6da5ec74510",
+      "toSide": "left"
+    },
+    {
+      "id": "ec56bd4aab1e4bd7",
+      "fromNode": "7307e6da5ec74510",
+      "fromSide": "bottom",
+      "toNode": "6dd46b929261496e",
+      "toSide": "top"
+    },
+    {
+      "id": "f677f7a9f5e04f8f",
+      "fromNode": "6dd46b929261496e",
+      "fromSide": "bottom",
+      "toNode": "ee479b6b5e304c52",
+      "toSide": "top"
+    },
+    {
+      "id": "04cf3c40a6c84772",
+      "fromNode": "ee479b6b5e304c52",
+      "fromSide": "bottom",
+      "toNode": "b01a811fcbbe41b3",
+      "toSide": "top"
+    },
+    {
+      "id": "baa67de96b704253",
+      "fromNode": "b01a811fcbbe41b3",
+      "fromSide": "bottom",
+      "toNode": "343c4cd13fce4dfc",
+      "toSide": "top"
+    },
+    {
+      "id": "534a66cdeec54906",
+      "fromNode": "343c4cd13fce4dfc",
+      "fromSide": "bottom",
+      "toNode": "d18d938246a648cc",
+      "toSide": "top"
+    },
+    {
+      "id": "2c6607cf922e4c15",
+      "fromNode": "d18d938246a648cc",
+      "fromSide": "bottom",
+      "toNode": "c2d17ca740e3455e",
+      "toSide": "top"
+    },
+    {
+      "id": "dbcd7cd759a44de5",
+      "fromNode": "63f243120ceb4ea5",
+      "fromSide": "bottom",
+      "toNode": "ec3085b96b944416",
+      "toSide": "top"
+    },
+    {
+      "id": "559526ac12fd4c72",
+      "fromNode": "ec3085b96b944416",
+      "fromSide": "right",
+      "toNode": "457859b771b64690",
+      "toSide": "left"
+    },
+    {
+      "id": "4276b3acde774ba7",
+      "fromNode": "457859b771b64690",
+      "fromSide": "bottom",
+      "toNode": "c1a62d01551e432d",
+      "toSide": "top"
+    }
+  ]
+}

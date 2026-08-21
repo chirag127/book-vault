@@ -1,0 +1,1206 @@
+{
+  "nodes": [
+    {
+      "id": "eab8255d9a3243ec",
+      "type": "text",
+      "text": "# \ud83c\udfdb\ufe0f Artificial Intelligence & Data Systems\n\n**Total Books**: 64 | **Curriculum Track**: MECE 3-Level",
+      "x": 0,
+      "y": 0,
+      "width": 600,
+      "height": 180,
+      "color": "1"
+    },
+    {
+      "id": "06f586a47ef944d1",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Data Engineering & Big Data\n*15 books*",
+      "x": 0,
+      "y": 260,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "2aa68129a3a84226",
+      "type": "text",
+      "text": "### \ud83d\udcd6 SQL Antipatterns\n*By Bill Karwin*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[SQL-Antipatterns/README|Open Reading Guide]]\n- \ud83c\udfa7 [[SQL-Antipatterns/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ed9883b3edee4c28",
+      "type": "text",
+      "text": "### \ud83d\udcd6 SQL Performance Explained\n*By Markus Winand*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[SQL-Performance-Explained/README|Open Reading Guide]]\n- \ud83c\udfa7 [[SQL-Performance-Explained/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "74402f44f6b64c0e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Python Data Science Handbook\n*By Jake VanderPlas*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Python-Data-Science-Handbook/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Python-Data-Science-Handbook/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0b1adec928ab4d54",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Effective Pandas\n*By Matt Harrison*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Effective-Pandas/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Effective-Pandas/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "93b73bf5334640ff",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Data Science from Scratch\n*By Joel Grus*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Data-Science-from-Scratch/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Data-Science-from-Scratch/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "972ced99c7d04911",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Fundamentals of Data Engineering\n*By Joe Reis; Matt Housley*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Fundamentals-of-Data-Engineering/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Fundamentals-of-Data-Engineering/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c15fc3a05a3a4193",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Designing Event-Driven Systems\n*By Ben Stopford*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Designing-Event-Driven-Systems/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Designing-Event-Driven-Systems/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ae6ee03cceaf41e8",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Streaming Systems\n*By Tyler Akidau; Slava Chernyak; Reuven Lax*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Streaming-Systems/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Streaming-Systems/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7ace8e9a8d6b4c0d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Kafka: The Definitive Guide\n*By Neha Narkhede; Gwen Shapira; Todd Palino*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Kafka-The-Definitive-Guide/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Kafka-The-Definitive-Guide/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "52c74348ebe8471b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Learning Spark\n*By Jules Damji; Brooke Wenig; Tathagata Das; Denny Lee*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Learning-Spark/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Learning-Spark/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "77f264475fd544e1",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Data Warehouse Toolkit\n*By Ralph Kimball; Margy Ross*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Data-Warehouse-Toolkit/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Data-Warehouse-Toolkit/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "764528c699f6409a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Building a Data Lakehouse\n*By Bill Inmon; Mary Levins; Ranjeet Srivastava*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Building-a-Data-Lakehouse/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Building-a-Data-Lakehouse/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ea8b41a5b1c44a07",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Data Mesh\n*By Zhamak Dehghani*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Data-Mesh/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Data-Mesh/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "254322cbe7ed459a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Data Pipelines Pocket Reference\n*By James Densmore*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Data-Pipelines-Pocket-Reference/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Data-Pipelines-Pocket-Reference/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "441b1a1b3ed74c73",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Data Management at Scale\n*By Piethein Strengholt*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Data-Management-at-Scale/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Data-Management-at-Scale/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "f82e8dbd9539484f",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Machine Learning Foundations\n*10 books*",
+      "x": 0,
+      "y": 2840,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "0885448c4928427c",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Hundred-Page Machine Learning Book\n*By Andriy Burkov*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Hundred-Page-Machine-Learning-Book/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Hundred-Page-Machine-Learning-Book/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a94b6e024ba440bf",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Hands-On Machine Learning\n*By Aur\u00e9lien G\u00e9ron*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Hands-On-Machine-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Hands-On-Machine-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "193981e041b04adb",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Artificial Intelligence: A Modern Approach\n*By Stuart Russell; Peter Norvig*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Artificial-Intelligence-A-Modern-Approach/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Artificial-Intelligence-A-Modern-Approach/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "bb2c633b899b44cc",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Pattern Recognition and Machine Learning\n*By Christopher Bishop*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Pattern-Recognition-and-Machine-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Pattern-Recognition-and-Machine-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8ae5de9f54bd4316",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Probabilistic Machine Learning: An Introduction\n*By Kevin Murphy*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Probabilistic-Machine-Learning-An-Introduction/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Probabilistic-Machine-Learning-An-Introduction/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "39f5949596634ccb",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Probabilistic Machine Learning: Advanced Topics\n*By Kevin Murphy*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Probabilistic-Machine-Learning-Advanced-Topics/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Probabilistic-Machine-Learning-Advanced-Topics/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8cb3ec2a7803444b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Reinforcement Learning\n*By Richard Sutton; Andrew Barto*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Reinforcement-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Reinforcement-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "10e5e26406a34611",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Master Algorithm\n*By Pedro Domingos*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Master-Algorithm/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Master-Algorithm/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "f57e55535ef64623",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Quest for Artificial Intelligence\n*By Nils Nilsson*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Quest-for-Artificial-Intelligence/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Quest-for-Artificial-Intelligence/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0e9b2dc385fd4bae",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Machine Learning Yearning\n*By Andrew Ng*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Machine-Learning-Yearning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Machine-Learning-Yearning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "24cff58bf7034391",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Deep Learning & Neural Architectures\n*7 books*",
+      "x": 0,
+      "y": 3920,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "5d9950c7c976437b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Deep Learning\n*By Ian Goodfellow; Yoshua Bengio; Aaron Courville*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Deep-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Deep-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3920,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d48fdc7c5001462a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Deep Learning with Python\n*By Fran\u00e7ois Chollet*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Deep-Learning-with-Python/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Deep-Learning-with-Python/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4170,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "4d25f08281ae4294",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Dive into Deep Learning\n*By Aston Zhang; Zachary Lipton; Mu Li; Alexander Smola*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Dive-into-Deep-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Dive-into-Deep-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4420,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ccc8ead113aa407f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Generative Deep Learning\n*By David Foster*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Generative-Deep-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Generative-Deep-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4670,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a55d3a9f2a0a49c9",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Deep Learning with PyTorch\n*By Eli Stevens; Luca Antiga; Thomas Viehmann*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Deep-Learning-with-PyTorch/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Deep-Learning-with-PyTorch/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4920,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "aa4f98fba7874c8f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Grokking Deep Learning\n*By Andrew Trask*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Grokking-Deep-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Grokking-Deep-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5170,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a641ebddd04f4c8d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Machine Learning with PyTorch and Scikit-Learn\n*By Sebastian Raschka et al.*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Machine-Learning-with-PyTorch-and-Scikit-Learn/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Machine-Learning-with-PyTorch-and-Scikit-Learn/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5420,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b09ef8890cdf4302",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Natural Language Processing & LLMs\n*6 books*",
+      "x": 0,
+      "y": 5000,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "ce6487a71dcb48c7",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Speech and Language Processing\n*By Dan Jurafsky; James Martin*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Speech-and-Language-Processing/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Speech-and-Language-Processing/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "69f7d41226294b6b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Natural Language Processing with Transformers\n*By Lewis Tunstall; Leandro von Werra; Thomas Wolf*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Natural-Language-Processing-with-Transformers/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Natural-Language-Processing-with-Transformers/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "51209d94970b4a6b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Hands-On Large Language Models\n*By Jay Alammar; Maarten Grootendorst*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Hands-On-Large-Language-Models/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Hands-On-Large-Language-Models/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5500,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "4c777d96908542e6",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Build a Large Language Model (From Scratch)\n*By Sebastian Raschka*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Build-a-Large-Language-Model-From-Scratch/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Build-a-Large-Language-Model-From-Scratch/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5750,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a409e1239d234319",
+      "type": "text",
+      "text": "### \ud83d\udcd6 LLM Engineer's Handbook\n*By Paul Iusztin; Maxime Labonne*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[LLM-Engineers-Handbook/README|Open Reading Guide]]\n- \ud83c\udfa7 [[LLM-Engineers-Handbook/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "034d61303a0b46ce",
+      "type": "text",
+      "text": "### \ud83d\udcd6 RAG-Driven Generative AI\n*By Denis Rothman*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[RAG-Driven-Generative-AI/README|Open Reading Guide]]\n- \ud83c\udfa7 [[RAG-Driven-Generative-AI/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b2e5cf33b29242bf",
+      "type": "text",
+      "text": "## \ud83d\udcc2 AI Engineering & Autonomous Agents\n*8 books*",
+      "x": 0,
+      "y": 8580,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "0f53a3be962e4e5b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Designing Machine Learning Systems\n*By Chip Huyen*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Designing-Machine-Learning-Systems/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Designing-Machine-Learning-Systems/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c2206fd711f44914",
+      "type": "text",
+      "text": "### \ud83d\udcd6 AI Engineering\n*By Chip Huyen*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[AI-Engineering/README|Open Reading Guide]]\n- \ud83c\udfa7 [[AI-Engineering/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "28cd93e0a1f1486f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Machine Learning Engineering\n*By Andriy Burkov*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Machine-Learning-Engineering/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Machine-Learning-Engineering/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9080,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "415a47ef87ab4f6a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Building Machine Learning Powered Applications\n*By Emmanuel Ameisen*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Building-Machine-Learning-Powered-Applications/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Building-Machine-Learning-Powered-Applications/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9330,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d871e5829be64246",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Introducing MLOps\n*By Mark Treveil et al.*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Introducing-MLOps/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Introducing-MLOps/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "1a6cbeda0c7441e7",
+      "type": "text",
+      "text": "### \ud83d\udcd6 AI Agents in Action\n*By Micheal Lanham*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[AI-Agents-in-Action/README|Open Reading Guide]]\n- \ud83c\udfa7 [[AI-Agents-in-Action/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a5d8162e5257450d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Building Agentic AI Systems\n*By Biswas; Talukdar*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Building-Agentic-AI-Systems/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Building-Agentic-AI-Systems/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10080,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c1fabb20a7944c68",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Artificial Intelligence: A Guide for Thinking Humans\n*By Melanie Mitchell*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Artificial-Intelligence-A-Guide-for-Thinking-Humans/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Artificial-Intelligence-A-Guide-for-Thinking-Humans/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10330,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "f487f5274104434a",
+      "type": "text",
+      "text": "## \ud83d\udcc2 AI Safety, Ethics & Alignment\n*18 books*",
+      "x": 0,
+      "y": 23160,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "f87c29da09db49df",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Interpretable Machine Learning\n*By Christoph Molnar*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Interpretable-Machine-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Interpretable-Machine-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 23160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "21254b2ff2e54480",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Human Compatible\n*By Stuart Russell*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Human-Compatible/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Human-Compatible/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 23410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "bd9e7f3a66d94345",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Superintelligence\n*By Nick Bostrom*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Superintelligence/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Superintelligence/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 23660,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "9e92f146ce6b43b6",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Alignment Problem\n*By Brian Christian*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Alignment-Problem/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Alignment-Problem/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 23910,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "20f53b7730aa455b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Co-Intelligence\n*By Ethan Mollick*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Co-Intelligence/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Co-Intelligence/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 24160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "3b7b121784a84871",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Life 3.0\n*By Max Tegmark*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Life-3-0/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Life-3-0/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 24410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0d0d4c1d6e8f446c",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Coming Wave\n*By Mustafa Suleyman; Michael Bhaskar*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Coming-Wave/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Coming-Wave/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 24660,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "85ee6412db6c4e56",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Power and Prediction\n*By Ajay Agrawal; Joshua Gans; Avi Goldfarb*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Power-and-Prediction/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Power-and-Prediction/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 24910,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "e493e15d57734f24",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Prediction Machines\n*By Ajay Agrawal; Joshua Gans; Avi Goldfarb*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Prediction-Machines/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Prediction-Machines/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 25160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "2f4515e770e94144",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Second Machine Age\n*By Erik Brynjolfsson; Andrew McAfee*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Second-Machine-Age/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Second-Machine-Age/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 25410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "795f86934c024b3e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Master Switch\n*By Tim Wu*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Master-Switch/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Master-Switch/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 25660,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "95db7206af734aef",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Future Is Faster Than You Think\n*By Peter Diamandis; Steven Kotler*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Future-Is-Faster-Than-You-Think/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Future-Is-Faster-Than-You-Think/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 25910,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b7f728a159184fe9",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Age of Surveillance Capitalism\n*By Shoshana Zuboff*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Age-of-Surveillance-Capitalism/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Age-of-Surveillance-Capitalism/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 26160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "56d29370e40943ce",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Technological Revolutions and Financial Capital\n*By Carlota Perez*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Technological-Revolutions-and-Financial-Capital/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Technological-Revolutions-and-Financial-Capital/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 26410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8e70bfa3501e4238",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Rise of the Robots\n*By Martin Ford*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Rise-of-the-Robots/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Rise-of-the-Robots/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 26660,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7aee6a4431ea40c8",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Singularity Is Nearer\n*By Ray Kurzweil*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Singularity-Is-Nearer/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Singularity-Is-Nearer/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 26910,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "78a758ddfff64854",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Industries of the Future\n*By Alec Ross*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Industries-of-the-Future/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Industries-of-the-Future/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 27160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "bf571fbe8b2b46ba",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The AI Revolution in Medicine\n*By Eric Topol*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-AI-Revolution-in-Medicine/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-AI-Revolution-in-Medicine/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 27410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    }
+  ],
+  "edges": [
+    {
+      "id": "3aa7d3271a54434e",
+      "fromNode": "eab8255d9a3243ec",
+      "fromSide": "bottom",
+      "toNode": "06f586a47ef944d1",
+      "toSide": "top"
+    },
+    {
+      "id": "52e669fd271745dc",
+      "fromNode": "06f586a47ef944d1",
+      "fromSide": "right",
+      "toNode": "2aa68129a3a84226",
+      "toSide": "left"
+    },
+    {
+      "id": "cd8f593b0d684f2c",
+      "fromNode": "2aa68129a3a84226",
+      "fromSide": "bottom",
+      "toNode": "ed9883b3edee4c28",
+      "toSide": "top"
+    },
+    {
+      "id": "0f96b1d3765348b3",
+      "fromNode": "ed9883b3edee4c28",
+      "fromSide": "bottom",
+      "toNode": "74402f44f6b64c0e",
+      "toSide": "top"
+    },
+    {
+      "id": "6e34fe199fde4829",
+      "fromNode": "74402f44f6b64c0e",
+      "fromSide": "bottom",
+      "toNode": "0b1adec928ab4d54",
+      "toSide": "top"
+    },
+    {
+      "id": "037d42971c214fd9",
+      "fromNode": "0b1adec928ab4d54",
+      "fromSide": "bottom",
+      "toNode": "93b73bf5334640ff",
+      "toSide": "top"
+    },
+    {
+      "id": "82f9f7d1f19c44f9",
+      "fromNode": "93b73bf5334640ff",
+      "fromSide": "bottom",
+      "toNode": "972ced99c7d04911",
+      "toSide": "top"
+    },
+    {
+      "id": "4c109145591144d8",
+      "fromNode": "972ced99c7d04911",
+      "fromSide": "bottom",
+      "toNode": "c15fc3a05a3a4193",
+      "toSide": "top"
+    },
+    {
+      "id": "c9413bf9173644aa",
+      "fromNode": "c15fc3a05a3a4193",
+      "fromSide": "bottom",
+      "toNode": "ae6ee03cceaf41e8",
+      "toSide": "top"
+    },
+    {
+      "id": "325a2066c6f2443b",
+      "fromNode": "ae6ee03cceaf41e8",
+      "fromSide": "bottom",
+      "toNode": "7ace8e9a8d6b4c0d",
+      "toSide": "top"
+    },
+    {
+      "id": "535396e858654885",
+      "fromNode": "7ace8e9a8d6b4c0d",
+      "fromSide": "bottom",
+      "toNode": "52c74348ebe8471b",
+      "toSide": "top"
+    },
+    {
+      "id": "8e739ef71f054ab7",
+      "fromNode": "52c74348ebe8471b",
+      "fromSide": "bottom",
+      "toNode": "77f264475fd544e1",
+      "toSide": "top"
+    },
+    {
+      "id": "6514e383bba44729",
+      "fromNode": "77f264475fd544e1",
+      "fromSide": "bottom",
+      "toNode": "764528c699f6409a",
+      "toSide": "top"
+    },
+    {
+      "id": "2964a97e69cb4838",
+      "fromNode": "764528c699f6409a",
+      "fromSide": "bottom",
+      "toNode": "ea8b41a5b1c44a07",
+      "toSide": "top"
+    },
+    {
+      "id": "6a76fd721f184a41",
+      "fromNode": "ea8b41a5b1c44a07",
+      "fromSide": "bottom",
+      "toNode": "254322cbe7ed459a",
+      "toSide": "top"
+    },
+    {
+      "id": "b9e2b1caa02f4150",
+      "fromNode": "254322cbe7ed459a",
+      "fromSide": "bottom",
+      "toNode": "441b1a1b3ed74c73",
+      "toSide": "top"
+    },
+    {
+      "id": "8c59e7d7368645b7",
+      "fromNode": "06f586a47ef944d1",
+      "fromSide": "bottom",
+      "toNode": "f82e8dbd9539484f",
+      "toSide": "top"
+    },
+    {
+      "id": "57e70dd33d3a49f3",
+      "fromNode": "f82e8dbd9539484f",
+      "fromSide": "right",
+      "toNode": "0885448c4928427c",
+      "toSide": "left"
+    },
+    {
+      "id": "7687b45709d847bd",
+      "fromNode": "0885448c4928427c",
+      "fromSide": "bottom",
+      "toNode": "a94b6e024ba440bf",
+      "toSide": "top"
+    },
+    {
+      "id": "cedb213888a8481b",
+      "fromNode": "a94b6e024ba440bf",
+      "fromSide": "bottom",
+      "toNode": "193981e041b04adb",
+      "toSide": "top"
+    },
+    {
+      "id": "c8a4ebea1c99441d",
+      "fromNode": "193981e041b04adb",
+      "fromSide": "bottom",
+      "toNode": "bb2c633b899b44cc",
+      "toSide": "top"
+    },
+    {
+      "id": "f3b6193b406e43de",
+      "fromNode": "bb2c633b899b44cc",
+      "fromSide": "bottom",
+      "toNode": "8ae5de9f54bd4316",
+      "toSide": "top"
+    },
+    {
+      "id": "e32b715d6f20470e",
+      "fromNode": "8ae5de9f54bd4316",
+      "fromSide": "bottom",
+      "toNode": "39f5949596634ccb",
+      "toSide": "top"
+    },
+    {
+      "id": "36c2c041925f4ee6",
+      "fromNode": "39f5949596634ccb",
+      "fromSide": "bottom",
+      "toNode": "8cb3ec2a7803444b",
+      "toSide": "top"
+    },
+    {
+      "id": "b4618a1b84bb47ca",
+      "fromNode": "8cb3ec2a7803444b",
+      "fromSide": "bottom",
+      "toNode": "10e5e26406a34611",
+      "toSide": "top"
+    },
+    {
+      "id": "19ed24e731b7425c",
+      "fromNode": "10e5e26406a34611",
+      "fromSide": "bottom",
+      "toNode": "f57e55535ef64623",
+      "toSide": "top"
+    },
+    {
+      "id": "66fadf3e52584960",
+      "fromNode": "f57e55535ef64623",
+      "fromSide": "bottom",
+      "toNode": "0e9b2dc385fd4bae",
+      "toSide": "top"
+    },
+    {
+      "id": "91c568f4331c47cc",
+      "fromNode": "f82e8dbd9539484f",
+      "fromSide": "bottom",
+      "toNode": "24cff58bf7034391",
+      "toSide": "top"
+    },
+    {
+      "id": "afba1066b5e84988",
+      "fromNode": "24cff58bf7034391",
+      "fromSide": "right",
+      "toNode": "5d9950c7c976437b",
+      "toSide": "left"
+    },
+    {
+      "id": "a2fa0d52feff45a7",
+      "fromNode": "5d9950c7c976437b",
+      "fromSide": "bottom",
+      "toNode": "d48fdc7c5001462a",
+      "toSide": "top"
+    },
+    {
+      "id": "b021e00087ea4e74",
+      "fromNode": "d48fdc7c5001462a",
+      "fromSide": "bottom",
+      "toNode": "4d25f08281ae4294",
+      "toSide": "top"
+    },
+    {
+      "id": "ab7596ee997f44fd",
+      "fromNode": "4d25f08281ae4294",
+      "fromSide": "bottom",
+      "toNode": "ccc8ead113aa407f",
+      "toSide": "top"
+    },
+    {
+      "id": "1713496865394e83",
+      "fromNode": "ccc8ead113aa407f",
+      "fromSide": "bottom",
+      "toNode": "a55d3a9f2a0a49c9",
+      "toSide": "top"
+    },
+    {
+      "id": "875a0d0a5bed4a27",
+      "fromNode": "a55d3a9f2a0a49c9",
+      "fromSide": "bottom",
+      "toNode": "aa4f98fba7874c8f",
+      "toSide": "top"
+    },
+    {
+      "id": "55cf4246f9104e3f",
+      "fromNode": "aa4f98fba7874c8f",
+      "fromSide": "bottom",
+      "toNode": "a641ebddd04f4c8d",
+      "toSide": "top"
+    },
+    {
+      "id": "14baacfe04124ad1",
+      "fromNode": "24cff58bf7034391",
+      "fromSide": "bottom",
+      "toNode": "b09ef8890cdf4302",
+      "toSide": "top"
+    },
+    {
+      "id": "92ce6d792bbd44b1",
+      "fromNode": "b09ef8890cdf4302",
+      "fromSide": "right",
+      "toNode": "ce6487a71dcb48c7",
+      "toSide": "left"
+    },
+    {
+      "id": "0a5e74a3a6e84d0d",
+      "fromNode": "ce6487a71dcb48c7",
+      "fromSide": "bottom",
+      "toNode": "69f7d41226294b6b",
+      "toSide": "top"
+    },
+    {
+      "id": "9fa655fcce1f4a30",
+      "fromNode": "69f7d41226294b6b",
+      "fromSide": "bottom",
+      "toNode": "51209d94970b4a6b",
+      "toSide": "top"
+    },
+    {
+      "id": "dfcb52ef84b2430a",
+      "fromNode": "51209d94970b4a6b",
+      "fromSide": "bottom",
+      "toNode": "4c777d96908542e6",
+      "toSide": "top"
+    },
+    {
+      "id": "d1ac7df2de754133",
+      "fromNode": "4c777d96908542e6",
+      "fromSide": "bottom",
+      "toNode": "a409e1239d234319",
+      "toSide": "top"
+    },
+    {
+      "id": "4eaccc210ae94c4a",
+      "fromNode": "a409e1239d234319",
+      "fromSide": "bottom",
+      "toNode": "034d61303a0b46ce",
+      "toSide": "top"
+    },
+    {
+      "id": "e0d767c121564748",
+      "fromNode": "b09ef8890cdf4302",
+      "fromSide": "bottom",
+      "toNode": "b2e5cf33b29242bf",
+      "toSide": "top"
+    },
+    {
+      "id": "e90c757fec0c415e",
+      "fromNode": "b2e5cf33b29242bf",
+      "fromSide": "right",
+      "toNode": "0f53a3be962e4e5b",
+      "toSide": "left"
+    },
+    {
+      "id": "594895fc384e404f",
+      "fromNode": "0f53a3be962e4e5b",
+      "fromSide": "bottom",
+      "toNode": "c2206fd711f44914",
+      "toSide": "top"
+    },
+    {
+      "id": "e29061dd184d4911",
+      "fromNode": "c2206fd711f44914",
+      "fromSide": "bottom",
+      "toNode": "28cd93e0a1f1486f",
+      "toSide": "top"
+    },
+    {
+      "id": "342f66f620f247f8",
+      "fromNode": "28cd93e0a1f1486f",
+      "fromSide": "bottom",
+      "toNode": "415a47ef87ab4f6a",
+      "toSide": "top"
+    },
+    {
+      "id": "98490a864d3848f8",
+      "fromNode": "415a47ef87ab4f6a",
+      "fromSide": "bottom",
+      "toNode": "d871e5829be64246",
+      "toSide": "top"
+    },
+    {
+      "id": "92833d77d70c48d0",
+      "fromNode": "d871e5829be64246",
+      "fromSide": "bottom",
+      "toNode": "1a6cbeda0c7441e7",
+      "toSide": "top"
+    },
+    {
+      "id": "5833bccbb6254f2b",
+      "fromNode": "1a6cbeda0c7441e7",
+      "fromSide": "bottom",
+      "toNode": "a5d8162e5257450d",
+      "toSide": "top"
+    },
+    {
+      "id": "450491029c8d492e",
+      "fromNode": "a5d8162e5257450d",
+      "fromSide": "bottom",
+      "toNode": "c1fabb20a7944c68",
+      "toSide": "top"
+    },
+    {
+      "id": "2163bd21f19a4641",
+      "fromNode": "b2e5cf33b29242bf",
+      "fromSide": "bottom",
+      "toNode": "f487f5274104434a",
+      "toSide": "top"
+    },
+    {
+      "id": "1557d3d3788d49d6",
+      "fromNode": "f487f5274104434a",
+      "fromSide": "right",
+      "toNode": "f87c29da09db49df",
+      "toSide": "left"
+    },
+    {
+      "id": "35e957ad725d4c82",
+      "fromNode": "f87c29da09db49df",
+      "fromSide": "bottom",
+      "toNode": "21254b2ff2e54480",
+      "toSide": "top"
+    },
+    {
+      "id": "9764907bfe9a4b05",
+      "fromNode": "21254b2ff2e54480",
+      "fromSide": "bottom",
+      "toNode": "bd9e7f3a66d94345",
+      "toSide": "top"
+    },
+    {
+      "id": "37227fad91374d99",
+      "fromNode": "bd9e7f3a66d94345",
+      "fromSide": "bottom",
+      "toNode": "9e92f146ce6b43b6",
+      "toSide": "top"
+    },
+    {
+      "id": "a925c1ca548b484c",
+      "fromNode": "9e92f146ce6b43b6",
+      "fromSide": "bottom",
+      "toNode": "20f53b7730aa455b",
+      "toSide": "top"
+    },
+    {
+      "id": "1d7401dff8f94f63",
+      "fromNode": "20f53b7730aa455b",
+      "fromSide": "bottom",
+      "toNode": "3b7b121784a84871",
+      "toSide": "top"
+    },
+    {
+      "id": "80e1af972f104322",
+      "fromNode": "3b7b121784a84871",
+      "fromSide": "bottom",
+      "toNode": "0d0d4c1d6e8f446c",
+      "toSide": "top"
+    },
+    {
+      "id": "15b95cf5bbbe4912",
+      "fromNode": "0d0d4c1d6e8f446c",
+      "fromSide": "bottom",
+      "toNode": "85ee6412db6c4e56",
+      "toSide": "top"
+    },
+    {
+      "id": "1d31db93cf8c4dd9",
+      "fromNode": "85ee6412db6c4e56",
+      "fromSide": "bottom",
+      "toNode": "e493e15d57734f24",
+      "toSide": "top"
+    },
+    {
+      "id": "1e0d90cc7e7a4f8a",
+      "fromNode": "e493e15d57734f24",
+      "fromSide": "bottom",
+      "toNode": "2f4515e770e94144",
+      "toSide": "top"
+    },
+    {
+      "id": "463d9a666da348d9",
+      "fromNode": "2f4515e770e94144",
+      "fromSide": "bottom",
+      "toNode": "795f86934c024b3e",
+      "toSide": "top"
+    },
+    {
+      "id": "526b789540784b12",
+      "fromNode": "795f86934c024b3e",
+      "fromSide": "bottom",
+      "toNode": "95db7206af734aef",
+      "toSide": "top"
+    },
+    {
+      "id": "b93336a79a7d46c8",
+      "fromNode": "95db7206af734aef",
+      "fromSide": "bottom",
+      "toNode": "b7f728a159184fe9",
+      "toSide": "top"
+    },
+    {
+      "id": "7752c89d274a40ff",
+      "fromNode": "b7f728a159184fe9",
+      "fromSide": "bottom",
+      "toNode": "56d29370e40943ce",
+      "toSide": "top"
+    },
+    {
+      "id": "fc48411a794140d3",
+      "fromNode": "56d29370e40943ce",
+      "fromSide": "bottom",
+      "toNode": "8e70bfa3501e4238",
+      "toSide": "top"
+    },
+    {
+      "id": "d3357653e1cc43a7",
+      "fromNode": "8e70bfa3501e4238",
+      "fromSide": "bottom",
+      "toNode": "7aee6a4431ea40c8",
+      "toSide": "top"
+    },
+    {
+      "id": "88c9e7e7a0c74383",
+      "fromNode": "7aee6a4431ea40c8",
+      "fromSide": "bottom",
+      "toNode": "78a758ddfff64854",
+      "toSide": "top"
+    },
+    {
+      "id": "af29d7edb2ee4c43",
+      "fromNode": "78a758ddfff64854",
+      "fromSide": "bottom",
+      "toNode": "bf571fbe8b2b46ba",
+      "toSide": "top"
+    }
+  ]
+}

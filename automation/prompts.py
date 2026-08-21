@@ -117,7 +117,9 @@ book_slug: "{book['slug']}"
 # {book['title']} — Actionable Protocols & Checklists
 *By {book['author']}*
 
-(Step-by-step practical guides, actionable implementation workflows, heuristics, and `- [ ]` checklist exercises.)
+(Step-by-step practical guides, actionable implementation workflows, heuristics, and `- [ ]` checklist exercises.
+Must include a dedicated section titled `## Active Recall & Spaced Repetition Flashcards` containing 3 to 5 high-impact `Q: ... ? / A: ...` flashcard pairs for spaced repetition.)
+
 
 === FILE: 04-Critical-Analysis-and-Limits.md ===
 ---

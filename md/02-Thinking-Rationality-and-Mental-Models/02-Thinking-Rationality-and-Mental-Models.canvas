@@ -1,0 +1,934 @@
+{
+  "nodes": [
+    {
+      "id": "ee1ad0a81f704cf0",
+      "type": "text",
+      "text": "# \ud83c\udfdb\ufe0f Thinking, Rationality & Mental Models\n\n**Total Books**: 48 | **Curriculum Track**: MECE 3-Level",
+      "x": 0,
+      "y": 0,
+      "width": 600,
+      "height": 180,
+      "color": "1"
+    },
+    {
+      "id": "11be1e4dd77d471a",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Cognitive Biases & Heuristics\n*4 books*",
+      "x": 0,
+      "y": 260,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "2985404af242435b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Thinking, Fast and Slow\n*By Daniel Kahneman*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Thinking-Fast-and-Slow/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Thinking-Fast-and-Slow/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a6b3e408db7f4c67",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Noise\n*By Daniel Kahneman; Olivier Sibony; Cass Sunstein*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Noise/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Noise/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c27f66d0f4e34aff",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Mistakes Were Made (But Not by Me)\n*By Carol Tavris; Elliot Aronson*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Mistakes-Were-Made-But-Not-by-Me/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Mistakes-Were-Made-But-Not-by-Me/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "9ba8581a4b184628",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Art of Thinking Clearly\n*By Rolf Dobelli*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Art-of-Thinking-Clearly/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Art-of-Thinking-Clearly/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b663345410484410",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Critical Thinking & Epistemology\n*24 books*",
+      "x": 0,
+      "y": 6340,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "08276c494a1240f4",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Scout Mindset\n*By Julia Galef*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Scout-Mindset/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Scout-Mindset/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0524adad38fd4ed6",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Rationality\n*By Steven Pinker*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Rationality/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Rationality/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "79dc858605e948e8",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Demon-Haunted World\n*By Carl Sagan*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Demon-Haunted-World/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Demon-Haunted-World/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "f3a3f4de3dfe4d6e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Skeptics' Guide to the Universe\n*By Steven Novella et al.*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Skeptics-Guide-to-the-Universe/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Skeptics-Guide-to-the-Universe/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d9d594d5c205476b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Asking the Right Questions\n*By M. Neil Browne; Stuart Keeley*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Asking-the-Right-Questions/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Asking-the-Right-Questions/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "e4f8aebb198e4893",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Being Logical\n*By D.Q. McInerny*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Being-Logical/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Being-Logical/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "43e83284b3d747a8",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Art of Reasoning\n*By David Kelley*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Art-of-Reasoning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Art-of-Reasoning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7614eff8266743ff",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Structure of Scientific Revolutions\n*By Thomas Kuhn*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Structure-of-Scientific-Revolutions/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Structure-of-Scientific-Revolutions/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "9afc231c2a944492",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Logic of Scientific Discovery\n*By Karl Popper*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Logic-of-Scientific-Discovery/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Logic-of-Scientific-Discovery/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "e3eda7660f7d428b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Craft of Scientific Writing\n*By Michael Alley*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Craft-of-Scientific-Writing/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Craft-of-Scientific-Writing/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "318c036d6a9c4930",
+      "type": "text",
+      "text": "### \ud83d\udcd6 How to Write and Publish a Scientific Paper\n*By Barbara Gastel; Robert Day*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[How-to-Write-and-Publish-a-Scientific-Paper/README|Open Reading Guide]]\n- \ud83c\udfa7 [[How-to-Write-and-Publish-a-Scientific-Paper/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "5f35c6f019a24e07",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Calling Bullshit\n*By Carl Bergstrom; Jevin West*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Calling-Bullshit/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Calling-Bullshit/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "54a90ba5b36e4eeb",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Bad Science\n*By Ben Goldacre*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Bad-Science/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Bad-Science/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "559a94237b324444",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Bad Pharma\n*By Ben Goldacre*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Bad-Pharma/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Bad-Pharma/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "617fdb66f8514336",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Design of Experiments\n*By Ronald Fisher*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Design-of-Experiments/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Design-of-Experiments/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "4a5fb87196ab4b01",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Research Methods in Psychology\n*By John J. Shaughnessy et al.*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Research-Methods-in-Psychology/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Research-Methods-in-Psychology/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8a42288837314ba8",
+      "type": "text",
+      "text": "### \ud83d\udcd6 What Is This Thing Called Science?\n*By Alan Chalmers*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[What-Is-This-Thing-Called-Science/README|Open Reading Guide]]\n- \ud83c\udfa7 [[What-Is-This-Thing-Called-Science/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a27e40382e734ae2",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Beginning of Infinity\n*By David Deutsch*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Beginning-of-Infinity/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Beginning-of-Infinity/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ead968c778ef4a37",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Knowledge Machine\n*By Michael Strevens*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Knowledge-Machine/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Knowledge-Machine/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "965fa5aaf5ec4876",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Science in Action\n*By Bruno Latour*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Science-in-Action/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Science-in-Action/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 11090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "750fba5ab0b543fd",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Scientist in the Crib\n*By Alison Gopnik; Andrew Meltzoff; Patricia Kuhl*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Scientist-in-the-Crib/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Scientist-in-the-Crib/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 11340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b47e7ffb7a5149ec",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Making of the Atomic Bomb\n*By Richard Rhodes*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Making-of-the-Atomic-Bomb/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Making-of-the-Atomic-Bomb/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 11590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "bfa18156b61342d8",
+      "type": "text",
+      "text": "### \ud83d\udcd6 A Rulebook for Arguments\n*By Anthony Weston*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[A-Rulebook-for-Arguments/README|Open Reading Guide]]\n- \ud83c\udfa7 [[A-Rulebook-for-Arguments/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 11840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "5342d3ec184e4657",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Tractatus Logico-Philosophicus\n*By Ludwig Wittgenstein*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Tractatus-Logico-Philosophicus/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Tractatus-Logico-Philosophicus/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 12090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "fc0f054500224ed3",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Probabilistic & Bayesian Reasoning\n*6 books*",
+      "x": 0,
+      "y": 3420,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "a0930c59580c4110",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Superforecasting\n*By Philip Tetlock; Dan Gardner*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Superforecasting/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Superforecasting/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3420,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "99d01c3a74504b42",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Fooled by Randomness\n*By Nassim Nicholas Taleb*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Fooled-by-Randomness/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Fooled-by-Randomness/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3670,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0215b5d4ba014279",
+      "type": "text",
+      "text": "### \ud83d\udcd6 How to Measure Anything\n*By Douglas Hubbard*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[How-to-Measure-Anything/README|Open Reading Guide]]\n- \ud83c\udfa7 [[How-to-Measure-Anything/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3920,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "949f45c0fee344b3",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Signal and the Noise\n*By Nate Silver*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Signal-and-the-Noise/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Signal-and-the-Noise/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4170,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c17aae6cedfc4c18",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Theory That Would Not Die\n*By Sharon Bertsch McGrayne*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Theory-That-Would-Not-Die/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Theory-That-Would-Not-Die/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4420,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c0cc2c0f2f354a1c",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Against the Gods\n*By Peter L. Bernstein*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Against-the-Gods/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Against-the-Gods/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4670,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "591beb552baa487b",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Decision Theory & Choice Architecture\n*5 books*",
+      "x": 0,
+      "y": 4250,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "0b290b7b6a884770",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Thinking in Bets\n*By Annie Duke*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Thinking-in-Bets/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Thinking-in-Bets/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ae1a36e4ac3a40e2",
+      "type": "text",
+      "text": "### \ud83d\udcd6 How to Decide\n*By Annie Duke*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[How-to-Decide/README|Open Reading Guide]]\n- \ud83c\udfa7 [[How-to-Decide/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4500,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "91cae5ca73f849e5",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Quit\n*By Annie Duke*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Quit/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Quit/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4750,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8676ebfd7a4a4236",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Decisive\n*By Chip Heath; Dan Heath*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Decisive/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Decisive/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c842ab54385847aa",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Art of Strategy\n*By Avinash Dixit; Barry Nalebuff*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Art-of-Strategy/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Art-of-Strategy/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d22a08d542504e1f",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Mental Models & Systems Thinking\n*5 books*",
+      "x": 0,
+      "y": 5580,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "f77326b076c14f03",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Seeking Wisdom\n*By Peter Bevelin*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Seeking-Wisdom/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Seeking-Wisdom/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c641e9136019402b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Great Mental Models, Vol. 1\n*By Shane Parrish*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Great-Mental-Models-Vol-1/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Great-Mental-Models-Vol-1/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "4e414af586f84933",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Great Mental Models, Vol. 2\n*By Shane Parrish*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Great-Mental-Models-Vol-2/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Great-Mental-Models-Vol-2/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6080,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0769eae8414e4b59",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Great Mental Models, Vol. 3\n*By Shane Parrish*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Great-Mental-Models-Vol-3/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Great-Mental-Models-Vol-3/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6330,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "194f05e8729c4a3c",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Lateral Thinking\n*By Edward de Bono*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Lateral-Thinking/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Lateral-Thinking/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "07a7c3978e374530",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Risk, Uncertainty & Antifragility\n*4 books*",
+      "x": 0,
+      "y": 5660,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "d6c3519ac6fd4eb3",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Black Swan\n*By Nassim Nicholas Taleb*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Black-Swan/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Black-Swan/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5660,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b8bc8336a34c4851",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Antifragile\n*By Nassim Nicholas Taleb*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Antifragile/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Antifragile/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5910,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "abaf6ccdcd8f4cc9",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Skin in the Game\n*By Nassim Nicholas Taleb*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Skin-in-the-Game/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Skin-in-the-Game/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d7ab9b6364194a49",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Judgment Under Uncertainty\n*By Daniel Kahneman; Paul Slovic; Amos Tversky*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Judgment-Under-Uncertainty/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Judgment-Under-Uncertainty/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    }
+  ],
+  "edges": [
+    {
+      "id": "33e8713994f14b32",
+      "fromNode": "ee1ad0a81f704cf0",
+      "fromSide": "bottom",
+      "toNode": "11be1e4dd77d471a",
+      "toSide": "top"
+    },
+    {
+      "id": "cab612679dbf485e",
+      "fromNode": "11be1e4dd77d471a",
+      "fromSide": "right",
+      "toNode": "2985404af242435b",
+      "toSide": "left"
+    },
+    {
+      "id": "e8ce1f0ddbc04c0e",
+      "fromNode": "2985404af242435b",
+      "fromSide": "bottom",
+      "toNode": "a6b3e408db7f4c67",
+      "toSide": "top"
+    },
+    {
+      "id": "0e7ec75c85a14e6d",
+      "fromNode": "a6b3e408db7f4c67",
+      "fromSide": "bottom",
+      "toNode": "c27f66d0f4e34aff",
+      "toSide": "top"
+    },
+    {
+      "id": "7f3687232e604fb6",
+      "fromNode": "c27f66d0f4e34aff",
+      "fromSide": "bottom",
+      "toNode": "9ba8581a4b184628",
+      "toSide": "top"
+    },
+    {
+      "id": "2cd8574b9fbd48c4",
+      "fromNode": "11be1e4dd77d471a",
+      "fromSide": "bottom",
+      "toNode": "b663345410484410",
+      "toSide": "top"
+    },
+    {
+      "id": "0f43a399355f4c04",
+      "fromNode": "b663345410484410",
+      "fromSide": "right",
+      "toNode": "08276c494a1240f4",
+      "toSide": "left"
+    },
+    {
+      "id": "c2103c8b707c481a",
+      "fromNode": "08276c494a1240f4",
+      "fromSide": "bottom",
+      "toNode": "0524adad38fd4ed6",
+      "toSide": "top"
+    },
+    {
+      "id": "aad93fdaac84484e",
+      "fromNode": "0524adad38fd4ed6",
+      "fromSide": "bottom",
+      "toNode": "79dc858605e948e8",
+      "toSide": "top"
+    },
+    {
+      "id": "7a5ef65667244854",
+      "fromNode": "79dc858605e948e8",
+      "fromSide": "bottom",
+      "toNode": "f3a3f4de3dfe4d6e",
+      "toSide": "top"
+    },
+    {
+      "id": "b02a06b298ec4841",
+      "fromNode": "f3a3f4de3dfe4d6e",
+      "fromSide": "bottom",
+      "toNode": "d9d594d5c205476b",
+      "toSide": "top"
+    },
+    {
+      "id": "7f7192f3708847a0",
+      "fromNode": "d9d594d5c205476b",
+      "fromSide": "bottom",
+      "toNode": "e4f8aebb198e4893",
+      "toSide": "top"
+    },
+    {
+      "id": "bf00c4b06fc34b95",
+      "fromNode": "e4f8aebb198e4893",
+      "fromSide": "bottom",
+      "toNode": "43e83284b3d747a8",
+      "toSide": "top"
+    },
+    {
+      "id": "740fc887d9ec47ce",
+      "fromNode": "43e83284b3d747a8",
+      "fromSide": "bottom",
+      "toNode": "7614eff8266743ff",
+      "toSide": "top"
+    },
+    {
+      "id": "7b6c79faf5154186",
+      "fromNode": "7614eff8266743ff",
+      "fromSide": "bottom",
+      "toNode": "9afc231c2a944492",
+      "toSide": "top"
+    },
+    {
+      "id": "b93ebfdd9a6f484c",
+      "fromNode": "9afc231c2a944492",
+      "fromSide": "bottom",
+      "toNode": "e3eda7660f7d428b",
+      "toSide": "top"
+    },
+    {
+      "id": "c3b8a243edbb4b31",
+      "fromNode": "e3eda7660f7d428b",
+      "fromSide": "bottom",
+      "toNode": "318c036d6a9c4930",
+      "toSide": "top"
+    },
+    {
+      "id": "5ffbb60c645e4016",
+      "fromNode": "318c036d6a9c4930",
+      "fromSide": "bottom",
+      "toNode": "5f35c6f019a24e07",
+      "toSide": "top"
+    },
+    {
+      "id": "7a65de48b9c64bc3",
+      "fromNode": "5f35c6f019a24e07",
+      "fromSide": "bottom",
+      "toNode": "54a90ba5b36e4eeb",
+      "toSide": "top"
+    },
+    {
+      "id": "8567431cef7e4a17",
+      "fromNode": "54a90ba5b36e4eeb",
+      "fromSide": "bottom",
+      "toNode": "559a94237b324444",
+      "toSide": "top"
+    },
+    {
+      "id": "f77baca380474ec0",
+      "fromNode": "559a94237b324444",
+      "fromSide": "bottom",
+      "toNode": "617fdb66f8514336",
+      "toSide": "top"
+    },
+    {
+      "id": "02b891655b3f42f1",
+      "fromNode": "617fdb66f8514336",
+      "fromSide": "bottom",
+      "toNode": "4a5fb87196ab4b01",
+      "toSide": "top"
+    },
+    {
+      "id": "4c0b9e8e83ec464b",
+      "fromNode": "4a5fb87196ab4b01",
+      "fromSide": "bottom",
+      "toNode": "8a42288837314ba8",
+      "toSide": "top"
+    },
+    {
+      "id": "36406ed900f042c5",
+      "fromNode": "8a42288837314ba8",
+      "fromSide": "bottom",
+      "toNode": "a27e40382e734ae2",
+      "toSide": "top"
+    },
+    {
+      "id": "4be41a1b7cdb4522",
+      "fromNode": "a27e40382e734ae2",
+      "fromSide": "bottom",
+      "toNode": "ead968c778ef4a37",
+      "toSide": "top"
+    },
+    {
+      "id": "8bf1d371eb6c43e2",
+      "fromNode": "ead968c778ef4a37",
+      "fromSide": "bottom",
+      "toNode": "965fa5aaf5ec4876",
+      "toSide": "top"
+    },
+    {
+      "id": "64b37aba51f1492f",
+      "fromNode": "965fa5aaf5ec4876",
+      "fromSide": "bottom",
+      "toNode": "750fba5ab0b543fd",
+      "toSide": "top"
+    },
+    {
+      "id": "c8cb0d81201e4fc5",
+      "fromNode": "750fba5ab0b543fd",
+      "fromSide": "bottom",
+      "toNode": "b47e7ffb7a5149ec",
+      "toSide": "top"
+    },
+    {
+      "id": "191f8dbdcfc24d30",
+      "fromNode": "b47e7ffb7a5149ec",
+      "fromSide": "bottom",
+      "toNode": "bfa18156b61342d8",
+      "toSide": "top"
+    },
+    {
+      "id": "c34617e540144646",
+      "fromNode": "bfa18156b61342d8",
+      "fromSide": "bottom",
+      "toNode": "5342d3ec184e4657",
+      "toSide": "top"
+    },
+    {
+      "id": "234b0d0b8028401b",
+      "fromNode": "b663345410484410",
+      "fromSide": "bottom",
+      "toNode": "fc0f054500224ed3",
+      "toSide": "top"
+    },
+    {
+      "id": "a4d183563c6c4caa",
+      "fromNode": "fc0f054500224ed3",
+      "fromSide": "right",
+      "toNode": "a0930c59580c4110",
+      "toSide": "left"
+    },
+    {
+      "id": "2db965dedb8247cf",
+      "fromNode": "a0930c59580c4110",
+      "fromSide": "bottom",
+      "toNode": "99d01c3a74504b42",
+      "toSide": "top"
+    },
+    {
+      "id": "2e1c16db3ba64562",
+      "fromNode": "99d01c3a74504b42",
+      "fromSide": "bottom",
+      "toNode": "0215b5d4ba014279",
+      "toSide": "top"
+    },
+    {
+      "id": "f3c566cb94f54a96",
+      "fromNode": "0215b5d4ba014279",
+      "fromSide": "bottom",
+      "toNode": "949f45c0fee344b3",
+      "toSide": "top"
+    },
+    {
+      "id": "0da60a8d41b44e5b",
+      "fromNode": "949f45c0fee344b3",
+      "fromSide": "bottom",
+      "toNode": "c17aae6cedfc4c18",
+      "toSide": "top"
+    },
+    {
+      "id": "b657732f4f5744f4",
+      "fromNode": "c17aae6cedfc4c18",
+      "fromSide": "bottom",
+      "toNode": "c0cc2c0f2f354a1c",
+      "toSide": "top"
+    },
+    {
+      "id": "5acc6754594145c3",
+      "fromNode": "fc0f054500224ed3",
+      "fromSide": "bottom",
+      "toNode": "591beb552baa487b",
+      "toSide": "top"
+    },
+    {
+      "id": "b08b6abe099e46b7",
+      "fromNode": "591beb552baa487b",
+      "fromSide": "right",
+      "toNode": "0b290b7b6a884770",
+      "toSide": "left"
+    },
+    {
+      "id": "b379d7079abf4263",
+      "fromNode": "0b290b7b6a884770",
+      "fromSide": "bottom",
+      "toNode": "ae1a36e4ac3a40e2",
+      "toSide": "top"
+    },
+    {
+      "id": "a84104912c4147a6",
+      "fromNode": "ae1a36e4ac3a40e2",
+      "fromSide": "bottom",
+      "toNode": "91cae5ca73f849e5",
+      "toSide": "top"
+    },
+    {
+      "id": "82f783719ac5483c",
+      "fromNode": "91cae5ca73f849e5",
+      "fromSide": "bottom",
+      "toNode": "8676ebfd7a4a4236",
+      "toSide": "top"
+    },
+    {
+      "id": "8a1e1fe6978a46a5",
+      "fromNode": "8676ebfd7a4a4236",
+      "fromSide": "bottom",
+      "toNode": "c842ab54385847aa",
+      "toSide": "top"
+    },
+    {
+      "id": "1472c460f553418a",
+      "fromNode": "591beb552baa487b",
+      "fromSide": "bottom",
+      "toNode": "d22a08d542504e1f",
+      "toSide": "top"
+    },
+    {
+      "id": "f2a8288144ab4c5f",
+      "fromNode": "d22a08d542504e1f",
+      "fromSide": "right",
+      "toNode": "f77326b076c14f03",
+      "toSide": "left"
+    },
+    {
+      "id": "5ddca8e11de24c47",
+      "fromNode": "f77326b076c14f03",
+      "fromSide": "bottom",
+      "toNode": "c641e9136019402b",
+      "toSide": "top"
+    },
+    {
+      "id": "f4925f82f9f44cc4",
+      "fromNode": "c641e9136019402b",
+      "fromSide": "bottom",
+      "toNode": "4e414af586f84933",
+      "toSide": "top"
+    },
+    {
+      "id": "488e575414914acf",
+      "fromNode": "4e414af586f84933",
+      "fromSide": "bottom",
+      "toNode": "0769eae8414e4b59",
+      "toSide": "top"
+    },
+    {
+      "id": "9995726eb5574c74",
+      "fromNode": "0769eae8414e4b59",
+      "fromSide": "bottom",
+      "toNode": "194f05e8729c4a3c",
+      "toSide": "top"
+    },
+    {
+      "id": "339d1ba166d34c79",
+      "fromNode": "d22a08d542504e1f",
+      "fromSide": "bottom",
+      "toNode": "07a7c3978e374530",
+      "toSide": "top"
+    },
+    {
+      "id": "baf840e92af94771",
+      "fromNode": "07a7c3978e374530",
+      "fromSide": "right",
+      "toNode": "d6c3519ac6fd4eb3",
+      "toSide": "left"
+    },
+    {
+      "id": "b7a0759e60504835",
+      "fromNode": "d6c3519ac6fd4eb3",
+      "fromSide": "bottom",
+      "toNode": "b8bc8336a34c4851",
+      "toSide": "top"
+    },
+    {
+      "id": "6e1707ea0a5b4ded",
+      "fromNode": "b8bc8336a34c4851",
+      "fromSide": "bottom",
+      "toNode": "abaf6ccdcd8f4cc9",
+      "toSide": "top"
+    },
+    {
+      "id": "791f0ea41b814a3a",
+      "fromNode": "abaf6ccdcd8f4cc9",
+      "fromSide": "bottom",
+      "toNode": "d7ab9b6364194a49",
+      "toSide": "top"
+    }
+  ]
+}

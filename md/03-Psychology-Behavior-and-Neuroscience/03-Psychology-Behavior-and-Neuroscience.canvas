@@ -1,0 +1,696 @@
+{
+  "nodes": [
+    {
+      "id": "394474ddb0444af7",
+      "type": "text",
+      "text": "# \ud83c\udfdb\ufe0f Psychology, Behavior & Neuroscience\n\n**Total Books**: 34 | **Curriculum Track**: MECE 3-Level",
+      "x": 0,
+      "y": 0,
+      "width": 600,
+      "height": 180,
+      "color": "1"
+    },
+    {
+      "id": "4bfe7f4ebe8b447d",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Persuasion, Influence & Rhetoric\n*7 books*",
+      "x": 0,
+      "y": 260,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "bcd021eaede24d9d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Influence\n*By Robert Cialdini*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Influence/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Influence/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "46cee440ed414052",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Pre-Suasion\n*By Robert Cialdini*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Pre-Suasion/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Pre-Suasion/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "3e044722c6bf426a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Thank You for Arguing\n*By Jay Heinrichs*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Thank-You-for-Arguing/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Thank-You-for-Arguing/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0327b1c8d61249eb",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Talk Like TED\n*By Carmine Gallo*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Talk-Like-TED/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Talk-Like-TED/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "11b04e6d7d9d4812",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Resonate\n*By Nancy Duarte*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Resonate/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Resonate/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "cbce148d97f44ae9",
+      "type": "text",
+      "text": "### \ud83d\udcd6 slide:ology\n*By Nancy Duarte*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[slide-ology/README|Open Reading Guide]]\n- \ud83c\udfa7 [[slide-ology/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ac5a877a091a44b4",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Words That Work\n*By Frank Luntz*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Words-That-Work/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Words-That-Work/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "e204f90c86a341ab",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Neuroscience & Neurobiology\n*4 books*",
+      "x": 0,
+      "y": 1340,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "88442251aed04168",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Behave\n*By Robert Sapolsky*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Behave/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Behave/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c8fed01052c84def",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Dopamine Nation\n*By Anna Lembke*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Dopamine-Nation/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Dopamine-Nation/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "f510643b07e94032",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Man Who Mistook His Wife for a Hat\n*By Oliver Sacks*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Man-Who-Mistook-His-Wife-for-a-Hat/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Man-Who-Mistook-His-Wife-for-a-Hat/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ca23f6f59d1340cc",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Principles of Neural Science\n*By Eric Kandel et al.*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Principles-of-Neural-Science/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Principles-of-Neural-Science/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7aa18c805a6342ff",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Motivation, Drive & Volition\n*1 books*",
+      "x": 0,
+      "y": 920,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "399b218f28c94041",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Molecule of More\n*By Daniel Lieberman; Michael Long*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Molecule-of-More/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Molecule-of-More/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 920,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "51b0f679098e4cf6",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Emotions, Stress & Resilience\n*8 books*",
+      "x": 0,
+      "y": 6500,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "6a1b344d85d24f3b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Happiness Hypothesis\n*By Jonathan Haidt*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Happiness-Hypothesis/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Happiness-Hypothesis/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6500,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a30fae4823f94105",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Stumbling on Happiness\n*By Daniel Gilbert*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Stumbling-on-Happiness/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Stumbling-on-Happiness/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6750,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "07e35e0c27564ecb",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Emotional Intelligence\n*By Daniel Goleman*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Emotional-Intelligence/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Emotional-Intelligence/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a31e6b27ec4a4122",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Emotional Agility\n*By Susan David*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Emotional-Agility/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Emotional-Agility/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "6101d07fbf0b4322",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Feeling Good\n*By David Burns*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Feeling-Good/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Feeling-Good/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7500,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "005603c47adb43bf",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Mind Over Mood\n*By Dennis Greenberger; Christine Padesky*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Mind-Over-Mood/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Mind-Over-Mood/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7750,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ff749c8269be4153",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Why Zebras Don't Get Ulcers\n*By Robert Sapolsky*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Why-Zebras-Dont-Get-Ulcers/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Why-Zebras-Dont-Get-Ulcers/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a96abafc8ab34d93",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The How of Happiness\n*By Sonja Lyubomirsky*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-How-of-Happiness/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-How-of-Happiness/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "329ab73e160b41f2",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Social Psychology & Group Dynamics\n*8 books*",
+      "x": 0,
+      "y": 8580,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "33e3677f176a4f40",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Righteous Mind\n*By Jonathan Haidt*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Righteous-Mind/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Righteous-Mind/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a9bee2453388450e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Predictably Irrational\n*By Dan Ariely*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Predictably-Irrational/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Predictably-Irrational/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "94afb3a55ec74d2f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Paradox of Choice\n*By Barry Schwartz*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Paradox-of-Choice/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Paradox-of-Choice/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9080,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "556c3f43cc354d3b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Elephant in the Brain\n*By Kevin Simler; Robin Hanson*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Elephant-in-the-Brain/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Elephant-in-the-Brain/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9330,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d4f63f4dd85d4091",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Social Animal\n*By Elliot Aronson*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Social-Animal/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Social-Animal/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a38048c9d4aa443f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Undoing Project\n*By Michael Lewis*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Undoing-Project/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Undoing-Project/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "30c6c06553504189",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Quiet\n*By Susan Cain*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Quiet/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Quiet/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10080,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7d57eda3349e4d77",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Personality Puzzle\n*By David Funder*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Personality-Puzzle/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Personality-Puzzle/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10330,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "9d7b670e9b284c32",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Relationships, Communication & Conflict\n*6 books*",
+      "x": 0,
+      "y": 8160,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "bcca82b03b3e4ed9",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Attached\n*By Amir Levine; Rachel Heller*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Attached/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Attached/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "fe7206b58a724e23",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Games People Play\n*By Eric Berne*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Games-People-Play/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Games-People-Play/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7e6a1de605b64a11",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Difficult Conversations\n*By Douglas Stone; Bruce Patton; Sheila Heen*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Difficult-Conversations/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Difficult-Conversations/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8660,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "949791f574334c88",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Crucial Conversations\n*By Kerry Patterson et al.*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Crucial-Conversations/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Crucial-Conversations/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8910,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "917c0c34213349d3",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Nonviolent Communication\n*By Marshall Rosenberg*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Nonviolent-Communication/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Nonviolent-Communication/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8c1ac8ba57ff406a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Seven Principles for Making Marriage Work\n*By John Gottman*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Seven-Principles-for-Making-Marriage-Work/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Seven-Principles-for-Making-Marriage-Work/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    }
+  ],
+  "edges": [
+    {
+      "id": "29904d7ab5c54ac4",
+      "fromNode": "394474ddb0444af7",
+      "fromSide": "bottom",
+      "toNode": "4bfe7f4ebe8b447d",
+      "toSide": "top"
+    },
+    {
+      "id": "1f5d43bfd12646ea",
+      "fromNode": "4bfe7f4ebe8b447d",
+      "fromSide": "right",
+      "toNode": "bcd021eaede24d9d",
+      "toSide": "left"
+    },
+    {
+      "id": "e7b92c1278b649b3",
+      "fromNode": "bcd021eaede24d9d",
+      "fromSide": "bottom",
+      "toNode": "46cee440ed414052",
+      "toSide": "top"
+    },
+    {
+      "id": "c668078e47354e55",
+      "fromNode": "46cee440ed414052",
+      "fromSide": "bottom",
+      "toNode": "3e044722c6bf426a",
+      "toSide": "top"
+    },
+    {
+      "id": "98e9989d535a4144",
+      "fromNode": "3e044722c6bf426a",
+      "fromSide": "bottom",
+      "toNode": "0327b1c8d61249eb",
+      "toSide": "top"
+    },
+    {
+      "id": "8bd5272afc024c70",
+      "fromNode": "0327b1c8d61249eb",
+      "fromSide": "bottom",
+      "toNode": "11b04e6d7d9d4812",
+      "toSide": "top"
+    },
+    {
+      "id": "677b503e826b42e9",
+      "fromNode": "11b04e6d7d9d4812",
+      "fromSide": "bottom",
+      "toNode": "cbce148d97f44ae9",
+      "toSide": "top"
+    },
+    {
+      "id": "e532b6d882eb4998",
+      "fromNode": "cbce148d97f44ae9",
+      "fromSide": "bottom",
+      "toNode": "ac5a877a091a44b4",
+      "toSide": "top"
+    },
+    {
+      "id": "45e604b0ff7e4ee3",
+      "fromNode": "4bfe7f4ebe8b447d",
+      "fromSide": "bottom",
+      "toNode": "e204f90c86a341ab",
+      "toSide": "top"
+    },
+    {
+      "id": "57b854120015455d",
+      "fromNode": "e204f90c86a341ab",
+      "fromSide": "right",
+      "toNode": "88442251aed04168",
+      "toSide": "left"
+    },
+    {
+      "id": "052cd806a1d44ac0",
+      "fromNode": "88442251aed04168",
+      "fromSide": "bottom",
+      "toNode": "c8fed01052c84def",
+      "toSide": "top"
+    },
+    {
+      "id": "ebd34c89494d4592",
+      "fromNode": "c8fed01052c84def",
+      "fromSide": "bottom",
+      "toNode": "f510643b07e94032",
+      "toSide": "top"
+    },
+    {
+      "id": "ecac0f59e00041cc",
+      "fromNode": "f510643b07e94032",
+      "fromSide": "bottom",
+      "toNode": "ca23f6f59d1340cc",
+      "toSide": "top"
+    },
+    {
+      "id": "15005686d7834dd9",
+      "fromNode": "e204f90c86a341ab",
+      "fromSide": "bottom",
+      "toNode": "7aa18c805a6342ff",
+      "toSide": "top"
+    },
+    {
+      "id": "7ac6923ec17743a8",
+      "fromNode": "7aa18c805a6342ff",
+      "fromSide": "right",
+      "toNode": "399b218f28c94041",
+      "toSide": "left"
+    },
+    {
+      "id": "417086abdae24529",
+      "fromNode": "7aa18c805a6342ff",
+      "fromSide": "bottom",
+      "toNode": "51b0f679098e4cf6",
+      "toSide": "top"
+    },
+    {
+      "id": "c61eb03b1fa7453d",
+      "fromNode": "51b0f679098e4cf6",
+      "fromSide": "right",
+      "toNode": "6a1b344d85d24f3b",
+      "toSide": "left"
+    },
+    {
+      "id": "302e066435da4c98",
+      "fromNode": "6a1b344d85d24f3b",
+      "fromSide": "bottom",
+      "toNode": "a30fae4823f94105",
+      "toSide": "top"
+    },
+    {
+      "id": "e05cc0897e2547c6",
+      "fromNode": "a30fae4823f94105",
+      "fromSide": "bottom",
+      "toNode": "07e35e0c27564ecb",
+      "toSide": "top"
+    },
+    {
+      "id": "f795784a58464097",
+      "fromNode": "07e35e0c27564ecb",
+      "fromSide": "bottom",
+      "toNode": "a31e6b27ec4a4122",
+      "toSide": "top"
+    },
+    {
+      "id": "347d4a9923b14b8a",
+      "fromNode": "a31e6b27ec4a4122",
+      "fromSide": "bottom",
+      "toNode": "6101d07fbf0b4322",
+      "toSide": "top"
+    },
+    {
+      "id": "0444a08edf3d441a",
+      "fromNode": "6101d07fbf0b4322",
+      "fromSide": "bottom",
+      "toNode": "005603c47adb43bf",
+      "toSide": "top"
+    },
+    {
+      "id": "1fec4f39700b4314",
+      "fromNode": "005603c47adb43bf",
+      "fromSide": "bottom",
+      "toNode": "ff749c8269be4153",
+      "toSide": "top"
+    },
+    {
+      "id": "c47c069b18bc4ea9",
+      "fromNode": "ff749c8269be4153",
+      "fromSide": "bottom",
+      "toNode": "a96abafc8ab34d93",
+      "toSide": "top"
+    },
+    {
+      "id": "4ebab497c55d42f5",
+      "fromNode": "51b0f679098e4cf6",
+      "fromSide": "bottom",
+      "toNode": "329ab73e160b41f2",
+      "toSide": "top"
+    },
+    {
+      "id": "be5bb3e0e8e949e6",
+      "fromNode": "329ab73e160b41f2",
+      "fromSide": "right",
+      "toNode": "33e3677f176a4f40",
+      "toSide": "left"
+    },
+    {
+      "id": "113cd46246894048",
+      "fromNode": "33e3677f176a4f40",
+      "fromSide": "bottom",
+      "toNode": "a9bee2453388450e",
+      "toSide": "top"
+    },
+    {
+      "id": "b811c0cdfab240f8",
+      "fromNode": "a9bee2453388450e",
+      "fromSide": "bottom",
+      "toNode": "94afb3a55ec74d2f",
+      "toSide": "top"
+    },
+    {
+      "id": "8ee754fa6d1f4e1f",
+      "fromNode": "94afb3a55ec74d2f",
+      "fromSide": "bottom",
+      "toNode": "556c3f43cc354d3b",
+      "toSide": "top"
+    },
+    {
+      "id": "aa8d784968264d9a",
+      "fromNode": "556c3f43cc354d3b",
+      "fromSide": "bottom",
+      "toNode": "d4f63f4dd85d4091",
+      "toSide": "top"
+    },
+    {
+      "id": "6af78ff332d84b8d",
+      "fromNode": "d4f63f4dd85d4091",
+      "fromSide": "bottom",
+      "toNode": "a38048c9d4aa443f",
+      "toSide": "top"
+    },
+    {
+      "id": "73084953b6ce43e2",
+      "fromNode": "a38048c9d4aa443f",
+      "fromSide": "bottom",
+      "toNode": "30c6c06553504189",
+      "toSide": "top"
+    },
+    {
+      "id": "ac944b901b234d1e",
+      "fromNode": "30c6c06553504189",
+      "fromSide": "bottom",
+      "toNode": "7d57eda3349e4d77",
+      "toSide": "top"
+    },
+    {
+      "id": "7a48220451fe469a",
+      "fromNode": "329ab73e160b41f2",
+      "fromSide": "bottom",
+      "toNode": "9d7b670e9b284c32",
+      "toSide": "top"
+    },
+    {
+      "id": "1a802cdb918e49a8",
+      "fromNode": "9d7b670e9b284c32",
+      "fromSide": "right",
+      "toNode": "bcca82b03b3e4ed9",
+      "toSide": "left"
+    },
+    {
+      "id": "aadac4802f504fc5",
+      "fromNode": "bcca82b03b3e4ed9",
+      "fromSide": "bottom",
+      "toNode": "fe7206b58a724e23",
+      "toSide": "top"
+    },
+    {
+      "id": "28e93f13170f4d9a",
+      "fromNode": "fe7206b58a724e23",
+      "fromSide": "bottom",
+      "toNode": "7e6a1de605b64a11",
+      "toSide": "top"
+    },
+    {
+      "id": "ec688d0954ee4a98",
+      "fromNode": "7e6a1de605b64a11",
+      "fromSide": "bottom",
+      "toNode": "949791f574334c88",
+      "toSide": "top"
+    },
+    {
+      "id": "1a0496cf37a346ca",
+      "fromNode": "949791f574334c88",
+      "fromSide": "bottom",
+      "toNode": "917c0c34213349d3",
+      "toSide": "top"
+    },
+    {
+      "id": "438a3ae2799a4223",
+      "fromNode": "917c0c34213349d3",
+      "fromSide": "bottom",
+      "toNode": "8c1ac8ba57ff406a",
+      "toSide": "top"
+    }
+  ]
+}

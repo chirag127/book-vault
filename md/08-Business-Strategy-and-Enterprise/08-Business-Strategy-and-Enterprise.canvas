@@ -1,0 +1,1597 @@
+{
+  "nodes": [
+    {
+      "id": "6b501ccaf0f34f11",
+      "type": "text",
+      "text": "# \ud83c\udfdb\ufe0f Business, Strategy & Enterprise\n\n**Total Books**: 87 | **Curriculum Track**: MECE 3-Level",
+      "x": 0,
+      "y": 0,
+      "width": 600,
+      "height": 180,
+      "color": "1"
+    },
+    {
+      "id": "10b262f511614373",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Marketing, Brand & Positioning\n*13 books*",
+      "x": 0,
+      "y": 260,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "1a168afe6c354280",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Ogilvy on Advertising\n*By David Ogilvy*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Ogilvy-on-Advertising/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Ogilvy-on-Advertising/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "1feaec66ca294f38",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Scientific Advertising\n*By Claude Hopkins*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Scientific-Advertising/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Scientific-Advertising/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "4b90bf433f344933",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Breakthrough Advertising\n*By Eugene Schwartz*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Breakthrough-Advertising/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Breakthrough-Advertising/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c24652b012ae471e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 This Is Marketing\n*By Seth Godin*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[This-Is-Marketing/README|Open Reading Guide]]\n- \ud83c\udfa7 [[This-Is-Marketing/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "529a2c3ca47341be",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Positioning\n*By Al Ries; Jack Trout*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Positioning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Positioning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "76200fe2838d4aa2",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Alchemy\n*By Rory Sutherland*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Alchemy/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Alchemy/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "1a4cb585507a4b69",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Contagious\n*By Jonah Berger*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Contagious/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Contagious/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "cca5a3a8b6184861",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Building a StoryBrand\n*By Donald Miller*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Building-a-StoryBrand/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Building-a-StoryBrand/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "797d387bf83f4aa3",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Traction\n*By Gabriel Weinberg; Justin Mares*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Traction/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Traction/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7f490bf415aa40e1",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Permission Marketing\n*By Seth Godin*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Permission-Marketing/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Permission-Marketing/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "06214d2fe54946fb",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Purple Cow\n*By Seth Godin*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Purple-Cow/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Purple-Cow/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "02c954add4c04b19",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Cashvertising\n*By Drew Eric Whitman*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Cashvertising/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Cashvertising/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a7a998976ab14591",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Tested Advertising Methods\n*By John Caples*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Tested-Advertising-Methods/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Tested-Advertising-Methods/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7ba90ca4254b4996",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Competitive Strategy & Moats\n*21 books*",
+      "x": 0,
+      "y": 5590,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "f6cce8c39515465d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Innovator's Dilemma\n*By Clayton Christensen*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Innovators-Dilemma/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Innovators-Dilemma/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "4be3f17b4da34089",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Innovator's Solution\n*By Clayton Christensen; Michael Raynor*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Innovators-Solution/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Innovators-Solution/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "996fabe3b0dc4583",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Where Good Ideas Come From\n*By Steven Johnson*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Where-Good-Ideas-Come-From/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Where-Good-Ideas-Come-From/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "cdc3abe6c25e495d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Medici Effect\n*By Frans Johansson*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Medici-Effect/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Medici-Effect/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "15cedcfd5317468f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Competing Against Luck\n*By Clayton Christensen et al.*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Competing-Against-Luck/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Competing-Against-Luck/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b350d5b0edda4422",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Good Strategy Bad Strategy\n*By Richard Rumelt*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Good-Strategy-Bad-Strategy/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Good-Strategy-Bad-Strategy/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "816d4eb2a8394fec",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Playing to Win\n*By A.G. Lafley; Roger Martin*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Playing-to-Win/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Playing-to-Win/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "621b8b9117fc495b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Strategy Paradox\n*By Michael Raynor*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Strategy-Paradox/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Strategy-Paradox/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "25e180b075e44b2f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Blue Ocean Strategy\n*By W. Chan Kim; Ren\u00e9e Mauborgne*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Blue-Ocean-Strategy/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Blue-Ocean-Strategy/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "6cdd20418f5e4f7d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Business Adventures\n*By John Brooks*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Business-Adventures/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Business-Adventures/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "39098dcb6f1242c3",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Personal MBA\n*By Josh Kaufman*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Personal-MBA/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Personal-MBA/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "6da6e8f3b7cd45cf",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Everything Store\n*By Brad Stone*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Everything-Store/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Everything-Store/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "cf761db2074e41df",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Upstarts\n*By Brad Stone*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Upstarts/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Upstarts/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "45792fe86f2440c0",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Cold Start Problem\n*By Andrew Chen*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Cold-Start-Problem/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Cold-Start-Problem/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "abc07c7e1e4340ea",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Shoe Dog\n*By Phil Knight*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Shoe-Dog/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Shoe-Dog/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "2201bda70c25402b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Ride of a Lifetime\n*By Robert Iger*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Ride-of-a-Lifetime/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Ride-of-a-Lifetime/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "6e4e350801134a4b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Made in America\n*By Sam Walton*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Made-in-America/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Made-in-America/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "919c3f42bace4594",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Grinding It Out\n*By Ray Kroc*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Grinding-It-Out/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Grinding-It-Out/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "2dc7225ba2d34e20",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Titan\n*By Ron Chernow*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Titan/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Titan/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "02b2b96f3b72495b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Tata Story\n*By Peter Casey*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Tata-Story/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Tata-Story/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a4b32d1f10094152",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Creation of Wealth: The Tatas from the 19th to the 21st Century\n*By R. M. Lala*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Creation-of-Wealth-The-Tatas-from-the-19th-to-the-21st-Century/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Creation-of-Wealth-The-Tatas-from-the-19th-to-the-21st-Century/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c1509f86a6544831",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Product Management & Design\n*12 books*",
+      "x": 0,
+      "y": 6420,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "ef065918c75f4b7d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Design of Everyday Things\n*By Don Norman*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Design-of-Everyday-Things/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Design-of-Everyday-Things/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6420,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "e9d57567576b4722",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Don't Make Me Think\n*By Steve Krug*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Dont-Make-Me-Think/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Dont-Make-Me-Think/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6670,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a814e48e3043479b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Inspired\n*By Marty Cagan*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Inspired/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Inspired/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6920,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "287afe526c114200",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Empowered\n*By Marty Cagan; Chris Jones*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Empowered/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Empowered/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7170,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "1879bfd072bc4450",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Escaping the Build Trap\n*By Melissa Perri*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Escaping-the-Build-Trap/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Escaping-the-Build-Trap/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7420,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "845aaca45b934557",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Hooked\n*By Nir Eyal*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Hooked/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Hooked/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7670,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a808773b6e2246f0",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Sprint\n*By Jake Knapp; John Zeratsky; Braden Kowitz*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Sprint/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Sprint/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 7920,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a2dfd9736a714927",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Lean Analytics\n*By Alistair Croll; Benjamin Yoskovitz*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Lean-Analytics/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Lean-Analytics/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8170,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d8b4fc9e649f48c5",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Lean Product Playbook\n*By Dan Olsen*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Lean-Product-Playbook/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Lean-Product-Playbook/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8420,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "803085e26d0d4ba6",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Continuous Discovery Habits\n*By Teresa Torres*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Continuous-Discovery-Habits/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Continuous-Discovery-Habits/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8670,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "91f077a99e1a4b80",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Obviously Awesome\n*By April Dunford*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Obviously-Awesome/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Obviously-Awesome/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8920,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "190dd51fb7b44016",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Innovator's DNA\n*By Jeff Dyer; Hal Gregersen; Clayton Christensen*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Innovators-DNA/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Innovators-DNA/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9170,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "552402e685a749ec",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Accounting & Corporate Finance\n*11 books*",
+      "x": 0,
+      "y": 8750,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "a4cfe08fd67f4bc8",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Outsiders\n*By William Thorndike*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Outsiders/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Outsiders/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 8750,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0b4ca41113c3436a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Financial Intelligence\n*By Karen Berman; Joe Knight*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Financial-Intelligence/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Financial-Intelligence/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "325af6155bd24a66",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Accounting Made Simple\n*By Mike Piper*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Accounting-Made-Simple/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Accounting-Made-Simple/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "e15724c68e974008",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Investment Banking\n*By Joshua Rosenbaum; Joshua Pearl*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Investment-Banking/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Investment-Banking/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9500,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "1f6ec99f34934a1c",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Valuation\n*By Tim Koller; Marc Goedhart; David Wessels*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Valuation/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Valuation/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 9750,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "f4672cb73ee44ac2",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Damodaran on Valuation\n*By Aswath Damodaran*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Damodaran-on-Valuation/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Damodaran-on-Valuation/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "49a9b6081f5c47a2",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Applied Corporate Finance\n*By Aswath Damodaran*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Applied-Corporate-Finance/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Applied-Corporate-Finance/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "3afaeeb0c8834b59",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Quality of Earnings\n*By Thornton O'Glove*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Quality-of-Earnings/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Quality-of-Earnings/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10500,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0de7ae8b537e41b5",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Financial Shenanigans\n*By Howard Schilit; Jeremy Perler*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Financial-Shenanigans/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Financial-Shenanigans/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 10750,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "34f9094ab9e14ed8",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Capital Allocators\n*By Ted Seides*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Capital-Allocators/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Capital-Allocators/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 11000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "44e25f655a0845b4",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Masters of Private Equity\n*By David Finkel; Claudio Feser*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Masters-of-Private-Equity/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Masters-of-Private-Equity/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 11250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "298fb9122baa4e91",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Entrepreneurship & Startups\n*17 books*",
+      "x": 0,
+      "y": 17580,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "e139cb8976cb4588",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Lean Startup\n*By Eric Ries*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Lean-Startup/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Lean-Startup/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 17580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "31379aa9370444ff",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Zero to One\n*By Peter Thiel*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Zero-to-One/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Zero-to-One/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 17830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c33755f620cf439f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Hard Thing About Hard Things\n*By Ben Horowitz*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Hard-Thing-About-Hard-Things/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Hard-Thing-About-Hard-Things/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 18080,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "db19129266cf4388",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Mom Test\n*By Rob Fitzpatrick*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Mom-Test/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Mom-Test/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 18330,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "654c533747eb476f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The E-Myth Revisited\n*By Michael Gerber*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-E-Myth-Revisited/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-E-Myth-Revisited/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 18580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "e7000a8ed56d4c74",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The $100 Startup\n*By Chris Guillebeau*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-100-Startup/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-100-Startup/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 18830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "de991725564745f0",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Company of One\n*By Paul Jarvis*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Company-of-One/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Company-of-One/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 19080,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b377c36b3ce745df",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Startup Owner's Manual\n*By Steve Blank; Bob Dorf*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Startup-Owners-Manual/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Startup-Owners-Manual/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 19330,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "1da5ff269b094f6d",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Four Steps to the Epiphany\n*By Steve Blank*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Four-Steps-to-the-Epiphany/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Four-Steps-to-the-Epiphany/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 19580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c5f889bbc5bf4721",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Crossing the Chasm\n*By Geoffrey Moore*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Crossing-the-Chasm/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Crossing-the-Chasm/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 19830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "472daa9984984108",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Founder's Dilemmas\n*By Noam Wasserman*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Founders-Dilemmas/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Founders-Dilemmas/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 20080,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d6d8a97ca08242c9",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Blitzscaling\n*By Reid Hoffman; Chris Yeh*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Blitzscaling/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Blitzscaling/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 20330,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8ce67e30dbea4fa6",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Lost and Founder\n*By Rand Fishkin*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Lost-and-Founder/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Lost-and-Founder/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 20580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "01709889ced34fdd",
+      "type": "text",
+      "text": "### \ud83d\udcd6 That Will Never Work\n*By Marc Randolph*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[That-Will-Never-Work/README|Open Reading Guide]]\n- \ud83c\udfa7 [[That-Will-Never-Work/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 20830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "517b1a4e33cb436e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Art of the Start 2.0\n*By Guy Kawasaki*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Art-of-the-Start-2-0/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Art-of-the-Start-2-0/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 21080,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "4fa8333ff3ed4843",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Rework\n*By Jason Fried; David Heinemeier Hansson*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Rework/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Rework/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 21330,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "9b150f709cfe4542",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Entrepreneurial Mindset\n*By Rita McGrath*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Entrepreneurial-Mindset/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Entrepreneurial-Mindset/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 21580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a31609bdf8444d3e",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Sales, GTM & Growth\n*13 books*",
+      "x": 0,
+      "y": 16910,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "7a47dbbaf3d142cb",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Hacking Growth\n*By Sean Ellis; Morgan Brown*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Hacking-Growth/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Hacking-Growth/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 16910,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8a219ec333454a21",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Product-Led Growth\n*By Wes Bush*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Product-Led-Growth/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Product-Led-Growth/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 17160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "42caad25e9d04888",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Monetizing Innovation\n*By Madhavan Ramanujam; Georg Tacke*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Monetizing-Innovation/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Monetizing-Innovation/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 17410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "af9f26a81a8042d9",
+      "type": "text",
+      "text": "### \ud83d\udcd6 SPIN Selling\n*By Neil Rackham*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[SPIN-Selling/README|Open Reading Guide]]\n- \ud83c\udfa7 [[SPIN-Selling/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 17660,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "e72b44201ffb47c3",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Challenger Sale\n*By Brent Adamson; Matthew Dixon*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Challenger-Sale/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Challenger-Sale/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 17910,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "1020c4a873e346be",
+      "type": "text",
+      "text": "### \ud83d\udcd6 To Sell Is Human\n*By Daniel Pink*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[To-Sell-Is-Human/README|Open Reading Guide]]\n- \ud83c\udfa7 [[To-Sell-Is-Human/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 18160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "eb1a440604324fc9",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Fanatical Prospecting\n*By Jeb Blount*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Fanatical-Prospecting/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Fanatical-Prospecting/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 18410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "71902f583ba944c6",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Psychology of Selling\n*By Brian Tracy*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Psychology-of-Selling/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Psychology-of-Selling/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 18660,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b2b5608f61644706",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Gap Selling\n*By Keenan*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Gap-Selling/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Gap-Selling/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 18910,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0f48fec26ac24838",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Qualified Sales Leader\n*By John McMahon*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Qualified-Sales-Leader/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Qualified-Sales-Leader/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 19160,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8d100dfc386548bf",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Let's Get Real or Let's Not Play\n*By Mahan Khalsa*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Lets-Get-Real-or-Lets-Not-Play/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Lets-Get-Real-or-Lets-Not-Play/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 19410,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "74b01eeeda6f4b73",
+      "type": "text",
+      "text": "### \ud83d\udcd6 New Sales. Simplified.\n*By Mike Weinberg*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[New-Sales-Simplified/README|Open Reading Guide]]\n- \ud83c\udfa7 [[New-Sales-Simplified/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 19660,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "6b2888661f624910",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Influence Is Your Superpower\n*By Zoe Chance*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Influence-Is-Your-Superpower/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Influence-Is-Your-Superpower/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 19910,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    }
+  ],
+  "edges": [
+    {
+      "id": "d048a5edcc3d48ec",
+      "fromNode": "6b501ccaf0f34f11",
+      "fromSide": "bottom",
+      "toNode": "10b262f511614373",
+      "toSide": "top"
+    },
+    {
+      "id": "54c1b23bb14548de",
+      "fromNode": "10b262f511614373",
+      "fromSide": "right",
+      "toNode": "1a168afe6c354280",
+      "toSide": "left"
+    },
+    {
+      "id": "270d64f207044be4",
+      "fromNode": "1a168afe6c354280",
+      "fromSide": "bottom",
+      "toNode": "1feaec66ca294f38",
+      "toSide": "top"
+    },
+    {
+      "id": "4323a964b30c47b4",
+      "fromNode": "1feaec66ca294f38",
+      "fromSide": "bottom",
+      "toNode": "4b90bf433f344933",
+      "toSide": "top"
+    },
+    {
+      "id": "ea068a2200154465",
+      "fromNode": "4b90bf433f344933",
+      "fromSide": "bottom",
+      "toNode": "c24652b012ae471e",
+      "toSide": "top"
+    },
+    {
+      "id": "301d7666cbae4156",
+      "fromNode": "c24652b012ae471e",
+      "fromSide": "bottom",
+      "toNode": "529a2c3ca47341be",
+      "toSide": "top"
+    },
+    {
+      "id": "9a3a3704b7584416",
+      "fromNode": "529a2c3ca47341be",
+      "fromSide": "bottom",
+      "toNode": "76200fe2838d4aa2",
+      "toSide": "top"
+    },
+    {
+      "id": "64846f33ab9e4e5b",
+      "fromNode": "76200fe2838d4aa2",
+      "fromSide": "bottom",
+      "toNode": "1a4cb585507a4b69",
+      "toSide": "top"
+    },
+    {
+      "id": "ca155ee8558d46aa",
+      "fromNode": "1a4cb585507a4b69",
+      "fromSide": "bottom",
+      "toNode": "cca5a3a8b6184861",
+      "toSide": "top"
+    },
+    {
+      "id": "afe2d217fc2d4da1",
+      "fromNode": "cca5a3a8b6184861",
+      "fromSide": "bottom",
+      "toNode": "797d387bf83f4aa3",
+      "toSide": "top"
+    },
+    {
+      "id": "4f31ac61b5734ae8",
+      "fromNode": "797d387bf83f4aa3",
+      "fromSide": "bottom",
+      "toNode": "7f490bf415aa40e1",
+      "toSide": "top"
+    },
+    {
+      "id": "d0ef983d0bdf4084",
+      "fromNode": "7f490bf415aa40e1",
+      "fromSide": "bottom",
+      "toNode": "06214d2fe54946fb",
+      "toSide": "top"
+    },
+    {
+      "id": "066083f6fa1f4902",
+      "fromNode": "06214d2fe54946fb",
+      "fromSide": "bottom",
+      "toNode": "02c954add4c04b19",
+      "toSide": "top"
+    },
+    {
+      "id": "c9144b30ff9c4183",
+      "fromNode": "02c954add4c04b19",
+      "fromSide": "bottom",
+      "toNode": "a7a998976ab14591",
+      "toSide": "top"
+    },
+    {
+      "id": "564618aab0544ec7",
+      "fromNode": "10b262f511614373",
+      "fromSide": "bottom",
+      "toNode": "7ba90ca4254b4996",
+      "toSide": "top"
+    },
+    {
+      "id": "95b0c84eeb4d40c7",
+      "fromNode": "7ba90ca4254b4996",
+      "fromSide": "right",
+      "toNode": "f6cce8c39515465d",
+      "toSide": "left"
+    },
+    {
+      "id": "23bd4b0845d14ffb",
+      "fromNode": "f6cce8c39515465d",
+      "fromSide": "bottom",
+      "toNode": "4be3f17b4da34089",
+      "toSide": "top"
+    },
+    {
+      "id": "f0ca1638a54042d6",
+      "fromNode": "4be3f17b4da34089",
+      "fromSide": "bottom",
+      "toNode": "996fabe3b0dc4583",
+      "toSide": "top"
+    },
+    {
+      "id": "f1845b0c01c64445",
+      "fromNode": "996fabe3b0dc4583",
+      "fromSide": "bottom",
+      "toNode": "cdc3abe6c25e495d",
+      "toSide": "top"
+    },
+    {
+      "id": "8890129d7eda4499",
+      "fromNode": "cdc3abe6c25e495d",
+      "fromSide": "bottom",
+      "toNode": "15cedcfd5317468f",
+      "toSide": "top"
+    },
+    {
+      "id": "7d4761afa4b74fcf",
+      "fromNode": "15cedcfd5317468f",
+      "fromSide": "bottom",
+      "toNode": "b350d5b0edda4422",
+      "toSide": "top"
+    },
+    {
+      "id": "0cc4f26638e7403c",
+      "fromNode": "b350d5b0edda4422",
+      "fromSide": "bottom",
+      "toNode": "816d4eb2a8394fec",
+      "toSide": "top"
+    },
+    {
+      "id": "0ae3218181a94a8b",
+      "fromNode": "816d4eb2a8394fec",
+      "fromSide": "bottom",
+      "toNode": "621b8b9117fc495b",
+      "toSide": "top"
+    },
+    {
+      "id": "802360efda23428c",
+      "fromNode": "621b8b9117fc495b",
+      "fromSide": "bottom",
+      "toNode": "25e180b075e44b2f",
+      "toSide": "top"
+    },
+    {
+      "id": "557dc18bf0fe403c",
+      "fromNode": "25e180b075e44b2f",
+      "fromSide": "bottom",
+      "toNode": "6cdd20418f5e4f7d",
+      "toSide": "top"
+    },
+    {
+      "id": "53ead876376f44e6",
+      "fromNode": "6cdd20418f5e4f7d",
+      "fromSide": "bottom",
+      "toNode": "39098dcb6f1242c3",
+      "toSide": "top"
+    },
+    {
+      "id": "375e0f883eb745dd",
+      "fromNode": "39098dcb6f1242c3",
+      "fromSide": "bottom",
+      "toNode": "6da6e8f3b7cd45cf",
+      "toSide": "top"
+    },
+    {
+      "id": "acfc4c89afbe4c69",
+      "fromNode": "6da6e8f3b7cd45cf",
+      "fromSide": "bottom",
+      "toNode": "cf761db2074e41df",
+      "toSide": "top"
+    },
+    {
+      "id": "9d3400da74ca4b8b",
+      "fromNode": "cf761db2074e41df",
+      "fromSide": "bottom",
+      "toNode": "45792fe86f2440c0",
+      "toSide": "top"
+    },
+    {
+      "id": "9d5bebb98fc94f58",
+      "fromNode": "45792fe86f2440c0",
+      "fromSide": "bottom",
+      "toNode": "abc07c7e1e4340ea",
+      "toSide": "top"
+    },
+    {
+      "id": "a61189231e0c4dd8",
+      "fromNode": "abc07c7e1e4340ea",
+      "fromSide": "bottom",
+      "toNode": "2201bda70c25402b",
+      "toSide": "top"
+    },
+    {
+      "id": "4c5285e439b847c6",
+      "fromNode": "2201bda70c25402b",
+      "fromSide": "bottom",
+      "toNode": "6e4e350801134a4b",
+      "toSide": "top"
+    },
+    {
+      "id": "25346ac8531b4a9a",
+      "fromNode": "6e4e350801134a4b",
+      "fromSide": "bottom",
+      "toNode": "919c3f42bace4594",
+      "toSide": "top"
+    },
+    {
+      "id": "641cbaa7ff1b4be0",
+      "fromNode": "919c3f42bace4594",
+      "fromSide": "bottom",
+      "toNode": "2dc7225ba2d34e20",
+      "toSide": "top"
+    },
+    {
+      "id": "9e05697537e643d7",
+      "fromNode": "2dc7225ba2d34e20",
+      "fromSide": "bottom",
+      "toNode": "02b2b96f3b72495b",
+      "toSide": "top"
+    },
+    {
+      "id": "9f30e1913e5b491b",
+      "fromNode": "02b2b96f3b72495b",
+      "fromSide": "bottom",
+      "toNode": "a4b32d1f10094152",
+      "toSide": "top"
+    },
+    {
+      "id": "9f48a85b70dd4c10",
+      "fromNode": "7ba90ca4254b4996",
+      "fromSide": "bottom",
+      "toNode": "c1509f86a6544831",
+      "toSide": "top"
+    },
+    {
+      "id": "5f2bcd6c4e5e48c3",
+      "fromNode": "c1509f86a6544831",
+      "fromSide": "right",
+      "toNode": "ef065918c75f4b7d",
+      "toSide": "left"
+    },
+    {
+      "id": "36082c344ceb4c07",
+      "fromNode": "ef065918c75f4b7d",
+      "fromSide": "bottom",
+      "toNode": "e9d57567576b4722",
+      "toSide": "top"
+    },
+    {
+      "id": "0b71715e75e648b3",
+      "fromNode": "e9d57567576b4722",
+      "fromSide": "bottom",
+      "toNode": "a814e48e3043479b",
+      "toSide": "top"
+    },
+    {
+      "id": "c5552d1600084f06",
+      "fromNode": "a814e48e3043479b",
+      "fromSide": "bottom",
+      "toNode": "287afe526c114200",
+      "toSide": "top"
+    },
+    {
+      "id": "ced34aec34b040d8",
+      "fromNode": "287afe526c114200",
+      "fromSide": "bottom",
+      "toNode": "1879bfd072bc4450",
+      "toSide": "top"
+    },
+    {
+      "id": "6d4e9b62b8af45a7",
+      "fromNode": "1879bfd072bc4450",
+      "fromSide": "bottom",
+      "toNode": "845aaca45b934557",
+      "toSide": "top"
+    },
+    {
+      "id": "464808fddbfb447f",
+      "fromNode": "845aaca45b934557",
+      "fromSide": "bottom",
+      "toNode": "a808773b6e2246f0",
+      "toSide": "top"
+    },
+    {
+      "id": "dec2033e96ca422f",
+      "fromNode": "a808773b6e2246f0",
+      "fromSide": "bottom",
+      "toNode": "a2dfd9736a714927",
+      "toSide": "top"
+    },
+    {
+      "id": "e77813bd15594af6",
+      "fromNode": "a2dfd9736a714927",
+      "fromSide": "bottom",
+      "toNode": "d8b4fc9e649f48c5",
+      "toSide": "top"
+    },
+    {
+      "id": "9c4d7a7d3b5c4488",
+      "fromNode": "d8b4fc9e649f48c5",
+      "fromSide": "bottom",
+      "toNode": "803085e26d0d4ba6",
+      "toSide": "top"
+    },
+    {
+      "id": "ca1f724951984ee3",
+      "fromNode": "803085e26d0d4ba6",
+      "fromSide": "bottom",
+      "toNode": "91f077a99e1a4b80",
+      "toSide": "top"
+    },
+    {
+      "id": "57c9fb1aa96a41d0",
+      "fromNode": "91f077a99e1a4b80",
+      "fromSide": "bottom",
+      "toNode": "190dd51fb7b44016",
+      "toSide": "top"
+    },
+    {
+      "id": "01fe7e7d71704ebf",
+      "fromNode": "c1509f86a6544831",
+      "fromSide": "bottom",
+      "toNode": "552402e685a749ec",
+      "toSide": "top"
+    },
+    {
+      "id": "d2132ccf15d44639",
+      "fromNode": "552402e685a749ec",
+      "fromSide": "right",
+      "toNode": "a4cfe08fd67f4bc8",
+      "toSide": "left"
+    },
+    {
+      "id": "65fd881d691d483c",
+      "fromNode": "a4cfe08fd67f4bc8",
+      "fromSide": "bottom",
+      "toNode": "0b4ca41113c3436a",
+      "toSide": "top"
+    },
+    {
+      "id": "da5508fa45074b07",
+      "fromNode": "0b4ca41113c3436a",
+      "fromSide": "bottom",
+      "toNode": "325af6155bd24a66",
+      "toSide": "top"
+    },
+    {
+      "id": "9c18de224a3541a2",
+      "fromNode": "325af6155bd24a66",
+      "fromSide": "bottom",
+      "toNode": "e15724c68e974008",
+      "toSide": "top"
+    },
+    {
+      "id": "ecda59e0e5114311",
+      "fromNode": "e15724c68e974008",
+      "fromSide": "bottom",
+      "toNode": "1f6ec99f34934a1c",
+      "toSide": "top"
+    },
+    {
+      "id": "5975aed3a30a4d6e",
+      "fromNode": "1f6ec99f34934a1c",
+      "fromSide": "bottom",
+      "toNode": "f4672cb73ee44ac2",
+      "toSide": "top"
+    },
+    {
+      "id": "b8afc2cd250e446b",
+      "fromNode": "f4672cb73ee44ac2",
+      "fromSide": "bottom",
+      "toNode": "49a9b6081f5c47a2",
+      "toSide": "top"
+    },
+    {
+      "id": "c835b5094d8347bd",
+      "fromNode": "49a9b6081f5c47a2",
+      "fromSide": "bottom",
+      "toNode": "3afaeeb0c8834b59",
+      "toSide": "top"
+    },
+    {
+      "id": "59c3d38479e44b75",
+      "fromNode": "3afaeeb0c8834b59",
+      "fromSide": "bottom",
+      "toNode": "0de7ae8b537e41b5",
+      "toSide": "top"
+    },
+    {
+      "id": "2e90ffb421d04965",
+      "fromNode": "0de7ae8b537e41b5",
+      "fromSide": "bottom",
+      "toNode": "34f9094ab9e14ed8",
+      "toSide": "top"
+    },
+    {
+      "id": "31b225b2564548b2",
+      "fromNode": "34f9094ab9e14ed8",
+      "fromSide": "bottom",
+      "toNode": "44e25f655a0845b4",
+      "toSide": "top"
+    },
+    {
+      "id": "26ba816b0dc6468f",
+      "fromNode": "552402e685a749ec",
+      "fromSide": "bottom",
+      "toNode": "298fb9122baa4e91",
+      "toSide": "top"
+    },
+    {
+      "id": "49edf5125f6b4c85",
+      "fromNode": "298fb9122baa4e91",
+      "fromSide": "right",
+      "toNode": "e139cb8976cb4588",
+      "toSide": "left"
+    },
+    {
+      "id": "12f414ea1aa34d42",
+      "fromNode": "e139cb8976cb4588",
+      "fromSide": "bottom",
+      "toNode": "31379aa9370444ff",
+      "toSide": "top"
+    },
+    {
+      "id": "856cab2f9c8f447c",
+      "fromNode": "31379aa9370444ff",
+      "fromSide": "bottom",
+      "toNode": "c33755f620cf439f",
+      "toSide": "top"
+    },
+    {
+      "id": "04187bdcfa744143",
+      "fromNode": "c33755f620cf439f",
+      "fromSide": "bottom",
+      "toNode": "db19129266cf4388",
+      "toSide": "top"
+    },
+    {
+      "id": "3aacfd5beed84215",
+      "fromNode": "db19129266cf4388",
+      "fromSide": "bottom",
+      "toNode": "654c533747eb476f",
+      "toSide": "top"
+    },
+    {
+      "id": "f7fb93acafc748b2",
+      "fromNode": "654c533747eb476f",
+      "fromSide": "bottom",
+      "toNode": "e7000a8ed56d4c74",
+      "toSide": "top"
+    },
+    {
+      "id": "88b5a68280434e19",
+      "fromNode": "e7000a8ed56d4c74",
+      "fromSide": "bottom",
+      "toNode": "de991725564745f0",
+      "toSide": "top"
+    },
+    {
+      "id": "582ff722d3094b76",
+      "fromNode": "de991725564745f0",
+      "fromSide": "bottom",
+      "toNode": "b377c36b3ce745df",
+      "toSide": "top"
+    },
+    {
+      "id": "e9c5f69c501b4d0f",
+      "fromNode": "b377c36b3ce745df",
+      "fromSide": "bottom",
+      "toNode": "1da5ff269b094f6d",
+      "toSide": "top"
+    },
+    {
+      "id": "df2608eed4b64b36",
+      "fromNode": "1da5ff269b094f6d",
+      "fromSide": "bottom",
+      "toNode": "c5f889bbc5bf4721",
+      "toSide": "top"
+    },
+    {
+      "id": "169f0d174e8d4827",
+      "fromNode": "c5f889bbc5bf4721",
+      "fromSide": "bottom",
+      "toNode": "472daa9984984108",
+      "toSide": "top"
+    },
+    {
+      "id": "a5898e6763c14bab",
+      "fromNode": "472daa9984984108",
+      "fromSide": "bottom",
+      "toNode": "d6d8a97ca08242c9",
+      "toSide": "top"
+    },
+    {
+      "id": "8ff25974790d481b",
+      "fromNode": "d6d8a97ca08242c9",
+      "fromSide": "bottom",
+      "toNode": "8ce67e30dbea4fa6",
+      "toSide": "top"
+    },
+    {
+      "id": "40fa68360bfd4158",
+      "fromNode": "8ce67e30dbea4fa6",
+      "fromSide": "bottom",
+      "toNode": "01709889ced34fdd",
+      "toSide": "top"
+    },
+    {
+      "id": "ddc8a5f25654474f",
+      "fromNode": "01709889ced34fdd",
+      "fromSide": "bottom",
+      "toNode": "517b1a4e33cb436e",
+      "toSide": "top"
+    },
+    {
+      "id": "4efde74f2f4a4146",
+      "fromNode": "517b1a4e33cb436e",
+      "fromSide": "bottom",
+      "toNode": "4fa8333ff3ed4843",
+      "toSide": "top"
+    },
+    {
+      "id": "725aa3554e5844bc",
+      "fromNode": "4fa8333ff3ed4843",
+      "fromSide": "bottom",
+      "toNode": "9b150f709cfe4542",
+      "toSide": "top"
+    },
+    {
+      "id": "861e8714cbde49a8",
+      "fromNode": "298fb9122baa4e91",
+      "fromSide": "bottom",
+      "toNode": "a31609bdf8444d3e",
+      "toSide": "top"
+    },
+    {
+      "id": "ef52c9ccd98745bd",
+      "fromNode": "a31609bdf8444d3e",
+      "fromSide": "right",
+      "toNode": "7a47dbbaf3d142cb",
+      "toSide": "left"
+    },
+    {
+      "id": "a8a7e65fd87c44f7",
+      "fromNode": "7a47dbbaf3d142cb",
+      "fromSide": "bottom",
+      "toNode": "8a219ec333454a21",
+      "toSide": "top"
+    },
+    {
+      "id": "6c8743a5f1184510",
+      "fromNode": "8a219ec333454a21",
+      "fromSide": "bottom",
+      "toNode": "42caad25e9d04888",
+      "toSide": "top"
+    },
+    {
+      "id": "8667e21cb872408d",
+      "fromNode": "42caad25e9d04888",
+      "fromSide": "bottom",
+      "toNode": "af9f26a81a8042d9",
+      "toSide": "top"
+    },
+    {
+      "id": "2594f83397ee448f",
+      "fromNode": "af9f26a81a8042d9",
+      "fromSide": "bottom",
+      "toNode": "e72b44201ffb47c3",
+      "toSide": "top"
+    },
+    {
+      "id": "f76c49dc407d4259",
+      "fromNode": "e72b44201ffb47c3",
+      "fromSide": "bottom",
+      "toNode": "1020c4a873e346be",
+      "toSide": "top"
+    },
+    {
+      "id": "eb3f90fab58d4b28",
+      "fromNode": "1020c4a873e346be",
+      "fromSide": "bottom",
+      "toNode": "eb1a440604324fc9",
+      "toSide": "top"
+    },
+    {
+      "id": "fd0e45125a044543",
+      "fromNode": "eb1a440604324fc9",
+      "fromSide": "bottom",
+      "toNode": "71902f583ba944c6",
+      "toSide": "top"
+    },
+    {
+      "id": "00dda4b8efb04abe",
+      "fromNode": "71902f583ba944c6",
+      "fromSide": "bottom",
+      "toNode": "b2b5608f61644706",
+      "toSide": "top"
+    },
+    {
+      "id": "43b442e8420d4fdb",
+      "fromNode": "b2b5608f61644706",
+      "fromSide": "bottom",
+      "toNode": "0f48fec26ac24838",
+      "toSide": "top"
+    },
+    {
+      "id": "b361c833586243f5",
+      "fromNode": "0f48fec26ac24838",
+      "fromSide": "bottom",
+      "toNode": "8d100dfc386548bf",
+      "toSide": "top"
+    },
+    {
+      "id": "7d931aaf99fe48de",
+      "fromNode": "8d100dfc386548bf",
+      "fromSide": "bottom",
+      "toNode": "74b01eeeda6f4b73",
+      "toSide": "top"
+    },
+    {
+      "id": "d434d19160d64d65",
+      "fromNode": "74b01eeeda6f4b73",
+      "fromSide": "bottom",
+      "toNode": "6b2888661f624910",
+      "toSide": "top"
+    }
+  ]
+}

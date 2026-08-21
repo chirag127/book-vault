@@ -1,0 +1,798 @@
+{
+  "nodes": [
+    {
+      "id": "3b977830556b4176",
+      "type": "text",
+      "text": "# \ud83c\udfdb\ufe0f Mathematics, Statistics & Quantitative Logic\n\n**Total Books**: 41 | **Curriculum Track**: MECE 3-Level",
+      "x": 0,
+      "y": 0,
+      "width": 600,
+      "height": 180,
+      "color": "1"
+    },
+    {
+      "id": "f2633b0394ce4519",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Mathematical Intuition & Foundations\n*21 books*",
+      "x": 0,
+      "y": 260,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "fc2e0ed5f2bc46ac",
+      "type": "text",
+      "text": "### \ud83d\udcd6 How Not to Be Wrong\n*By Jordan Ellenberg*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[How-Not-to-Be-Wrong/README|Open Reading Guide]]\n- \ud83c\udfa7 [[How-Not-to-Be-Wrong/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "cd82ab0cd20742aa",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Joy of x\n*By Steven Strogatz*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Joy-of-x/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Joy-of-x/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ed62c967f6384d5a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Infinite Powers\n*By Steven Strogatz*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Infinite-Powers/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Infinite-Powers/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "611b68c74e2649d6",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Introduction to Linear Algebra\n*By Gilbert Strang*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Introduction-to-Linear-Algebra/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Introduction-to-Linear-Algebra/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "54dc76d2594247ee",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Linear Algebra Done Right\n*By Sheldon Axler*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Linear-Algebra-Done-Right/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Linear-Algebra-Done-Right/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "18ea6e8a25fd465a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Mathematics for Machine Learning\n*By Marc Peter Deisenroth; A. Aldo Faisal; Cheng Soon Ong*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Mathematics-for-Machine-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Mathematics-for-Machine-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "f59749fca7204a93",
+      "type": "text",
+      "text": "### \ud83d\udcd6 How to Solve It\n*By George P\u00f3lya*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[How-to-Solve-It/README|Open Reading Guide]]\n- \ud83c\udfa7 [[How-to-Solve-It/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d633223165564381",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Problem-Solving Strategies\n*By Arthur Engel*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Problem-Solving-Strategies/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Problem-Solving-Strategies/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "53ce070fa3c44c87",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Concrete Mathematics\n*By Ronald Graham; Donald Knuth; Oren Patashnik*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Concrete-Mathematics/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Concrete-Mathematics/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ae8ee20268454ed0",
+      "type": "text",
+      "text": "### \ud83d\udcd6 How to Prove It\n*By Daniel Velleman*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[How-to-Prove-It/README|Open Reading Guide]]\n- \ud83c\udfa7 [[How-to-Prove-It/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7481a8c73e23408f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Book of Proof\n*By Richard Hammack*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Book-of-Proof/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Book-of-Proof/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d6210e812eda45cf",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Mathematics and Plausible Reasoning\n*By George P\u00f3lya*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Mathematics-and-Plausible-Reasoning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Mathematics-and-Plausible-Reasoning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8d4759d2e89b4947",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Journey Through Genius\n*By William Dunham*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Journey-Through-Genius/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Journey-Through-Genius/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d14f38dc080f4c97",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Infinite Book\n*By John D. Barrow*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Infinite-Book/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Infinite-Book/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "2f1c267c72a84fa6",
+      "type": "text",
+      "text": "### \ud83d\udcd6 G\u00f6del, Escher, Bach\n*By Douglas Hofstadter*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[G-del-Escher-Bach/README|Open Reading Guide]]\n- \ud83c\udfa7 [[G-del-Escher-Bach/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7816f496adac4400",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Logicomix\n*By Apostolos Doxiadis; Christos Papadimitriou*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Logicomix/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Logicomix/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "ca36d0cccc434bed",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Complexity\n*By Melanie Mitchell*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Complexity/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Complexity/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b146c895a0634909",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Linked\n*By Albert-L\u00e1szl\u00f3 Barab\u00e1si*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Linked/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Linked/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4510,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "5da734baed1b4b06",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Music of the Primes\n*By Marcus du Sautoy*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Music-of-the-Primes/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Music-of-the-Primes/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4760,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "d8a9097a673b459e",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Princeton Companion to Mathematics\n*By Timothy Gowers*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Princeton-Companion-to-Mathematics/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Princeton-Companion-to-Mathematics/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5010,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "5992c7b2b5cb4d98",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Information\n*By James Gleick*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Information/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Information/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5260,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c79f06740bba4487",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Statistical Inference & Modeling\n*12 books*",
+      "x": 0,
+      "y": 3340,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "e5758611b6944661",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Art of Statistics\n*By David Spiegelhalter*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Art-of-Statistics/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Art-of-Statistics/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "bbe3f828db8343d3",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Naked Statistics\n*By Charles Wheelan*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Naked-Statistics/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Naked-Statistics/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "7505674cb1624cfb",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Think Bayes\n*By Allen Downey*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Think-Bayes/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Think-Bayes/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "e19d519ea3a0428f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Think Stats\n*By Allen Downey*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Think-Stats/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Think-Stats/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "871b8b2b62c04746",
+      "type": "text",
+      "text": "### \ud83d\udcd6 An Introduction to Statistical Learning\n*By Gareth James; Daniela Witten; Trevor Hastie; Robert Tibshirani*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[An-Introduction-to-Statistical-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[An-Introduction-to-Statistical-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "8e3071ae4f6e4b2a",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Elements of Statistical Learning\n*By Trevor Hastie; Robert Tibshirani; Jerome Friedman*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Elements-of-Statistical-Learning/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Elements-of-Statistical-Learning/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "dee7a44c01b34ff4",
+      "type": "text",
+      "text": "### \ud83d\udcd6 All of Statistics\n*By Larry Wasserman*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[All-of-Statistics/README|Open Reading Guide]]\n- \ud83c\udfa7 [[All-of-Statistics/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "b71a2f3973f545d5",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Statistics Done Wrong\n*By Alex Reinhart*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Statistics-Done-Wrong/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Statistics-Done-Wrong/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "837d052ba31143f8",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Statistical Rethinking\n*By Richard McElreath*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Statistical-Rethinking/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Statistical-Rethinking/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5340,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "c839eb8f5c9b4d6b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Doing Bayesian Data Analysis\n*By John Kruschke*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Doing-Bayesian-Data-Analysis/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Doing-Bayesian-Data-Analysis/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5590,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "048cc414f53949e5",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Bayesian Data Analysis\n*By Andrew Gelman et al.*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Bayesian-Data-Analysis/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Bayesian-Data-Analysis/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 5840,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "788437d041314249",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Data Analysis Using Regression and Multilevel Models\n*By Andrew Gelman; Jennifer Hill; Aki Vehtari*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Data-Analysis-Using-Regression-and-Multilevel-Models/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Data-Analysis-Using-Regression-and-Multilevel-Models/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 6090,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "1243eadb804246e7",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Probability & Combinatorics\n*2 books*",
+      "x": 0,
+      "y": 1420,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "3f888c4c35754846",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Introduction to Probability\n*By Joseph K. Blitzstein; Jessica Hwang*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Introduction-to-Probability/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Introduction-to-Probability/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1420,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "92122c444af64205",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Probability Theory: The Logic of Science\n*By E.T. Jaynes*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Probability-Theory-The-Logic-of-Science/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Probability-Theory-The-Logic-of-Science/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 1670,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a36597164bc34337",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Data Analysis & Visualization\n*3 books*",
+      "x": 0,
+      "y": 2750,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "79151bfb22e547ca",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Practical Statistics for Data Scientists\n*By Peter Bruce; Andrew Bruce; Peter Gedeck*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Practical-Statistics-for-Data-Scientists/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Practical-Statistics-for-Data-Scientists/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 2750,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "1651c4deac584da4",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Storytelling with Data\n*By Cole Nussbaumer Knaflic*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Storytelling-with-Data/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Storytelling-with-Data/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3000,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "61a256f75957410f",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Fundamentals of Data Visualization\n*By Claus O. Wilke*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Fundamentals-of-Data-Visualization/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Fundamentals-of-Data-Visualization/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3250,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "0b21a28334e340d8",
+      "type": "text",
+      "text": "## \ud83d\udcc2 Causality & Experimental Design\n*3 books*",
+      "x": 0,
+      "y": 3580,
+      "width": 320,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "0d9d8c3b625346ad",
+      "type": "text",
+      "text": "### \ud83d\udcd6 The Book of Why\n*By Judea Pearl; Dana Mackenzie*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[The-Book-of-Why/README|Open Reading Guide]]\n- \ud83c\udfa7 [[The-Book-of-Why/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3580,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "596b30e12d0e456b",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Causal Inference: The Mixtape\n*By Scott Cunningham*\n\n- **Difficulty**: `intermediate`\n- **Type**: Core Text\n- \ud83d\udd17 [[Causal-Inference-The-Mixtape/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Causal-Inference-The-Mixtape/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 3830,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "26056452c04f4780",
+      "type": "text",
+      "text": "### \ud83d\udcd6 Trustworthy Online Controlled Experiments\n*By Ron Kohavi; Diane Tang; Ya Xu*\n\n- **Difficulty**: `beginner`\n- **Type**: Core Text\n- \ud83d\udd17 [[Trustworthy-Online-Controlled-Experiments/README|Open Reading Guide]]\n- \ud83c\udfa7 [[Trustworthy-Online-Controlled-Experiments/Audio-Listening-Edition|Open Audio Edition]]",
+      "x": 460,
+      "y": 4080,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    }
+  ],
+  "edges": [
+    {
+      "id": "ae677b46d8504db9",
+      "fromNode": "3b977830556b4176",
+      "fromSide": "bottom",
+      "toNode": "f2633b0394ce4519",
+      "toSide": "top"
+    },
+    {
+      "id": "637fb0d2c0454a6d",
+      "fromNode": "f2633b0394ce4519",
+      "fromSide": "right",
+      "toNode": "fc2e0ed5f2bc46ac",
+      "toSide": "left"
+    },
+    {
+      "id": "6314e804dc764da7",
+      "fromNode": "fc2e0ed5f2bc46ac",
+      "fromSide": "bottom",
+      "toNode": "cd82ab0cd20742aa",
+      "toSide": "top"
+    },
+    {
+      "id": "721088355bbb4a9f",
+      "fromNode": "cd82ab0cd20742aa",
+      "fromSide": "bottom",
+      "toNode": "ed62c967f6384d5a",
+      "toSide": "top"
+    },
+    {
+      "id": "2c89f083560e4161",
+      "fromNode": "ed62c967f6384d5a",
+      "fromSide": "bottom",
+      "toNode": "611b68c74e2649d6",
+      "toSide": "top"
+    },
+    {
+      "id": "efc4604f86004d80",
+      "fromNode": "611b68c74e2649d6",
+      "fromSide": "bottom",
+      "toNode": "54dc76d2594247ee",
+      "toSide": "top"
+    },
+    {
+      "id": "7c5b4dd24bc84404",
+      "fromNode": "54dc76d2594247ee",
+      "fromSide": "bottom",
+      "toNode": "18ea6e8a25fd465a",
+      "toSide": "top"
+    },
+    {
+      "id": "f29c772df1fd4f28",
+      "fromNode": "18ea6e8a25fd465a",
+      "fromSide": "bottom",
+      "toNode": "f59749fca7204a93",
+      "toSide": "top"
+    },
+    {
+      "id": "0968351bb34b4cf3",
+      "fromNode": "f59749fca7204a93",
+      "fromSide": "bottom",
+      "toNode": "d633223165564381",
+      "toSide": "top"
+    },
+    {
+      "id": "5c9a73ba083240c4",
+      "fromNode": "d633223165564381",
+      "fromSide": "bottom",
+      "toNode": "53ce070fa3c44c87",
+      "toSide": "top"
+    },
+    {
+      "id": "178512aa7e3442da",
+      "fromNode": "53ce070fa3c44c87",
+      "fromSide": "bottom",
+      "toNode": "ae8ee20268454ed0",
+      "toSide": "top"
+    },
+    {
+      "id": "e906d2cb860f4d2c",
+      "fromNode": "ae8ee20268454ed0",
+      "fromSide": "bottom",
+      "toNode": "7481a8c73e23408f",
+      "toSide": "top"
+    },
+    {
+      "id": "e30b1e6f4a084b38",
+      "fromNode": "7481a8c73e23408f",
+      "fromSide": "bottom",
+      "toNode": "d6210e812eda45cf",
+      "toSide": "top"
+    },
+    {
+      "id": "1830738a18e7453b",
+      "fromNode": "d6210e812eda45cf",
+      "fromSide": "bottom",
+      "toNode": "8d4759d2e89b4947",
+      "toSide": "top"
+    },
+    {
+      "id": "36d5101ed3974795",
+      "fromNode": "8d4759d2e89b4947",
+      "fromSide": "bottom",
+      "toNode": "d14f38dc080f4c97",
+      "toSide": "top"
+    },
+    {
+      "id": "d4a1c9958b8f4d00",
+      "fromNode": "d14f38dc080f4c97",
+      "fromSide": "bottom",
+      "toNode": "2f1c267c72a84fa6",
+      "toSide": "top"
+    },
+    {
+      "id": "2295d7112bba4d65",
+      "fromNode": "2f1c267c72a84fa6",
+      "fromSide": "bottom",
+      "toNode": "7816f496adac4400",
+      "toSide": "top"
+    },
+    {
+      "id": "66b3b16cd4094d20",
+      "fromNode": "7816f496adac4400",
+      "fromSide": "bottom",
+      "toNode": "ca36d0cccc434bed",
+      "toSide": "top"
+    },
+    {
+      "id": "85a789c573db4107",
+      "fromNode": "ca36d0cccc434bed",
+      "fromSide": "bottom",
+      "toNode": "b146c895a0634909",
+      "toSide": "top"
+    },
+    {
+      "id": "6ab4bec260c44da1",
+      "fromNode": "b146c895a0634909",
+      "fromSide": "bottom",
+      "toNode": "5da734baed1b4b06",
+      "toSide": "top"
+    },
+    {
+      "id": "76e6b04c9bea4d66",
+      "fromNode": "5da734baed1b4b06",
+      "fromSide": "bottom",
+      "toNode": "d8a9097a673b459e",
+      "toSide": "top"
+    },
+    {
+      "id": "87317a4c680d4440",
+      "fromNode": "d8a9097a673b459e",
+      "fromSide": "bottom",
+      "toNode": "5992c7b2b5cb4d98",
+      "toSide": "top"
+    },
+    {
+      "id": "f3b7c71f6dba4f9e",
+      "fromNode": "f2633b0394ce4519",
+      "fromSide": "bottom",
+      "toNode": "c79f06740bba4487",
+      "toSide": "top"
+    },
+    {
+      "id": "01d2f3a5f0c842b5",
+      "fromNode": "c79f06740bba4487",
+      "fromSide": "right",
+      "toNode": "e5758611b6944661",
+      "toSide": "left"
+    },
+    {
+      "id": "5b5baae9b26c416f",
+      "fromNode": "e5758611b6944661",
+      "fromSide": "bottom",
+      "toNode": "bbe3f828db8343d3",
+      "toSide": "top"
+    },
+    {
+      "id": "599d8c3f59164798",
+      "fromNode": "bbe3f828db8343d3",
+      "fromSide": "bottom",
+      "toNode": "7505674cb1624cfb",
+      "toSide": "top"
+    },
+    {
+      "id": "fcbc5bdd80c14f02",
+      "fromNode": "7505674cb1624cfb",
+      "fromSide": "bottom",
+      "toNode": "e19d519ea3a0428f",
+      "toSide": "top"
+    },
+    {
+      "id": "a4b866c29bd64236",
+      "fromNode": "e19d519ea3a0428f",
+      "fromSide": "bottom",
+      "toNode": "871b8b2b62c04746",
+      "toSide": "top"
+    },
+    {
+      "id": "5506ecbf935f4f24",
+      "fromNode": "871b8b2b62c04746",
+      "fromSide": "bottom",
+      "toNode": "8e3071ae4f6e4b2a",
+      "toSide": "top"
+    },
+    {
+      "id": "767429823f664fb8",
+      "fromNode": "8e3071ae4f6e4b2a",
+      "fromSide": "bottom",
+      "toNode": "dee7a44c01b34ff4",
+      "toSide": "top"
+    },
+    {
+      "id": "81aacad788364456",
+      "fromNode": "dee7a44c01b34ff4",
+      "fromSide": "bottom",
+      "toNode": "b71a2f3973f545d5",
+      "toSide": "top"
+    },
+    {
+      "id": "6efa83b4382944d1",
+      "fromNode": "b71a2f3973f545d5",
+      "fromSide": "bottom",
+      "toNode": "837d052ba31143f8",
+      "toSide": "top"
+    },
+    {
+      "id": "fd4394d9b7884a2e",
+      "fromNode": "837d052ba31143f8",
+      "fromSide": "bottom",
+      "toNode": "c839eb8f5c9b4d6b",
+      "toSide": "top"
+    },
+    {
+      "id": "1bd5ac6cc8e743c6",
+      "fromNode": "c839eb8f5c9b4d6b",
+      "fromSide": "bottom",
+      "toNode": "048cc414f53949e5",
+      "toSide": "top"
+    },
+    {
+      "id": "437fb3f50a0c46e5",
+      "fromNode": "048cc414f53949e5",
+      "fromSide": "bottom",
+      "toNode": "788437d041314249",
+      "toSide": "top"
+    },
+    {
+      "id": "bd4c57df24b5471e",
+      "fromNode": "c79f06740bba4487",
+      "fromSide": "bottom",
+      "toNode": "1243eadb804246e7",
+      "toSide": "top"
+    },
+    {
+      "id": "2593a9b3e73f4f22",
+      "fromNode": "1243eadb804246e7",
+      "fromSide": "right",
+      "toNode": "3f888c4c35754846",
+      "toSide": "left"
+    },
+    {
+      "id": "8b1f838556784f2c",
+      "fromNode": "3f888c4c35754846",
+      "fromSide": "bottom",
+      "toNode": "92122c444af64205",
+      "toSide": "top"
+    },
+    {
+      "id": "7d4f275985bc4cf6",
+      "fromNode": "1243eadb804246e7",
+      "fromSide": "bottom",
+      "toNode": "a36597164bc34337",
+      "toSide": "top"
+    },
+    {
+      "id": "f15f2d91287046b8",
+      "fromNode": "a36597164bc34337",
+      "fromSide": "right",
+      "toNode": "79151bfb22e547ca",
+      "toSide": "left"
+    },
+    {
+      "id": "6caf9eea329e490a",
+      "fromNode": "79151bfb22e547ca",
+      "fromSide": "bottom",
+      "toNode": "1651c4deac584da4",
+      "toSide": "top"
+    },
+    {
+      "id": "8bfcb1f1699d4a3d",
+      "fromNode": "1651c4deac584da4",
+      "fromSide": "bottom",
+      "toNode": "61a256f75957410f",
+      "toSide": "top"
+    },
+    {
+      "id": "4426132bc7cb4582",
+      "fromNode": "a36597164bc34337",
+      "fromSide": "bottom",
+      "toNode": "0b21a28334e340d8",
+      "toSide": "top"
+    },
+    {
+      "id": "308d44ddbc2949b1",
+      "fromNode": "0b21a28334e340d8",
+      "fromSide": "right",
+      "toNode": "0d9d8c3b625346ad",
+      "toSide": "left"
+    },
+    {
+      "id": "c71a38da3f6c4d77",
+      "fromNode": "0d9d8c3b625346ad",
+      "fromSide": "bottom",
+      "toNode": "596b30e12d0e456b",
+      "toSide": "top"
+    },
+    {
+      "id": "195dd2e0182742b5",
+      "fromNode": "596b30e12d0e456b",
+      "fromSide": "bottom",
+      "toNode": "26056452c04f4780",
+      "toSide": "top"
+    }
+  ]
+}
