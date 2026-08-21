@@ -3,7 +3,7 @@
 .env.*
 !.env.example
 
-# Python Runtime & Caches
+# Python Runtime & Bytecode
 .venv/
 venv/
 __pycache__/
@@ -15,9 +15,9 @@ __pycache__/
 *.tmp
 *.bak
 
-# Automation & Persistent Caches
+# Automation Temporary Caches & Run Artifacts
 automation/cache/
-automation/research/
+automation/research/*.json
 automation/generated/
 automation/logs/
 automation/state/
@@ -26,12 +26,10 @@ automation/.pipeline.lock
 .freebuff/
 *.jsonl
 
-# Generated Media & Export Artifacts
+# Generated Media (MP3s)
 audio/
 *.mp3
 *.wav
-ebooks/
-vault_anki_deck.tsv
 
 # OS & Editor Artifacts
 .vscode/
