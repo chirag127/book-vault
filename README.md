@@ -7,12 +7,10 @@
 ## Start here
 
 1. Open the interactive **[[MOCs/VAULT-DASHBOARD|📊 Vault Dashboard]]** for live reading progress and audio edition toggles.
-2. Explore the **12 Visual Canvas Mind-Maps** (e.g. [[md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Cognition-and-Meta-Skills.canvas|Pillar 01 Canvas]]).
-3. Begin with [[md/01-Learning-Cognition-and-Meta-Skills/README|Learning, Cognition & Meta-Skills]] — the vault opens with how to read, take notes, and learn.
-4. Search the vault anytime via CLI: `python -m automation.vault_search "concept or question"`
-5. Generate neural MP3 audiobooks: `python -m automation.synthesize_audio --slug Book-Slug`
-6. Follow the 12-pillar sequence in [[READING-ORDER]] and goal-based routes in [[START-HERE]].
-
+2. Explore the **[[MOCs/00-MASTER-INDEX|🗺️ Master Maps of Content]]** across all 12 Knowledge Pillars.
+3. Explore the **12 Visual Canvas Mind-Maps** (e.g. `[[01-Learning-Cognition-and-Meta-Skills.canvas]]`).
+4. Track reading progress in the **[[MOCs/READING-KANBAN|📋 Reading Kanban Pipeline]]**.
+5. Launch overnight batch generation in PowerShell: `powershell -ExecutionPolicy Bypass -File "run_overnight.ps1"`
 
 ## Four-level classification (Faceted / MECE)
 
@@ -27,21 +25,18 @@ Reorganizing a topic never moves a file: it only changes YAML metadata. The 12 p
 
 ## Learning principle
 
-The vault starts with the skill of reading and learning well, then develops reasoning and mental models, quantitative foundations, technical capability, financial and organizational understanding, health and the physical world, societies and power, and finally philosophy, biography, and future-oriented thinking. Books are ordered inside each pillar by curriculum number.
+The vault starts with the skill of reading and learning well, then develops reasoning and mental models, quantitative foundations, technical capability, financial and organizational understanding, health and the physical world, societies and power, and finally philosophy, biography, and future-oriented thinking.
 
 ## Vault conventions
 
-- One canonical book equals one Markdown file (currently **775 books**).
+- One canonical book equals one modular directory with atomic PKM concept notes and an audio listening edition.
 - Every book belongs to exactly one primary pillar and one primary category.
-- Every note carries a `## Related Books` section with at least three computed wikilinks (same author, same category, reading-order neighbors, cross-pillar topic bridges) plus `next_reads` front matter — the vault is a knowledge graph, not a folder of isolated files.
-- Book notes use faceted front matter, source lists, limitations and criticism, practical applications, and text-to-speech-friendly recaps.
-- Fiction is excluded by default and documented separately in [[EXCLUDED-FICTION]].
-- The canonical catalog is maintained in [[BOOK-MANIFEST]] and regenerated from the curriculum by `automation/curriculum.py`.
+- Every note carries rich bidirectional wikilinks to related concept notes and cross-domain bridges.
+- Book notes strictly adhere to markdownlint standards.
 
 ## Production scope
 
-The vault is built from the canonical 2,000-book curriculum; the current manifest holds 775 verified entries (slots 001–800 after deduplication). Summaries use maximum-depth treatment: normally 4,000–8,000 words, longer for foundational or technically complex works. Influential but controversial works are retained with explicit evidence, criticism, and limitations.
+The vault covers 775 verified entries across the 12 pillars. Summaries use maximum-depth treatment: normally 4,000–8,000 words, longer for foundational or technically complex works.
 
-The generation pipeline is fully automated in Python: web research (with author names in every query, deduplicated sources) → LLM generation via OpenCode Zen (Ox Alpha Free, keyless) with NVIDIA fallback and exponential backoff → validation → self-repair → atomic write. It runs for days unattended, one book at a time or concurrently, and never creates a duplicate file. See [[automation/README|automation/README.md]] for commands.
+The generation pipeline is fully automated in Python: web research across 6 search vectors → LLM generation via Zen with NVIDIA and g4f fallbacks → validation → self-repair → atomic write.
 
-See [[OBSIDIAN-SETUP]] for TTS, front matter, plugin, and cross-platform Markdown conventions.

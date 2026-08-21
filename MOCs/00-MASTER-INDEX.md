@@ -17,6 +17,6 @@
 
 ## Navigation
 
-← Previous: [[ALL-BOOKS]]
+← Dashboard: [[MOCs/VAULT-DASHBOARD|📊 Vault Dashboard]]
+→ Reading Pipeline: [[MOCs/READING-KANBAN|📋 Reading Kanban Pipeline]]
 
-→ Next: [[READING-ORDER]]
