@@ -63,28 +63,25 @@ Research sources:
 {knowledge_graph}
 
 DYNAMIC MODULARIZATION ARCHITECTURE:
-You have full editorial autonomy to decide the optimal number of modular chapter/concept files (between 2 to 7 files) and their exact contextual filenames based on this book's specific genre, thesis, and structure (e.g., historical periods, mathematical proofs, business case studies, or cognitive frameworks).
+You have complete editorial and creative autonomy to analyze this book based on its own unique nature, thesis, structure, and domain (e.g. historical periods, philosophical dialogues, cognitive frameworks, mathematical proofs, or narrative case studies). Do NOT force a generic or rigid template onto the book. Tailor the structure, chapter breakdowns, and analytical depth organically to this specific work.
 
 Requirements:
 1. Always start with === FILE: README.md === (The Hub):
-   - YAML front matter (`title`, `author`, `published`, `pillar`, `category`, `subcategory`, `slug`, `difficulty`, `tags: [book-summary, mental-models]`, `status: complete`).
+   - YAML front matter (`title`, `author`, `published`, `pillar`, `category`, `subcategory`, `slug`, `difficulty`, `status: complete`).
    - `# {book['title']} — Executive Summary & Reading Guide`
    - `*By {book['author']} ({book['published']})*`
-   - `> [!ABSTRACT] One-Sentence Core Thesis` (High-density distillation of the main truth).
-   - `## 🧠 Core Mental Models & Big Picture` (Underlying paradigms and cognitive shifts).
-   - `## ⚡ 3 Key Actionable Takeaways` (Top 3 distilled bullet points).
-   - `## 🚀 30-Day Action & Implementation Protocol` (Concrete weekly checklist of what to do differently).
-   - `## 💡 Golden Quotes & Memorable Passages` (> [!QUOTE] callouts).
-   - Master Table of Contents with Markdown links to EVERY modular chapter file you decide to create (e.g. `./01-Mental-Models.md`, `./02-Cognitive-Biases.md`...) + link to `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]`.
+   - Organic synthesis of the core thesis, main insights, and practical significance.
+   - Master Table of Contents with Markdown links to EVERY contextual spoke file you decide to create (e.g. `./01-[Topic].md`, `./02-[Topic].md`...) + link to `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]`.
    - `## 📚 External References & Book Trackers` with markdown links to Open Library, Goodreads, Google Books, Hardcover, and StoryGraph search queries for this book.
    - {navigation}
 
 2. Generate 2 to 6 Contextual Chapter/Concept Files (The Spokes):
    - Format: `=== FILE: 01-[Contextual-Name].md ===`, `=== FILE: 02-[Contextual-Name].md ===`, etc.
    - EVERY file must begin with YAML front matter (`title`, `author`, `book_slug`), followed by `# {book['title']} — [Chapter/Concept Name]` and `*By {book['author']}*`.
-   - Focus on deep, high-signal explanation of that specific topic/phase/framework.
+   - Focus on deep, high-signal explanation of that specific topic/phase/framework without generic filler.
    - One of the practical/action chapters MUST include a section titled `## Active Recall & Spaced Repetition Flashcards` with 3 to 5 `Q: ... ? / A: ...` pairs.
    - The final chapter should cover critical analysis, boundary conditions, and `## Related Books` wikilinks.
+
 
 
 Quality Guidelines:
