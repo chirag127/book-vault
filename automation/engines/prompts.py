@@ -67,10 +67,14 @@ You have full editorial autonomy to decide the optimal number of modular chapter
 
 Requirements:
 1. Always start with === FILE: README.md === (The Hub):
-   - YAML front matter (`title`, `author`, `published`, `pillar`, `category`, `subcategory`, `slug`, `difficulty`, `status: complete`).
+   - YAML front matter (`title`, `author`, `published`, `pillar`, `category`, `subcategory`, `slug`, `difficulty`, `tags: [book-summary, mental-models]`, `status: complete`).
    - `# {book['title']} — Executive Summary & Reading Guide`
-   - *By {book['author']}*
-   - Executive Overview & Core Mental Model (high-level synthesis).
+   - `*By {book['author']} ({book['published']})*`
+   - `> [!ABSTRACT] One-Sentence Core Thesis` (High-density distillation of the main truth).
+   - `## 🧠 Core Mental Models & Big Picture` (Underlying paradigms and cognitive shifts).
+   - `## ⚡ 3 Key Actionable Takeaways` (Top 3 distilled bullet points).
+   - `## 🚀 30-Day Action & Implementation Protocol` (Concrete weekly checklist of what to do differently).
+   - `## 💡 Golden Quotes & Memorable Passages` (> [!QUOTE] callouts).
    - Master Table of Contents with Markdown links to EVERY modular chapter file you decide to create (e.g. `./01-Mental-Models.md`, `./02-Cognitive-Biases.md`...) + link to `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]`.
    - `## 📚 External References & Book Trackers` with markdown links to Open Library, Goodreads, Google Books, Hardcover, and StoryGraph search queries for this book.
    - {navigation}
@@ -81,6 +85,7 @@ Requirements:
    - Focus on deep, high-signal explanation of that specific topic/phase/framework.
    - One of the practical/action chapters MUST include a section titled `## Active Recall & Spaced Repetition Flashcards` with 3 to 5 `Q: ... ? / A: ...` pairs.
    - The final chapter should cover critical analysis, boundary conditions, and `## Related Books` wikilinks.
+
 
 Quality Guidelines:
 - High-signal density, no fluff, no repetitive filler.

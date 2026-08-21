@@ -1,109 +1,73 @@
 ---
-title: "Book Title"
-subtitle: "Subtitle if applicable"
-author:
-  - "Author Name"
-published: YYYY
-pillar: "Level 1 — Pillar"
-category: "Level 2 — Category"
-subcategory: "Level 3 — Subcategory"
-topic: "Level 4 — Finer theme"
-learning_stage: ""
-prerequisites: ""
-tags:
-  - books
-  - pillar-keyword
-  - relevant-topic
-difficulty: beginner
-book_type: "Practical Guide | Theoretical Synthesis | Case Study | Biography / Memoir | Handbook / Reference | Academic Text"
-read_status: "Completed"
+title: "{{title}}"
+author: "{{author}}"
+published: "{{published}}"
+pillar: "{{pillar}}"
+category: "{{category}}"
+subcategory: "{{subcategory}}"
+slug: "{{slug}}"
+difficulty: "Introductory"
+status: "#to-read"
 rating: 5
-reading_order_seq: 0
-estimated_summary_reading_time: "XX minutes"
-next_reads:
-  - "[[Related-Book-Slug|Related Book]]"
-status: complete
+date_read: {{date}}
+tags:
+  - book-summary
+  - mental-models
+  - permanent-note
 ---
 
-# Book Title
+# 📖 {{title}}
+*By {{author}} ({{published}})*
 
-> One original sentence explaining why this book matters.
+> [!ABSTRACT] One-Sentence Core Thesis
+> {{one_sentence_thesis}}
 
-## Quick Take
+---
 
-A concise overview of the entire book — works for a reader with five minutes.
+## 🧠 The Core Mental Model & Big Picture
+- **Primary Framework:** {{primary_framework}}
+- **Cognitive Shift:** What counter-intuitive truth or paradigm shift does this work demonstrate?
 
-## Why Read This Book?
+---
 
-- Why the book became important.
-- Who should read it and what they gain.
-- Who might not benefit from it.
-- Any important limitations.
+## ⚡ 3 Key Actionable Takeaways
+1. **{{takeaway_1_title}}**: {{takeaway_1_desc}}
+2. **{{takeaway_2_title}}**: {{takeaway_2_desc}}
+3. **{{takeaway_3_title}}**: {{takeaway_3_desc}}
 
-## The Central Question
+---
 
-What problem, question, or challenge is the author addressing?
+## 🏛️ Key Chapters & Conceptual Deep-Dive
+- [[01-Core-Thesis-and-Mental-Models|Chapter 1: Core Thesis & Foundations]]
+- [[02-Key-Concepts-and-Chapters|Chapter 2: Frameworks & Methodologies]]
+- [[Audio-Listening-Edition|🎧 Audio Listening Edition]]
 
-## The Core Thesis
+---
 
-The main argument in plain language.
+## 🚀 30-Day Action & Implementation Protocol
+- [ ] **Week 1 (Diagnostic)**: Assess current baseline habits related to this book's domain.
+- [ ] **Week 2 (Protocol Design)**: Implement the core protocol (e.g. daily deliberate practice block).
+- [ ] **Week 3 (Friction Reduction)**: Eliminate cognitive bottlenecks and environment friction.
+- [ ] **Week 4 (Review & Solidify)**: Run active recall review and calibrate progress.
 
-## The Big Picture
+---
 
-How the major ideas fit together — a conceptual narrative, not a list.
+## 💡 Golden Quotes & Memorable Passages
+> [!QUOTE] 
+> "Insert golden quote from the author here."
+> — *{{author}}*
 
-## Key Ideas
+---
 
-### 1. Key Idea Name
+## 🧠 Active Recall & Spaced Repetition Flashcards
+Q: What is the primary thesis of {{title}}?
+A: {{flashcard_1_answer}}
 
-What it means, why it matters, and how the author supports it — with evidence and examples.
+Q: How does this book define the core framework?
+A: {{flashcard_2_answer}}
 
-## Evidence and Examples
+---
 
-What supports the claims, and how strong that evidence is.
-
-## Criticism and Limitations
-
-What critics dispute, what may be outdated, and where the argument has boundary conditions.
-
-## Practical Use
-
-What the reader can actually do with this knowledge.
-
-## Connections to Other Books in This Vault
-
-Weave at least three [[wikilinks]] into this section, naming each intellectual relationship (agreement, extension, contradiction, prerequisite).
-
-## If You Remember Only Five Things
-
-1. ...
-2. ...
-3. ...
-4. ...
-5. ...
-
-```mermaid
-flowchart LR
-  Idea1 --> Idea2 --> Idea3
-```
-
-Audio description: explain the diagram in words for text-to-speech.
-
-## TTS-Friendly Recap
-
-A spoken summary of the entire note, written to be read aloud.
-
-## Related Books
-
-- [[Related-Book-Slug|Related Book]] — why it connects.
-
-## Sources and Further Reading
-
-- Author or publisher official page: URL
-- Reliable secondary source: URL
-
-## Navigation
-
-← Previous: [[Previous-Book|Previous Book]]
-↑ Category: [[Pillar-README|Pillar]]
-→ Next: [[Next-Book|Next Book]]
+## 🔗 Related Books & Topical Bridges
+- [[Related-Book-1]] — Explores the foundation of this concept.
+- [[Related-Book-2]] — Offers a practical counterpoint or extension.
