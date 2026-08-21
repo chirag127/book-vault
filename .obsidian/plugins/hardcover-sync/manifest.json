@@ -1,0 +1,10 @@
+{
+  "id": "hardcover-sync",
+  "name": "Hardcover Sync",
+  "version": "1.2.0",
+  "minAppVersion": "0.15.0",
+  "description": "Direct GraphQL reading auto-tracker and shelf synchronizer for Hardcover.app in Obsidian.",
+  "author": "Chirag",
+  "authorUrl": "https://github.com/chirag127/book-vault",
+  "isDesktopOnly": false
+}

@@ -2,42 +2,33 @@ const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
 
 const DEFAULT_SETTINGS = {
   hardcoverApiKey: "",
-  autoSyncWeb: true,
-  enablePdfIndexing: true,
+  autoSyncReadingStatus: true,
+  syncShelves: true,
 };
 
-class BookVaultCompanionPlugin extends Plugin {
+class HardcoverSyncPlugin extends Plugin {
   async onload() {
     await this.loadSettings();
 
-    // Add Left Ribbon Icon
-    this.addRibbonIcon("book-open", "Book Vault Companion: Hardcover Sync", (evt) => {
+    // Ribbon Icon for Quick Sync
+    this.addRibbonIcon("book-open", "Hardcover Sync: Update Reading Progress", () => {
       this.syncHardcover();
     });
 
-    // Add Command: Sync Hardcover
+    // Command: Hardcover Sync
     this.addCommand({
-      id: "sync-hardcover-progress",
+      id: "hardcover-sync-library",
       name: "Hardcover: Sync Reading Progress & Shelves",
       callback: () => this.syncHardcover(),
     });
 
-    // Add Command: Open Web Explorer
-    this.addCommand({
-      id: "open-vault-web-app",
-      name: "Book Vault: Open Web App Explorer",
-      callback: () => {
-        window.open("https://chirag127.github.io/book-vault/", "_blank");
-      },
-    });
-
-    // Add Settings Tab
-    this.addSettingTab(new BookVaultCompanionSettingTab(this.app, this));
-    console.log("Book Vault Companion Plugin loaded.");
+    // Settings Tab
+    this.addSettingTab(new HardcoverSyncSettingTab(this.app, this));
+    console.log("Hardcover Sync Plugin loaded.");
   }
 
   onunload() {
-    console.log("Book Vault Companion Plugin unloaded.");
+    console.log("Hardcover Sync Plugin unloaded.");
   }
 
   async loadSettings() {
@@ -50,11 +41,11 @@ class BookVaultCompanionPlugin extends Plugin {
 
   async syncHardcover() {
     if (!this.settings.hardcoverApiKey) {
-      new Notice("⚠️ Hardcover API Key missing. Please set it in Settings -> Book Vault Companion.");
+      new Notice("⚠️ Hardcover API Key missing. Go to Settings -> Hardcover Sync.");
       return;
     }
 
-    new Notice("🔄 Syncing library with Hardcover.app GraphQL API...");
+    new Notice("🔄 Syncing shelves and reading status with Hardcover.app...");
 
     try {
       const query = `
@@ -62,7 +53,7 @@ class BookVaultCompanionPlugin extends Plugin {
           me {
             id
             username
-            user_books(limit: 50) {
+            user_books(limit: 100) {
               id
               status_id
               rating
@@ -96,7 +87,7 @@ class BookVaultCompanionPlugin extends Plugin {
       }
 
       const userBooks = resData.data?.me?.[0]?.user_books || [];
-      new Notice(`✅ Successfully synced ${userBooks.length} books from Hardcover!`);
+      new Notice(`✅ Hardcover Synced! ${userBooks.length} books tracked on your profile.`);
     } catch (err) {
       console.error("Hardcover sync failed:", err);
       new Notice(`❌ Hardcover sync failed: ${err.message}`);
@@ -104,7 +95,7 @@ class BookVaultCompanionPlugin extends Plugin {
   }
 }
 
-class BookVaultCompanionSettingTab extends PluginSettingTab {
+class HardcoverSyncSettingTab extends PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.plugin = plugin;
@@ -114,14 +105,14 @@ class BookVaultCompanionSettingTab extends PluginSettingTab {
     const { containerEl } = this;
     containerEl.empty();
 
-    containerEl.createEl("h2", { text: "Book Vault Companion Settings" });
+    containerEl.createEl("h2", { text: "Hardcover Sync Settings" });
 
     new Setting(containerEl)
       .setName("Hardcover API Key")
-      .setDesc("Get your free personal GraphQL API key from https://hardcover.app/account/api for automated reading sync")
+      .setDesc("Get your free personal GraphQL API key from https://hardcover.app/account/api")
       .addText((text) =>
         text
-          .setPlaceholder("Bearer token or API key")
+          .setPlaceholder("Bearer token")
           .setValue(this.plugin.settings.hardcoverApiKey)
           .onChange(async (value) => {
             this.plugin.settings.hardcoverApiKey = value;
@@ -130,29 +121,17 @@ class BookVaultCompanionSettingTab extends PluginSettingTab {
       );
 
     new Setting(containerEl)
-      .setName("Auto-Sync Web Catalog")
-      .setDesc("Automatically compile web application data when book notes are updated.")
+      .setName("Auto-Sync Reading Status")
+      .setDesc("Automatically pull your currently reading, want to read, and finished shelves.")
       .addToggle((toggle) =>
         toggle
-          .setValue(this.plugin.settings.autoSyncWeb)
+          .setValue(this.plugin.settings.autoSyncReadingStatus)
           .onChange(async (value) => {
-            this.plugin.settings.autoSyncWeb = value;
-            await this.plugin.saveSettings();
-          })
-      );
-
-    new Setting(containerEl)
-      .setName("PDF & E-Book Attachments")
-      .setDesc("Enable viewing and search indexing of book PDF files placed in book folders.")
-      .addToggle((toggle) =>
-        toggle
-          .setValue(this.plugin.settings.enablePdfIndexing)
-          .onChange(async (value) => {
-            this.plugin.settings.enablePdfIndexing = value;
+            this.plugin.settings.autoSyncReadingStatus = value;
             await this.plugin.saveSettings();
           })
       );
   }
 }
 
-module.exports = BookVaultCompanionPlugin;
+module.exports = HardcoverSyncPlugin;
