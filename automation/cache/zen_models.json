@@ -1,0 +1,59 @@
+{
+  "x-preview-f-free": {
+    "ok": true,
+    "seconds": 9.6,
+    "words": 117,
+    "error": "",
+    "tested_at": "2026-08-21T11:05:43.841641+00:00"
+  },
+  "deepseek-v4-flash-free": {
+    "ok": false,
+    "seconds": 30.0,
+    "words": 0,
+    "error": "HTTP 400: {\"error\":{\"type\":\"server_error\",\"message\":\"Error from provider (Console): Upstream request failed: Model is unavailable.",
+    "tested_at": "2026-08-21T11:05:53.423795+00:00"
+  },
+  "mimo-v2.5-free": {
+    "ok": false,
+    "seconds": 30.0,
+    "words": 0,
+    "error": "HTTP 429: {\"type\":\"error\",\"error\":{\"type\":\"FreeUsageLimitError\",\"message\":\"Error from provider (Console): Rate limit exceeded. Ple",
+    "tested_at": "2026-08-21T11:05:53.600307+00:00"
+  },
+  "hy3-free": {
+    "ok": false,
+    "seconds": 30.0,
+    "words": 0,
+    "error": "empty response",
+    "tested_at": "2026-08-21T11:05:53.762366+00:00"
+  },
+  "nemotron-3-ultra-free": {
+    "ok": true,
+    "seconds": 4.7,
+    "words": 121,
+    "error": "",
+    "tested_at": "2026-08-21T11:05:59.760017+00:00"
+  },
+  "nemotron-3.5-lightning-free": {
+    "ok": true,
+    "seconds": 11.8,
+    "words": 325,
+    "error": "",
+    "tested_at": "2026-08-21T11:06:04.497367+00:00"
+  },
+  "laguna-s-2.1-free": {
+    "ok": true,
+    "seconds": 14.2,
+    "words": 99,
+    "error": "",
+    "tested_at": "2026-08-21T11:06:16.308610+00:00"
+  },
+  "muse-spark-1.2-contributor-free": {
+    "ok": false,
+    "seconds": 30.0,
+    "words": 0,
+    "error": "empty response",
+    "tested_at": "2026-08-21T11:06:30.561107+00:00"
+  },
+  "_benchmarked_at": "2026-08-21T11:06:45.577630+00:00"
+}

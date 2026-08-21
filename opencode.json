@@ -1,0 +1,9 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "rules": [
+    "This is the book-vault repository. All book notes live in md/{L1}-{L2}-{L3}/Slug.md according to the 3-level taxonomy.",
+    "Always run 'python -m automation.validate_vault' after generating or modifying book notes.",
+    "Pipeline uses OpenCode Zen x-preview-f-free (Ox Alpha) as primary model with 20 retries.",
+    "Run 'pytest tests/ -v' after making changes to automation scripts."
+  ]
+}

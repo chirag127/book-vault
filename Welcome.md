@@ -1,5 +1,7 @@
-This is your new *vault*.
+# Universal Book Vault
 
-Make a note of something, [[create a link]], or try [the Importer](https://help.obsidian.md/Plugins/Importer)!
+Start with [[START-HERE]], or open the complete curriculum in [[READING-ORDER]].
 
-When you're ready, delete this note and make the vault your own.
+The first category is [[md/01-How-to-Read-and-Learn/README|How to Read, Take Notes, and Learn]]. The first book is [[How-to-Read-a-Book|How to Read a Book]].
+
+For goal-based routes, open [[READING-PATHS]].

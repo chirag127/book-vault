@@ -1,0 +1,19 @@
+{
+  "backend": "openlibrary",
+  "query": "Make It Stick Brown",
+  "saved_at": 1787321075.48694,
+  "results": [
+    {
+      "title": "Make It Stick (OpenLibrary)",
+      "url": "https://openlibrary.org/works/OL17879515W",
+      "snippet": "Author(s): Peter C. Brown, Henry L. Roediger, Mark A. McDaniel. Published: 2014. Key topics: .",
+      "source": "openlibrary"
+    },
+    {
+      "title": "Make It Stick - the Science of Successful Learning (OpenLibrary)",
+      "url": "https://openlibrary.org/works/OL39664947W",
+      "snippet": "Author(s): Peter C. Brown, Henry L. Roediger, Mark A. Mcdaniel. Published: 2023. Key topics: .",
+      "source": "openlibrary"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+openai>=1.0.0
+python-dotenv>=1.0.0
+PyYAML>=6.0
+# Optional free web search package; the code falls back if unavailable.
+ddgs>=9.0.0
+# Optional last-resort provider (auto-benchmarked, one attempt per provider).
+g4f>=0.5.0

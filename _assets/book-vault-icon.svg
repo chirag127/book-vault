@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Universal Book Vault icon</title>
+  <desc id="desc">An open book connected to three knowledge graph nodes.</desc>
+  <rect width="256" height="256" rx="48" fill="#172033"/>
+  <path d="M48 72c28-12 58-8 80 10v112c-22-18-52-22-80-10V72Z" fill="#f4f7fb" stroke="#6aa9ff" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M208 72c-28-12-58-8-80 10v112c22-18 52-22 80-10V72Z" fill="#dbeafe" stroke="#6aa9ff" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M128 82v112" stroke="#6aa9ff" stroke-width="8"/>
+  <path d="M128 48 78 28M128 48l50-20M128 48v25" stroke="#f7c948" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="128" cy="48" r="13" fill="#f7c948"/>
+  <circle cx="68" cy="24" r="11" fill="#f7c948"/>
+  <circle cx="188" cy="24" r="11" fill="#f7c948"/>
+</svg>

@@ -1,0 +1,13 @@
+{
+  "backend": "test_backend",
+  "query": "unit_test_query",
+  "saved_at": 1787320693.6910033,
+  "results": [
+    {
+      "title": "Test Title",
+      "url": "https://example.com",
+      "snippet": "Sample text",
+      "source": "test"
+    }
+  ]
+}
