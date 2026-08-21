@@ -21,6 +21,108 @@ Obsidian & Visual Markdown Capabilities:
 - Eliminate conversational preamble, filler transitions, and padding."""
 
 
+def build_modular_reading_prompt(
+    book: dict[str, str],
+    sources: str,
+    allow_no_web: bool = False,
+    nav: dict[str, str] | None = None,
+    graph: str | None = None,
+    min_words: int = 1800,
+    max_words: int = 4500,
+) -> list[dict[str, str]]:
+    category = book["category"].replace(";", ",")
+    navigation = ""
+    if nav:
+        navigation = f"""
+Navigation links:
+← Previous: {nav['prev']}
+↑ Category: {nav['category']}
+→ Next: {nav['next']}
+"""
+    knowledge_graph = ""
+    if graph:
+        knowledge_graph = f"""
+Knowledge-graph context:
+{graph}
+"""
+
+    user = f"""Create the complete, modular multi-file Reading Edition for "{book['title']}" by {book['author']}.
+
+Metadata:
+- Title: {book['title']}
+- Author: {book['author']}
+- Publication year: {book['published']}
+- Pillar: {book.get('pillar', '')}
+- Category: {book['category']}
+- Subcategory: {book['subcategory']}
+- Slug: {book['slug']}
+- Difficulty: {book['difficulty']}
+
+Research sources:
+{sources}
+{knowledge_graph}
+
+You MUST divide this summary into 5 separate, modular files separated by exact demarcation headers:
+
+=== FILE: README.md ===
+(YAML front matter + Executive Overview + Core Takeaway + Master Table of Contents linking to `./01-Core-Thesis-and-Mental-Models.md`, `./02-Key-Concepts-and-Chapters.md`, `./03-Practical-Protocols-and-Action.md`, `./04-Critical-Analysis-and-Limits.md`, and `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]` + {navigation})
+
+=== FILE: 01-Core-Thesis-and-Mental-Models.md ===
+(Deep dive on the book's central governing thesis, foundational mental models, and overarching paradigm shifts. Include Callout boxes and diagrams if helpful.)
+
+=== FILE: 02-Key-Concepts-and-Chapters.md ===
+(Comprehensive chapter-by-chapter / concept-by-concept breakdown of the core principles, supporting evidence, and scientific/historical examples.)
+
+=== FILE: 03-Practical-Protocols-and-Action.md ===
+(Step-by-step practical guides, actionable implementation workflows, heuristics, and `- [ ]` checklist exercises.)
+
+=== FILE: 04-Critical-Analysis-and-Limits.md ===
+(Objective critique: empirical rigor, evidence quality, boundary conditions, counterarguments, and `## Related Books` wikilinks.)
+
+Quality Guidelines:
+- High-signal density, no fluff, no repetitive filler.
+- Use Callouts (`> [!TIP]`, `> [!IMPORTANT]`), Tables, Checklists, and LaTeX where relevant.
+- Target total word count across all 5 files: {min_words} to {max_words} words.
+"""
+    return [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user},
+    ]
+
+
+def build_audio_tts_prompt(
+    book: dict[str, str],
+    sources: str,
+) -> list[dict[str, str]]:
+    user = f"""Create the definitive single-file Audio/TTS Listening Edition for "{book['title']}" by {book['author']}.
+
+Book Metadata:
+- Title: {book['title']}
+- Author: {book['author']}
+- Year: {book['published']}
+- Category: {book.get('category', '')}
+
+Research sources:
+{sources}
+
+Audio/TTS Script Guidelines:
+1. Written specifically for spoken voice narration and Text-to-Speech (TTS) listening apps.
+2. Natural, engaging spoken prose with conversational transitions ("In the opening chapter...", "The pivotal takeaway here is...").
+3. DO NOT include Markdown tables, ASCII diagrams, raw bullet symbols, or visual formatting that sounds awkward when read aloud by a screen reader.
+4. Structure the audio script into clearly spoken narration sections:
+   - Part 1: Welcome & Executive Core Thesis
+   - Part 2: The Key Frameworks Explained
+   - Part 3: Real-World Applications & Practical Protocols
+   - Part 4: Critical Perspectives & What to Watch Out For
+   - Part 5: Final Summary & Takeaway
+5. Start with YAML frontmatter containing `title: "{book['title']} (Audio Edition)"` and `status: complete`.
+
+Length: 1,200 to 2,500 spoken words of smooth, engaging audio narration.
+"""
+    return [
+        {"role": "system", "content": "You are a master audiobook narrator and audio scriptwriter creating a seamless spoken-word audio edition of a book summary for TTS listening."},
+        {"role": "user", "content": user},
+    ]
 
 
 def build_prompt(
@@ -32,119 +134,6 @@ def build_prompt(
     min_words: int = 1500,
     max_words: int = 4500,
 ) -> list[dict[str, str]]:
-    category = book["category"].replace(";", ",")
-    status_rule = (
-        "Mark status as draft and include a clearly labeled research-needed section."
-        if allow_no_web
-        else "Mark status complete only if the supplied sources are sufficient and the claims are carefully qualified."
-    )
-    navigation = ""
-    if nav:
-        navigation = f"""
-Use these exact navigation lines verbatim under the `## Navigation` section at the end of the summary:
-← Previous: {nav['prev']}
-↑ Category: {nav['category']}
-→ Next: {nav['next']}
-"""
-    knowledge_graph = ""
-    if graph:
-        knowledge_graph = f"""
-Knowledge-graph context — other books in the vault:
+    return build_modular_reading_prompt(book, sources, allow_no_web, nav, graph, min_words, max_words)
 
-{graph}
-
-Linking requirements:
-- Weave relevant wikilinks ([[slug|Display Title]]) into the summary where genuine comparisons, agreements, or contradictions exist.
-- Include a `## Related Books` section listing related works with brief context.
-"""
-    user = f"""Create the complete, definitive executive Book Summary for this book.
-
-Metadata:
-- Title: {book['title']}
-- Author: {book['author']}
-- Publication year: {book['published']}
-- Pillar (level 1): {book.get('pillar', '')}
-- Category (level 2): {book['category']}
-- Subcategory (level 3): {book['subcategory']}
-- Slug: {book['slug']}
-- Difficulty: {book['difficulty']}
-- Primary source: {book.get('primary_source', '')}
-
-Research sources:
-{sources}
-{knowledge_graph}
-
-Summary Structure & Quality Guidelines:
-- {status_rule}
-- Provide an exceptional, comprehensive summary covering the core thesis, key arguments, major chapters/frameworks, concrete takeaways, and critical analysis.
-- Leverage Obsidian visual features: use callout boxes (`> [!TIP]`, `> [!IMPORTANT]`, `> [!QUOTE]`), Markdown comparison tables, actionable checklists (`- [ ]`), and Mermaid diagrams or LaTeX math where they enhance understanding.
-- Write concisely and densely: target length is between {min_words} and {max_words} words of pure high-signal analysis.
-- Include YAML front matter fields for: title, subtitle, author, published, pillar, category, subcategory, topic, learning_stage, prerequisites, tags, difficulty, book_type, read_status, reading_order_seq, estimated_summary_reading_time, next_reads, status.
-- Return Markdown only, without wrapping the whole document in an outer code fence.
-{navigation}"""
-
-
-
-    return [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": user},
-    ]
-
-
-def build_repair_prompt(
-    book: dict[str, str],
-    draft: str,
-    errors: list[str],
-    min_words: int = 2500,
-    max_words: int = 9000,
-    graph: str | None = None,
-    nav: dict[str, str] | None = None,
-) -> list[dict[str, str]]:
-    """Ask the model to fix the exact validation errors in an existing draft."""
-    system = (
-        "You are an expert editor repairing a Markdown book note so it passes 100% of automated validation checks. "
-        "Keep the note's existing depth, analysis, and quality. Fix every single issue listed below. "
-        "Return the complete corrected Markdown document only, with no outer code fence wrapper."
-    )
-    graph_block = ""
-    if graph:
-        graph_block = f"""
-Knowledge-graph context:
-{graph}
-
-- The `## Related Books` section must contain at least 3 [[slug|Title]] wikilinks.
-"""
-    nav_block = ""
-    if nav:
-        nav_block = f"""
-- The `## Navigation` section must contain:
-← Previous: {nav.get('prev', 'None')}
-↑ Category: {nav.get('category', 'Category')}
-→ Next: {nav.get('next', 'None')}
-"""
-
-    user = f"""The note below failed validation for "{book['title']}". Fix every one of these issues:
-
-{chr(10).join('- ' + error for error in errors)}
-
-Mandatory Section Checks to Ensure:
-- `## Strengths and Major Contributions` must be present.
-- `## Criticisms, Limitations and Counterarguments` must be present.
-- `## Five Things to Remember` must be present with exactly 5 numbered points (1. through 5.).
-- `## Related Books` must be present with >= 3 [[slug|Title]] wikilinks.
-- `## TTS-Friendly Recap` must be present.
-- `## Sources and Further Reading` must be present and contain valid http/https URLs.
-- `## Navigation` must be present with lines starting with `← Previous:`, `↑ Category:`, `→ Next:`.
-- Every ```mermaid diagram must have an `Audio description:` paragraph immediately below it.
-- Word count must be between {min_words} and {max_words} words.
-- Ensure front matter has `status: complete`.
-{graph_block}
-{nav_block}
-DRAFT TO REPAIR:
-{draft}
-"""
-    return [
-        {"role": "system", "content": system},
-        {"role": "user", "content": user},
-    ]
 

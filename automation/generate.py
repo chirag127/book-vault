@@ -12,8 +12,9 @@ from .config import ConfigurationError, ROOT, load_settings
 from .length import length_label, word_bounds
 from .llm_client import build_providers, configure_limiter, generate_markdown
 from .manifest import category_folder, load_manifest
-from .prompts import TEMPLATE_VERSION, build_prompt, build_repair_prompt
+from .prompts import TEMPLATE_VERSION, build_modular_reading_prompt, build_audio_tts_prompt
 from .research import save_research, search_book, source_bundle
+
 from .validate import validate_note
 
 
@@ -54,11 +55,17 @@ def target_path(book: dict[str, str]) -> Path:
         folder = _pillar_dirs()[book["pillar"]]
     except KeyError as exc:
         raise ValueError(f"No pillar-folder mapping for {book['pillar']}") from exc
-    return ROOT / folder / category_folder(book["pillar"], book["category"]) / f"{book['slug']}.md"
+    return ROOT / folder / category_folder(book["pillar"], book["category"]) / book["slug"]
 
 
 def complete(path: Path) -> bool:
-    return path.exists() and bool(re.search(r"^status:\s*complete\s*$", path.read_text(encoding="utf-8"), re.M))
+    if path.is_dir():
+        readme = path / "README.md"
+        audio = path / "Audio-Listening-Edition.md"
+        return readme.exists() and audio.exists()
+    if path.is_file():
+        return bool(re.search(r"^status:\s*complete\s*$", path.read_text(encoding="utf-8"), re.M))
+    return False
 
 
 def is_pending(book: dict[str, str], force: bool) -> bool:
@@ -66,12 +73,7 @@ def is_pending(book: dict[str, str], force: bool) -> bool:
 
 
 def navigation_for(book: dict[str, str], books: list[dict[str, str]]) -> dict[str, str]:
-    """Build the previous / pillar / next wikilink lines for a book.
-
-    Books are ordered by curriculum number inside each pillar, which is the
-    recommended reading sequence. The first and last books in a pillar link
-    back to the pillar README.
-    """
+    """Build the previous / pillar / next wikilink lines for a book."""
     pillar_folder = _pillar_dirs()[book["pillar"]]
     pillar_label = book["pillar"].replace(";", ",")
     pillar_link = f"[[{pillar_folder}/README|{pillar_label}]]"
@@ -80,9 +82,9 @@ def navigation_for(book: dict[str, str], books: list[dict[str, str]]) -> dict[st
     prev = same[index - 1] if index > 0 else None
     nxt = same[index + 1] if index < len(same) - 1 else None
     return {
-        "prev": f"[[{prev['slug']}|{prev['title']}]]" if prev else pillar_link,
+        "prev": f"[[{prev['slug']}/README|{prev['title']}]]" if prev else pillar_link,
         "category": pillar_link,
-        "next": f"[[{nxt['slug']}|{nxt['title']}]]" if nxt else pillar_link,
+        "next": f"[[{nxt['slug']}/README|{nxt['title']}]]" if nxt else pillar_link,
     }
 
 
@@ -102,6 +104,22 @@ def _clean_markdown(text: str) -> str:
         if text.endswith("```"):
             text = text[:-3].rstrip()
     return text.rstrip() + "\n"
+
+
+def _unpack_files(raw_text: str, default_name: str = "README.md") -> dict[str, str]:
+    """Parse multi-file output formatted with === FILE: name.md === markers."""
+    pattern = re.compile(r"^===\s*FILE:\s*([^\s=]+)\s*===\s*$", re.MULTILINE)
+    matches = list(pattern.finditer(raw_text))
+    if not matches:
+        return {default_name: raw_text}
+    files: dict[str, str] = {}
+    for i, match in enumerate(matches):
+        filename = match.group(1).strip()
+        start = match.end()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(raw_text)
+        files[filename] = raw_text[start:end].strip()
+    return files
+
 
 
 
@@ -251,89 +269,65 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
                     return
                 say(f"        OFFLINE DRAFT: {exc}")
 
-    # ---- Step 2: generation ---------------------------------------------------
-    draft = ROOT / "automation" / "generated" / f"{book['slug']}.md"
-    draft.parent.mkdir(parents=True, exist_ok=True)
-    reused = False
-    if not args.force and draft.exists() and book["slug"] in draft.read_text(encoding="utf-8"):
-        content = draft.read_text(encoding="utf-8").rstrip() + "\n"
-        reused = True
-        say(f"  [2/4] draft found on disk from a previous run — REUSING ({_words(content)} words)")
-    else:
-        prompt_book = dict(book)
-        prompt_book["category"] = book["category"].replace(";", ",")
-        nav = navigation_for(book, all_books)
-        say(f"  [2/4] generating note (adaptive target {min_words}-{max_words} words [{length_label(min_words, max_words)}], "
-            f"graph context: {graph_context.count(chr(10)) + 1} lines)")
-        try:
-            content = generate_markdown(
-                settings,
-                build_prompt(
-                    prompt_book,
-                    source_bundle(sources) if sources else "No web sources available.",
-                    args.no_web,
-                    nav=nav,
-                    graph=graph_context,
-                    min_words=min_words,
-                    max_words=max_words,
-                ),
-                cache_key=f"book-{book['slug']}-{TEMPLATE_VERSION}",
-            )
-            content = _clean_markdown(content)
-            say(f"        generated {_words(content)} words")
-        except Exception as exc:
-            say(f"        GENERATION FAILED: {exc}")
-            say("        skipping this book; the run continues with the next one.")
-            return
-    if not reused:
-        draft.write_text(_clean_markdown(content), encoding="utf-8")
+    # ---- Step 2: Dual-Edition Generation ---------------------------------------
+    prompt_book = dict(book)
+    prompt_book["category"] = book["category"].replace(";", ",")
+    nav = navigation_for(book, all_books)
+    say(f"  [2/3] generating dual-edition summary (reading + audio TTS)")
 
-    # ---- Step 3: validation + self-repair -------------------------------------
-    errors = validate_note(draft, min_words, max_words)
-    say(f"  [3/4] validation: {'PASS (0 issues)' if not errors else f'{len(errors)} issue(s) found'}")
-    for error in errors:
-        say(f"        - {error}")
-    for attempt in range(1, 3):
-        if not errors:
-            break
-        say(f"        REPAIR pass {attempt}/2: sending draft + exact errors back to the model")
-        try:
-            content = _clean_markdown(
-                generate_markdown(
-                    settings,
-                    build_repair_prompt(
-                        book,
-                        draft.read_text(encoding="utf-8"),
-                        errors,
-                        min_words,
-                        max_words,
-                        graph=graph_context,
-                        nav=nav,
-                    ),
-                )
-            )
-        except Exception as exc:
-            say(f"        REPAIR FAILED: {exc}")
-            break
-        draft.write_text(content, encoding="utf-8")
-        errors = validate_note(draft, min_words, max_words)
-        say(f"        after repair: {'PASS' if not errors else f'{len(errors)} issue(s) remain'}")
-        for error in errors:
-            say(f"        - {error}")
-    if errors:
-        say(f"        QUALITY STOP: note still fails validation after 2 repair passes — no file written")
+    from .prompts import build_modular_reading_prompt, build_audio_tts_prompt
+
+    # 1. Modular Reading Edition
+    try:
+        reading_raw = generate_markdown(
+            settings,
+            build_modular_reading_prompt(
+                prompt_book,
+                source_bundle(sources) if sources else "No web sources available.",
+                args.no_web,
+                nav=nav,
+                graph=graph_context,
+                min_words=min_words,
+                max_words=max_words,
+            ),
+            cache_key=f"book-reading-{book['slug']}-{TEMPLATE_VERSION}",
+        )
+        files = _unpack_files(reading_raw, default_name="README.md")
+    except Exception as exc:
+        say(f"        GENERATION FAILED (reading edition): {exc}")
         return
 
-    # ---- Step 4: atomic write --------------------------------------------------
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    temporary = destination.with_suffix(".md.tmp")
-    temporary.write_text(_clean_markdown(content), encoding="utf-8")
-    temporary.replace(destination)
-    say(f"  [4/4] WROTE {destination.relative_to(ROOT)} ({_words(content)} words)")
+    # 2. Audio Listening Edition
+    try:
+        audio_raw = generate_markdown(
+            settings,
+            build_audio_tts_prompt(
+                prompt_book,
+                source_bundle(sources) if sources else "No web sources available.",
+            ),
+            cache_key=f"book-audio-{book['slug']}-{TEMPLATE_VERSION}",
+        )
+        files["Audio-Listening-Edition.md"] = audio_raw
+    except Exception as exc:
+        say(f"        AUDIO TTS NOTE: {exc} (saving reading edition)")
+
+    # ---- Step 3: Atomic Multi-File Write ---------------------------------------
+    destination.mkdir(parents=True, exist_ok=True)
+    total_words = 0
+    for filename, text in files.items():
+        clean = _clean_markdown(text)
+        out_file = destination / filename
+        tmp_file = destination / f"{filename}.tmp"
+        tmp_file.write_text(clean, encoding="utf-8")
+        tmp_file.replace(out_file)
+        total_words += _words(clean)
+
+    say(f"  [3/3] WROTE {len(files)} files to {destination.relative_to(ROOT)} ({total_words} total words across Reading & Audio editions)")
 
 
 
 def run() -> int:
+
     args = parse_args()
     settings = load_settings()
     if args.dry_run:
