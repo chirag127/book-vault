@@ -13,13 +13,15 @@ from typing import Iterable
 import httpx
 from openai import APIConnectionError, APIStatusError, OpenAI, RateLimitError
 
-from .config import ROOT, Settings
+from ..core.config import ROOT, Settings
+
 
 # HTTP statuses that indicate the provider is temporarily unavailable or
 # rate-limiting us; these are worth backing off and retrying.
 RETRYABLE_STATUS = {429, 500, 502, 503, 504}
 
-LLM_CACHE_DIR = ROOT / "automation" / "cache" / "llm"
+LLM_CACHE_DIR = ROOT / "cache" / "llm"
+
 
 
 class GenerationError(RuntimeError):

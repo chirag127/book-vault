@@ -5,7 +5,8 @@ import csv
 import re
 from pathlib import Path
 
-from .config import ROOT
+from ..core.config import ROOT
+
 
 
 def extract_flashcards_from_markdown(md_text: str) -> list[tuple[str, str]]:

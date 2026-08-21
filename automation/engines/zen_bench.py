@@ -22,7 +22,8 @@ import httpx
 
 from .config import ROOT
 
-CACHE = ROOT / "automation" / "cache" / "zen_models.json"
+CACHE = ROOT / "cache" / "zen_models.json"
+
 
 # Free (keyless) models advertised by the Zen endpoint, from GET /models.
 FREE_MODELS = [

@@ -26,8 +26,9 @@ from pathlib import Path
 
 from .config import ROOT
 
-CACHE_DIR = ROOT / "automation" / "cache"
+CACHE_DIR = ROOT / "cache"
 PROVIDERS_CACHE = CACHE_DIR / "g4f_providers.json"
+
 
 # Providers that generate media or speech, not text — never benchmarked.
 MEDIA_PROVIDERS = {

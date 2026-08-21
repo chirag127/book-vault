@@ -38,7 +38,8 @@ jobs:
 
       - name: Build Web Application Data
         run: |
-          python -m automation.build_site_data
+          python -m automation.exporters.build_site_data
+
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

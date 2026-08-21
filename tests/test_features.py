@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from automation.generate_canvases import generate_pillar_canvas
-from automation.vault_search import search_vault, _tokenize
-from automation.synthesize_audio import _clean_spoken_text
-
+from automation.exporters.generate_canvases import generate_pillar_canvas
+from automation.search.vault_search import search_vault, _tokenize
+from automation.audio.synthesize_audio import _clean_spoken_text
+from automation.exporters.export_anki import extract_flashcards_from_markdown
 
 
 def test_canvas_generation(tmp_path):
@@ -25,7 +25,6 @@ def test_canvas_generation(tmp_path):
     assert "nodes" in data
     assert "edges" in data
     assert len(data["nodes"]) >= 3
-
 
 
 def test_vault_search_tokenization():
@@ -58,8 +57,6 @@ Here is a paragraph with a [[Make-It-Stick|link]] and a [regular link](https://e
 
 
 def test_extract_flashcards():
-    from automation.export_anki import extract_flashcards_from_markdown
-
     sample_md = """
 ## Active Recall & Spaced Repetition Flashcards
 
@@ -74,4 +71,3 @@ A: Interleaving mixes related problem types during practice to train problem dis
     assert "retrieval practice" in cards[0][0]
     assert "cognitive reconstruction" in cards[0][1]
     assert "interleaving" in cards[1][0]
-

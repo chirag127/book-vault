@@ -15,11 +15,13 @@ __pycache__/
 *.tmp
 *.bak
 
-# Automation Temporary Caches & Run Artifacts
+# Persistent & Temporary Caches
+cache/
 automation/cache/
 automation/research/*.json
 automation/generated/
 automation/logs/
+
 automation/state/
 automation/.pipeline.lock
 .pipeline.lock

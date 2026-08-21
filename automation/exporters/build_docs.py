@@ -18,9 +18,10 @@ from __future__ import annotations
 from collections import defaultdict
 from pathlib import Path
 
-from .config import ROOT
-from .curriculum import PILLARS, slugify
-from .manifest import load_manifest
+from ..core.config import ROOT
+from ..curriculum.curriculum import PILLARS, slugify
+
+from ..core.manifest import load_manifest
 
 ALL_BOOKS_PATH = ROOT / "ALL-BOOKS.md"
 READING_ORDER_PATH = ROOT / "READING-ORDER.md"

@@ -4,8 +4,9 @@ import argparse
 import re
 from pathlib import Path
 
-from .config import ROOT
-from .manifest import load_manifest
+from ..core.config import ROOT
+from ..core.manifest import load_manifest
+
 
 
 def bundle_book_ebook(slug: str, output_dir: Path | None = None) -> Path | None:

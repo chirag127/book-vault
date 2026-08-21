@@ -7,9 +7,11 @@ from typing import Any
 from urllib.parse import quote_plus
 from urllib.request import Request, urlopen
 
-from .config import ROOT
+from ..core.config import ROOT
 
-SEARCH_CACHE_DIR = ROOT / "automation" / "cache" / "search"
+
+SEARCH_CACHE_DIR = ROOT / "cache" / "search"
+
 
 
 def _cache_path(backend: str, query: str) -> Path:

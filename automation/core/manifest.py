@@ -4,7 +4,8 @@ import csv
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+from .config import ROOT
+
 
 # All book notes live under the md/ folder at the repository root.
 MD_ROOT = "md"

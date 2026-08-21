@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from unittest.mock import patch
-from automation.config import load_settings, Settings
+from automation.core.config import Settings, load_settings
 
 
 def test_default_settings_loaded():

@@ -12,7 +12,8 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
-from .config import ROOT, Settings
+from ..core.config import ROOT, Settings
+
 
 
 
@@ -284,10 +285,12 @@ def _search(query: str, settings: Settings) -> list[dict[str, str]]:
     return found
 
 
-RESEARCH_CACHE_DIR = ROOT / "automation" / "cache" / "research"
+RESEARCH_CACHE_DIR = ROOT / "cache" / "research"
 
 
 def load_research(slug: str, max_age_hours: float = 72.0) -> list[Source] | None:
+
+
     """Load cached research dossier from disk if available and fresh."""
     path = RESEARCH_CACHE_DIR / f"{slug}.json"
     if not path.exists():
@@ -381,14 +384,21 @@ def search_book(book: dict[str, str], settings: Settings) -> list[Source]:
     return final_sources
 
 
-def save_research(path: Path, book: dict[str, str], sources: list[Source]) -> None:
+def save_research(slug_or_path: str | Path, sources: list[Source], book: dict[str, str] | None = None) -> Path:
+    if isinstance(slug_or_path, str):
+        path = RESEARCH_CACHE_DIR / f"{slug_or_path}.json"
+    else:
+        path = slug_or_path
     path.parent.mkdir(parents=True, exist_ok=True)
     data = {
+        "slug": path.stem,
         "researched_at": datetime.now(timezone.utc).isoformat(),
-        "book": book,
+        "book": book or {},
         "sources": [asdict(source) for source in sources],
     }
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return path
+
 
 
 def source_bundle(sources: list[Source]) -> str:

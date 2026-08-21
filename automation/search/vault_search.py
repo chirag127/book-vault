@@ -7,7 +7,8 @@ from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
-from .config import ROOT
+from ..core.config import ROOT
+
 
 
 @dataclass

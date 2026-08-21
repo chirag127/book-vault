@@ -3,9 +3,10 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from .config import ROOT
-from .manifest import category_folder, load_manifest
-from .taxonomy import PILLAR_DIRS
+from ..core.config import ROOT
+from ..core.manifest import category_folder, load_manifest
+from ..core.taxonomy import PILLAR_DIRS
+
 
 
 def build_web_data() -> dict:

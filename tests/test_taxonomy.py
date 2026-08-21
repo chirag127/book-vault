@@ -1,14 +1,13 @@
 from __future__ import annotations
 
-from automation.taxonomy import PILLAR_DIRS
+from automation.core.taxonomy import PILLAR_DIRS
 
 
 def test_pillar_dirs_count():
-    assert len(PILLAR_DIRS) == 12, "Expected exactly 12 master pillars."
+    assert len(PILLAR_DIRS) == 12
 
 
 def test_pillar_dirs_format():
     for name, folder in PILLAR_DIRS.items():
-        assert len(name) > 0
-        assert folder[:2].isdigit(), f"Folder {folder} must start with 2-digit number."
-        assert "-" in folder, f"Folder {folder} must use hyphenated slug."
+        assert folder.startswith(("01-", "02-", "03-", "04-", "05-", "06-", "07-", "08-", "09-", "10-", "11-", "12-"))
+        assert len(name) > 3

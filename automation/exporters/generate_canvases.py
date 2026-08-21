@@ -4,9 +4,10 @@ import json
 import uuid
 from pathlib import Path
 
-from .config import ROOT
-from .manifest import category_folder, load_manifest
-from .taxonomy import PILLAR_DIRS
+from ..core.config import ROOT
+from ..core.manifest import category_folder, load_manifest
+from ..core.taxonomy import PILLAR_DIRS
+
 
 
 def _node_id() -> str:
