@@ -253,9 +253,10 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
     for search_attempt in range(search_retries):
         try:
             sources = search_book(book, settings)
-            save_research(ROOT / "automation" / "research" / f"{book['slug']}.json", book, sources)
+            save_research(ROOT / "automation" / "research" / f"{book['slug']}.json", sources, book)
             say(f"        sources kept: {len(sources)} (deduplicated, publisher/author sites first)")
             break
+
         except Exception as exc:  # retry the whole research block
             if search_attempt < search_retries - 1:
                 import time
