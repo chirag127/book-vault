@@ -194,6 +194,12 @@
   },
   "active": "f035363d78ede9d2",
   "lastOpenFiles": [
+    "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
+    "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/Audio-Listening-Edition.md",
+    "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/02-Key-Concepts-and-Chapters.md",
+    "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/01-Core-Thesis-and-Mental-Models.md",
+    "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick",
+    "automation/cache/llm/book-audio-Make-It-Stick-2026-08-21-pillars-v1.json",
     "automation/__pycache__/export_anki.cpython-311.pyc",
     "automation/export_ebook.py",
     "automation/export_anki.py",
@@ -202,9 +208,6 @@
     "site/data",
     "automation/__pycache__/build_site_data.cpython-311.pyc",
     "site/index.html",
-    "site/app.js",
-    "site/styles.css",
-    "site",
     "md/12-Philosophy-Ethics-and-Human-Society/12-Philosophy-Ethics-and-Human-Society.canvas",
     "md/11-History-Geopolitics-and-Civilization/11-History-Geopolitics-and-Civilization.canvas",
     "md/10-Natural-Sciences-Health-and-Biology/10-Natural-Sciences-Health-and-Biology.canvas",
@@ -237,9 +240,6 @@
     "md/11-History-Geopolitics-and-Civilization/README.md",
     "md/10-Natural-Sciences-Health-and-Biology/06-Exercise-Physiology-Movement/README.md",
     "md/10-Natural-Sciences-Health-and-Biology/05-Sleep-Recovery-Longevity/README.md",
-    "md/10-Natural-Sciences-Health-and-Biology/04-Nutrition-Metabolic-Health/README.md",
-    "md/10-Natural-Sciences-Health-and-Biology/03-Human-Physiology-Metabolism/README.md",
-    "md/10-Natural-Sciences-Health-and-Biology/02-Evolutionary-Biology-Genetics/README.md",
     "_assets/book-vault-icon.svg"
   ]
 }
