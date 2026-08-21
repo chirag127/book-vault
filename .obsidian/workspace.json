@@ -194,6 +194,7 @@
   },
   "active": "f035363d78ede9d2",
   "lastOpenFiles": [
+    "site/data/vault_data.js",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/Audio-Listening-Edition.mp3",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/Audio-Listening-Edition.md",
@@ -208,7 +209,6 @@
     "site/data/vault_data.json",
     "site/data",
     "automation/__pycache__/build_site_data.cpython-311.pyc",
-    "site/index.html",
     "md/12-Philosophy-Ethics-and-Human-Society/12-Philosophy-Ethics-and-Human-Society.canvas",
     "md/11-History-Geopolitics-and-Civilization/11-History-Geopolitics-and-Civilization.canvas",
     "md/10-Natural-Sciences-Health-and-Biology/10-Natural-Sciences-Health-and-Biology.canvas",

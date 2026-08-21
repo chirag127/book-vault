@@ -75,10 +75,15 @@ def build_web_data() -> dict:
         "books": catalog,
     }
 
-    out_file = site_data_dir / "vault_data.json"
-    out_file.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"[site] Exported {len(catalog)} books to {out_file.relative_to(ROOT)} ({data['generated_books']} generated)")
+    out_json = site_data_dir / "vault_data.json"
+    out_json.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    out_js = site_data_dir / "vault_data.js"
+    out_js.write_text("window.VAULT_DATA = " + json.dumps(data, ensure_ascii=False) + ";\n", encoding="utf-8")
+
+    print(f"[site] Exported {len(catalog)} books to {out_json.relative_to(ROOT)} and {out_js.relative_to(ROOT)} ({data['generated_books']} generated)")
     return data
+
 
 
 if __name__ == "__main__":

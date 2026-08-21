@@ -30,8 +30,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function loadVaultData() {
+  if (window.VAULT_DATA && window.VAULT_DATA.books) {
+    vaultData = window.VAULT_DATA;
+    renderStats();
+    renderPillarTabs();
+    renderBooks();
+    buildGraphData();
+    return;
+  }
+
   try {
-    const res = await fetch("data/vault_data.json");
+    const res = await fetch("./data/vault_data.json");
     vaultData = await res.json();
     renderStats();
     renderPillarTabs();
@@ -47,6 +56,7 @@ async function loadVaultData() {
     `;
   }
 }
+
 
 function renderStats() {
   if (!vaultData) return;
