@@ -86,9 +86,16 @@ Requirements:
 
 Quality Guidelines:
 - High-signal density, no fluff, no repetitive filler.
+- STRICT MARKDOWNLINT COMPLIANCE: All generated markdown must conform to standard markdownlint rules:
+  1. Strict single `#` top-level heading followed by proper subheadings (`##`, `###`) with no skipped heading levels (MD001).
+  2. Exactly one blank line before and after headings, lists, tables, callouts, and blockquotes (MD022/MD031/MD032).
+  3. All fenced code blocks must specify a language identifier (e.g. `dataview`, `markdown`, `python`, `text`) (MD040).
+  4. No trailing spaces at the end of lines (MD009) and single trailing newline at end of file (MD047).
+  5. Lists must use consistent bullet markers (`-`) with proper indentation.
 - Use Callouts (`> [!TIP]`, `> [!IMPORTANT]`, `> [!QUOTE]`), Tables, Checklists, and LaTeX where relevant.
 - Target total word count across all files: {min_words} to {max_words} words.
 """
+
     return [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user},

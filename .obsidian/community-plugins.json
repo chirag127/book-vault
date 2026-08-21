@@ -1,10 +1,14 @@
 [
-  "hardcover-sync",
+  "obsidian-excalidraw-plugin",
   "dataview",
-  "aloud-tts",
+  "obsidian-book-search-plugin",
+  "templater-obsidian",
   "obsidian-spaced-repetition",
   "omnisearch",
-  "obsidian-book-search-plugin",
-  "obsidian-excalidraw-plugin",
-  "templater-obsidian"
+  "aloud-tts",
+  "local-voiceover",
+  "obsidian-mind-map",
+  "obsidian-git",
+  "smart-connections",
+  "obsidian-linter"
 ]

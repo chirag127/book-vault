@@ -1,0 +1,15 @@
+{
+  "highlightSpokenText": true,
+  "speed": 2,
+  "variation": 0.667,
+  "seed": 0,
+  "markdownNormalization": "default",
+  "markdownRules": {
+    "headings": true,
+    "emphasis": true,
+    "links": true,
+    "listsAndQuotes": true,
+    "code": true,
+    "strikethroughAndRules": true
+  }
+}

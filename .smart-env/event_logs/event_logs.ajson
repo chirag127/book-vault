@@ -1,0 +1,4 @@
+
+"event_logs:source:initial_scan_started": {"key":"source:initial_scan_started","ct":1,"first_at":1787331830736,"last_at":1787331830736,"class_name":"EventLog","event_sources":{"init_items":1}},
+"event_logs:settings:changed": {"key":"settings:changed","ct":11,"first_at":1787331830742,"last_at":1787331831148,"class_name":"EventLog"},
+"event_logs:source:initial_scan_completed": {"key":"source:initial_scan_completed","ct":1,"first_at":1787331831147,"last_at":1787331831147,"class_name":"EventLog","event_sources":{"init_items":1}},

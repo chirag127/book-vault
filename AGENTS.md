@@ -29,9 +29,11 @@ Pipeline: manifest.csv → research.py (4 search backends) → generate.py (Zen 
 
 ## Coding Standards
 - Python: `from __future__ import annotations` on every file
-- All new settings go in `automation/config.py` Settings dataclass + `.env`
+- Markdown: All `.md` files (book summaries, MOCs, docs) MUST strictly follow markdownlint rules (standard heading hierarchy, proper blank lines around blocks, fenced code blocks with language indicators, correct list formatting, no trailing whitespace, single trailing newline).
+- All new settings go in `automation/core/config.py` Settings dataclass + `.env`
 - Never use `pickle`, `shelve`, or global mutable state
 - Tests in `tests/` using `pytest` + `respx` for HTTP mocking
+
 
 ## Do Not
 - Never edit `manifest.csv` by hand (use `python -m automation.curriculum`)
