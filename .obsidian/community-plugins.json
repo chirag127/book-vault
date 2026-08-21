@@ -1,6 +1,10 @@
 [
-  "obsidian-excalidraw-plugin",
   "dataview",
+  "obsidian-kanban",
+  "spaced-repetition",
+  "omnisearch",
   "obsidian-book-search-plugin",
-  "templater-obsidian"
+  "obsidian-excalidraw-plugin",
+  "templater-obsidian",
+  "smart-connections"
 ]

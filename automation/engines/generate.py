@@ -236,9 +236,10 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
         say(f"  SKIP: already complete -> {destination.relative_to(ROOT)}")
         return
 
-    from .graph import format_graph_context
+    from ..core.graph import format_graph_context
 
     graph_context = format_graph_context(book, all_books, rel_map=rel_map)
+
 
     # Content-adaptive length: the summary target follows the book's own
     # profile (book type, priority, difficulty, pillar) instead of one
@@ -360,8 +361,9 @@ def run() -> int:
         print("=" * 70, flush=True)
 
         all_manifest_books = load_manifest(args.manifest)
-        from .graph import related_map
+        from ..core.graph import related_map
         print("  precomputing knowledge-graph map (outgoing + incoming links)...", flush=True)
+
         rel_map = related_map(all_manifest_books)
         print(f"  graph ready: {sum(len(v) for v in rel_map.values())} total edges across {len(rel_map)} books", flush=True)
 
