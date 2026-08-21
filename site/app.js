@@ -227,12 +227,35 @@ function openReader(slug) {
     }
   }
 
+  // Render External Book Trackers
+  const trackersContainer = document.getElementById("reader-trackers-list");
+
+  if (trackersContainer) {
+    const qQuery = encodeURIComponent(`${book.title} ${book.author}`);
+    const trackers = book.external_trackers || {
+      openlibrary: `https://openlibrary.org/search?q=${qQuery}`,
+      goodreads: `https://www.goodreads.com/search?q=${qQuery}`,
+      google_books: `https://www.google.com/search?tbm=bks&q=${qQuery}`,
+      hardcover: `https://hardcover.app/search?q=${qQuery}`,
+      storygraph: `https://app.thestorygraph.com/browse?search_term=${qQuery}`,
+    };
+
+    trackersContainer.innerHTML = `
+      <a href="${trackers.openlibrary}" target="_blank" class="tag-pill" style="color: var(--c-cyan); text-decoration: none;" title="Open on Open Library">🏛️ OpenLibrary</a>
+      <a href="${trackers.goodreads}" target="_blank" class="tag-pill" style="color: var(--c-amber); text-decoration: none;" title="Open on Goodreads">⭐ Goodreads</a>
+      <a href="${trackers.hardcover}" target="_blank" class="tag-pill" style="color: var(--c-indigo); text-decoration: none;" title="Open on Hardcover.app">📚 Hardcover</a>
+      <a href="${trackers.storygraph}" target="_blank" class="tag-pill" style="color: var(--c-emerald); text-decoration: none;" title="Open on The StoryGraph">📊 StoryGraph</a>
+      <a href="${trackers.google_books}" target="_blank" class="tag-pill" style="color: var(--c-rose); text-decoration: none;" title="Open on Google Books">📖 Google Books</a>
+    `;
+  }
+
   // Render Article Content
   renderChapterContent(0);
 
   document.getElementById("reader-modal").classList.add("active");
   document.body.style.overflow = "hidden";
 }
+
 
 function downloadCurrentBookMarkdown() {
   if (!currentActiveBook || !currentActiveBook.chapters || currentActiveBook.chapters.length === 0) return;

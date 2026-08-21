@@ -72,6 +72,7 @@ Requirements:
    - *By {book['author']}*
    - Executive Overview & Core Mental Model (high-level synthesis).
    - Master Table of Contents with Markdown links to EVERY modular chapter file you decide to create (e.g. `./01-Mental-Models.md`, `./02-Cognitive-Biases.md`...) + link to `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]`.
+   - `## 📚 External References & Book Trackers` with markdown links to Open Library, Goodreads, Google Books, Hardcover, and StoryGraph search queries for this book.
    - {navigation}
 
 2. Generate 2 to 6 Contextual Chapter/Concept Files (The Spokes):

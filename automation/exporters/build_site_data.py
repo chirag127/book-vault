@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import urllib.parse
 from pathlib import Path
+
 
 from ..core.config import ROOT
 from ..core.manifest import category_folder, load_manifest
@@ -59,6 +61,15 @@ def build_web_data() -> dict:
         ]
 
 
+        q_query = urllib.parse.quote_plus(f"{b['title']} {b['author']}")
+        external_trackers = {
+            "openlibrary": f"https://openlibrary.org/search?q={q_query}",
+            "goodreads": f"https://www.goodreads.com/search?q={q_query}",
+            "google_books": f"https://www.google.com/search?tbm=bks&q={q_query}",
+            "hardcover": f"https://hardcover.app/search?q={q_query}",
+            "storygraph": f"https://app.thestorygraph.com/browse?search_term={q_query}",
+        }
+
         catalog.append({
             "number": b.get("number", "000"),
             "title": b["title"],
@@ -76,7 +87,9 @@ def build_web_data() -> dict:
             "audio_content": audio_content,
             "chapters": chapters,
             "recommendations": recs,
+            "external_trackers": external_trackers,
         })
+
 
 
     data = {
