@@ -194,17 +194,18 @@
   },
   "active": "f035363d78ede9d2",
   "lastOpenFiles": [
+    "automation/core/__pycache__/recommendations.cpython-311.pyc",
+    "automation/core/recommendations.py",
+    "MOCs/READING-KANBAN.md",
+    "automation/exporters/__pycache__/generate_kanban.cpython-311.pyc",
+    "automation/exporters/generate_kanban.py",
+    "site/sw.js",
+    "site/manifest.json",
     "cache/research/test-dossier-cache-roundtrip-2.json",
     "cache/research",
     "cache/search/wikipedia_Make_It_Stick_Unique_Query_2.json",
     "cache/search/crossref_Roediger_Retrieval_Practice_Unique_Query_2.json",
     "cache/search/openlibrary_Make_It_Stick_Brown_Unique_Query_2.json",
-    "cache/search/test_backend_unit_test_query_cache_isolated_2.json",
-    "cache/search",
-    "automation/cache/search/crossref_Roediger_Retrieval_Practice_Unique_Query.json",
-    "automation/cache/search/test_backend_unit_test_query_cache_isolated.json",
-    "automation/cache/search",
-    "automation/cache",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/Audio-Listening-Edition.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/02-Key-Concepts-and-Chapters.md",
@@ -239,7 +240,6 @@
     "md/11-History-Geopolitics-and-Civilization/02-Regional-National-Histories/README.md",
     "md/11-History-Geopolitics-and-Civilization/01-World-History-Macro-Civilizations/README.md",
     "md/11-History-Geopolitics-and-Civilization/README.md",
-    "md/10-Natural-Sciences-Health-and-Biology/06-Exercise-Physiology-Movement/README.md",
     "_assets/book-vault-icon.svg"
   ]
 }

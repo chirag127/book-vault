@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Universal Book Vault — State-of-the-Art Knowledge Explorer</title>
+  <meta name="theme-color" content="#00f2fe">
+  <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="styles.css">
@@ -12,7 +14,7 @@
 
   <!-- Top Glass Header -->
   <header>
-    <div class="brand-group" onclick="location.reload()">
+    <div class="brand-group" onclick="location.reload()" style="cursor: pointer;">
       <div class="brand-badge">🏛️</div>
       <div class="brand-text">
         <h1>Universal Book Vault</h1>
@@ -26,6 +28,8 @@
         <input type="text" id="search-input" class="search-box" placeholder="Search 775 books, authors, concepts...">
         <span class="search-kbd">⌘K</span>
       </div>
+      <button id="btn-srs-quiz" class="btn-utility" onclick="openSrsQuiz()" title="Open Daily Spaced Repetition Flashcards">🧠 Recall Quiz</button>
+      <button id="btn-export-data" class="btn-utility" onclick="exportUserProgress()" title="Export Personal Notes & Reading Progress">💾 Export</button>
       <button id="theme-toggle" class="btn-utility" title="Toggle Light / Dark Mode">☀️ Theme</button>
     </div>
   </header>
@@ -63,60 +67,55 @@
       </div>
     </section>
 
-    <!-- Toolbar Controls (Views & Secondary Filters) -->
-    <div class="controls-toolbar">
-      <!-- View Mode Tabs -->
-      <div class="view-mode-tabs">
-        <button id="btn-view-grid" class="btn-view-tab active" onclick="toggleView('grid')">
-          <span>📚</span> Grid Cards
-        </button>
-        <button id="btn-view-graph" class="btn-view-tab" onclick="toggleView('graph')">
-          <span>🕸️</span> 2D Knowledge Graph
-        </button>
+    <!-- Pillar Filter Tabs -->
+    <nav class="pillar-tabs-container" id="pillar-tabs">
+      <button class="pillar-pill active" data-pillar="all">✨ All Knowledge Pillars</button>
+      <!-- Populated dynamically via JavaScript -->
+    </nav>
+
+    <!-- View Modes & Secondary Filters Bar -->
+    <div class="view-control-bar">
+      <div class="view-toggle-group">
+        <button id="btn-view-grid" class="btn-view-toggle active" onclick="setViewMode('grid')">📚 Grid Cards</button>
+        <button id="btn-view-graph" class="btn-view-toggle" onclick="setViewMode('graph')">🕸️ 2D Knowledge Graph</button>
       </div>
 
-      <!-- Secondary Filters -->
-      <div class="secondary-filters" style="margin-bottom: 0;">
-        <select class="filter-select" onchange="filterDifficulty(this.value)">
-          <option value="ALL">🎯 All Difficulties</option>
+      <div class="filter-select-group">
+        <select id="filter-difficulty" class="filter-select" onchange="applyFilters()">
+          <option value="all">🎯 All Difficulties</option>
           <option value="Introductory">🟢 Introductory</option>
           <option value="Intermediate">🟡 Intermediate</option>
           <option value="Advanced">🔴 Advanced</option>
         </select>
 
-        <select class="filter-select" onchange="filterStatus(this.value)">
-          <option value="ALL">🔖 All Reading States</option>
+        <select id="filter-status" class="filter-select" onchange="applyFilters()">
+          <option value="all">🔖 All Reading States</option>
           <option value="Completed">✅ Completed</option>
-          <option value="Reading">📖 Reading</option>
-          <option value="Want to Read">🎯 Want to Read</option>
-          <option value="Unread">⏳ Unread</option>
+          <option value="Reading">📖 Currently Reading</option>
+          <option value="Want to Read">📌 Want to Read</option>
+          <option value="Unread">⚪ Unread</option>
         </select>
       </div>
     </div>
 
-    <!-- 12-Pillars Horizontal Pill Bar -->
-    <nav id="pillar-tabs" class="filter-pills-bar">
-      <!-- Injected dynamically via JavaScript -->
-    </nav>
-
-    <!-- 2D Force-Directed Knowledge Graph Viewport -->
-    <div id="graph-viewport" class="graph-viewport">
-      <canvas id="graphCanvas"></canvas>
-      <div class="graph-overlay-info">
-        <h4 style="font-size: 0.9rem; color: var(--c-cyan); margin-bottom: 0.25rem;">Interactive Physics Graph</h4>
-        <p style="font-size: 0.78rem; color: var(--text-secondary);">Simulating knowledge clusters and topic bridges across the 12 master pillars in real-time.</p>
+    <!-- 2D Physics Knowledge Graph View -->
+    <section id="graph-view-container" class="graph-view-container">
+      <div class="graph-hud">
+        <h3>Interactive Physics Graph</h3>
+        <p>Simulating knowledge clusters and topic bridges across the 12 master pillars in real-time.</p>
       </div>
-    </div>
+      <canvas id="graph-canvas"></canvas>
+    </section>
 
-    <!-- Books Grid Viewport -->
+    <!-- Library Book Cards Grid -->
     <section id="books-grid" class="books-grid">
       <!-- Injected dynamically via JavaScript -->
     </section>
 
   </main>
 
-  <!-- Modal Chapter Reader & Split-View Window -->
-  <div id="reader-modal" class="modal-backdrop">
+  <!-- Split-View Modal Reader -->
+  <div id="reader-modal" class="reader-modal-overlay">
     <div class="reader-window">
       
       <!-- Left Sidebar Table of Contents -->
@@ -125,9 +124,30 @@
           <h3 id="modal-book-title" class="reader-book-title">Book Title</h3>
           <p id="modal-book-author" class="reader-book-author">Author</p>
         </div>
+        
+        <!-- Personal Rating Widget -->
+        <div class="reader-rating-box">
+          <label style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 700;">My Rating</label>
+          <div id="star-rating-container" class="star-rating">
+            <span class="star" data-val="1" onclick="setBookRating(1)">★</span>
+            <span class="star" data-val="2" onclick="setBookRating(2)">★</span>
+            <span class="star" data-val="3" onclick="setBookRating(3)">★</span>
+            <span class="star" data-val="4" onclick="setBookRating(4)">★</span>
+            <span class="star" data-val="5" onclick="setBookRating(5)">★</span>
+          </div>
+        </div>
+
         <nav id="reader-sidebar-links" class="toc-nav-list">
           <!-- Injected dynamically via JavaScript -->
         </nav>
+
+        <!-- Bidirectional Backlinks & Connected Notes -->
+        <div id="reader-backlinks-box" style="padding: 1rem; border-top: 1px solid var(--border-subtle); margin-top: auto;">
+          <h4 style="font-size: 0.8rem; color: var(--c-cyan); text-transform: uppercase; margin-bottom: 0.5rem;">🔗 Connected Ideas</h4>
+          <div id="reader-backlinks-list" style="display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.8rem; color: var(--text-secondary);">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
       </aside>
 
       <!-- Main Reader Viewport -->
@@ -138,6 +158,8 @@
             <button class="btn-typo" onclick="adjustFontSize(-0.08)" title="Decrease Text Size">A-</button>
             <button class="btn-typo" onclick="adjustFontSize(0.08)" title="Increase Text Size">A+</button>
             <button id="btn-font-serif" class="btn-typo" onclick="toggleFontSerif()" title="Toggle Serif / Sans Font">Serif</button>
+            <button class="btn-utility" onclick="downloadCurrentBookMarkdown()" title="Download Obsidian-Ready Note">📥 Export .md</button>
+            <button class="btn-utility" onclick="captureSelectedQuote()" title="Capture Highlighted Quote">💡 Highlight</button>
           </div>
           <button class="btn-utility" onclick="closeReader()" title="Close Reader (Esc)">✖ Close</button>
         </div>
@@ -148,6 +170,43 @@
         </article>
       </section>
 
+
+    </div>
+  </div>
+
+  <!-- Spaced Repetition SRS Flashcard Review Modal -->
+  <div id="srs-modal" class="reader-modal-overlay">
+    <div class="reader-window" style="max-width: 800px; height: 580px; flex-direction: column; padding: 2.5rem; justify-content: space-between;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="font-size: 1.6rem;">🧠</span>
+          <div>
+            <h3 style="font-size: 1.2rem; font-weight: 800;">Active Recall & Spaced Repetition</h3>
+            <p id="srs-card-progress" style="font-size: 0.8rem; color: var(--text-secondary);">Card 1 of 5</p>
+          </div>
+        </div>
+        <button class="btn-utility" onclick="closeSrsModal()">✖ Close</button>
+      </div>
+
+      <div id="srs-card-box" class="flashcard" style="height: 280px; width: 100%; margin: 1rem 0;" onclick="flipSrsCard()">
+        <div id="srs-card-inner" class="flashcard-inner">
+          <div id="srs-card-front" class="flashcard-front" style="padding: 2rem;">
+            <p style="font-size: 0.8rem; color: var(--c-cyan); font-weight: 700; margin-bottom: 0.5rem;">QUESTION (Click to reveal answer)</p>
+            <h4 id="srs-card-q" style="font-size: 1.15rem; line-height: 1.5;">Why is retrieval practice superior to passive rereading?</h4>
+          </div>
+          <div id="srs-card-back" class="flashcard-back" style="padding: 2rem;">
+            <p style="font-size: 0.8rem; color: var(--c-emerald); font-weight: 700; margin-bottom: 0.5rem;">ANSWER</p>
+            <p id="srs-card-a" style="font-size: 1.05rem; line-height: 1.6;">Retrieval practice forces neural reconstruction, strengthening synaptic consolidation far more than recognition.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="srs-controls" style="display: flex; gap: 0.75rem; justify-content: center;">
+        <button class="btn-utility" style="border-color: var(--c-rose); color: var(--c-rose);" onclick="gradeSrsCard(1)">🔴 Again (1d)</button>
+        <button class="btn-utility" style="border-color: var(--c-amber); color: var(--c-amber);" onclick="gradeSrsCard(2)">🟡 Hard (3d)</button>
+        <button class="btn-utility" style="border-color: var(--c-cyan); color: var(--c-cyan);" onclick="gradeSrsCard(3)">🔵 Good (7d)</button>
+        <button class="btn-utility" style="border-color: var(--c-emerald); color: var(--c-emerald);" onclick="gradeSrsCard(4)">🟢 Easy (14d)</button>
+      </div>
     </div>
   </div>
 
@@ -176,4 +235,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-

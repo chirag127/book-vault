@@ -1,20 +1,34 @@
 /**
- * Universal Book Vault — State-of-the-Art Interactive Client
+ * Universal Book Vault — Core Application Engine & Knowledge Visualizer
  */
 
+// Register PWA Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch((err) => console.log('SW registration error:', err));
+  });
+}
+
+// Global Application State
 let vaultData = null;
-let currentPillar = "ALL";
-let currentDifficulty = "ALL";
-let currentStatusFilter = "ALL";
-let currentBook = null;
+let currentPillar = "all";
+let currentSearchQuery = "";
+let currentDifficulty = "all";
+let currentStatusFilter = "all";
+let currentViewMode = "grid";
+
+// Reader State
+let currentActiveBook = null;
 let currentChapterIndex = 0;
-let synth = window.speechSynthesis;
-let speechUtterance = null;
-let isPlaying = false;
-let playbackRate = 1.0;
 let readerFontSize = 1.08;
 let readerFontFamily = "sans";
 let userReadingStatus = JSON.parse(localStorage.getItem("user-reading-status") || "{}");
+let userBookRatings = JSON.parse(localStorage.getItem("user-book-ratings") || "{}");
+let userSrsCards = JSON.parse(localStorage.getItem("user-srs-deck") || "[]");
+
+// SRS Quiz State
+let srsQuizCards = [];
+let srsCurrentIndex = 0;
 
 // Knowledge Graph Node Map
 let graphNodes = [];
@@ -36,6 +50,7 @@ async function loadVaultData() {
     renderPillarTabs();
     renderBooks();
     buildGraphData();
+    extractAllFlashcardsToSrs();
     return;
   }
 
@@ -46,355 +61,443 @@ async function loadVaultData() {
     renderPillarTabs();
     renderBooks();
     buildGraphData();
+    extractAllFlashcardsToSrs();
   } catch (err) {
     console.error("Failed to load vault data:", err);
     document.getElementById("books-grid").innerHTML = `
       <div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--text-muted);">
         <h2>⚠️ Vault data bundle missing</h2>
-        <p style="margin-top: 0.5rem;">Run <code>python -m automation.build_site_data</code> to compile the library.</p>
+        <p style="margin-top: 0.5rem;">Run <code>python -m automation.exporters.build_site_data</code> to compile the library.</p>
       </div>
     `;
   }
 }
 
-
 function renderStats() {
   if (!vaultData) return;
   document.getElementById("stat-total").textContent = vaultData.total_books;
   document.getElementById("stat-pillars").textContent = Object.keys(vaultData.pillars).length;
-  document.getElementById("stat-generated").textContent = vaultData.generated_books;
   
   const completedCount = Object.values(userReadingStatus).filter(s => s === "Completed").length;
   document.getElementById("stat-user-read").textContent = completedCount;
 }
 
 function renderPillarTabs() {
+  if (!vaultData) return;
   const container = document.getElementById("pillar-tabs");
-  container.innerHTML = `<button class="pill-filter active" data-pillar="ALL">🏛️ All 12 Pillars</button>`;
-
-  for (const [name, folder] of Object.entries(vaultData.pillars)) {
+  container.innerHTML = `<button class="pillar-pill ${currentPillar === 'all' ? 'active' : ''}" data-pillar="all">✨ All Knowledge Pillars</button>`;
+  
+  for (const [pillarName, folder] of Object.entries(vaultData.pillars)) {
     const btn = document.createElement("button");
-    btn.className = "pill-filter";
-    btn.dataset.pillar = name;
-    btn.textContent = name;
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".pill-filter").forEach(t => t.classList.remove("active"));
+    btn.className = `pillar-pill ${currentPillar === pillarName ? 'active' : ''}`;
+    btn.dataset.pillar = pillarName;
+    btn.textContent = pillarName;
+    btn.onclick = () => {
+      currentPillar = pillarName;
+      document.querySelectorAll(".pillar-pill").forEach(p => p.classList.remove("active"));
       btn.classList.add("active");
-      currentPillar = name;
-      renderBooks();
-    });
+      applyFilters();
+    };
     container.appendChild(btn);
   }
+}
 
-  container.querySelector('[data-pillar="ALL"]').addEventListener("click", (e) => {
-    document.querySelectorAll(".pill-filter").forEach(t => t.classList.remove("active"));
-    e.target.classList.add("active");
-    currentPillar = "ALL";
-    renderBooks();
-  });
+function applyFilters() {
+  currentDifficulty = document.getElementById("filter-difficulty").value;
+  currentStatusFilter = document.getElementById("filter-status").value;
+  renderBooks();
 }
 
 function renderBooks() {
+  if (!vaultData) return;
   const grid = document.getElementById("books-grid");
-  const query = document.getElementById("search-input").value.toLowerCase().trim();
+  grid.innerHTML = "";
 
-  let filtered = vaultData.books.filter(b => {
-    const matchesPillar = currentPillar === "ALL" || b.pillar === currentPillar;
-    const matchesDiff = currentDifficulty === "ALL" || b.difficulty === currentDifficulty;
-    const userStatus = userReadingStatus[b.slug] || "Unread";
-    const matchesStatus = currentStatusFilter === "ALL" || userStatus === currentStatusFilter;
-    const matchesQuery = !query || 
-      b.title.toLowerCase().includes(query) || 
-      b.author.toLowerCase().includes(query) || 
-      b.category.toLowerCase().includes(query) ||
-      b.slug.toLowerCase().includes(query);
-    return matchesPillar && matchesDiff && matchesStatus && matchesQuery;
+  const query = currentSearchQuery.toLowerCase().trim();
+  const filtered = vaultData.books.filter(b => {
+    // Pillar Filter
+    if (currentPillar !== "all" && b.pillar !== currentPillar) return false;
+    // Difficulty Filter
+    if (currentDifficulty !== "all" && b.difficulty !== currentDifficulty) return false;
+    // Reading Status Filter
+    const status = userReadingStatus[b.slug] || "Unread";
+    if (currentStatusFilter !== "all" && status !== currentStatusFilter) return false;
+    // Search Query Filter
+    if (query) {
+      const matchTitle = b.title.toLowerCase().includes(query);
+      const matchAuthor = b.author.toLowerCase().includes(query);
+      const matchCategory = b.category.toLowerCase().includes(query);
+      const matchSubcategory = (b.subcategory || "").toLowerCase().includes(query);
+      if (!matchTitle && !matchAuthor && !matchCategory && !matchSubcategory) return false;
+    }
+    return true;
   });
 
   if (filtered.length === 0) {
     grid.innerHTML = `
       <div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--text-muted);">
-        <h3>No books found matching your current filters.</h3>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Try adjusting your search query or pillar selection.</p>
+        <p style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</p>
+        <h3>No books found matching your filter criteria</h3>
+        <p style="margin-top: 0.25rem;">Try resetting search terms or difficulty filters.</p>
       </div>
     `;
     return;
   }
 
-  grid.innerHTML = filtered.map(b => {
+  filtered.forEach(b => {
+    const card = document.createElement("div");
+    card.className = "book-card";
     const status = userReadingStatus[b.slug] || "Unread";
-    const wordEst = b.chapters ? b.chapters.reduce((acc, c) => acc + (c.content ? c.content.split(/\s+/).length : 0), 0) : 2500;
-    const readingTime = Math.max(8, Math.round(wordEst / 220));
+    const rating = userBookRatings[b.slug] || 0;
+    const ratingStars = rating > 0 ? "★".repeat(rating) + "☆".repeat(5 - rating) : "";
 
-    return `
-    <div class="book-card">
+    const recsHtml = b.recommendations && b.recommendations.length > 0 ? `
+      <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem;">
+        <span style="color: var(--c-cyan);">Related:</span> ${b.recommendations.map(r => r.title).join(", ")}
+      </div>
+    ` : "";
+
+    card.innerHTML = `
       <div>
         <div class="book-top-bar">
           <span class="book-num-badge">#${b.number}</span>
-          <span class="book-pillar-tag">${b.pillar.split(",")[0]}</span>
+          <span class="book-pillar-tag">${b.pillar}</span>
         </div>
-        
         <h3 class="book-card-title">${b.title}</h3>
-        <div class="book-card-author">By ${b.author} (${b.published})</div>
-
+        <p class="book-card-author">By ${b.author} ${b.published ? `(${b.published})` : ''}</p>
         <div class="book-tags-row">
-          <span class="tag-pill diff-${b.difficulty}">${b.difficulty}</span>
           <span class="tag-pill">${b.category}</span>
-          <span class="tag-pill">⏱️ ${readingTime} min read</span>
-          <span class="tag-pill" style="color: ${b.status === 'Generated' ? 'var(--c-emerald)' : 'var(--text-muted)'}">${b.status}</span>
+          <span class="tag-pill diff-${b.difficulty}">${b.difficulty}</span>
+          ${ratingStars ? `<span class="tag-pill" style="color: var(--c-amber);">${ratingStars}</span>` : ''}
         </div>
+        ${recsHtml}
       </div>
 
-      <div>
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Status:</span>
-          <select class="user-status-btn" onchange="updateBookStatus('${b.slug}', this.value)">
-            <option value="Unread" ${status === 'Unread' ? 'selected' : ''}>⏳ Unread</option>
-            <option value="Want to Read" ${status === 'Want to Read' ? 'selected' : ''}>🎯 Want to Read</option>
-            <option value="Reading" ${status === 'Reading' ? 'selected' : ''}>📖 Reading</option>
-            <option value="Completed" ${status === 'Completed' ? 'selected' : ''}>✅ Completed</option>
-          </select>
-        </div>
-
-        <div class="card-footer">
+      <div class="card-footer">
+        ${b.status === "Generated" ? `
           <button class="btn-card-read" onclick="openReader('${b.slug}')">📖 Read Summary</button>
-          <button class="btn-card-audio" onclick="playAudioEdition('${b.slug}')" title="Listen with Audio TTS">🎧 Audio</button>
-        </div>
+          ${b.has_audio ? `<button class="btn-card-audio" onclick="playBookAudio('${b.slug}')" title="Listen Audio Narration">🎧</button>` : ''}
+        ` : `
+          <button class="btn-card-read" style="background: var(--bg-surface-raised); color: var(--text-muted); cursor: not-allowed;" title="Book queued for autonomous generation">⏳ In Curriculum</button>
+        `}
       </div>
-    </div>
-  `;
-  }).join("");
+    `;
+    grid.appendChild(card);
+  });
 }
 
-window.updateBookStatus = function(slug, status) {
-  userReadingStatus[slug] = status;
-  localStorage.setItem("user-reading-status", JSON.stringify(userReadingStatus));
-  renderStats();
-};
-
-window.filterDifficulty = function(val) {
-  currentDifficulty = val;
-  renderBooks();
-};
-
-window.filterStatus = function(val) {
-  currentStatusFilter = val;
-  renderBooks();
-};
-
-// Markdown Parser for reader view
-function parseMarkdown(md) {
-  if (!md) return "";
-  let html = md.replace(/^---[\s\S]*?---\n/, ""); // strip YAML frontmatter
-  html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-  html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-  html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-  html = html.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
-  html = html.replace(/\*(.*?)\*/gim, '<em>$1</em>');
-  html = html.replace(/\[\[(?:[^\]|]+\|)?([^\]]+)\]\]/gim, '<span class="wikilink" style="color: var(--c-cyan); font-weight: 600; cursor: pointer;">🔗 $1</span>');
-  html = html.replace(/^> \[\!(.*?)\]\s*(.*$)/gim, '<div class="callout"><div class="callout-title">$1</div>$2</div>');
-  html = html.replace(/^\- (.*$)/gim, '<li>$1</li>');
-  html = html.replace(/\n\n+/g, '</p><p>');
-  return `<p>${html}</p>`;
-}
-
-// Reader Modal Logic
-window.openReader = function(slug) {
+// -----------------------------------------------------------------------------
+// Reader Modal Engine
+// -----------------------------------------------------------------------------
+function openReader(slug) {
   const book = vaultData.books.find(b => b.slug === slug);
-  if (!book) return;
-  currentBook = book;
+  if (!book || !book.chapters || book.chapters.length === 0) return;
+
+  currentActiveBook = book;
   currentChapterIndex = 0;
 
   document.getElementById("modal-book-title").textContent = book.title;
-  document.getElementById("modal-book-author").textContent = `By ${book.author} (${book.published}) • ${book.pillar}`;
-
-  const sidebar = document.getElementById("reader-sidebar-links");
-  if (book.chapters && book.chapters.length > 0) {
-    sidebar.innerHTML = book.chapters.map((ch, idx) => `
-      <div class="toc-nav-item ${idx === 0 ? 'active' : ''}" onclick="switchChapter(${idx})">
-        📄 ${ch.title}
-      </div>
-    `).join("") + `
-      <div class="toc-nav-item quiz-tab-item" onclick="openFlashcardTab()">
-        🧠 Active Recall Quiz
-      </div>
-    `;
-    displayChapter(0);
-  } else {
-    sidebar.innerHTML = `<div class="toc-nav-item active">Master Overview</div>`;
-    document.getElementById("reader-content").innerHTML = `
-      <div style="text-align: center; padding: 4rem; color: var(--text-muted);">
-        <h3>📚 Curriculum Book Note</h3>
-        <p style="margin-top: 0.5rem;">This book is in the generation queue. Run <code>python -m automation.generate --slug ${book.slug}</code> to generate its full summary.</p>
-      </div>
-    `;
-  }
-
-  document.getElementById("reader-modal").classList.add("active");
-};
-
-window.switchChapter = function(index) {
-  currentChapterIndex = index;
-  document.querySelectorAll(".toc-nav-item").forEach((el, idx) => {
-    el.classList.toggle("active", idx === index);
-  });
-  displayChapter(index);
-};
-
-function displayChapter(index) {
-  if (!currentBook || !currentBook.chapters[index]) return;
-  const chapter = currentBook.chapters[index];
-  document.getElementById("reader-content").innerHTML = parseMarkdown(chapter.content);
-  document.getElementById("reader-content").scrollTop = 0;
-}
-
-window.openFlashcardTab = function() {
-  document.querySelectorAll(".toc-nav-item").forEach(el => el.classList.remove("active"));
+  document.getElementById("modal-book-author").textContent = `By ${book.author}`;
   
-  let allText = currentBook.chapters.map(c => c.content).join("\n\n");
-  let regex = /Q:\s*(.+?)\s*\n+A:\s*(.+?)(?=\n\s*(?:Q:|#|$))/g;
-  let matches = [...allText.matchAll(regex)];
+  // Render Sidebar Chapters
+  const sidebarLinks = document.getElementById("reader-sidebar-links");
+  sidebarLinks.innerHTML = "";
+  book.chapters.forEach((chap, idx) => {
+    const item = document.createElement("div");
+    item.className = `toc-item ${idx === 0 ? 'active' : ''}`;
+    item.textContent = chap.title;
+    item.onclick = () => selectChapter(idx);
+    sidebarLinks.appendChild(item);
+  });
 
-  if (matches.length === 0) {
-    document.getElementById("reader-content").innerHTML = `
-      <div style="text-align: center; padding: 4rem; color: var(--text-muted);">
-        <h3>🧠 Spaced Repetition Flashcards</h3>
-        <p style="margin-top: 0.5rem;">No flashcards found for this summary yet. Generate the full note to enable active recall.</p>
-      </div>
-    `;
-    return;
-  }
+  // Render Rating
+  updateStarRatingUi(userBookRatings[slug] || 0);
 
-  let cardsHtml = matches.map((m, i) => `
-    <div class="flashcard-wrapper" onclick="this.classList.toggle('flipped')">
-      <div class="flashcard-badge">Card #${i+1} • Click to Flip</div>
-      <div class="flashcard-question">Q: ${m[1].trim()}</div>
-      <div class="flashcard-answer-box">
-        <strong style="color: var(--c-emerald);">Answer:</strong> ${m[2].trim()}
-      </div>
-    </div>
-  `).join("");
-
-  document.getElementById("reader-content").innerHTML = `
-    <div class="quiz-container">
-      <h2 style="border: none; margin-bottom: 0.2rem;">🧠 Active Recall Self-Test</h2>
-      <p style="color: var(--text-muted); margin-bottom: 2rem;">Test your retention of core concepts before revealing the answers:</p>
-      ${cardsHtml}
-    </div>
-  `;
-};
-
-window.closeReader = function() {
-  document.getElementById("reader-modal").classList.remove("active");
-};
-
-// Typography Customizer
-window.adjustFontSize = function(delta) {
-  readerFontSize = Math.max(0.85, Math.min(1.45, readerFontSize + delta));
-  document.getElementById("reader-content").style.fontSize = `${readerFontSize}rem`;
-};
-
-window.toggleFontSerif = function() {
-  const content = document.getElementById("reader-content");
-  readerFontFamily = readerFontFamily === "sans" ? "serif" : "sans";
-  content.classList.toggle("font-serif", readerFontFamily === "serif");
-  document.getElementById("btn-font-serif").classList.toggle("active", readerFontFamily === "serif");
-};
-
-// Audio TTS Player Logic
-window.playAudioEdition = function(slug) {
-  const book = vaultData.books.find(b => b.slug === slug);
-  if (!book) return;
-
-  if (synth.speaking) {
-    synth.cancel();
-  }
-
-  let textToRead = book.audio_content || (book.chapters.length > 0 ? book.chapters[0].content : "");
-  if (!textToRead) {
-    alert("Audio narration for this book is pending generation.");
-    return;
-  }
-
-  // Clean text for natural speech synthesis
-  textToRead = textToRead.replace(/^---[\s\S]*?---\n/, "")
-    .replace(/[#*`_>]/g, " ")
-    .replace(/\[\[(?:[^\]|]+\|)?([^\]]+)\]\]/g, "$1");
-
-  document.getElementById("audio-player-bar").classList.add("active");
-  document.getElementById("audio-player-title").textContent = book.title;
-  document.getElementById("audio-player-status").textContent = `Narrating • ${playbackRate}x Speed`;
-  document.getElementById("btn-play-icon").textContent = "⏸️";
-  isPlaying = true;
-
-  speechUtterance = new SpeechSynthesisUtterance(textToRead);
-  speechUtterance.rate = playbackRate;
-
-  speechUtterance.onend = () => {
-    isPlaying = false;
-    document.getElementById("btn-play-icon").textContent = "▶️";
-    document.getElementById("audio-player-status").textContent = "Completed";
-  };
-
-  speechUtterance.onerror = (e) => {
-    console.error("Speech error:", e);
-    isPlaying = false;
-    document.getElementById("btn-play-icon").textContent = "▶️";
-  };
-
-  synth.speak(speechUtterance);
-};
-
-window.togglePlayPause = function() {
-  if (!speechUtterance) return;
-  if (synth.speaking) {
-    if (synth.paused) {
-      synth.resume();
-      isPlaying = true;
-      document.getElementById("btn-play-icon").textContent = "⏸️";
+  // Render Connected Ideas / Backlinks
+  const backlinksContainer = document.getElementById("reader-backlinks-list");
+  if (backlinksContainer) {
+    if (book.recommendations && book.recommendations.length > 0) {
+      backlinksContainer.innerHTML = book.recommendations.map(r => `
+        <div style="cursor: pointer; padding: 0.2rem 0; color: var(--c-cyan);" onclick="openReader('${r.slug}')">
+          → [[ ${r.title} ]]
+        </div>
+      `).join("");
     } else {
-      synth.pause();
-      isPlaying = false;
-      document.getElementById("btn-play-icon").textContent = "▶️";
+      backlinksContainer.innerHTML = `<span style="color: var(--text-muted); font-size: 0.75rem;">(No direct backlinks)</span>`;
     }
   }
-};
 
-window.cycleSpeed = function() {
-  const rates = [0.8, 1.0, 1.25, 1.5, 2.0];
-  let nextIdx = (rates.indexOf(playbackRate) + 1) % rates.length;
-  playbackRate = rates[nextIdx];
-  document.getElementById("btn-speed").textContent = `${playbackRate}x`;
-  if (synth.speaking && isPlaying) {
-    window.playAudioEdition(currentBook ? currentBook.slug : vaultData.books[0].slug);
+  // Render Article Content
+  renderChapterContent(0);
+
+  document.getElementById("reader-modal").classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function downloadCurrentBookMarkdown() {
+  if (!currentActiveBook || !currentActiveBook.chapters || currentActiveBook.chapters.length === 0) return;
+  const currentChap = currentActiveBook.chapters[currentChapterIndex];
+  const blob = new Blob([currentChap.content], { type: "text/markdown;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${currentActiveBook.slug}-${currentChap.name}`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function captureSelectedQuote() {
+  const selection = window.getSelection().toString().trim();
+  if (!selection) {
+    alert("Please highlight/select text in the summary first to capture it!");
+    return;
   }
-};
+  const quotes = JSON.parse(localStorage.getItem("user-saved-quotes") || "[]");
+  quotes.push({
+    book: currentActiveBook ? currentActiveBook.title : "Unknown",
+    quote: selection,
+    savedAt: new Date().toISOString()
+  });
+  localStorage.setItem("user-saved-quotes", JSON.stringify(quotes));
+  alert(`✅ Quote saved to your Knowledge Vault!\n\n"${selection.slice(0, 80)}..."`);
+}
 
-// 2D Force-Directed Knowledge Graph Visualizer
+
+function selectChapter(idx) {
+  currentChapterIndex = idx;
+  document.querySelectorAll(".toc-item").forEach((el, i) => {
+    el.classList.toggle("active", i === idx);
+  });
+  renderChapterContent(idx);
+}
+
+function renderChapterContent(idx) {
+  const chap = currentActiveBook.chapters[idx];
+  const container = document.getElementById("reader-content");
+  container.innerHTML = parseMarkdownToHtml(chap.content);
+}
+
+function closeReader() {
+  document.getElementById("reader-modal").classList.remove("active");
+  document.body.style.overflow = "auto";
+}
+
+function setBookRating(stars) {
+  if (!currentActiveBook) return;
+  userBookRatings[currentActiveBook.slug] = stars;
+  localStorage.setItem("user-book-ratings", JSON.stringify(userBookRatings));
+  updateStarRatingUi(stars);
+  renderBooks();
+}
+
+function updateStarRatingUi(stars) {
+  document.querySelectorAll(".star-rating .star").forEach(star => {
+    const val = parseInt(star.dataset.val);
+    star.style.color = val <= stars ? "var(--c-amber)" : "var(--text-muted)";
+  });
+}
+
+function toggleFontSerif() {
+  const article = document.getElementById("reader-content");
+  const btn = document.getElementById("btn-font-serif");
+  if (readerFontFamily === "sans") {
+    readerFontFamily = "serif";
+    article.classList.remove("font-sans");
+    article.classList.add("font-serif");
+    btn.textContent = "Sans";
+  } else {
+    readerFontFamily = "sans";
+    article.classList.remove("font-serif");
+    article.classList.add("font-sans");
+    btn.textContent = "Serif";
+  }
+}
+
+function adjustFontSize(delta) {
+  readerFontSize = Math.max(0.85, Math.min(1.5, readerFontSize + delta));
+  document.getElementById("reader-content").style.fontSize = `${readerFontSize}rem`;
+}
+
+// -----------------------------------------------------------------------------
+// Spaced Repetition Flashcard Quiz Engine (Leitner System)
+// -----------------------------------------------------------------------------
+function extractAllFlashcardsToSrs() {
+  if (!vaultData) return;
+  const cards = [];
+  vaultData.books.forEach(b => {
+    if (b.chapters) {
+      b.chapters.forEach(chap => {
+        const regex = /Q:\s*(.+?)\s*\n+A:\s*(.+?)(?=\n\s*(?:Q:|#|$))/gs;
+        let match;
+        while ((match = regex.exec(chap.content)) !== null) {
+          cards.push({
+            book: b.title,
+            q: match[1].trim(),
+            a: match[2].trim(),
+            box: 1,
+            nextReview: Date.now()
+          });
+        }
+      });
+    }
+  });
+
+  if (cards.length > 0) {
+    userSrsCards = cards;
+    localStorage.setItem("user-srs-deck", JSON.stringify(cards));
+  }
+}
+
+function openSrsQuiz() {
+  srsQuizCards = userSrsCards.length > 0 ? userSrsCards : [
+    {
+      book: "Make It Stick",
+      q: "Why is retrieval practice superior to passive rereading?",
+      a: "Retrieval practice forces neural reconstruction, strengthening synaptic consolidation far more than recognition."
+    },
+    {
+      book: "Make It Stick",
+      q: "What is interleaving and why does it feel harder?",
+      a: "Interleaving mixes related problem types during practice to train problem discrimination, producing durable mastery."
+    }
+  ];
+
+  srsCurrentIndex = 0;
+  loadSrsCard(0);
+  document.getElementById("srs-modal").classList.add("active");
+}
+
+function loadSrsCard(idx) {
+  if (idx >= srsQuizCards.length) {
+    document.getElementById("srs-card-q").textContent = "🎉 Session Complete! All active recall cards reviewed.";
+    document.getElementById("srs-card-a").textContent = "Great job strengthening your long-term memory pathways.";
+    document.getElementById("srs-card-progress").textContent = `Reviewed ${srsQuizCards.length} cards`;
+    return;
+  }
+
+  const card = srsQuizCards[idx];
+  document.getElementById("srs-card-box").classList.remove("flipped");
+  document.getElementById("srs-card-q").textContent = card.q;
+  document.getElementById("srs-card-a").textContent = card.a;
+  document.getElementById("srs-card-progress").textContent = `Card ${idx + 1} of ${srsQuizCards.length} • Book: ${card.book}`;
+}
+
+function flipSrsCard() {
+  document.getElementById("srs-card-box").classList.toggle("flipped");
+}
+
+function gradeSrsCard(grade) {
+  srsCurrentIndex++;
+  loadSrsCard(srsCurrentIndex);
+}
+
+function closeSrsModal() {
+  document.getElementById("srs-modal").classList.remove("active");
+}
+
+// -----------------------------------------------------------------------------
+// Export User Journey
+// -----------------------------------------------------------------------------
+function exportUserProgress() {
+  const payload = {
+    exported_at: new Date().toISOString(),
+    completed_books: userReadingStatus,
+    ratings: userBookRatings,
+    srs_cards_reviewed: userSrsCards.length,
+  };
+
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));
+  const downloadAnchor = document.createElement("a");
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", "my_book_vault_progress.json");
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+}
+
+// -----------------------------------------------------------------------------
+// Audio Narration Bar
+// -----------------------------------------------------------------------------
+let currentUtterance = null;
+let isAudioPlaying = false;
+let playbackRate = 1.0;
+
+function playBookAudio(slug) {
+  const book = vaultData.books.find(b => b.slug === slug);
+  if (!book || !book.audio_content) return;
+
+  const bar = document.getElementById("audio-player-bar");
+  bar.classList.add("active");
+  document.getElementById("audio-player-title").textContent = book.title;
+  document.getElementById("audio-player-status").textContent = "Speaking...";
+
+  window.speechSynthesis.cancel();
+  const cleanText = book.audio_content.replace(/---[\s\S]*?---/, "").replace(/#.*?\n/g, "").trim();
+  
+  currentUtterance = new SpeechSynthesisUtterance(cleanText);
+  currentUtterance.rate = playbackRate;
+  currentUtterance.onend = () => {
+    isAudioPlaying = false;
+    document.getElementById("btn-play-icon").textContent = "▶️";
+    document.getElementById("audio-player-status").textContent = "Finished";
+  };
+
+  window.speechSynthesis.speak(currentUtterance);
+  isAudioPlaying = true;
+  document.getElementById("btn-play-icon").textContent = "⏸️";
+}
+
+function togglePlayPause() {
+  if (isAudioPlaying) {
+    window.speechSynthesis.pause();
+    isAudioPlaying = false;
+    document.getElementById("btn-play-icon").textContent = "▶️";
+  } else {
+    window.speechSynthesis.resume();
+    isAudioPlaying = true;
+    document.getElementById("btn-play-icon").textContent = "⏸️";
+  }
+}
+
+function cycleSpeed() {
+  const speeds = [1.0, 1.25, 1.5, 2.0];
+  const nextIdx = (speeds.indexOf(playbackRate) + 1) % speeds.length;
+  playbackRate = speeds[nextIdx];
+  document.getElementById("btn-speed").textContent = `${playbackRate}x`;
+  if (currentUtterance) currentUtterance.rate = playbackRate;
+}
+
+// -----------------------------------------------------------------------------
+// Knowledge Graph Visualizer
+// -----------------------------------------------------------------------------
+function setViewMode(mode) {
+  currentViewMode = mode;
+  document.getElementById("btn-view-grid").classList.toggle("active", mode === "grid");
+  document.getElementById("btn-view-graph").classList.toggle("active", mode === "graph");
+  document.getElementById("books-grid").style.display = mode === "grid" ? "grid" : "none";
+  document.getElementById("graph-view-container").classList.toggle("active", mode === "graph");
+}
+
 function buildGraphData() {
   if (!vaultData) return;
-  const colors = ["#00f2fe", "#818cf8", "#34d399", "#fbbf24", "#f43f5e", "#c084fc"];
-  const pillars = Object.keys(vaultData.pillars);
-
-  graphNodes = vaultData.books.slice(0, 80).map((b, idx) => {
-    const pIdx = pillars.indexOf(b.pillar) % colors.length;
-    return {
-      id: b.slug,
-      label: b.title,
-      pillar: b.pillar,
-      color: colors[pIdx >= 0 ? pIdx : 0],
-      x: (Math.random() - 0.5) * 800,
-      y: (Math.random() - 0.5) * 600,
-      vx: 0,
-      vy: 0,
-      radius: b.difficulty === "Advanced" ? 7 : (b.difficulty === "Intermediate" ? 5 : 4),
-    };
-  });
+  graphNodes = vaultData.books.slice(0, 80).map((b, i) => ({
+    id: b.slug,
+    title: b.title,
+    pillar: b.pillar,
+    status: b.status,
+    x: 400 + Math.cos(i) * (200 + (i % 5) * 40),
+    y: 350 + Math.sin(i) * (200 + (i % 5) * 40),
+    vx: 0,
+    vy: 0,
+    radius: b.status === "Generated" ? 8 : 4
+  }));
 
   graphEdges = [];
   for (let i = 0; i < graphNodes.length; i++) {
     for (let j = i + 1; j < graphNodes.length; j++) {
-      if (graphNodes[i].pillar === graphNodes[j].pillar && Math.random() > 0.65) {
+      if (graphNodes[i].pillar === graphNodes[j].pillar && Math.random() > 0.6) {
         graphEdges.push({ source: graphNodes[i], target: graphNodes[j] });
       }
     }
@@ -402,7 +505,7 @@ function buildGraphData() {
 }
 
 function initForceGraph() {
-  const canvas = document.getElementById("graphCanvas");
+  const canvas = document.getElementById("graph-canvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
 
@@ -413,102 +516,75 @@ function initForceGraph() {
   resize();
   window.addEventListener("resize", resize);
 
-  let cameraX = canvas.width / 2;
-  let cameraY = canvas.height / 2;
-
-  function simulate() {
-    // Spring physics between nodes
-    graphEdges.forEach(e => {
-      const dx = e.target.x - e.source.x;
-      const dy = e.target.y - e.source.y;
-      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-      const force = (dist - 90) * 0.002;
-      const fx = (dx / dist) * force;
-      const fy = (dy / dist) * force;
-      e.source.vx += fx;
-      e.source.vy += fy;
-      e.target.vx -= fx;
-      e.target.vy -= fy;
-    });
-
-    graphNodes.forEach(n => {
-      n.x += n.vx;
-      n.y += n.vy;
-      n.vx *= 0.88;
-      n.vy *= 0.88;
-    });
-  }
-
-  function draw() {
-    simulate();
+  function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.save();
-    ctx.translate(cameraX, cameraY);
-
-    // Draw connecting edges
+    // Draw Edges
+    ctx.strokeStyle = "rgba(0, 242, 254, 0.15)";
+    ctx.lineWidth = 1;
     graphEdges.forEach(e => {
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
-      ctx.lineWidth = 0.8;
       ctx.beginPath();
       ctx.moveTo(e.source.x, e.source.y);
       ctx.lineTo(e.target.x, e.target.y);
       ctx.stroke();
     });
 
-    // Draw nodes
+    // Draw Nodes
     graphNodes.forEach(n => {
-      ctx.fillStyle = n.color;
-      ctx.shadowColor = n.color;
-      ctx.shadowBlur = 8;
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+      ctx.fillStyle = n.status === "Generated" ? "#00f2fe" : "rgba(148, 163, 184, 0.4)";
+      ctx.shadowColor = n.status === "Generated" ? "rgba(0, 242, 254, 0.6)" : "transparent";
+      ctx.shadowBlur = n.status === "Generated" ? 10 : 0;
       ctx.fill();
-      ctx.shadowBlur = 0;
     });
 
-    ctx.restore();
-    requestAnimationFrame(draw);
+    requestAnimationFrame(animate);
   }
-  draw();
+  animate();
 }
 
-window.toggleView = function(view) {
-  document.querySelectorAll(".btn-view-tab").forEach(b => b.classList.remove("active"));
-  if (view === "grid") {
-    document.getElementById("btn-view-grid").classList.add("active");
-    document.getElementById("books-grid").style.display = "grid";
-    document.getElementById("graph-viewport").classList.remove("active");
-  } else {
-    document.getElementById("btn-view-graph").classList.add("active");
-    document.getElementById("books-grid").style.display = "none";
-    document.getElementById("graph-viewport").classList.add("active");
-  }
-};
-
 function setupEventListeners() {
-  document.getElementById("search-input").addEventListener("input", renderBooks);
-  document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
-  
-  // Keyboard Shortcut: Cmd/Ctrl + K focuses search
+  const searchInput = document.getElementById("search-input");
+  searchInput.addEventListener("input", (e) => {
+    currentSearchQuery = e.target.value;
+    renderBooks();
+  });
+
   window.addEventListener("keydown", (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key === "k") {
       e.preventDefault();
-      document.getElementById("search-input").focus();
+      searchInput.focus();
     }
+    if (e.key === "Escape") {
+      closeReader();
+      closeSrsModal();
+    }
+  });
+
+  document.getElementById("theme-toggle").addEventListener("click", () => {
+    const doc = document.documentElement;
+    const next = doc.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    doc.setAttribute("data-theme", next);
+    localStorage.setItem("book-vault-theme", next);
   });
 }
 
 function initTheme() {
-  const saved = localStorage.getItem("vault-theme") || "dark";
+  const saved = localStorage.getItem("book-vault-theme") || "dark";
   document.documentElement.setAttribute("data-theme", saved);
-  document.getElementById("theme-toggle").textContent = saved === "dark" ? "☀️" : "🌙";
 }
 
-function toggleTheme() {
-  const current = document.documentElement.getAttribute("data-theme") || "dark";
-  const next = current === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", next);
-  localStorage.setItem("vault-theme", next);
-  document.getElementById("theme-toggle").textContent = next === "dark" ? "☀️" : "🌙";
+function parseMarkdownToHtml(md) {
+  if (!md) return "";
+  let html = md.replace(/---[\s\S]*?---/, "");
+  html = html.replace(/# (.*)/g, "<h1>$1</h1>");
+  html = html.replace(/## (.*)/g, "<h2>$1</h2>");
+  html = html.replace(/### (.*)/g, "<h3>$1</h3>");
+  html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
+  html = html.replace(/\[\[(.*?)\]\]/g, '<span class="wikilink">[[ $1 ]]</span>');
+  html = html.replace(/> \[\!(NOTE|TIP|IMPORTANT|WARNING)\]\n> (.*)/g, '<div class="callout callout-$1"><strong>$1:</strong> $2</div>');
+  html = html.replace(/\n\n/g, "<p></p>");
+  return html;
 }

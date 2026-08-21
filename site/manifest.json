@@ -1,0 +1,16 @@
+{
+  "name": "Universal Book Vault",
+  "short_name": "BookVault",
+  "description": "MECE Knowledge Architecture across 775 Canonical Books",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07090e",
+  "theme_color": "#00f2fe",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

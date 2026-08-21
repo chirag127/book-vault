@@ -5,7 +5,9 @@ from pathlib import Path
 
 from ..core.config import ROOT
 from ..core.manifest import category_folder, load_manifest
+from ..core.recommendations import get_recommendations_for_book
 from ..core.taxonomy import PILLAR_DIRS
+
 
 
 
@@ -51,6 +53,12 @@ def build_web_data() -> dict:
         if book_dir.exists() and (book_dir / "Audio-Listening-Edition.md").exists():
             audio_content = (book_dir / "Audio-Listening-Edition.md").read_text(encoding="utf-8")
 
+        recs = [
+            {"title": r["title"], "slug": r["slug"], "author": r["author"], "pillar": r["pillar"]}
+            for r in get_recommendations_for_book(b["slug"], books, limit=3)
+        ]
+
+
         catalog.append({
             "number": b.get("number", "000"),
             "title": b["title"],
@@ -67,7 +75,9 @@ def build_web_data() -> dict:
             "has_audio": has_audio,
             "audio_content": audio_content,
             "chapters": chapters,
+            "recommendations": recs,
         })
+
 
     data = {
         "pillars": PILLAR_DIRS,
