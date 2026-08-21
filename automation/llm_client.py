@@ -205,31 +205,42 @@ def generate_markdown(settings: Settings, messages: Iterable[dict[str, str]], re
     raise GenerationError(f"All providers failed. Last error: {last_error}")
 
 
+_zen_client_lock = threading.Lock()
+_zen_client: httpx.Client | None = None
+
+
+def _get_zen_client() -> httpx.Client:
+    global _zen_client
+    if _zen_client is None:
+        with _zen_client_lock:
+            if _zen_client is None:
+                _zen_client = httpx.Client(
+                    timeout=httpx.Timeout(300.0, connect=15.0),
+                    limits=httpx.Limits(max_connections=100, max_keepalive_connections=50),
+                )
+    return _zen_client
+
+
 def _generate_with_zen(
     provider: Provider,
     settings: Settings,
     messages: Iterable[dict[str, str]],
     retries: int,
 ) -> str:
-    """Call OpenCode Zen directly over HTTP without any Authorization header.
-
-    The Zen free endpoints return 401 when the OpenAI SDK sends its dummy
-    'not-needed' bearer token, so the SDK is bypassed for this provider.
-    Rate limits (429) and temporary 5xx errors back off exponentially.
-    """
+    """Call OpenCode Zen directly over pooled HTTP without Authorization header."""
     payload = {
         "model": provider.model,
         "messages": list(messages),
         "temperature": settings.temperature,
         "top_p": settings.top_p,
-        "max_tokens": settings.max_tokens,
+        "max_tokens": min(settings.max_tokens, 8192),
     }
+    client = _get_zen_client()
     for attempt in range(retries + 1):
         try:
-            with httpx.Client(timeout=httpx.Timeout(600.0, connect=30.0)) as client:
-                response = client.post(f"{provider.base_url}/chat/completions", json=payload)
+            response = client.post(f"{provider.base_url}/chat/completions", json=payload)
             if response.status_code in RETRYABLE_STATUS:
-                delay = _backoff_delay(attempt, base=3.0, cap=120.0)
+                delay = _backoff_delay(attempt, base=2.0, cap=60.0)
                 print(f"        LLM {provider.label}: HTTP {response.status_code}, backing off {delay:.1f}s (attempt {attempt + 1}/{retries + 1})", flush=True)
                 if attempt >= retries:
                     raise GenerationError(f"{provider.label} rate-limited after {retries} retries: HTTP {response.status_code}")
@@ -249,10 +260,11 @@ def _generate_with_zen(
         except Exception as exc:  # transient network errors, timeouts
             if attempt >= retries:
                 raise GenerationError(f"{provider.label} generation failed: {exc}") from exc
-            delay = _backoff_delay(attempt)
+            delay = _backoff_delay(attempt, base=1.5, cap=30.0)
             print(f"        LLM {provider.label}: transient error ({exc.__class__.__name__}), retrying in {delay:.1f}s (attempt {attempt + 1}/{retries + 1})", flush=True)
             time.sleep(delay)
     raise AssertionError("unreachable")
+
 
 
 def _generate_with_sdk(
