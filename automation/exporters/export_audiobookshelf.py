@@ -7,7 +7,8 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from automation.core.config import ROOT, get_settings
+from automation.core.config import ROOT, load_settings
+
 
 
 def export_audiobookshelf_metadata(slug: str) -> dict | None:

@@ -208,6 +208,8 @@
   },
   "active": "a5ba6c55e2bf9b87",
   "lastOpenFiles": [
+    "automation/exporters/__pycache__/export_audiobookshelf.cpython-311.pyc",
+    "run_overnight.ps1",
     "md/cross_pillar_graph.json",
     "automation/engines/__pycache__/cross_pillar_graph.cpython-311.pyc",
     "automation/engines/cross_pillar_graph.py",
@@ -220,8 +222,6 @@
     "automation/audio/__pycache__/synthesize_audiobook.cpython-311.pyc",
     "tests/__pycache__/test_audiobook.cpython-311-pytest-9.1.1.pyc",
     "tests/test_audiobook.py",
-    "automation/audio/synthesize_audiobook.py",
-    "automation/exporters/__pycache__/export_tracker_csv.cpython-311.pyc",
     "MOCs/READING-KANBAN.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/Audio-Listening-Edition.md",

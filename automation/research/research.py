@@ -383,7 +383,7 @@ def search_book(book: dict[str, str], settings: Settings) -> list[Source]:
 
     final_sources = sources if sources else [Source(title, "", "fallback", "Book summary context.")]
     if slug:
-        save_research(RESEARCH_CACHE_DIR / f"{slug}.json", book, final_sources)
+        save_research(RESEARCH_CACHE_DIR / f"{slug}.json", final_sources, book)
     return final_sources
 
 
@@ -393,14 +393,23 @@ def save_research(slug_or_path: str | Path, sources: list[Source], book: dict[st
     else:
         path = slug_or_path
     path.parent.mkdir(parents=True, exist_ok=True)
+    serialized_sources = []
+    for source in sources:
+        if isinstance(source, Source):
+            serialized_sources.append(asdict(source))
+        elif isinstance(source, dict):
+            serialized_sources.append(source)
+        else:
+            serialized_sources.append({"title": str(source), "url": "", "query": "", "content": ""})
     data = {
         "slug": path.stem,
         "researched_at": datetime.now(timezone.utc).isoformat(),
         "book": book or {},
-        "sources": [asdict(source) for source in sources],
+        "sources": serialized_sources,
     }
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return path
+
 
 
 
