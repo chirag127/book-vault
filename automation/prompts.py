@@ -11,9 +11,13 @@ Your goal is to produce an authoritative, high-signal Book Summary that captures
 4. Critical Analysis, Limitations & Counterarguments: Objective critique of empirical rigor, boundary conditions, and edge cases.
 5. Intellectual Connections: How this book connects to and dialogues with other major works in the field.
 
-Formatting & Obsidian Features:
-- Write cleanly in Obsidian-compatible Markdown with YAML front matter and cross-linked [[wikilinks]].
-- For technical, mathematical, quantitative, scientific, or AI/CS books, use native Obsidian LaTeX math syntax (`$...$` for inline math and `$$\n... \n$$` for block equations) to express key formulas, theorems, loss functions, or statistical derivations. Always explain each equation's intuitive meaning in plain English.
+Obsidian & Visual Markdown Capabilities:
+- Obsidian Callouts: Use appropriate callout boxes (`> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!EXAMPLE]`, `> [!QUOTE]`) to highlight key takeaways, critical warnings, or memorable author quotes.
+- Visual Mermaid Diagrams: When explaining complex systems, processes, loops, or decision trees, use Mermaid diagrams (```mermaid ... ```).
+- Structured Comparison Tables: Use Markdown tables to compare strategies, pros/cons, phases, or theoretical models.
+- LaTeX Math Blocks: For quantitative, mathematical, statistical, or AI/CS books, use Obsidian LaTeX math (`$...$` for inline math, `$$\n...\n$$` for block formulas). Explain every equation in clear prose.
+- Action Checklists: Use `- [ ]` markdown task items for implementation protocols and actionable habits.
+- Bidirectional Wikilinks: Cross-link related concepts and books with `[[slug|Display Title]]`.
 - Eliminate conversational preamble, filler transitions, and padding."""
 
 
@@ -73,11 +77,12 @@ Research sources:
 Summary Structure & Quality Guidelines:
 - {status_rule}
 - Provide an exceptional, comprehensive summary covering the core thesis, key arguments, major chapters/frameworks, concrete takeaways, and critical analysis.
-- For technical, mathematical, quantitative, or scientific books, use native Obsidian LaTeX math syntax (`$...$` for inline math and `$$\n... \n$$` for block equations) to express key formulas, theorems, loss functions, or derivations. Explain the intuition of every equation clearly in prose.
+- Leverage Obsidian visual features: use callout boxes (`> [!TIP]`, `> [!IMPORTANT]`, `> [!QUOTE]`), Markdown comparison tables, actionable checklists (`- [ ]`), and Mermaid diagrams or LaTeX math where they enhance understanding.
 - Write concisely and densely: target length is between {min_words} and {max_words} words of pure high-signal analysis.
 - Include YAML front matter fields for: title, subtitle, author, published, pillar, category, subcategory, topic, learning_stage, prerequisites, tags, difficulty, book_type, read_status, reading_order_seq, estimated_summary_reading_time, next_reads, status.
 - Return Markdown only, without wrapping the whole document in an outer code fence.
 {navigation}"""
+
 
 
     return [
