@@ -300,7 +300,107 @@ function renderChapterContent(idx) {
   const chap = currentActiveBook.chapters[idx];
   const container = document.getElementById("reader-content");
   container.innerHTML = parseMarkdownToHtml(chap.content);
+
+  // Calculate Reading Time at 225 WPM
+  const words = (chap.content.match(/\b\w+\b/g) || []).length;
+  const mins = Math.max(1, Math.ceil(words / 225));
+  const timeBadge = document.getElementById("reader-reading-time");
+  if (timeBadge) {
+    timeBadge.textContent = `⏱️ ~${mins} min read (${words.toLocaleString()} words)`;
+  }
 }
+
+function copyBookCitation() {
+  if (!currentActiveBook) return;
+  const b = currentActiveBook;
+  const year = b.published || new Date().getFullYear();
+  const apa = `${b.author} (${year}). ${b.title}. Universal Book Vault. https://chirag127.github.io/book-vault/`;
+  const bibtex = `@book{${b.slug},\n  author = {${b.author}},\n  title = {${b.title}},\n  year = {${year}},\n  url = {https://chirag127.github.io/book-vault/}\n}`;
+  
+  navigator.clipboard.writeText(`${apa}\n\nBibTeX:\n${bibtex}`);
+  alert(`📋 Citation copied to clipboard (APA & BibTeX)!`);
+}
+
+// -----------------------------------------------------------------------------
+// Audio Narration Bar & Sleep Timer
+// -----------------------------------------------------------------------------
+let currentUtterance = null;
+let isAudioPlaying = false;
+let playbackRate = 1.0;
+let sleepTimerMinutes = 0;
+let sleepTimerInterval = null;
+
+function playBookAudio(slug) {
+  const book = vaultData.books.find(b => b.slug === slug);
+  if (!book || !book.audio_content) return;
+
+  const bar = document.getElementById("audio-player-bar");
+  bar.classList.add("active");
+  document.getElementById("audio-player-title").textContent = book.title;
+  document.getElementById("audio-player-status").textContent = "Speaking...";
+
+  window.speechSynthesis.cancel();
+  const cleanText = book.audio_content.replace(/---[\s\S]*?---/, "").replace(/#.*?\n/g, "").trim();
+  
+  currentUtterance = new SpeechSynthesisUtterance(cleanText);
+  currentUtterance.rate = playbackRate;
+  currentUtterance.onend = () => {
+    isAudioPlaying = false;
+    document.getElementById("btn-play-icon").textContent = "▶️";
+    document.getElementById("audio-player-status").textContent = "Finished";
+  };
+
+  window.speechSynthesis.speak(currentUtterance);
+  isAudioPlaying = true;
+  document.getElementById("btn-play-icon").textContent = "⏸️";
+}
+
+function cycleSleepTimer() {
+  const options = [0, 15, 30, 45, 60];
+  const nextIdx = (options.indexOf(sleepTimerMinutes) + 1) % options.length;
+  sleepTimerMinutes = options[nextIdx];
+
+  const btn = document.getElementById("btn-sleep-timer");
+  if (sleepTimerInterval) clearInterval(sleepTimerInterval);
+
+  if (sleepTimerMinutes === 0) {
+    btn.textContent = "🌙 Timer: Off";
+  } else {
+    let remainingSec = sleepTimerMinutes * 60;
+    btn.textContent = `🌙 ${sleepTimerMinutes}m`;
+    sleepTimerInterval = setInterval(() => {
+      remainingSec--;
+      if (remainingSec <= 0) {
+        clearInterval(sleepTimerInterval);
+        window.speechSynthesis.pause();
+        isAudioPlaying = false;
+        document.getElementById("btn-play-icon").textContent = "▶️";
+        btn.textContent = "🌙 Timer: Off";
+        sleepTimerMinutes = 0;
+      } else {
+        const m = Math.floor(remainingSec / 60);
+        const s = remainingSec % 60;
+        btn.textContent = `🌙 ${m}:${s < 10 ? '0' : ''}${s}`;
+      }
+    }, 1000);
+  }
+}
+
+function seekAudioChapter(chapIdx) {
+  if (!currentActiveBook || !currentActiveBook.audio_content) return;
+  const raw = currentActiveBook.audio_content.replace(/---[\s\S]*?---/, "").trim();
+  const sections = raw.split(/\n(?=##? )/);
+  const targetSection = sections[parseInt(chapIdx)] || sections[0];
+  
+  window.speechSynthesis.cancel();
+  currentUtterance = new SpeechSynthesisUtterance(targetSection.replace(/#.*?\n/g, "").trim());
+  currentUtterance.rate = playbackRate;
+  window.speechSynthesis.speak(currentUtterance);
+  isAudioPlaying = true;
+  document.getElementById("btn-play-icon").textContent = "⏸️";
+  document.getElementById("audio-player-status").textContent = `Speaking Part ${parseInt(chapIdx) + 1}...`;
+}
+
 
 function closeReader() {
   document.getElementById("reader-modal").classList.remove("active");

@@ -322,10 +322,12 @@ def search_book(book: dict[str, str], settings: Settings) -> list[Source]:
     title = book["title"]
     author = book["author"]
     queries = [
-        f'"{title}" "{author}" key ideas concepts framework summary',
-        f'"{title}" "{author}" official publisher author interview talk',
-        f'"{title}" "{author}" research criticism limitations analysis',
-        f'"{title}" "{author}" practical applications core takeaways',
+        f'"{title}" "{author}" core thesis mental models summary',
+        f'"{title}" "{author}" critical analysis counterarguments limitations',
+        f'"{title}" "{author}" key frameworks actionable protocols guide',
+        f'"{title}" "{author}" empirical evidence case studies experiments',
+        f'"{author}" academic research papers citations OpenLibrary Crossref',
+        f'"{title}" related books comparative reading bridges',
     ]
 
     from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -335,7 +337,8 @@ def search_book(book: dict[str, str], settings: Settings) -> list[Source]:
     def _run_one_search(q: str):
         return q, _search(q, settings)
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor(max_workers=6) as executor:
+
         futures = [executor.submit(_run_one_search, q) for q in queries]
         for future in as_completed(futures):
             try:

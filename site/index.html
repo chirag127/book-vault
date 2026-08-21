@@ -159,14 +159,14 @@
       </aside>
 
 
-      <!-- Main Reader Viewport -->
-      <section class="reader-viewport">
         <!-- Top Toolbar -->
         <div class="reader-top-controls">
           <div class="reader-typography-controls">
+            <span id="reader-reading-time" class="tag-pill" style="color: var(--c-cyan); font-weight: 700;">⏱️ ~12 min read</span>
             <button class="btn-typo" onclick="adjustFontSize(-0.08)" title="Decrease Text Size">A-</button>
             <button class="btn-typo" onclick="adjustFontSize(0.08)" title="Increase Text Size">A+</button>
             <button id="btn-font-serif" class="btn-typo" onclick="toggleFontSerif()" title="Toggle Serif / Sans Font">Serif</button>
+            <button class="btn-utility" onclick="copyBookCitation()" title="Copy APA/BibTeX Citation">📋 Cite</button>
             <button class="btn-utility" onclick="downloadCurrentBookMarkdown()" title="Download Obsidian-Ready Note">📥 Export .md</button>
             <button class="btn-utility" onclick="captureSelectedQuote()" title="Capture Highlighted Quote">💡 Highlight</button>
           </div>
@@ -229,16 +229,25 @@
       </div>
     </div>
 
-    <div class="audio-main-controls">
+    <div class="audio-main-controls" style="display: flex; align-items: center; gap: 0.75rem;">
+      <select id="audio-chapter-select" class="filter-select" style="font-size: 0.8rem; padding: 0.35rem 0.6rem;" onchange="seekAudioChapter(this.value)">
+        <option value="0">Part 1: Executive Thesis</option>
+        <option value="1">Part 2: Frameworks</option>
+        <option value="2">Part 3: Applications</option>
+        <option value="3">Part 4: Critiques</option>
+      </select>
+
       <button class="btn-audio-circle" onclick="togglePlayPause()" title="Play / Pause">
         <span id="btn-play-icon">▶️</span>
       </button>
     </div>
 
-    <div class="audio-extra-controls">
+    <div class="audio-extra-controls" style="display: flex; align-items: center; gap: 0.5rem;">
+      <button id="btn-sleep-timer" class="btn-utility" onclick="cycleSleepTimer()" title="Sleep Timer">🌙 Timer: Off</button>
       <button id="btn-speed" class="btn-utility" onclick="cycleSpeed()" title="Playback Speed">1.0x</button>
     </div>
   </footer>
+
 
   <script src="data/vault_data.js"></script>
   <script src="app.js"></script>
