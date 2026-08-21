@@ -12,7 +12,8 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
-from .config import Settings
+from .config import ROOT, Settings
+
 
 
 class ResearchError(RuntimeError):
@@ -283,7 +284,38 @@ def _search(query: str, settings: Settings) -> list[dict[str, str]]:
     return found
 
 
+RESEARCH_CACHE_DIR = ROOT / "automation" / "cache" / "research"
+
+
+def load_research(slug: str, max_age_hours: float = 72.0) -> list[Source] | None:
+    """Load cached research dossier from disk if available and fresh."""
+    path = RESEARCH_CACHE_DIR / f"{slug}.json"
+    if not path.exists():
+        legacy_path = ROOT / "automation" / "research" / f"{slug}.json"
+        if legacy_path.exists():
+            path = legacy_path
+        else:
+            return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        stamp = data.get("researched_at", "")
+        if stamp:
+            age = (datetime.now(timezone.utc) - datetime.fromisoformat(stamp)).total_seconds() / 3600
+            if age > max_age_hours:
+                return None
+        return [Source(**s) for s in data.get("sources", [])]
+    except Exception:
+        return None
+
+
 def search_book(book: dict[str, str], settings: Settings) -> list[Source]:
+    slug = book.get("slug", "")
+    if slug:
+        cached = load_research(slug)
+        if cached:
+            print(f"        RESEARCH: using CACHED dossier for '{slug}' ({len(cached)} sources)", flush=True)
+            return cached
+
     title = book["title"]
     author = book["author"]
     queries = [
@@ -343,8 +375,10 @@ def search_book(book: dict[str, str], settings: Settings) -> list[Source]:
             except Exception:
                 pass
 
-    return sources if sources else [Source(title, "", "fallback", "Book summary context.")]
-
+    final_sources = sources if sources else [Source(title, "", "fallback", "Book summary context.")]
+    if slug:
+        save_research(RESEARCH_CACHE_DIR / f"{slug}.json", book, final_sources)
+    return final_sources
 
 
 def save_research(path: Path, book: dict[str, str], sources: list[Source]) -> None:
@@ -362,3 +396,4 @@ def source_bundle(sources: list[Source]) -> str:
         f"SOURCE {index}\nTitle: {source.title}\nURL: {source.url}\nQuery: {source.query}\nContent:\n{source.content}"
         for index, source in enumerate(sources, 1)
     )
+

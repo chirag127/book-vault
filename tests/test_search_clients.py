@@ -92,3 +92,18 @@ def test_wikipedia_search_mock():
         assert len(results) >= 1
         assert "Wikipedia" in results[0]["title"]
         assert results[0]["source"] == "wikipedia"
+
+
+def test_load_research_dossier_cache(tmp_path):
+    from automation.research import save_research, load_research, Source
+    slug = "test-cached-slug"
+    test_file = tmp_path / f"{slug}.json"
+    book = {"title": "Test Book", "author": "Author Name", "slug": slug}
+    sources = [Source("Title 1", "https://example.com", "q1", "Content 1")]
+    save_research(test_file, book, sources)
+    with patch("automation.research.RESEARCH_CACHE_DIR", tmp_path):
+        loaded = load_research(slug)
+        assert loaded is not None
+        assert len(loaded) == 1
+        assert loaded[0].title == "Title 1"
+
