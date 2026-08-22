@@ -11,10 +11,14 @@
             "id": "f035363d78ede9d2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Flashcards.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Flashcards"
             }
           }
         ]
@@ -207,19 +211,27 @@
   },
   "active": "f035363d78ede9d2",
   "lastOpenFiles": [
-    "automation/research/cookies.txt",
-    "cache/llm/book-reading-Make-It-Stick-2026-08-22-book-summary-v5.json",
-    "cache/llm",
-    "automation/research/__pycache__/youtube.cpython-311.pyc",
-    "automation/research/youtube.py",
-    "automation/core/benchmark_10q.py",
-    "automation/research/Make-It-Stick.json",
-    "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
-    "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick",
-    "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load",
-    "automation/exporters/__pycache__/fetch_covers.cpython-311.pyc",
-    "automation/engines/__pycache__/quiz.cpython-311.pyc",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Cognition-and-Meta-Skills.canvas",
+    "md/01-Learning-Cognition-and-Meta-Skills",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/03-Elaboration-and-Desirable-Difficulties.md",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/02-Retrieval-Practice-and-Spacing.md",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/01-The-Illusion-of-Knowledge.md",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Make-It-Stick.canvas",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Make-It-Stick-Complete-Reading-Edition.pdf",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Audio-Listening-Edition.pdf",
+    "automation/exporters/__pycache__/export_pdf.cpython-311.pyc",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Flashcards.md",
+    "automation/engines/__pycache__/flashcards.cpython-311.pyc",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Quiz.md",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/README.md",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Audio-Listening-Edition.md",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/04-Mindsets-and-Implementation.md",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE",
+    "md/01-Learning-Thinking-and-Knowledge",
+    "cache/llm/book-quiz-Make-It-Stick-2026-08-22-quiz-v1.json",
+    "cache/llm/book-audio-Make-It-Stick-2026-08-22-book-summary-v5.json",
+    "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
     "md/02-Thinking-Rationality-and-Mental-Models/01-Cognitive-Biases-Heuristics/The-Art-of-Thinking-Clearly/05-Decision-Protocols.md",
     "md/04-Mathematics-Statistics-and-Quantitative-Logic/03-Statistical-Inference-Modeling/An-Introduction-to-Statistical-Learning/06-Unsupervised-Learning.md",
     "md/04-Mathematics-Statistics-and-Quantitative-Logic/03-Statistical-Inference-Modeling/An-Introduction-to-Statistical-Learning/04-Resampling-and-Model-Selection.md",
@@ -240,19 +252,10 @@
     "md/04-Mathematics-Statistics-and-Quantitative-Logic/03-Statistical-Inference-Modeling/All-of-Statistics/All-of-Statistics.canvas",
     "md/04-Mathematics-Statistics-and-Quantitative-Logic/03-Statistical-Inference-Modeling/All-of-Statistics/Quiz.md",
     "md/04-Mathematics-Statistics-and-Quantitative-Logic/01-Mathematical-Intuition-Foundations/Introduction-to-Linear-Algebra/Introduction-to-Linear-Algebra.canvas",
-    "md/04-Mathematics-Statistics-and-Quantitative-Logic/01-Mathematical-Intuition-Foundations/Introduction-to-Linear-Algebra/Quiz.md",
     "md/04-Mathematics-Statistics-and-Quantitative-Logic/01-Mathematical-Intuition-Foundations/G-del-Escher-Bach/G-del-Escher-Bach.canvas",
-    "md/04-Mathematics-Statistics-and-Quantitative-Logic/01-Mathematical-Intuition-Foundations/G-del-Escher-Bach/Quiz.md",
     "md/03-Psychology-Behavior-and-Neuroscience/06-Relationships-Communication-Conflict/Attached/Attached.canvas",
-    "md/03-Psychology-Behavior-and-Neuroscience/06-Relationships-Communication-Conflict/Attached/Quiz.md",
     "md/03-Psychology-Behavior-and-Neuroscience/05-Emotions-Stress-Resilience/Stumbling-on-Happiness/Stumbling-on-Happiness.canvas",
-    "md/03-Psychology-Behavior-and-Neuroscience/05-Emotions-Stress-Resilience/Stumbling-on-Happiness/Quiz.md",
     "md/03-Psychology-Behavior-and-Neuroscience/05-Emotions-Stress-Resilience/Emotional-Intelligence/Emotional-Intelligence.canvas",
-    "md/03-Psychology-Behavior-and-Neuroscience/05-Emotions-Stress-Resilience/Emotional-Intelligence/Quiz.md",
-    "md/03-Psychology-Behavior-and-Neuroscience/05-Emotions-Stress-Resilience/Emotional-Agility/Emotional-Agility.canvas",
-    "md/03-Psychology-Behavior-and-Neuroscience/05-Emotions-Stress-Resilience/Emotional-Agility/Quiz.md",
-    "md/03-Psychology-Behavior-and-Neuroscience/03-Motivation-Drive-Volition/The-Molecule-of-More/Quiz.md",
-    "md/03-Psychology-Behavior-and-Neuroscience/02-Persuasion-Influence-Rhetoric/Pre-Suasion/Quiz.md",
     "_assets/book-vault-icon.svg"
   ]
 }
