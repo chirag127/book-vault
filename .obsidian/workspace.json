@@ -207,6 +207,7 @@
   },
   "active": "f035363d78ede9d2",
   "lastOpenFiles": [
+    "automation/core/benchmark_10q.py",
     "automation/research/Make-It-Stick.json",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick",
@@ -218,7 +219,6 @@
     "automation/cache/search/wikipedia/make_it_stick_unique_query_2.json",
     "automation/cache/search/wikipedia",
     "automation/cache/search/crossref/roediger_retrieval_practice_unique_query_2.json",
-    "automation/cache/search/crossref",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Cognition-and-Meta-Skills.canvas",
     "md/02-Thinking-Rationality-and-Mental-Models/01-Cognitive-Biases-Heuristics/The-Art-of-Thinking-Clearly/05-Decision-Protocols.md",
     "md/04-Mathematics-Statistics-and-Quantitative-Logic/03-Statistical-Inference-Modeling/An-Introduction-to-Statistical-Learning/06-Unsupervised-Learning.md",

@@ -20,6 +20,9 @@ class Settings:
     primary_provider: str
     zen_base_url: str
     zen_model: str
+    zen_ox_alpha_retries: int
+    zen_fallback_retries: int
+    zen_fallback_models: list[str]
     nvidia_api_key: str
     nvidia_base_url: str
     nvidia_model: str
@@ -74,10 +77,16 @@ def load_settings() -> Settings:
     if primary == "nvidia" and not nvidia_key:
         raise ConfigurationError("PRIMARY_PROVIDER=nvidia requires NVIDIA_API_KEY in .env.")
 
+    fallback_models_raw = os.getenv("ZEN_FALLBACK_MODELS", "nemotron-3-ultra-free,laguna-s-2.1-free,nemotron-3.5-lightning-free")
+    zen_fallback_models = [m.strip() for m in fallback_models_raw.split(",") if m.strip()]
+
     return Settings(
         primary_provider=primary,
         zen_base_url=os.getenv("OPENCODE_ZEN_BASE_URL", "https://opencode.ai/zen/v1").rstrip("/"),
         zen_model=os.getenv("OPENCODE_ZEN_MODEL", "x-preview-f-free"),
+        zen_ox_alpha_retries=_int("ZEN_OX_ALPHA_RETRIES", 3),
+        zen_fallback_retries=_int("ZEN_FALLBACK_RETRIES", 0),
+        zen_fallback_models=zen_fallback_models,
         nvidia_api_key=nvidia_key,
         nvidia_base_url=os.getenv("NVIDIA_API_BASE_URL", "https://integrate.api.nvidia.com/v1").rstrip("/"),
         nvidia_model=os.getenv("NVIDIA_MODEL", "deepseek-ai/deepseek-v4-flash-0731"),

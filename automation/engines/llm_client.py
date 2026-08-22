@@ -83,13 +83,7 @@ def _wait_limiter() -> None:
 
 def build_providers(settings: Settings) -> list[Provider]:
     """Return the provider chain in call order."""
-    zen_models = [
-        settings.zen_model,
-        "nemotron-3-ultra-free",
-        "laguna-s-2.1-free",
-        "nemotron-3.5-lightning-free",
-        "x-preview-f-free",
-    ]
+    zen_models = [settings.zen_model] + settings.zen_fallback_models
     seen = set()
     unique_zen_models = []
     for m in zen_models:
@@ -192,11 +186,12 @@ def generate_markdown(settings: Settings, messages: Iterable[dict[str, str]], re
     last_error: GenerationError | None = None
     for index, provider in enumerate(providers, start=1):
         _wait_limiter()
-        # Ox Alpha (x-preview-f-free) gets 3 retries (4 total attempts); fallbacks get 1 attempt (0 retries)
         if provider.model == "x-preview-f-free":
-            provider_retries = 3
+            provider_retries = settings.zen_ox_alpha_retries
+        elif provider.label.startswith("zen"):
+            provider_retries = settings.zen_fallback_retries
         else:
-            provider_retries = 0
+            provider_retries = effective_retries
         attempts_label = f"{provider_retries + 1} attempt(s)"
         print(f"        {magenta('🤖 LLM:')} trying provider {bold(str(index))}/{len(providers)}: {magenta(provider.label)} ({cyan(provider.model)}) with {attempts_label}", flush=True)
         try:
