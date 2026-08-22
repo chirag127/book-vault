@@ -95,7 +95,7 @@ def build_providers(settings: Settings) -> list[Provider]:
         Provider(
             label="zen",
             base_url=settings.zen_base_url,
-            api_key=None,
+            api_key=settings.zen_api_key or None,
             model=m,
             thinking_extra=False,
         )
@@ -246,7 +246,7 @@ def _generate_with_zen(
     messages: Iterable[dict[str, str]],
     retries: int,
 ) -> str:
-    """Call OpenCode Zen directly over pooled HTTP without Authorization header."""
+    """Call OpenCode Zen directly over pooled HTTP (with Authorization header if API key provided)."""
     payload = {
         "model": provider.model,
         "messages": list(messages),
@@ -254,10 +254,14 @@ def _generate_with_zen(
         "top_p": settings.top_p,
         "max_tokens": min(settings.max_tokens, 65536),
     }
+    headers = {}
+    if provider.api_key:
+        headers["Authorization"] = f"Bearer {provider.api_key}"
+
     client = _get_zen_client()
     for attempt in range(retries + 1):
         try:
-            response = client.post(f"{provider.base_url}/chat/completions", json=payload)
+            response = client.post(f"{provider.base_url}/chat/completions", json=payload, headers=headers)
             if response.status_code in RETRYABLE_STATUS:
                 delay = _backoff_delay(attempt, base=2.0, cap=60.0)
                 print(f"        {yellow('⏳ LLM')} {magenta(provider.label)}: HTTP {yellow(str(response.status_code))}, backing off {bold(f'{delay:.1f}s')} (attempt {bold(str(attempt + 1))}/{retries + 1})", flush=True)
@@ -266,7 +270,7 @@ def _generate_with_zen(
                 time.sleep(delay)
                 continue
             if response.status_code == 401:
-                raise GenerationError(f"{provider.label} rejected the request (401). The free endpoint accepts no Authorization header.")
+                raise GenerationError(f"{provider.label} rejected the request (401). Invalid or unauthorized API key.")
             response.raise_for_status()
             data = response.json()
             choice = (data.get("choices") or [{}])[0]

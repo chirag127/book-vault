@@ -18,6 +18,7 @@ class ConfigurationError(RuntimeError):
 @dataclass(frozen=True)
 class Settings:
     primary_provider: str
+    zen_api_key: str
     zen_base_url: str
     zen_model: str
     zen_ox_alpha_retries: int
@@ -71,6 +72,10 @@ def load_settings() -> Settings:
     if primary not in {"zen", "nvidia"}:
         raise ConfigurationError("PRIMARY_PROVIDER must be 'zen' or 'nvidia'.")
 
+    zen_key = (os.getenv("OPENCODE_ZEN_API_KEY") or os.getenv("ZEN_API_KEY") or "").strip()
+    if zen_key in {"zen-replace-me", "replace-me", "your-zen-key-here"}:
+        zen_key = ""
+
     nvidia_key = os.getenv("NVIDIA_API_KEY", "").strip()
     if nvidia_key in {"nvapi-replace-me", "replace-me", "your-nvidia-key-here"}:
         nvidia_key = ""
@@ -85,6 +90,7 @@ def load_settings() -> Settings:
 
     return Settings(
         primary_provider=primary,
+        zen_api_key=zen_key,
         zen_base_url=os.getenv("OPENCODE_ZEN_BASE_URL", "https://opencode.ai/zen/v1").rstrip("/"),
         zen_model=os.getenv("OPENCODE_ZEN_MODEL", "x-preview-f-free"),
         zen_ox_alpha_retries=_int("ZEN_OX_ALPHA_RETRIES", 0),
