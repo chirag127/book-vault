@@ -82,20 +82,30 @@ def _wait_limiter() -> None:
 
 
 def build_providers(settings: Settings) -> list[Provider]:
-    """Return the provider chain in call order.
+    """Return the provider chain in call order."""
+    zen_models = [
+        settings.zen_model,
+        "nemotron-3-ultra-free",
+        "laguna-s-2.1-free",
+        "nemotron-3.5-lightning-free",
+    ]
+    seen = set()
+    unique_zen_models = []
+    for m in zen_models:
+        if m not in seen:
+            seen.add(m)
+            unique_zen_models.append(m)
 
-    1. OpenCode Zen **Ox Alpha Free** — the single best keyless model, used
-       exclusively as primary (per the chosen configuration).
-    2. NVIDIA (requires NVIDIA_API_KEY; only included when the key is set).
-    g4f is handled separately by generate_markdown as the last resort.
-    """
-    zen = Provider(
-        label="zen",
-        base_url=settings.zen_base_url,
-        api_key=None,
-        model=settings.zen_model,
-        thinking_extra=False,
-    )
+    zen_providers = [
+        Provider(
+            label="zen",
+            base_url=settings.zen_base_url,
+            api_key=None,
+            model=m,
+            thinking_extra=False,
+        )
+        for m in unique_zen_models
+    ]
     nvidia = Provider(
         label="nvidia",
         base_url=settings.nvidia_base_url,
@@ -106,8 +116,8 @@ def build_providers(settings: Settings) -> list[Provider]:
     if settings.primary_provider == "nvidia":
         if not nvidia.api_key:
             raise GenerationError("PRIMARY_PROVIDER=nvidia but NVIDIA_API_KEY is not set.")
-        return [nvidia, zen]
-    chain = [zen]
+        return [nvidia] + zen_providers
+    chain = list(zen_providers)
     if nvidia.api_key:
         chain.append(nvidia)
     return chain
@@ -258,10 +268,16 @@ def _generate_with_zen(
                 raise GenerationError(f"{provider.label} rejected the request (401). The free endpoint accepts no Authorization header.")
             response.raise_for_status()
             data = response.json()
-            content = (data.get("choices") or [{}])[0].get("message", {}).get("content") or ""
+            choice = (data.get("choices") or [{}])[0]
+            msg = choice.get("message", {})
+            content = msg.get("content") or choice.get("text") or ""
+            if not content.strip() and msg.get("reasoning_content"):
+                content = msg.get("reasoning_content")
+            elif not content.strip() and msg.get("reasoning"):
+                content = msg.get("reasoning")
             if not content.strip():
                 raise GenerationError(f"{provider.label} returned an empty response.")
-            print(f"        {green('✓ LLM')} {magenta(provider.label)}: HTTP {green('200 OK')}, {bold(str(len(content.split())))} {green('words')}", flush=True)
+            print(f"        {green('✓ LLM')} {magenta(provider.label)} ({cyan(provider.model)}): HTTP {green('200 OK')}, {bold(str(len(content.split())))} {green('words')}", flush=True)
             return content.strip()
         except GenerationError:
             raise
