@@ -581,14 +581,14 @@ def run() -> int:
 
     with pipeline_lock():
         providers = build_providers(settings)
-        chain = " -> ".join(f"{magenta(p.label)} ({cyan(p.model)})" for p in providers)
+        primary_p = providers[0]
+        fallback_names = [p.model for p in providers[1:]]
         print(f"{C.BRIGHT_CYAN}{'=' * 70}{C.RESET}", flush=True)
         print(f"{C.BOLD}{C.BRIGHT_CYAN}🚀 UNIVERSAL BOOK VAULT — AUTONOMOUS GENERATOR{C.RESET}", flush=True)
         print(f"  {bold('manifest')}   : {dim(str(args.manifest))}", flush=True)
-        print(f"  {bold('providers')}  : {chain} + {yellow('g4f auto')} (last resort)", flush=True)
-        print(f"  {bold('length')}     : content-adaptive per book (1,500–15,000 words)", flush=True)
+        print(f"  {bold('primary')}    : {magenta(primary_p.label)} ({cyan(primary_p.model)})", flush=True)
+        print(f"  {bold('fallbacks')}  : {dim(', '.join(fallback_names))} + {yellow('g4f')} (zero retries)", flush=True)
         print(f"  {bold('workers')}    : {bold(str(workers))} thread(s) — shared rate cap {bold(str(settings.llm_calls_per_minute))} calls/min", flush=True)
-        print(f"  {bold('backoff')}    : exponential + jitter on every 429/5xx/network error", flush=True)
         print(f"  {bold('loop mode')}  : {green('yes (continuous)') if args.loop else dim('no (single pass)')}", flush=True)
         print(f"{C.BRIGHT_CYAN}{'=' * 70}{C.RESET}", flush=True)
 
