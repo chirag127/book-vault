@@ -10,8 +10,7 @@ note_type: "flashcard-deck"
 
 *By Peter C. Brown; Henry L. Roediger III; Mark A. McDaniel*
 
-
-
+```flashcards
 Q: What is the "generation effect"?
 A: The finding that producing an answer yourself—even if you get it wrong—creates a stronger memory trace than being given the answer. The act of attempting to generate forces the brain to search its memory, strengthening the relevant pathways.
 
