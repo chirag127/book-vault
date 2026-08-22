@@ -169,12 +169,17 @@ EXECUTIVE BOOK SUMMARY ARCHITECTURE (Blinkist / Shortform / getAbstract Standard
      - **Evidence & Empirical Support**: Case studies, experiments, or historical events cited in the book.
      - **Implementation Protocols**: Concrete step-by-step action items and decision heuristics.
    - Rich internal wikilinks between the book's summary chapters and cross-references to foundational works.
-   - The practical application chapter MUST include a `## 🧠 Active Recall & Key Takeaways` section with 3 to 5 interactive Obsidian collapsible callouts:
+   - EVERY concept chapter file MUST conclude with a dedicated `## 🧠 Active Recall & Knowledge Checks` section featuring 3 to 5 interactive Obsidian collapsible question callouts:
      ```markdown
-     > [!QUESTION]- What is [core principle or mechanism]?
-     > [Direct answer and explanation with key takeaway.]
+     > [!QUESTION]- What is the core mechanism of [concept]?
+     > **Direct Answer:** [Dense, precise explanation of the mechanism.]
+     > 
+     > **Key Implication:** [How to apply or recognize this in practice.]
+
+     > [!QUESTION]- Why does [traditional belief] fail according to the author?
+     > **Direct Answer:** [Evidence-backed rationale explaining the failure mode.]
      ```
-   - The concluding chapter MUST include `## ⚠️ Critical Limitations & Boundary Conditions` (where the author's model fails or does not apply) AND `## 🌉 Comparative Synthesis & Related Vault Works`.
+   - The concluding chapter MUST additionally include `## ⚠️ Critical Limitations & Boundary Conditions` (where the author's model fails or does not apply) AND `## 🌉 Comparative Synthesis & Related Vault Works`.
 
 STRICT FORMATTING & CLEANLINESS RULES:
 - NO trailing horizontal rules (`---`) at the bottom of any file.
