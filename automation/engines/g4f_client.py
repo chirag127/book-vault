@@ -53,15 +53,22 @@ class G4fError(RuntimeError):
     """Raised when every ranked g4f provider fails."""
 
 
+PREFERRED_G4F_PROVIDERS = [
+    "CohereForAI_C4AI_Command",
+    "HuggingSpace",
+    "Gemini",
+]
+
+
 def text_provider_names() -> list[str]:
-    """All g4f providers marked working that produce text."""
+    """All g4f providers marked working that produce text, prioritizing verified fast ones."""
     from g4f import Provider
     from g4f.Provider import ProviderUtils
 
     names = sorted(ProviderUtils.convert.keys())
-    out: list[str] = []
+    out: list[str] = list(PREFERRED_G4F_PROVIDERS)
     for name in names:
-        if name in MEDIA_PROVIDERS:
+        if name in MEDIA_PROVIDERS or name in PREFERRED_G4F_PROVIDERS:
             continue
         cls = getattr(Provider, name, None)
         if cls is None:
