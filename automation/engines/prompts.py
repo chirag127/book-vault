@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import urllib.parse
+from typing import Any
 
 TEMPLATE_VERSION = "2026-08-22-book-summary-v6"
 
@@ -292,3 +293,191 @@ REQUIREMENTS:
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user},
     ]
+
+
+def build_book_outline_prompt(
+    book: dict[str, str],
+    sources: str,
+) -> list[dict[str, str]]:
+    """Stage 1: Prompt LLM to design the authentic modular chapter outline for the book."""
+    user = f"""Design the authentic, comprehensive structural outline and chapter division for "{book['title']}" by {book['author']}.
+
+Book Metadata:
+- Title: {book['title']}
+- Author: {book['author']}
+- Pillar: {book.get('pillar', '')}
+- Category: {book.get('category', '')}
+- Topic: {book.get('topic', '')}
+
+Research dossier:
+{sources}
+
+OUTPUT REQUIREMENTS:
+You MUST output a valid, clean JSON object (and nothing else) specifying the core thesis, top takeaways, and 3 to 5 thematic concept chapters.
+
+JSON FORMAT:
+```json
+{{
+  "thesis": "1-2 sentence definition of the core thesis and problem solved.",
+  "transformation": "Why this matters and how it shifts the reader's paradigm.",
+  "target_audience": "Who gains the highest ROI from this work.",
+  "top_insights": [
+    "Insight 1...",
+    "Insight 2...",
+    "Insight 3...",
+    "Insight 4...",
+    "Insight 5..."
+  ],
+  "chapters": [
+    {{
+      "index": 1,
+      "filename": "01-[Specific-Thematic-Slug].md",
+      "title": "01 · [Specific Thematic Title]",
+      "focus": "One sentence summary of this chapter's mental models and protocols."
+    }},
+    {{
+      "index": 2,
+      "filename": "02-[Specific-Thematic-Slug].md",
+      "title": "02 · [Specific Thematic Title]",
+      "focus": "One sentence summary of this chapter's mental models and protocols."
+    }},
+    {{
+      "index": 3,
+      "filename": "03-[Specific-Thematic-Slug].md",
+      "title": "03 · [Specific Thematic Title]",
+      "focus": "One sentence summary of this chapter's mental models and protocols."
+    }}
+  ]
+}}
+```
+"""
+    return [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user},
+    ]
+
+
+def build_chapter_concept_prompt(
+    book: dict[str, str],
+    chapter_info: dict[str, Any],
+    outline: dict[str, Any],
+    sources: str,
+    target_words: int = 1000,
+) -> list[dict[str, str]]:
+    """Stage 2: Prompt LLM to write an in-depth standalone concept chapter note."""
+    user = f"""Write the complete, authoritative, long-form concept chapter note for:
+Chapter: {chapter_info.get('title', '')}
+Filename: {chapter_info.get('filename', '')}
+Book: "{book['title']}" by {book['author']}
+
+Focus & Mental Models to cover:
+{chapter_info.get('focus', '')}
+
+Book Core Thesis Context:
+{outline.get('thesis', '')}
+
+Research dossier:
+{sources}
+
+FORMATTING REQUIREMENTS:
+- Produce EXACTLY ONE complete markdown file starting with frontmatter:
+  ```yaml
+  title: "{book['title']} — {chapter_info.get('title', '')}"
+  author: "{book['author']}"
+  book_slug: "{book['slug']}"
+  parent_hub: "[[README]]"
+  note_type: summary-chapter
+  tags: [insert-3-to-5-relevant-lowercase-tags]
+  ```
+- `# {book['title']} — {chapter_info.get('title', '')}`
+- `*By {book['author']}*`
+- `## 🧠 Core Mental Models & Frameworks` (Deep mathematical, cognitive, systemic, or strategic models with LaTeX math if quantitative).
+- `## 🔬 Empirical Evidence & Case Studies` (Historical, psychological, or business experiments and verified proofs directly from the text).
+- `## 🛠️ Step-by-Step Implementation Protocols` (Actionable checklists, heuristics, and decision frameworks).
+- `## ⚠️ Critical Limitations & Edge Cases` (Where this mental model breaks down).
+- `## 🧠 Active Recall & Knowledge Checks` (3 to 5 collapsible Obsidian question callouts: `> [!QUESTION]- ...`).
+- Target length: {target_words} words. Dense, high-signal, university-grade rigor with zero conversational filler.
+"""
+    return [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user},
+    ]
+
+
+def build_readme_hub_prompt(
+    book: dict[str, str],
+    outline: dict[str, Any],
+    nav: dict[str, str] | None = None,
+    graph: str | None = None,
+) -> str:
+    """Stage 3: Dynamically assemble the Master Hub README.md from the outline."""
+    category = book["category"].replace(";", ",")
+    navigation = ""
+    if nav:
+        navigation = f"""## 🧭 Navigation
+
+| Direction | Link |
+| :--- | :--- |
+| **Previous Book** | {nav['prev']} |
+| **Category Hub** | {nav['category']} |
+| **Next Book** | {nav['next']} |"""
+
+    book_links = _book_links(book["title"], book["author"])
+
+    toc_rows = []
+    for chap in outline.get("chapters", []):
+        fn = chap.get("filename", "").replace(".md", "")
+        title = chap.get("title", "")
+        focus = chap.get("focus", "")
+        toc_rows.append(f"| [[{fn}\\|{title}]] | {focus} |")
+
+    toc_rows.append("| [[Audio-Listening-Edition\\|🎧 Audio Listening Edition]] | Complete spoken narration synthesis |")
+    toc_rows.append("| [[Quiz\\|🧩 Knowledge Assessment Quiz]] | Active recall test with explanations |")
+    toc_rows.append("| [[Flashcards\\|🎴 Active Recall Flashcards]] | Interactive recall deck |")
+    toc_table = "\n".join(toc_rows)
+
+    insights_bullets = "\n".join(f"- **Insight {i+1}**: {ins}" for i, ins in enumerate(outline.get("top_insights", [])))
+
+    content = f"""---
+title: "{book['title']}"
+author: "{book['author']}"
+first_published: {book.get('first_published', book.get('published', ''))}
+latest_published: {book.get('latest_published', book.get('published', ''))}
+published: {book.get('published', book.get('first_published', ''))}
+pillar: "{book.get('pillar', '')}"
+category: "{category}"
+subcategory: "{book.get('subcategory', '')}"
+topic: "{book.get('topic', '')}"
+slug: "{book['slug']}"
+difficulty: "{book.get('difficulty', 'Intermediate')}"
+status: complete
+note_type: book-summary
+tags: [book-summary, executive-brief, {book['slug'].lower()}]
+---
+
+# {book['title']} — Complete Book Summary & Executive Guide
+
+*By {book['author']} (First Published: {book.get('first_published', book.get('published', ''))}, Latest: {book.get('latest_published', book.get('published', ''))})*
+
+## ⚡ Executive Summary & Value Proposition
+
+- **The Central Premise**: {outline.get('thesis', '')}
+- **The Transformation ("So What?")**: {outline.get('transformation', '')}
+- **Core Audience & Applicability**: {outline.get('target_audience', '')}
+
+### 🔑 Executive Takeaways (Top Insights)
+{insights_bullets}
+
+## 📑 Master Table of Contents
+
+| Chapter | Summary Focus & Mental Models |
+| :--- | :--- |
+{toc_table}
+
+## 📚 External References & Book Trackers
+{book_links}
+
+{navigation}
+"""
+    return content.strip() + "\n"
+

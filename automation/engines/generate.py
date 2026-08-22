@@ -443,38 +443,89 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
                     return
                 say(f"        {yellow(f'OFFLINE DRAFT:')} {exc}")
 
-    # ---- Step 2: Dual-Edition Generation ---------------------------------------
+    # ---- Step 2: Dual-Edition Modular Generation -------------------------------
     prompt_book = dict(book)
     prompt_book["category"] = book["category"].replace(";", ",")
     nav = navigation_for(book, all_books)
-    say(f"  {cyan('[2/4]')} {bold('generating multi-file reading summary')} ({min_words}–{max_words} words)")
+    say(f"  {cyan('[2/4]')} {bold('generating modular concept chapters (file-by-file synthesis)')}")
 
-    from .prompts import build_modular_reading_prompt, build_audio_tts_prompt
+    from .prompts import (
+        build_modular_reading_prompt,
+        build_audio_tts_prompt,
+        build_book_outline_prompt,
+        build_chapter_concept_prompt,
+        build_readme_hub_prompt,
+    )
 
-    # 1. Modular Reading Edition
+    files: dict[str, str] = {}
+    sources_dossier = source_bundle(sources) if sources else "No web sources available."
+
+    # Stage 2A: Query LLM for the dynamic modular outline & chapter structure
+    outline: dict[str, Any] | None = None
     try:
-        reading_raw = generate_markdown(
+        outline_raw = generate_markdown(
             settings,
-            build_modular_reading_prompt(
-                prompt_book,
-                source_bundle(sources) if sources else "No web sources available.",
-                args.no_web,
-                nav=nav,
-                graph=graph_context,
-                min_words=min_words,
-                max_words=max_words,
-            ),
-            cache_key=f"book-reading-{book['slug']}-{TEMPLATE_VERSION}",
+            build_book_outline_prompt(prompt_book, sources_dossier),
+            cache_key=f"book-outline-{book['slug']}-{TEMPLATE_VERSION}",
         )
-        files = _unpack_files(reading_raw, default_name="README.md")
-        if list(files.keys()) == ["README.md"] and len(files["README.md"].split()) < 400:
-            raise ValueError(
-                f"LLM returned a single blob with no === FILE: === markers and <400 words — "
-                "output discarded; book will be retried on the next pass."
-            )
+        # Extract JSON from code fences or raw text
+        json_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", outline_raw)
+        json_str = json_match.group(1) if json_match else outline_raw.strip()
+        outline = json.loads(json_str)
     except Exception as exc:
-        say(f"        {red(f'GENERATION FAILED (reading edition):')} {exc}")
-        return
+        say(f"        {yellow('OUTLINE NOTE:')} dynamic outline fallback ({exc}) — using unified synthesis")
+
+    # Stage 2B: Generate Chapter by Chapter if outline parsed successfully
+    if outline and isinstance(outline.get("chapters"), list) and len(outline["chapters"]) >= 2:
+        chapters = outline["chapters"]
+        say(f"        {green('✓ Dynamic Outline:')} {bold(str(len(chapters)))} thematic chapters planned by LLM")
+        
+        # Build README.md from structured outline
+        files["README.md"] = build_readme_hub_prompt(prompt_book, outline, nav=nav, graph=graph_context)
+
+        # Generate each concept note in its own dedicated, focused LLM call
+        target_words_per_chap = max(800, min_words // max(1, len(chapters)))
+        for ch in chapters:
+            fname = ch.get("filename", f"{ch.get('index', 1):02d}-Chapter.md")
+            ctitle = ch.get("title", fname)
+            say(f"        {magenta('📑 Synthesizing chapter:')} {cyan(ctitle)} -> {fname}")
+            try:
+                chap_md = generate_markdown(
+                    settings,
+                    build_chapter_concept_prompt(
+                        prompt_book,
+                        ch,
+                        outline,
+                        sources_dossier,
+                        target_words=target_words_per_chap,
+                    ),
+                    cache_key=f"book-chap-{book['slug']}-{fname}-{TEMPLATE_VERSION}",
+                )
+                files[fname] = chap_md
+            except Exception as exc:
+                say(f"        {red(f'CHAPTER SYNTHESIS FAILED for {fname}:')} {exc}")
+    else:
+        # Fallback to single-call multi-file generation
+        try:
+            reading_raw = generate_markdown(
+                settings,
+                build_modular_reading_prompt(
+                    prompt_book,
+                    sources_dossier,
+                    args.no_web,
+                    nav=nav,
+                    graph=graph_context,
+                    min_words=min_words,
+                    max_words=max_words,
+                ),
+                cache_key=f"book-reading-{book['slug']}-{TEMPLATE_VERSION}",
+            )
+            files = _unpack_files(reading_raw, default_name="README.md")
+            if list(files.keys()) == ["README.md"] and len(files["README.md"].split()) < 400:
+                raise ValueError("LLM returned single unparsed blob with <400 words.")
+        except Exception as exc:
+            say(f"        {red(f'GENERATION FAILED (reading edition):')} {exc}")
+            return
 
     # 2. Audio Listening Edition
     try:
