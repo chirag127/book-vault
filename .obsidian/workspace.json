@@ -11,14 +11,10 @@
             "id": "f035363d78ede9d2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Flashcards.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Flashcards"
+              "title": "New tab"
             }
           }
         ]
@@ -213,24 +209,24 @@
   "lastOpenFiles": [
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Cognition-and-Meta-Skills.canvas",
     "md/01-Learning-Cognition-and-Meta-Skills",
+    "md",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Make-It-Stick-Complete-Reading-Edition.pdf",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/04-Mindsets-and-Implementation.md",
     "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/03-Elaboration-and-Desirable-Difficulties.md",
+    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Flashcards.md",
     "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/02-Retrieval-Practice-and-Spacing.md",
     "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/01-The-Illusion-of-Knowledge.md",
     "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Make-It-Stick.canvas",
-    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Make-It-Stick-Complete-Reading-Edition.pdf",
     "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Audio-Listening-Edition.pdf",
     "automation/exporters/__pycache__/export_pdf.cpython-311.pyc",
-    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Flashcards.md",
     "automation/engines/__pycache__/flashcards.cpython-311.pyc",
     "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Quiz.md",
     "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/README.md",
     "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/Audio-Listening-Edition.md",
-    "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick/04-Mindsets-and-Implementation.md",
     "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE/Make-It-Stick",
     "md/01-Learning-Thinking-and-Knowledge/01-LEARNING-SCIENCE",
     "md/01-Learning-Thinking-and-Knowledge",
     "cache/llm/book-quiz-Make-It-Stick-2026-08-22-quiz-v1.json",
-    "cache/llm/book-audio-Make-It-Stick-2026-08-22-book-summary-v5.json",
     "md/01-Learning-Cognition-and-Meta-Skills/01-Learning-Science-Cognitive-Load/Make-It-Stick/README.md",
     "md/02-Thinking-Rationality-and-Mental-Models/01-Cognitive-Biases-Heuristics/The-Art-of-Thinking-Clearly/05-Decision-Protocols.md",
     "md/04-Mathematics-Statistics-and-Quantitative-Logic/03-Statistical-Inference-Modeling/An-Introduction-to-Statistical-Learning/06-Unsupervised-Learning.md",
