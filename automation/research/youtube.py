@@ -32,6 +32,12 @@ def extract_video_id(url_or_id: str) -> str:
     return url_or_id
 
 
+class _SilentLogger:
+    def debug(self, msg: str) -> None: pass
+    def warning(self, msg: str) -> None: pass
+    def error(self, msg: str) -> None: pass
+
+
 def extract_transcript_from_yt_dlp(url: str, max_chars: int = 4000) -> str:
     """Attempt transcript extraction using yt-dlp metadata with browser clients."""
     try:
@@ -44,6 +50,7 @@ def extract_transcript_from_yt_dlp(url: str, max_chars: int = 4000) -> str:
             "subtitleslangs": ["en", "en-US", "en-GB"],
             "quiet": True,
             "no_warnings": True,
+            "logger": _SilentLogger(),
             "extractor_args": {
                 "youtube": {
                     "player_client": ["android", "web_creator", "web", "ios"],
@@ -153,6 +160,7 @@ def search_youtube_summaries(
             "extract_flat": "in_playlist",
             "quiet": True,
             "no_warnings": True,
+            "logger": _SilentLogger(),
         }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             search_target = f"ytsearch{max_results * 2}:{clean_query}"
