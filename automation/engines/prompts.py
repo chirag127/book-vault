@@ -1,24 +1,44 @@
 from __future__ import annotations
 
-TEMPLATE_VERSION = "2026-08-21-pillars-v1"
+import urllib.parse
 
-SYSTEM_PROMPT = """You are a world-class executive book analyst and research scholar creating the definitive, comprehensive Book Summary for a premier personal knowledge vault.
+TEMPLATE_VERSION = "2026-08-22-book-summary-v5"
 
-Your goal is to produce an authoritative, high-signal Book Summary that captures 100% of the book's vital insights with zero filler:
-1. Executive Summary & Core Thesis: The central argument, big idea, and governing mental models.
-2. Key Concepts & Chapter Synthesis: In-depth breakdown of the main ideas, principles, and supporting evidence.
-3. Actionable Protocols & Step-by-Step Applications: Concrete implementation guides, heuristics, exercises, and workflows.
-4. Critical Analysis, Limitations & Counterarguments: Objective critique of empirical rigor, boundary conditions, and edge cases.
-5. Intellectual Connections: How this book connects to and dialogues with other major works in the field.
+SYSTEM_PROMPT = """You are a world-class executive book analyst, research scholar, and knowledge architect creating the definitive, comprehensive Book Summary.
+
+Your goal is to produce an authoritative, high-signal, executive-grade Book Summary that captures 100% of the book's vital insights, mental models, and actionable protocols with zero fluff:
+1. Executive Brief & Core Thesis: The central argument, big idea ("The Premise"), target audience, and the transformation ("The So What?").
+2. Thematic Breakdown & Deep Mental Models: Comprehensive explanation of core concepts, frameworks, and operating principles grouped into 3–5 authentic thematic pillars.
+3. Practical Protocols & Implementation Playbook: Step-by-step application guides, heuristics, decision checklists, and concrete workflows.
+4. Supporting Evidence & Case Studies: Empirical research, historical benchmarks, and concrete demonstrations from the text.
+5. Critical Evaluation, Nuances & Boundary Conditions: Objective analysis of where the models break down, limitations, counter-arguments, and cross-disciplinary connections.
+
+STRICT NON-NEGOTIABLE ANTI-HALLUCINATION PROTOCOL:
+- Absolute Factual Fidelity: Every summary, concept, model, heuristic, and formula MUST be authentic to the author and the actual published text.
+- ZERO Hallucination Mandate: You are STRICTLY PROHIBITED from inventing or guessing fake research studies, fictional statistical samples, fabricated case studies, false co-authors, or imaginary chapter names.
+- Honest Handling of Recent or Niche Books: When analyzing newly published books (e.g. 2023–2026 releases) or specialized monographs where detailed chapter text is limited in public training corpora, YOU MUST EXPLICITLY ACKNOWLEDGE THIS LIMITATION. Synthesize the verified core thesis, public abstracts, and author lectures transparently, clearly denoting what is confirmed vs. areas where readers should consult the primary text for deeper operational specifics.
+- No Filler / Fluff: Never pad summaries with generic platitudes or invented anecdotes. If a detail is uncertain, state the verified concept directly and concisely.
 
 Obsidian & Visual Markdown Capabilities:
 - Obsidian Callouts: Use appropriate callout boxes (`> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!EXAMPLE]`, `> [!QUOTE]`) to highlight key takeaways, critical warnings, or memorable author quotes.
-- Visual Mermaid Diagrams: When explaining complex systems, processes, loops, or decision trees, use Mermaid diagrams (```mermaid ... ```).
+- Visual Mermaid Diagrams: When explaining complex systems, processes, feedback loops, or decision trees, use Mermaid diagrams (```mermaid ... ```).
 - Structured Comparison Tables: Use Markdown tables to compare strategies, pros/cons, phases, or theoretical models.
 - LaTeX Math Blocks: For quantitative, mathematical, statistical, or AI/CS books, use Obsidian LaTeX math (`$...$` for inline math, `$$\n...\n$$` for block formulas). Explain every equation in clear prose.
 - Action Checklists: Use `- [ ]` markdown task items for implementation protocols and actionable habits.
-- Bidirectional Wikilinks: Cross-link related concepts and books with `[[slug|Display Title]]`.
+- Bidirectional Wikilinks: Cross-link related concepts and books with `[[slug|Display Title]]` (or escaped `[[slug\\|Display Title]]` inside tables).
 - Eliminate conversational preamble, filler transitions, and padding."""
+
+
+def _book_links(title: str, author: str = "") -> str:
+    """Generate minimal search URLs for all book tracker platforms."""
+    query = urllib.parse.quote_plus(title)
+
+    return f"""- [Open Library](https://openlibrary.org/search?q={query})
+- [Goodreads](https://www.goodreads.com/search?q={query})
+- [Google Books](https://www.google.com/search?tbm=bks&q={query})
+- [WorldCat](https://search.worldcat.org/search?q={query})
+- [Hardcover](https://hardcover.app/search?q={query})
+- [StoryGraph](https://app.thestorygraph.com/browse?search_term={query})"""
 
 
 def build_modular_reading_prompt(
@@ -33,12 +53,14 @@ def build_modular_reading_prompt(
     category = book["category"].replace(";", ",")
     navigation = ""
     if nav:
-        navigation = f"""
-Navigation links:
-← Previous: {nav['prev']}
-↑ Category: {nav['category']}
-→ Next: {nav['next']}
-"""
+        navigation = f"""## 🧭 Navigation
+
+| Direction | Link |
+| :--- | :--- |
+| **Previous Book** | {nav['prev']} |
+| **Category Hub** | {nav['category']} |
+| **Next Book** | {nav['next']} |"""
+
     knowledge_graph = ""
     if graph:
         knowledge_graph = f"""
@@ -46,61 +68,125 @@ Knowledge-graph context:
 {graph}
 """
 
-    user = f"""Create the complete, modular multi-file Reading Edition for "{book['title']}" by {book['author']}.
+    book_links = _book_links(book["title"], book["author"])
+
+    user = f"""Create the complete, authoritative multi-file Executive Book Summary for "{book['title']}" by {book['author']}.
 
 Book Metadata:
 - Title: {book['title']}
 - Author: {book['author']}
-- Publication year: {book['published']}
+- First Published: {book.get('first_published', book.get('published', ''))}
+- Latest Published: {book.get('latest_published', book.get('published', ''))}
 - Pillar: {book.get('pillar', '')}
 - Category: {book['category']}
-- Subcategory: {book['subcategory']}
+- Subcategory: {book.get('subcategory', '')}
+- Topic: {book.get('topic', '')}
 - Slug: {book['slug']}
-- Difficulty: {book['difficulty']}
+- Difficulty: {book.get('difficulty', 'Intermediate')}
 
-Research sources:
+Research sources & dossier:
 {sources}
 {knowledge_graph}
 
-UNIVERSAL PKM & ZETTELKASTEN ARCHITECTURE:
-You have full autonomy to structure the knowledge across interconnected PKM notes (Hub MOC + Atomic Concept Notes). The structure must accommodate any domain of human knowledge (scientific equations, historical timelines, philosophical dialetics, architectural designs, cognitive heuristics, software systems, or financial models) using modern PKM standards:
+CRITICAL ANTI-HALLUCINATION & SCOPE DIRECTIVE:
+1. Ground every claim, framework, and concept strictly in authentic, verifiable knowledge of "{book['title']}".
+2. If this book is a recent release (e.g. 2023–2026) or if granular chapter details are sparse in the research dossier, DO NOT invent fake case studies or fictitious research experiments. Instead, synthesize the confirmed core thesis, published interviews, and conceptual frameworks truthfully.
+3. If specific aspects of the book have limited documentation in the dossier, include an honest notice in `README.md`:
+   ```markdown
+   > [!NOTE] Epistemic Scope & Synthesis Notice
+   > This summary is synthesized based on verified bibliographic abstracts, research dossiers, and core author publications. For comprehensive case studies and specialized implementation nuances, readers are encouraged to reference the primary work.
+   ```
 
-1. The Hub & Map of Content (=== FILE: README.md ===):
-   - Comprehensive YAML frontmatter (`title`, `author`, `published`, `pillar`, `category`, `subcategory`, `slug`, `difficulty`, `status: complete`, `note_type: literature-hub`).
-   - `# {book['title']} — Executive Summary & PKM Knowledge Hub`
-   - `*By {book['author']} ({book['published']})*`
-   - Dense executive synthesis of the work's primary thesis, philosophical foundations, and epistemic contribution.
-   - Master Map of Content (MOC) with wikilinks to EVERY atomic concept note (`[[01-Concept-Name]]`, `[[02-Concept-Name]]`...) and `[[Audio-Listening-Edition|🎧 Audio Listening Edition]]`.
-   - `## 📚 External References & Book Trackers` (1-click search links for Open Library, Goodreads, Google Books, Hardcover, and StoryGraph).
+CRITICAL OUTPUT SEPARATION RULE:
+You MUST output the complete summary across modular files using the exact delimiter format below. Each file begins with its own header line:
+=== FILE: README.md ===
+=== FILE: 01-[Specific-Book-Theme-Title].md ===
+=== FILE: 02-[Specific-Book-Theme-Title].md ===
+=== FILE: 03-[Specific-Book-Theme-Title].md ===
+(Divide the book into 3 to 5 substantive thematic chapter files named dynamically after the book's authentic major sections, key laws, or core frameworks in kebab-case).
+
+DO NOT output a single blob of Markdown. DO NOT wrap file blocks in outer ```markdown ``` code fences. Every file MUST begin with its frontmatter (---) and end cleanly with markdown content.
+
+EXECUTIVE BOOK SUMMARY ARCHITECTURE (Blinkist / Shortform / getAbstract Standard):
+
+1. Executive Hub & Master Guide (=== FILE: README.md ===):
+   - Comprehensive YAML frontmatter:
+     ```yaml
+     title: "{book['title']}"
+     author: "{book['author']}"
+     first_published: {book.get('first_published', book.get('published', ''))}
+     latest_published: {book.get('latest_published', book.get('published', ''))}
+     published: {book.get('published', book.get('first_published', ''))}
+     pillar: "{book.get('pillar', '')}"
+     category: "{category}"
+     subcategory: "{book.get('subcategory', '')}"
+     topic: "{book.get('topic', '')}"
+     slug: "{book['slug']}"
+     difficulty: "{book.get('difficulty', 'Intermediate')}"
+     status: complete
+     note_type: book-summary
+     tags: [insert-3-to-6-relevant-lowercase-tags]
+     ```
+   - `# {book['title']} — Complete Book Summary & Executive Guide`
+   - `*By {book['author']} (First Published: {book.get('first_published', book.get('published', ''))}, Latest: {book.get('latest_published', book.get('published', ''))})*`
+   - `## ⚡ Executive Summary & Value Proposition`:
+     - **The Central Premise**: 1-2 sentence definition of the core thesis and problem solved.
+     - **The Transformation ("So What?")**: Why this matters and how it shifts the reader's paradigm or operating model.
+     - **Core Audience & Applicability**: Who gains the highest ROI from this work.
+     - **Executive Takeaways (Top 5 Insights)**: 5 concise, high-signal bullet points capturing the breakthrough ideas.
+   - Master Table of Contents as a clean Markdown table with wikilinks to every chapter summary file you generate and the companion editions:
+     ```markdown
+     ## 📑 Master Table of Contents
+     | Chapter | Summary Focus & Mental Models |
+     | :--- | :--- |
+     | [[01-[Chapter-Slug]\\|01 · [Chapter Title] ]] | [One-sentence summary of this section's core insights & models] |
+     | [[02-[Chapter-Slug]\\|02 · [Chapter Title] ]] | [One-sentence summary of this section's core insights & models] |
+     | [[03-[Chapter-Slug]\\|03 · [Chapter Title] ]] | [One-sentence summary of this section's core insights & models] |
+     | [[Audio-Listening-Edition\\|🎧 Audio Listening Edition]] | Complete spoken narration synthesis |
+     | [[Quiz\\|🧩 Knowledge Assessment Quiz]] | Active recall test with explanations |
+     | [[Flashcards\\|📚 Spaced Repetition Flashcards]] | Interactive recall deck |
+     ```
+   - `## 🎥 Curated Video Summaries & Lectures` section with verified video summaries and author talks.
+   - `## 📚 External References & Book Trackers` section with these exact links:
+{book_links}
    - {navigation}
 
-2. Contextual Atomic Concept / Spoke Notes (=== FILE: 01-[Concept-Name].md ===, === FILE: 02-[Concept-Name].md ===, etc.):
-   - Generate 2 to 6 atomic, durable knowledge notes tailored to the book's domain.
-   - YAML frontmatter on EVERY note (`title`, `author`, `book_slug`, `parent_hub: "[[README]]"`, `note_type: permanent-note`).
-   - `# {book['title']} — [Concept Name]` and `*By {book['author']}*`.
-   - High-density exposition of that specific framework, model, or paradigm. Use appropriate domain representations (e.g. LaTeX math formulas for quantitative concepts, markdown tables for comparisons, sequential checklists for protocols, code blocks for technical methods).
-   - Rich Bidirectional Interlinking: Include inline wikilinks to related concept notes within the book and cross-domain bridges (`[[Book-Slug]]` or `[[Concept-Name]]`).
-   - One practical/action chapter MUST include a dedicated section titled `## Active Recall & Spaced Repetition Flashcards` containing 3 to 5 `Q: ... ? / A: ...` flashcard pairs for spaced repetition retrieval.
-   - The concluding note should analyze limitations, counter-arguments, historical context, and `## Cross-Domain Knowledge Bridges`.
+2. Thematic Chapter Summary Files (=== FILE: 01-[Specific-Title].md ===, === FILE: 02-[Specific-Title].md ===, etc.):
+   - Generate 3 to 5 comprehensive summary chapter files covering the book's authentic parts/themes.
+   - YAML frontmatter on EVERY chapter file:
+     ```yaml
+     title: "{book['title']} — [Chapter/Part Title]"
+     author: "{book['author']}"
+     book_slug: "{book['slug']}"
+     parent_hub: "[[README]]"
+     note_type: summary-chapter
+     tags: [insert-2-to-4-relevant-lowercase-tags]
+     ```
+   - `# {book['title']} — [Chapter/Part Title]` and `*By {book['author']}*`.
+   - Comprehensive, deep summary of that specific part of the book:
+     - **Thematic Deep-Dive**: In-depth analysis of the core principles, mental models, and author arguments.
+     - **Frameworks & Mechanisms**: Detailed breakdown of formulas, loops, systems, and diagrams (Mermaid diagrams where helpful, LaTeX math for quantitative models).
+     - **Evidence & Empirical Support**: Case studies, experiments, or historical events cited in the book.
+     - **Implementation Protocols**: Concrete step-by-step action items and decision heuristics.
+   - Rich internal wikilinks between the book's summary chapters and cross-references to foundational works.
+   - The practical application chapter MUST include a `## 🧠 Active Recall & Key Takeaways` section with 3 to 5 interactive Obsidian collapsible callouts:
+     ```markdown
+     > [!QUESTION]- What is [core principle or mechanism]?
+     > [Direct answer and explanation with key takeaway.]
+     ```
+   - The concluding chapter MUST include `## ⚠️ Critical Limitations & Boundary Conditions` (where the author's model fails or does not apply) AND `## 🌉 Comparative Synthesis & Related Vault Works`.
 
-Quality Guidelines:
-- High-signal density, no fluff, no repetitive filler.
-- STRICT MARKDOWNLINT COMPLIANCE: All generated markdown must conform to standard markdownlint rules:
-  1. Strict single `#` top-level heading followed by proper subheadings (`##`, `###`) with no skipped heading levels (MD001).
-  2. Exactly one blank line before and after headings, lists, tables, callouts, and blockquotes (MD022/MD031/MD032).
-  3. All fenced code blocks must specify a language identifier (e.g. `dataview`, `markdown`, `python`, `text`) (MD040).
-  4. No trailing spaces at the end of lines (MD009) and single trailing newline at end of file (MD047).
-  5. Lists must use consistent bullet markers (`-`) with proper indentation.
-- Rich PKM Syntax: Use Callouts (`> [!TIP]`, `> [!IMPORTANT]`, `> [!QUOTE]`, `> [!NOTE]`), Tables, LaTeX, Checklists, and Wikilinks where relevant.
+STRICT FORMATTING & CLEANLINESS RULES:
+- NO trailing horizontal rules (`---`) at the bottom of any file.
+- NO outer ` ```markdown ` or ` ``` ` code fences wrapping file blocks.
+- Exactly one blank line before and after headings, tables, callouts, and lists.
 - Target total word count across all files: {min_words} to {max_words} words.
 """
-
 
     return [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user},
     ]
-
 
 
 def build_audio_tts_prompt(
@@ -112,53 +198,92 @@ def build_audio_tts_prompt(
 Book Metadata:
 - Title: {book['title']}
 - Author: {book['author']}
-- Year: {book['published']}
+- Year: {book.get('first_published', book.get('published', ''))}
+- Pillar: {book.get('pillar', '')}
 - Category: {book.get('category', '')}
+- Subcategory: {book.get('subcategory', '')}
 
-Research sources:
+Research sources & dossier:
 {sources}
 
-Audio/TTS Script Guidelines:
-1. Written specifically for spoken voice narration and Text-to-Speech (TTS) listening apps.
-2. Natural, engaging spoken prose with conversational transitions ("In this opening section...", "The pivotal takeaway here is...").
-3. DO NOT include Markdown tables, ASCII diagrams, raw bullet symbols, or visual formatting that sounds awkward when read aloud by a screen reader.
-4. Structure the audio script into clearly spoken narration sections:
-   - Part 1: Welcome & Executive Core Thesis
-   - Part 2: The Key Frameworks Explained
-   - Part 3: Real-World Applications & Practical Protocols
-   - Part 4: Critical Perspectives & What to Watch Out For
-   - Part 5: Final Summary & Takeaway
-5. Start with YAML frontmatter:
----
-title: "{book['title']} (Audio Listening Edition)"
-author: "{book['author']}"
-published: {book['published']}
-book_slug: "{book['slug']}"
-edition: "Audio-TTS"
-status: complete
----
+CRITICAL ANTI-HALLUCINATION DIRECTIVE:
+Ground all spoken text strictly in the authentic published work. Do NOT invent fictional experiments or fake anecdotes. If this is a recent or specialized volume, clearly convey the author's primary thesis and verified core frameworks honestly.
 
-# {book['title']} — Audio Listening Edition
-*By {book['author']}*
+TARGET AUDIENCE & TONE:
+You are narrating a premium, long-form audio book summary for an intelligent, curious listener who wants deep, substantive understanding without academic jargon or shallow soundbites. The tone is conversational, authoritative, engaging, and clear.
 
-
-Length: 1,200 to 2,500 spoken words of smooth, engaging audio narration.
+FORMATTING REQUIREMENTS:
+- Produce EXACTLY ONE complete markdown file starting with frontmatter.
+- Frontmatter:
+  ```yaml
+  title: "{book['title']} — Audio Listening Edition"
+  author: "{book['author']}"
+  book_slug: "{book['slug']}"
+  note_type: audio-listening-edition
+  tags: [audiobook, audio-summary, spoken-edition]
+  ```
+- Use 5 to 7 clearly delineated narration parts with `#` and `##` headings:
+  - `# 🎧 {book['title']} — Audio Listening Edition`
+  - `## Part One: The Big Idea & Why It Matters`
+  - `## Part Two: Core Principles & Mechanisms`
+  - `## Part Three: Chapter Breakdowns & Key Arguments`
+  - `## Part Four: Real-World Applications & Action Protocols`
+  - `## Part Five: Critical Perspectives & Limitations`
+  - `## Part Six: Final Synthesis & Core Takeaway`
+- Write in pure, natural spoken English meant to be read aloud by TTS engines (e.g., ElevenLabs / EdgeTTS / OpenAI TTS).
+- Avoid bulleted lists in the spoken body; use rhythmic, natural paragraphs with conversational transitions.
+- Total spoken length: 1,500 to 3,000 words.
 """
+
     return [
-        {"role": "system", "content": "You are a master audiobook narrator and audio scriptwriter creating a seamless spoken-word audio edition of a book summary for TTS listening."},
+        {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user},
     ]
 
 
-def build_prompt(
+def build_quiz_prompt(
     book: dict[str, str],
     sources: str,
-    allow_no_web: bool = False,
-    nav: dict[str, str] | None = None,
-    graph: str | None = None,
-    min_words: int = 1500,
-    max_words: int = 4500,
 ) -> list[dict[str, str]]:
-    return build_modular_reading_prompt(book, sources, allow_no_web, nav, graph, min_words, max_words)
+    user = f"""Create an interactive knowledge assessment quiz for "{book['title']}" by {book['author']}.
 
+Book Metadata:
+- Title: {book['title']}
+- Author: {book['author']}
+- Slug: {book['slug']}
 
+Research Context:
+{sources}
+
+REQUIREMENTS:
+- Produce a single file `Quiz.md` with frontmatter:
+  ```yaml
+  title: "{book['title']} — Knowledge Quiz"
+  book_slug: "{book['slug']}"
+  note_type: quiz
+  tags: [quiz, assessment, active-recall]
+  ```
+- `# 🧩 {book['title']} — Knowledge Assessment Quiz`
+- Include a valid interactive Obsidian quiz block:
+  ```quiz
+  book: {book['slug']}
+  title: {book['title']} — Knowledge Quiz
+  Q1. [Question testing core thesis]
+  A) [Option A]
+  B) [Option B]
+  C) [Option C]
+  D) [Option D]
+  ANSWER: [A/B/C/D]
+  EXPLANATION: [Clear explanation grounded in the book's concepts]
+
+  Q2. [Question testing key mechanism]
+  ...
+  (Create 8 to 12 rigorous, multiple-choice questions spanning all major chapters)
+  ```
+- Follow the quiz block with a summary table of the key takeaways tested.
+"""
+
+    return [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user},
+    ]

@@ -185,16 +185,11 @@ def _norm_title(title: str) -> str:
     return " ".join(word for word in text.split() if word not in noise)
 
 
-def _near_duplicate(norm: str, kept: list[str], min_words: int = 4) -> bool:
-    """True when one normalized title is a word-prefix of another.
-
-    A listing cut off at '...' (e.g. "How to Take Smart Notes: One Simple
-    Technique to Boost Writing") is a word-prefix of the full listing, so it
-    collapses. A short listing with an added brand segment ("... | MIT Press")
-    is NOT a word-prefix of the full subtitle, so distinct publisher and
-    author pages survive.
-    """
+def _near_duplicate(norm: str, kept: list[str], min_words: int = 2) -> bool:
+    """True when one normalized title is a word-prefix of another or identical."""
     for candidate in kept:
+        if norm == candidate:
+            return True
         norm_words = norm.split()
         candidate_words = candidate.split()
         short, long = (
@@ -381,6 +376,23 @@ def search_book(book: dict[str, str], settings: Settings) -> list[Source]:
             except Exception:
                 pass
 
+    # YouTube summary search & transcript integration
+    try:
+        from .youtube import search_youtube_summaries
+        yt_vids = search_youtube_summaries(title, author, max_results=3)
+        for vid in yt_vids:
+            vid_content = vid.get("transcript") or f"YouTube summary video '{vid.get('title')}' by {vid.get('channel')}."
+            sources.append(
+                Source(
+                    title=f"YouTube: {vid.get('title')} ({vid.get('channel')})",
+                    url=vid.get("url", ""),
+                    query="youtube book summary",
+                    content=vid_content[:4000],
+                )
+            )
+    except Exception:
+        pass
+
     final_sources = sources if sources else [Source(title, "", "fallback", "Book summary context.")]
     if slug:
         save_research(RESEARCH_CACHE_DIR / f"{slug}.json", final_sources, book)
@@ -414,8 +426,15 @@ def save_research(slug_or_path: str | Path, sources: list[Source], book: dict[st
 
 
 def source_bundle(sources: list[Source]) -> str:
-    return "\n\n".join(
-        f"SOURCE {index}\nTitle: {source.title}\nURL: {source.url}\nQuery: {source.query}\nContent:\n{source.content}"
-        for index, source in enumerate(sources, 1)
-    )
+    blocks = []
+    for index, source in enumerate(sources, 1):
+        is_transcript = "youtube" in source.title.lower() or "transcript" in source.title.lower()
+        source_type = "VIDEO TRANSCRIPT & LECTURE" if is_transcript else "VERIFIED RESEARCH DOSSIER"
+        blocks.append(
+            f"=== {source_type} {index}: {source.title} ===\n"
+            f"URL: {source.url or 'N/A'}\n"
+            f"Query/Context: {source.query}\n"
+            f"Content & Extracted Knowledge:\n{source.content}"
+        )
+    return "\n\n" + "\n\n".join(blocks)
 

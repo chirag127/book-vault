@@ -5,10 +5,10 @@
   "templater-obsidian",
   "obsidian-spaced-repetition",
   "omnisearch",
-  "aloud-tts",
-  "local-voiceover",
   "obsidian-mind-map",
   "obsidian-git",
   "smart-connections",
-  "obsidian-linter"
+  "obsidian-linter",
+  "edge-tts",
+  "code-block-fold"
 ]

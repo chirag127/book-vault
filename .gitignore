@@ -2,10 +2,15 @@
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+tmp/
+repos/
 
 # Python Runtime & Bytecode
 .venv/
 venv/
+env/
 __pycache__/
 *.py[cod]
 *$py.class
@@ -14,6 +19,7 @@ __pycache__/
 .ruff_cache/
 *.tmp
 *.bak
+*.swp
 
 # Persistent & Temporary Caches
 cache/
@@ -21,20 +27,30 @@ automation/cache/
 automation/research/*.json
 automation/generated/
 automation/logs/
-
 automation/state/
 automation/.pipeline.lock
 .pipeline.lock
 .freebuff/
 *.jsonl
+*.log
 
-# Generated Media (MP3s)
+# Large Generated Media & Binaries (Optional / Generated on demand)
 audio/
 *.mp3
 *.wav
+*.ogg
+*.flac
+*.m4a
+
+# Node & Frontend Build Artifacts
+node_modules/
+dist/
+build/
+.npm/
 
 # OS & Editor Artifacts
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+desktop.ini

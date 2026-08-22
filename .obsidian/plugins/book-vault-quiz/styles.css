@@ -1,0 +1,447 @@
+/* ============================================================
+   Book Vault Quiz Plugin — styles.css
+   ============================================================ */
+
+/* ── Utility ─────────────────────────────────────────────── */
+.bvq-hidden { display: none !important; }
+
+/* ── Quiz container ──────────────────────────────────────── */
+.bvq-container {
+  font-family: var(--font-interface);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.5em 0;
+  background: var(--background-primary);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.bvq-header {
+  background: linear-gradient(135deg, var(--interactive-accent), var(--interactive-accent-hover));
+  padding: 1rem 1.4rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bvq-title {
+  color: white !important;
+  margin: 0 !important;
+  font-size: 1.2em !important;
+  font-weight: 700 !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.bvq-meta { display: flex; gap: 0.5rem; align-items: center; }
+
+.bvq-badge {
+  background: rgba(255,255,255,0.25);
+  color: white;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
+/* ── Questions ───────────────────────────────────────────── */
+.bvq-questions { padding: 1rem 1.4rem; }
+
+.bvq-question {
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+.bvq-question:last-child { border-bottom: none; }
+
+.bvq-question-text {
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  font-size: 0.98em;
+  color: var(--text-normal);
+  line-height: 1.5;
+}
+
+/* ── Options ─────────────────────────────────────────────── */
+.bvq-options { display: flex; flex-direction: column; gap: 0.45rem; }
+
+.bvq-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  border: 1.5px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-secondary);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  font-size: 0.93em;
+  color: var(--text-normal);
+  width: 100%;
+}
+
+.bvq-option:hover:not([disabled]) {
+  border-color: var(--interactive-accent);
+  background: var(--background-modifier-hover);
+  transform: translateX(2px);
+}
+
+.bvq-option.bvq-selected {
+  border-color: var(--interactive-accent);
+  background: rgba(var(--interactive-accent-rgb, 100,110,255), 0.12);
+}
+
+.bvq-option.bvq-correct {
+  border-color: #22c55e;
+  background: rgba(34,197,94,0.12);
+  color: var(--text-normal);
+}
+
+.bvq-option.bvq-wrong {
+  border-color: #ef4444;
+  background: rgba(239,68,68,0.10);
+  color: var(--text-muted);
+}
+
+.bvq-opt-label {
+  font-weight: 700;
+  color: var(--interactive-accent);
+  min-width: 1.4em;
+}
+
+.bvq-option.bvq-correct .bvq-opt-label { color: #16a34a; }
+.bvq-option.bvq-wrong .bvq-opt-label   { color: #dc2626; }
+.bvq-option[disabled] { cursor: not-allowed; }
+
+/* ── Explanation ─────────────────────────────────────────── */
+.bvq-explanation {
+  margin-top: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  background: var(--background-modifier-info-rgb, rgba(59,130,246,0.08));
+  border-left: 3px solid var(--interactive-accent);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.88em;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── Score bar ───────────────────────────────────────────── */
+.bvq-scorebar {
+  margin: 0 1.4rem 1rem;
+  padding: 1rem;
+  background: var(--background-secondary);
+  border-radius: 10px;
+  border: 1px solid var(--background-modifier-border);
+}
+
+.bvq-score-text {
+  font-size: 1.05em;
+  margin-bottom: 0.6rem;
+  color: var(--text-normal);
+}
+
+.bvq-grade { font-weight: 700; }
+
+.bvq-bar-outer {
+  height: 10px;
+  background: var(--background-modifier-border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.bvq-bar-inner {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.6s cubic-bezier(.4,0,.2,1);
+}
+.bvq-bar-pass { background: linear-gradient(90deg, #22c55e, #16a34a); }
+.bvq-bar-fail { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+
+/* ── Actions ─────────────────────────────────────────────── */
+.bvq-actions {
+  display: flex;
+  gap: 0.7rem;
+  padding: 0.8rem 1.4rem 1.2rem;
+  flex-wrap: wrap;
+}
+
+.bvq-btn {
+  padding: 0.55rem 1.3rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: none;
+}
+
+.bvq-btn-primary {
+  background: var(--interactive-accent);
+  color: white;
+}
+.bvq-btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.bvq-btn-secondary {
+  background: var(--background-modifier-border);
+  color: var(--text-normal);
+}
+.bvq-btn-secondary:hover { background: var(--background-modifier-hover); }
+
+.bvq-btn-danger {
+  background: rgba(239,68,68,0.12);
+  color: #dc2626;
+  border: 1px solid rgba(239,68,68,0.3);
+  margin-top: 1rem;
+}
+.bvq-btn-danger:hover { background: rgba(239,68,68,0.22); }
+
+/* ── Dashboard ───────────────────────────────────────────── */
+.bvq-dashboard { padding: 0.5rem 0; }
+
+.bvq-dash-title {
+  font-size: 1.3em !important;
+  margin-bottom: 1rem !important;
+  border-bottom: 2px solid var(--interactive-accent) !important;
+  padding-bottom: 0.4rem !important;
+}
+
+.bvq-dash-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.bvq-stat-card {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.bvq-stat-value {
+  font-size: 1.8em;
+  font-weight: 800;
+  color: var(--interactive-accent);
+  line-height: 1.1;
+}
+
+.bvq-stat-label {
+  font-size: 0.78em;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ── Dashboard table ─────────────────────────────────────── */
+.bvq-dash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  margin-bottom: 1rem;
+}
+
+.bvq-dash-table th {
+  background: var(--background-secondary);
+  padding: 0.55rem 0.9rem;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-size: 0.82em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--background-modifier-border);
+}
+
+.bvq-dash-table td {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--background-modifier-border);
+  color: var(--text-normal);
+  vertical-align: middle;
+}
+
+.bvq-dash-table tr:hover td { background: var(--background-modifier-hover); }
+.bvq-book-name { font-weight: 600; }
+.bvq-pass { color: #16a34a; font-weight: 700; }
+.bvq-fail { color: #dc2626; font-weight: 700; }
+.bvq-date { color: var(--text-muted); font-size: 0.88em; }
+
+.bvq-badge-pass { background: rgba(34,197,94,0.18); color: #16a34a; }
+.bvq-badge-fail { background: rgba(239,68,68,0.15); color: #dc2626; }
+
+.bvq-badge {
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.82em;
+  font-weight: 700;
+}
+
+/* ── Error / empty states ────────────────────────────────── */
+.bvq-error, .bvq-empty {
+  padding: 1rem;
+  color: var(--text-muted);
+  font-style: italic;
+  border: 1px dashed var(--background-modifier-border);
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* ============================================================
+   Interactive Flashcards Styling
+   ============================================================ */
+
+.bvf-container {
+  font-family: var(--font-interface);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.5em 0;
+  background: var(--background-primary);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.bvf-header {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bvf-title {
+  color: #ffffff !important;
+  margin: 0 !important;
+  font-size: 1.1em !important;
+  font-weight: 700 !important;
+  border: none !important;
+}
+
+.bvf-counter {
+  background: rgba(255,255,255,0.25);
+  color: white;
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.bvf-progress-track {
+  height: 4px;
+  background: var(--background-modifier-border);
+  width: 100%;
+}
+
+.bvf-progress-fill {
+  height: 100%;
+  background: #6366f1;
+  transition: width 0.3s ease;
+}
+
+.bvf-card {
+  min-height: 180px;
+  padding: 2rem 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--background-modifier-border);
+  transition: background 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.bvf-card:hover {
+  background: var(--background-modifier-hover);
+}
+
+.bvf-card.bvf-flipped {
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.bvf-card-content {
+  width: 100%;
+  max-width: 650px;
+}
+
+.bvf-card-label {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #6366f1;
+  background: rgba(99,102,241,0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.bvf-label-answer {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.bvf-label-finish {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.bvf-card-text {
+  font-size: 1.15em;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-normal);
+  margin-bottom: 0.8rem;
+}
+
+.bvf-card-hint {
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.bvf-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  background: var(--background-primary);
+  gap: 0.8rem;
+}
+
+.bvf-btn {
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  transition: all 0.15s ease;
+}
+
+.bvf-btn:hover {
+  background: var(--background-modifier-hover);
+  border-color: var(--interactive-accent);
+}
+
+.bvf-btn-accent {
+  background: #6366f1;
+  color: white;
+  border-color: #4f46e5;
+}
+
+.bvf-btn-accent:hover {
+  background: #4f46e5;
+}
+
+.bvf-btn-secondary {
+  background: var(--background-secondary);
+}
+

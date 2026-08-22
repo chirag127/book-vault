@@ -74,7 +74,8 @@ def is_pending(book: dict[str, str], force: bool) -> bool:
 
 def navigation_for(book: dict[str, str], books: list[dict[str, str]]) -> dict[str, str]:
     """Build the previous / pillar / next wikilink lines for a book."""
-    pillar_folder = _pillar_dirs()[book["pillar"]]
+    pillar_dirs = _pillar_dirs()
+    pillar_folder = pillar_dirs.get(book["pillar"], book["pillar"])
     pillar_label = book["pillar"].replace(";", ",")
     pillar_link = f"[[{pillar_folder}/README|{pillar_label}]]"
     same = [b for b in books if b["pillar"] == book["pillar"]]
@@ -89,20 +90,79 @@ def navigation_for(book: dict[str, str], books: list[dict[str, str]]) -> dict[st
 
 
 def _clean_markdown(text: str) -> str:
-    """Ensure output is pure Markdown without outer wrapping fences."""
+    """Ensure output is pure Markdown without outer wrapping fences or stray markers.
+
+    Handles all LLM output patterns:
+    - ```markdown ... ``` outer fences wrapping the whole response or individual files
+    - ```yaml\n---...---\n``` fences leaving stray "yaml" or "markdown" prefix lines
+    - Stray ``` fence lines immediately following the closing --- of YAML frontmatter
+    - Stray trailing ``` fences left over at the end of === FILE === chunks
+    - Unquoted colons in YAML frontmatter titles
+    - Trailing LLM conversational sign-offs / chatter
+    """
     text = text.strip()
-    if text.startswith("```markdown"):
-        text = text[11:].lstrip("\r\n")
-        if text.endswith("```"):
-            text = text[:-3].rstrip()
-    elif text.startswith("```md"):
-        text = text[5:].lstrip("\r\n")
-        if text.endswith("```"):
-            text = text[:-3].rstrip()
-    elif text.startswith("```") and not text.startswith("```mermaid") and not text.startswith("---"):
-        text = text[3:].lstrip("\r\n")
-        if text.endswith("```"):
-            text = text[:-3].rstrip()
+
+    # 1. Strip any fenced code block wrapper the LLM may have added around the chunk.
+    _LANG_PREFIXES = (
+        "```markdown", "```md", "```yaml", "```yml",
+        "```json", "```text", "```plaintext",
+    )
+    for prefix in _LANG_PREFIXES:
+        if text.startswith(prefix):
+            text = text[len(prefix):].lstrip("\r\n")
+            if text.endswith("```"):
+                text = text[:-3].rstrip()
+            break
+    else:
+        # bare ``` fence (but not intentional mermaid/quiz blocks inside content)
+        if text.startswith("```") and not (text.startswith("```mermaid") or text.startswith("```quiz")):
+            text = text[3:].lstrip("\r\n")
+            if text.endswith("```"):
+                text = text[:-3].rstrip()
+
+    # 2. Safety: strip stray language-tag line (e.g. "yaml", "markdown") preceding frontmatter
+    lines = text.splitlines()
+    if len(lines) >= 2 and lines[0].strip() not in ("", "---") and lines[1].strip() == "---":
+        text = "\n".join(lines[1:])
+        lines = text.splitlines()
+
+    # 3. Safety: if a stray ``` fence immediately follows the closing --- of frontmatter, strip it.
+    text = re.sub(r"(^---\r?\n[\s\S]*?\r?\n---)\r?\n```+\s*(\r?\n)", r"\1\2", text)
+
+    # 4. Quote unquoted frontmatter title / author lines with colons
+    if text.startswith("---"):
+        end_idx = text.find("\n---\n", 4)
+        if end_idx < 0:
+            end_idx = text.find("\r\n---\r\n", 4)
+        if end_idx >= 0:
+            fm_text = text[4:end_idx]
+            new_fm_lines = []
+            for line in fm_text.splitlines():
+                if line.startswith("title:") and not line.startswith('title: "') and not line.startswith("title: '"):
+                    val = line[len("title:"):].strip().strip('"\'')
+                    new_fm_lines.append(f'title: "{val}"')
+                elif line.startswith("author:") and not line.startswith('author: "') and not line.startswith("author: '"):
+                    val = line[len("author:"):].strip().strip('"\'')
+                    new_fm_lines.append(f'author: "{val}"')
+                else:
+                    new_fm_lines.append(line)
+            text = "---\n" + "\n".join(new_fm_lines) + "\n---" + text[end_idx + 4:]
+
+    # 5. Safety: strip trailing code fences, trailing hr, and LLM chatter
+    text = re.sub(r"\n\*\*Edition complete\.\*\*[\s\S]*$", "", text)
+    text = re.sub(r"\nAll \w+ files are complete[\s\S]*$", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"\n```+\s*(\n---)?\s*$", "", text)
+
+    # 6. Parity check on backtick fences: if odd number of ``` lines remain, strip lone trailing fence
+    fences = list(re.finditer(r"(?m)^```", text))
+    if len(fences) % 2 != 0:
+        last_fence = fences[-1]
+        text_before = text[:last_fence.start()].rstrip()
+        text_after = text[last_fence.end():].strip()
+        # If nothing follows or only whitespace/hr, strip it
+        if len(text_after) < 200:
+            text = text_before + "\n"
+
     return text.rstrip() + "\n"
 
 
@@ -119,6 +179,10 @@ def _unpack_files(raw_text: str, default_name: str = "README.md") -> dict[str, s
         end = matches[i + 1].start() if i + 1 < len(matches) else len(raw_text)
         files[filename] = raw_text[start:end].strip()
     return files
+
+
+def _words(text: str) -> int:
+    return len(text.split())
 
 
 
@@ -157,20 +221,25 @@ def pipeline_lock(path: Path = LOCK_PATH):
         if sys.platform.startswith("win"):
             import msvcrt
 
-            h = open(path, "a+b")
             try:
+                h = open(path, "a+b")
                 if h.seek(0, os.SEEK_END) == 0:
-                    h.write(b"0")
+                    h.write(b" ")
                     h.flush()
                 h.seek(0)
                 msvcrt.locking(h.fileno(), msvcrt.LK_NBLCK, 1)
             except OSError:
-                h.close()
+                if 'h' in locals():
+                    h.close()
                 return False
-            h.seek(0)
-            h.write(f"{os.getpid()}\n".encode("ascii"))
-            h.flush()
-            handle = h  # left open; released in _release()
+            try:
+                h.seek(0)
+                h.truncate()
+                h.write(f"{os.getpid()}\n".encode("ascii"))
+                h.flush()
+            except OSError:
+                pass
+            handle = h
             return True
         else:
             import fcntl
@@ -203,20 +272,27 @@ def pipeline_lock(path: Path = LOCK_PATH):
             handle.close()
         except OSError:
             pass
+        try:
+            path.unlink()
+        except OSError:
+            pass
         handle = None
 
-    for attempt in range(2):
+    acquired = False
+    for attempt in range(3):
         if _acquire():
+            acquired = True
             break
         holder = _recorded_holder(path)
-        if holder is not None and not _pid_alive(holder):
-            print(f"  STALE LOCK: removing lock from dead PID {holder}.", flush=True)
+        if holder is None or not _pid_alive(holder):
             try:
                 path.unlink()
             except OSError:
                 pass
-            if attempt == 0:
-                continue
+            continue
+        break
+    if not acquired:
+        holder = _recorded_holder(path)
         raise SystemExit(f"  ERROR: another pipeline instance is running (lock held by PID {holder}). {path}")
     try:
         yield
@@ -228,54 +304,149 @@ def _words(text: str) -> int:
     return len(re.findall(r"\b[\w’'-]+\b", text))
 
 
+from ..core.colors import C, blue, bold, cyan, dim, green, header, magenta, red, yellow
+
+
+def _inject_reading_sequence_navigation(
+    files: dict[str, str], book: dict[str, str], next_book: dict[str, str] | None = None
+) -> dict[str, str]:
+    """Ensure every note has a sequential reading navigation bar at the end."""
+    concept_names = sorted(
+        [
+            k
+            for k in files.keys()
+            if k not in {"README.md", "Audio-Listening-Edition.md", "Quiz.md", "Flashcards.md"}
+        ]
+    )
+
+    # 1. README.md: embed Curated YouTube Video Summaries and Sequential Reading Pathway
+    if "README.md" in files:
+        readme = files["README.md"]
+
+        # Curated YouTube Summaries Section
+        if "## 🎥 Curated Video Summaries" not in readme:
+            try:
+                from ..research.youtube import search_youtube_summaries, format_youtube_markdown_section
+                yt_vids = search_youtube_summaries(book.get("title", ""), book.get("author", ""), max_results=3)
+                yt_sec = format_youtube_markdown_section(yt_vids)
+                if yt_sec:
+                    if "## 📚 External References & Book Trackers" in readme:
+                        readme = readme.replace("## 📚 External References & Book Trackers", f"{yt_sec}\n## 📚 External References & Book Trackers")
+                    else:
+                        readme = readme.rstrip() + f"\n\n{yt_sec}"
+            except Exception:
+                pass
+
+        if "## 📖 Sequential Reading Pathway" not in readme and "## Sequential Reading" not in readme:
+            first_chap_link = (
+                f"[[{concept_names[0].replace('.md', '')}|Chapter 1: {concept_names[0].replace('.md', '').replace('-', ' ')}]]"
+                if concept_names
+                else "[[Audio-Listening-Edition|Audio Edition]]"
+            )
+            pathway_block = f"\n\n## 📖 Sequential Reading Pathway\n- ➡️ **Start Reading**: {first_chap_link}\n- 🎧 **Audio Listening Edition**: [[Audio-Listening-Edition|Audio Edition]]\n- 🧩 **Knowledge Assessment**: [[Quiz|Active Recall Quiz]]\n- 📚 **Flashcards Deck**: [[Flashcards|Spaced Repetition Flashcards]]\n"
+            readme = readme.rstrip() + pathway_block
+
+        files["README.md"] = readme
+
+    # 2. Concept Chapters
+    for i, name in enumerate(concept_names):
+        content = files[name]
+        content = re.sub(
+            r"\n+---\n+## 🧭 (?:Sequential|Reading|Navigation)[\s\S]*$", "", content
+        ).rstrip()
+
+        prev_link = (
+            "[[README|🏠 Executive Summary & Hub]]"
+            if i == 0
+            else f"[[{concept_names[i-1].replace('.md', '')}|⬅️ Previous Chapter]]"
+        )
+        next_link = (
+            f"[[{concept_names[i+1].replace('.md', '')}|➡️ Next Chapter]]"
+            if i < len(concept_names) - 1
+            else "[[Audio-Listening-Edition|🎧 Next: Audio Listening Edition]]"
+        )
+
+        nav_footer = f"\n\n---\n\n## 🧭 Sequential Reading Navigation\n| Previous | Up | Next |\n| :--- | :---: | :--- |\n| {prev_link} | [[README|📑 Table of Contents]] | {next_link} |\n"
+        files[name] = content + nav_footer
+
+    # 3. Audio Listening Edition
+    if "Audio-Listening-Edition.md" in files:
+        audio = files["Audio-Listening-Edition.md"]
+        audio = re.sub(
+            r"\n+---\n+## 🧭 (?:Sequential|Reading|Navigation)[\s\S]*$", "", audio
+        ).rstrip()
+        last_chap_link = (
+            f"[[{concept_names[-1].replace('.md', '')}|⬅️ Previous: Final Concept]]"
+            if concept_names
+            else "[[README|🏠 Book Hub]]"
+        )
+        audio_footer = f"\n\n---\n\n## 🧭 Sequential Navigation\n| Previous | Up | Next |\n| :--- | :---: | :--- |\n| {last_chap_link} | [[README|🏠 Book Hub]] | [[Quiz|🧩 Next: Knowledge Assessment Quiz]] |\n"
+        files["Audio-Listening-Edition.md"] = audio + audio_footer
+
+    # 4. Quiz.md
+    if "Quiz.md" in files:
+        quiz = files["Quiz.md"]
+        quiz = re.sub(
+            r"\n+---\n+## 🧭 (?:Sequential|Reading|Navigation)[\s\S]*$", "", quiz
+        ).rstrip()
+        quiz_footer = f"\n\n---\n\n## 🧭 Sequential Navigation\n| Previous | Up | Next |\n| :--- | :---: | :--- |\n| [[Audio-Listening-Edition|🎧 Previous: Audio Edition]] | [[README|🏠 Book Hub]] | [[Flashcards|📚 Next: Spaced Repetition Flashcards]] |\n"
+        files["Quiz.md"] = quiz + quiz_footer
+
+    return files
+
+
 def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: argparse.Namespace, rel_map: dict[str, set[str]], worker: int = 0) -> None:
     settings = load_settings()
     destination = target_path(book)
-    say = lambda msg: print(f"[w{worker}] {msg}", flush=True)
+    say = lambda msg: print(f"{dim(f'[w{worker}]')} {msg}", flush=True)
     if complete(destination) and not args.force:
-        say(f"  SKIP: already complete -> {destination.relative_to(ROOT)}")
+        say(f"  {dim('SKIP:')} {green('already complete')} -> {dim(str(destination.relative_to(ROOT)))}")
         return
+
+    next_book = None
+    try:
+        idx = next(i for i, b in enumerate(all_books) if b["slug"] == book["slug"])
+        if idx < len(all_books) - 1:
+            next_book = all_books[idx + 1]
+    except StopIteration:
+        pass
 
     from ..core.graph import format_graph_context
 
     graph_context = format_graph_context(book, all_books, rel_map=rel_map)
 
-
-    # Content-adaptive length: the summary target follows the book's own
-    # profile (book type, priority, difficulty, pillar) instead of one
-    # fixed gate for everything.
     min_words, max_words = word_bounds(book)
 
     # ---- Step 1: web research -------------------------------------------------
-    say(f"  [1/4] research: searching the web for '{book['title']}' by {book['author']}")
+    say(f"  {cyan('[1/4]')} {bold('research:')} searching the web for {yellow(repr(book['title']))} by {magenta(book['author'])}")
     sources = []
     search_retries = 3
     for search_attempt in range(search_retries):
         try:
             sources = search_book(book, settings)
             save_research(ROOT / "automation" / "research" / f"{book['slug']}.json", sources, book)
-            say(f"        sources kept: {len(sources)} (deduplicated, publisher/author sites first)")
+            say(f"        {green('✓ sources kept:')} {bold(str(len(sources)))} (deduplicated, publisher/author sites first)")
             break
 
         except Exception as exc:  # retry the whole research block
             if search_attempt < search_retries - 1:
                 import time
                 wait = 3 * (2 ** search_attempt)
-                say(f"        RESEARCH FAILED (attempt {search_attempt + 1}/{search_retries}): {exc}")
-                say(f"        retrying research in {wait}s...")
+                say(f"        {red('RESEARCH FAILED')} (attempt {search_attempt + 1}/{search_retries}): {exc}")
+                say(f"        {yellow(f'retrying research in {wait}s...')}")
                 time.sleep(wait)
             else:
                 if not args.no_web:
-                    say(f"        RESEARCH FAILED after {search_retries} attempts: {exc}")
-                    say("        skipping this book; the run continues with the next one.")
+                    say(f"        {red(f'RESEARCH FAILED after {search_retries} attempts:')} {exc}")
+                    say(f"        {yellow('skipping this book; the run continues with the next one.')}")
                     return
-                say(f"        OFFLINE DRAFT: {exc}")
+                say(f"        {yellow(f'OFFLINE DRAFT:')} {exc}")
 
     # ---- Step 2: Dual-Edition Generation ---------------------------------------
     prompt_book = dict(book)
     prompt_book["category"] = book["category"].replace(";", ",")
     nav = navigation_for(book, all_books)
-    say(f"  [2/3] generating dual-edition summary (reading + audio TTS)")
+    say(f"  {cyan('[2/4]')} {bold('generating multi-file reading summary')} ({min_words}–{max_words} words)")
 
     from .prompts import build_modular_reading_prompt, build_audio_tts_prompt
 
@@ -295,12 +466,18 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
             cache_key=f"book-reading-{book['slug']}-{TEMPLATE_VERSION}",
         )
         files = _unpack_files(reading_raw, default_name="README.md")
+        if list(files.keys()) == ["README.md"] and len(files["README.md"].split()) < 400:
+            raise ValueError(
+                f"LLM returned a single blob with no === FILE: === markers and <400 words — "
+                "output discarded; book will be retried on the next pass."
+            )
     except Exception as exc:
-        say(f"        GENERATION FAILED (reading edition): {exc}")
+        say(f"        {red(f'GENERATION FAILED (reading edition):')} {exc}")
         return
 
     # 2. Audio Listening Edition
     try:
+        say(f"  {cyan('[3/4]')} {bold('generating audio TTS edition')} (1,200–2,500 spoken words)")
         audio_raw = generate_markdown(
             settings,
             build_audio_tts_prompt(
@@ -311,7 +488,27 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
         )
         files["Audio-Listening-Edition.md"] = audio_raw
     except Exception as exc:
-        say(f"        AUDIO TTS NOTE: {exc} (saving reading edition)")
+        say(f"        {yellow(f'AUDIO TTS NOTE:')} {exc} (saving reading edition)")
+
+    # 3. Knowledge Assessment Quiz
+    try:
+        say(f"  {cyan('[4/4]')} {bold('generating 10-question assessment quiz')}")
+        from .quiz import build_quiz_prompt, TEMPLATE_QUIZ_VERSION
+
+        reading_text_summary = "\n\n".join(
+            f"### {fname}\n{text}" for fname, text in files.items() if fname != "Audio-Listening-Edition.md"
+        )
+        quiz_raw = generate_markdown(
+            settings,
+            build_quiz_prompt(prompt_book, reading_text_summary),
+            cache_key=f"book-quiz-{book['slug']}-{TEMPLATE_QUIZ_VERSION}",
+        )
+        files["Quiz.md"] = quiz_raw
+    except Exception as exc:
+        say(f"        {yellow(f'QUIZ NOTE:')} {exc}")
+
+    # Inject seamless sequential reading links across all files
+    files = _inject_reading_sequence_navigation(files, prompt_book, next_book=next_book)
 
     # ---- Step 3: Atomic Multi-File Write ---------------------------------------
     destination.mkdir(parents=True, exist_ok=True)
@@ -324,7 +521,41 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
         tmp_file.replace(out_file)
         total_words += _words(clean)
 
-    say(f"  [3/3] WROTE {len(files)} files to {destination.relative_to(ROOT)} ({total_words} total words across Reading & Audio editions)")
+    # ---- Step 4: Flashcards & Deck Generation ---------------------------------
+    try:
+        from .flashcards import write_book_flashcards_note
+        write_book_flashcards_note(destination, prompt_book, next_book=next_book)
+    except Exception as exc:
+        say(f"        {yellow(f'FLASHCARDS NOTE:')} {exc}")
+
+    # ---- Step 5: Quality & Integrity Validation --------------------------------
+    from ..core.validate import validate_book_directory
+    report = validate_book_directory(destination)
+    if report["errors"]:
+        say(f"  {red('⚠️ VALIDATION WARNINGS:')} {'; '.join(report['errors'])}")
+    else:
+        say(f"  {green('✓ Validation:')} {dim('all concept notes, MOC links, audio, quiz & flashcards verified')}")
+
+    # ---- Step 6: Automated PDF Generation -------------------------------------
+    try:
+        from ..exporters.export_pdf import export_audio_to_pdf, export_complete_book_to_pdf
+        export_audio_to_pdf(destination)
+        export_complete_book_to_pdf(destination)
+        say(f"  {green('✓ PDF Export:')} {dim('generated Audio-Listening-Edition.pdf & Complete-Reading-Edition.pdf')}")
+    except Exception as exc:
+        say(f"        {yellow(f'PDF EXPORT NOTE:')} {exc}")
+
+    # ---- Step 7: Automated Obsidian Visual Canvas Mindmap ---------------------
+    try:
+        from ..exporters.generate_canvases import generate_book_canvas
+        c_path = generate_book_canvas(destination)
+        if c_path:
+            say(f"  {green('✓ Canvas Mindmap:')} {dim(f'generated {c_path.name}')}")
+    except Exception as exc:
+        say(f"        {yellow(f'CANVAS EXPORT NOTE:')} {exc}")
+
+    total_files_count = len(list(destination.glob("*.md")))
+    say(f"  {green('✨ WROTE')} {bold(str(total_files_count))} {green('files')} to {cyan(str(destination.relative_to(ROOT)))} ({bold(str(total_words))} words)")
 
 
 
@@ -337,12 +568,12 @@ def run() -> int:
         if args.slug:
             books = [book for book in books if book["slug"] == args.slug]
         pending = [book for book in books if is_pending(book, args.force)]
-        print(f"Manifest rows: {len(books)} | Pending: {len(pending)}")
+        print(f"{bold('Manifest rows:')} {len(books)} | {bold('Pending:')} {yellow(str(len(pending)))}")
         for book in books:
-            state = "SKIP" if book not in pending else "PLAN"
+            state = dim("SKIP") if book not in pending else green("PLAN")
             lo, hi = word_bounds(book)
-            print(f"{state} {book['title']} -> {target_path(book).relative_to(ROOT)} [{lo}-{hi} words]")
-        print("DRY RUN: no API calls made.")
+            print(f"{state} {bold(book['title'])} -> {cyan(str(target_path(book).relative_to(ROOT)))} [{lo}-{hi} words]")
+        print(f"{yellow('DRY RUN:')} no API calls made.")
         return 0
 
     workers = max(1, args.workers or settings.pipeline_workers)
@@ -350,23 +581,23 @@ def run() -> int:
 
     with pipeline_lock():
         providers = build_providers(settings)
-        chain = " -> ".join(f"{p.label} ({p.model})" for p in providers)
-        print("=" * 70, flush=True)
-        print("PIPELINE START", flush=True)
-        print(f"  manifest   : {args.manifest}", flush=True)
-        print(f"  providers  : {chain} + g4f auto (last resort)", flush=True)
-        print(f"  length     : content-adaptive per book (type/priority/difficulty), 1500–15000 words", flush=True)
-        print(f"  workers    : {workers} thread(s) — shared rate cap {settings.llm_calls_per_minute} calls/min, no artificial sleeps", flush=True)
-        print(f"  backoff    : exponential + jitter on every 429/5xx/network error", flush=True)
-        print(f"  loop mode  : {'yes (continuous, no sleep between passes)' if args.loop else 'no (single pass)'}", flush=True)
-        print("=" * 70, flush=True)
+        chain = " -> ".join(f"{magenta(p.label)} ({cyan(p.model)})" for p in providers)
+        print(f"{C.BRIGHT_CYAN}{'=' * 70}{C.RESET}", flush=True)
+        print(f"{C.BOLD}{C.BRIGHT_CYAN}🚀 UNIVERSAL BOOK VAULT — AUTONOMOUS GENERATOR{C.RESET}", flush=True)
+        print(f"  {bold('manifest')}   : {dim(str(args.manifest))}", flush=True)
+        print(f"  {bold('providers')}  : {chain} + {yellow('g4f auto')} (last resort)", flush=True)
+        print(f"  {bold('length')}     : content-adaptive per book (1,500–15,000 words)", flush=True)
+        print(f"  {bold('workers')}    : {bold(str(workers))} thread(s) — shared rate cap {bold(str(settings.llm_calls_per_minute))} calls/min", flush=True)
+        print(f"  {bold('backoff')}    : exponential + jitter on every 429/5xx/network error", flush=True)
+        print(f"  {bold('loop mode')}  : {green('yes (continuous)') if args.loop else dim('no (single pass)')}", flush=True)
+        print(f"{C.BRIGHT_CYAN}{'=' * 70}{C.RESET}", flush=True)
 
         all_manifest_books = load_manifest(args.manifest)
         from ..core.graph import related_map
-        print("  precomputing knowledge-graph map (outgoing + incoming links)...", flush=True)
+        print(f"  {dim('precomputing knowledge-graph map (outgoing + incoming links)...')}", flush=True)
 
         rel_map = related_map(all_manifest_books)
-        print(f"  graph ready: {sum(len(v) for v in rel_map.values())} total edges across {len(rel_map)} books", flush=True)
+        print(f"  {green('✓ graph ready:')} {bold(str(sum(len(v) for v in rel_map.values())))} edges across {len(rel_map)} books", flush=True)
 
         while True:
             books = load_manifest(args.manifest)
@@ -374,31 +605,32 @@ def run() -> int:
                 books = [book for book in books if book["slug"] == args.slug]
             pending = [book for book in books if is_pending(book, args.force)]
             if not pending:
-                print("ALL MANIFEST BOOKS COMPLETE. Nothing left to generate.", flush=True)
+                print(f"{green('🎉 ALL MANIFEST BOOKS COMPLETE.')} Nothing left to generate.", flush=True)
                 return 0
             batch_size = args.limit if args.limit is not None else (workers if (args.loop or workers > 1) else 1)
             selected = pending[: max(1, batch_size)]
-            print(f"\nPASS: {len(selected)} book(s) to process ({len(pending)} pending of {len(books)} total)", flush=True)
+            print(f"\n{header(f'⚡ PASS: {len(selected)} book(s) to process ({len(pending)} pending of {len(books)} total)')}", flush=True)
 
             if workers > 1:
                 with ThreadPoolExecutor(max_workers=workers, thread_name_prefix="book") as pool:
                     futures = {}
                     for index, book in enumerate(selected, start=1):
-                        print(f"\n--- BOOK {index}/{len(selected)} | #{book['number']} | {book['title']} | {book['pillar']} > {book['category']} ---", flush=True)
+                        print(f"\n{C.BOLD}{C.BRIGHT_CYAN}--- BOOK {index}/{len(selected)} | #{book['number']} | {book['title']} | {book['pillar']} > {book['category']} ---{C.RESET}", flush=True)
                         futures[pool.submit(process_one, book, books, args, rel_map, index)] = book
                     for future in as_completed(futures):
                         book = futures[future]
                         try:
                             future.result()
                         except Exception as exc:
-                            print(f"[main] WORKER ERROR for {book['slug']}: {exc}", flush=True)
+                            slug = book.get("slug", "unknown")
+                            print(f"[main] {red(f'WORKER ERROR for {slug}:')} {exc}", flush=True)
             else:
                 for index, book in enumerate(selected, start=1):
-                    print(f"\n--- BOOK {index}/{len(selected)} | #{book['number']} | {book['title']} | {book['pillar']} > {book['category']} ---", flush=True)
+                    print(f"\n{C.BOLD}{C.BRIGHT_CYAN}--- BOOK {index}/{len(selected)} | #{book['number']} | {book['title']} | {book['pillar']} > {book['category']} ---{C.RESET}", flush=True)
                     process_one(book, books, args, rel_map, 0)
             if not args.loop:
                 return 0
-            print("\nNext pass starts immediately (no artificial sleep; Ctrl-C to stop cleanly).", flush=True)
+            print(f"\n{dim('Next pass starts immediately (Ctrl-C to stop cleanly).')}", flush=True)
 
 
 if __name__ == "__main__":

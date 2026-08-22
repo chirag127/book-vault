@@ -157,17 +157,22 @@ def save_cached_response(key: str, content: str, provider: str) -> Path:
     return path
 
 
-def generate_markdown(settings: Settings, messages: Iterable[dict[str, str]], retries: int = 7, cache_key: str | None = None) -> str:
+from ..core.colors import C, blue, bold, cyan, dim, green, magenta, red, yellow
+
+
+def generate_markdown(settings: Settings, messages: Iterable[dict[str, str]], retries: int | None = None, cache_key: str | None = None) -> str:
     """Generate markdown through the provider chain with repo-side caching.
 
-    Chain: Zen Ox Alpha Free (7 exponential-backoff retries) -> NVIDIA ->
+    Chain: Zen Ox Alpha Free (10 exponential-backoff retries) -> NVIDIA (10 retries) ->
     g4f (best-ranked). If ``cache_key`` is given and a cached response exists,
     it is reused and no provider is called at all.
     """
+    effective_retries = retries if retries is not None else settings.llm_retries
+
     if cache_key:
         cached = load_cached_response(cache_key)
         if cached is not None:
-            print(f"        LLM: CACHED response reused for key '{cache_key}' ({len(cached.split())} words)", flush=True)
+            print(f"        {green('⚡ LLM:')} {dim('CACHED response reused for')} '{cyan(cache_key)}' ({bold(str(len(cached.split())))} words)", flush=True)
             return cached
 
     providers = build_providers(settings)
@@ -176,18 +181,19 @@ def generate_markdown(settings: Settings, messages: Iterable[dict[str, str]], re
     last_error: GenerationError | None = None
     for index, provider in enumerate(providers, start=1):
         _wait_limiter()
-        print(f"        LLM: trying provider {index}/{len(providers)}: {provider.label} ({provider.model})", flush=True)
+        provider_retries = effective_retries
+        print(f"        {magenta('🤖 LLM:')} trying provider {bold(str(index))}/{len(providers)}: {magenta(provider.label)} ({cyan(provider.model)}) with up to {provider_retries} retries", flush=True)
         try:
             if provider.label.startswith("zen"):
-                content = _generate_with_zen(provider, settings, messages, retries)
+                content = _generate_with_zen(provider, settings, messages, provider_retries)
             else:
-                content = _generate_with_sdk(provider, settings, messages, retries)
+                content = _generate_with_sdk(provider, settings, messages, provider_retries)
             if cache_key:
                 save_cached_response(cache_key, content, provider.label)
             return content
         except GenerationError as exc:
             last_error = exc
-            print(f"        LLM: provider failed: {provider.label}: {exc}", flush=True)
+            print(f"        {red('❌ LLM:')} provider failed: {magenta(provider.label)}: {exc}", flush=True)
 
     # Last resort: gpt4free, using the best-ranked provider from the benchmark.
     if settings.use_g4f:
@@ -195,14 +201,14 @@ def generate_markdown(settings: Settings, messages: Iterable[dict[str, str]], re
             from .g4f_client import generate_markdown_g4f
 
             _wait_limiter()
-            print("        LLM: all Zen/NVIDIA providers failed — falling back to gpt4free (best-ranked)", flush=True)
+            print(f"        {yellow('⚠️ LLM:')} all Zen/NVIDIA providers failed — {yellow('falling back to gpt4free')}", flush=True)
             content = generate_markdown_g4f(list(messages), retries=0)
             if cache_key:
                 save_cached_response(cache_key, content, "g4f")
             return content
         except Exception as exc:
             last_error = GenerationError(f"g4f failed: {exc}")
-            print(f"        LLM: g4f failed: {exc}", flush=True)
+            print(f"        {red('❌ LLM: g4f failed:')} {exc}", flush=True)
 
     raise GenerationError(f"All providers failed. Last error: {last_error}")
 
@@ -235,7 +241,7 @@ def _generate_with_zen(
         "messages": list(messages),
         "temperature": settings.temperature,
         "top_p": settings.top_p,
-        "max_tokens": min(settings.max_tokens, 8192),
+        "max_tokens": min(settings.max_tokens, 65536),
     }
     client = _get_zen_client()
     for attempt in range(retries + 1):
@@ -243,7 +249,7 @@ def _generate_with_zen(
             response = client.post(f"{provider.base_url}/chat/completions", json=payload)
             if response.status_code in RETRYABLE_STATUS:
                 delay = _backoff_delay(attempt, base=2.0, cap=60.0)
-                print(f"        LLM {provider.label}: HTTP {response.status_code}, backing off {delay:.1f}s (attempt {attempt + 1}/{retries + 1})", flush=True)
+                print(f"        {yellow('⏳ LLM')} {magenta(provider.label)}: HTTP {yellow(str(response.status_code))}, backing off {bold(f'{delay:.1f}s')} (attempt {bold(str(attempt + 1))}/{retries + 1})", flush=True)
                 if attempt >= retries:
                     raise GenerationError(f"{provider.label} rate-limited after {retries} retries: HTTP {response.status_code}")
                 time.sleep(delay)
@@ -255,7 +261,7 @@ def _generate_with_zen(
             content = (data.get("choices") or [{}])[0].get("message", {}).get("content") or ""
             if not content.strip():
                 raise GenerationError(f"{provider.label} returned an empty response.")
-            print(f"        LLM {provider.label}: HTTP 200 OK, {len(content.split())} words", flush=True)
+            print(f"        {green('✓ LLM')} {magenta(provider.label)}: HTTP {green('200 OK')}, {bold(str(len(content.split())))} {green('words')}", flush=True)
             return content.strip()
         except GenerationError:
             raise
@@ -263,7 +269,7 @@ def _generate_with_zen(
             if attempt >= retries:
                 raise GenerationError(f"{provider.label} generation failed: {exc}") from exc
             delay = _backoff_delay(attempt, base=1.5, cap=30.0)
-            print(f"        LLM {provider.label}: transient error ({exc.__class__.__name__}), retrying in {delay:.1f}s (attempt {attempt + 1}/{retries + 1})", flush=True)
+            print(f"        {yellow('⚡ LLM')} {magenta(provider.label)}: transient error ({dim(exc.__class__.__name__)}), retrying in {bold(f'{delay:.1f}s')} (attempt {bold(str(attempt + 1))}/{retries + 1})", flush=True)
             time.sleep(delay)
     raise AssertionError("unreachable")
 
@@ -296,20 +302,20 @@ def _generate_with_sdk(
             content = response.choices[0].message.content or ""
             if not content.strip():
                 raise GenerationError(f"{provider.label} returned an empty response.")
-            print(f"        LLM {provider.label}: OK, {len(content.split())} words", flush=True)
+            print(f"        {green('✓ LLM')} {magenta(provider.label)}: {green('200 OK')}, {bold(str(len(content.split())))} {green('words')}", flush=True)
             return content.strip()
         except RateLimitError:
             if attempt >= retries:
                 raise GenerationError(f"{provider.label} rate-limited after {retries} retries.")
             delay = _backoff_delay(attempt, base=5.0, cap=120.0)
-            print(f"        LLM {provider.label}: rate-limited, backing off {delay:.1f}s (attempt {attempt + 1}/{retries + 1})", flush=True)
+            print(f"        {yellow('⏳ LLM')} {magenta(provider.label)}: rate-limited, backing off {bold(f'{delay:.1f}s')} (attempt {bold(str(attempt + 1))}/{retries + 1})", flush=True)
             time.sleep(delay)
         except APIStatusError as exc:
             if exc.status_code in RETRYABLE_STATUS:
                 if attempt >= retries:
                     raise GenerationError(f"{provider.label} failed after {retries} retries: HTTP {exc.status_code}")
                 delay = _backoff_delay(attempt, base=3.0, cap=120.0)
-                print(f"        LLM {provider.label}: HTTP {exc.status_code}, backing off {delay:.1f}s (attempt {attempt + 1}/{retries + 1})", flush=True)
+                print(f"        {yellow('⏳ LLM')} {magenta(provider.label)}: HTTP {yellow(str(exc.status_code))}, backing off {bold(f'{delay:.1f}s')} (attempt {bold(str(attempt + 1))}/{retries + 1})", flush=True)
                 time.sleep(delay)
             else:
                 raise GenerationError(f"{provider.label} generation failed: {exc}") from exc
@@ -317,7 +323,7 @@ def _generate_with_sdk(
             if attempt >= retries:
                 raise GenerationError(f"{provider.label} connection failed after {retries} retries.")
             delay = _backoff_delay(attempt)
-            print(f"        LLM {provider.label}: connection error, retrying in {delay:.1f}s (attempt {attempt + 1}/{retries + 1})", flush=True)
+            print(f"        {yellow('⚡ LLM')} {magenta(provider.label)}: connection error, retrying in {bold(f'{delay:.1f}s')} (attempt {bold(str(attempt + 1))}/{retries + 1})", flush=True)
             time.sleep(delay)
         except GenerationError:
             raise
@@ -325,6 +331,6 @@ def _generate_with_sdk(
             if attempt >= retries:
                 raise GenerationError(f"{provider.label} generation failed: {exc}") from exc
             delay = _backoff_delay(attempt)
-            print(f"        LLM {provider.label}: {exc.__class__.__name__}, retrying in {delay:.1f}s (attempt {attempt + 1}/{retries + 1})", flush=True)
+            print(f"        {yellow('⚡ LLM')} {magenta(provider.label)}: {dim(exc.__class__.__name__)}, retrying in {bold(f'{delay:.1f}s')} (attempt {bold(str(attempt + 1))}/{retries + 1})", flush=True)
             time.sleep(delay)
     raise AssertionError("unreachable")

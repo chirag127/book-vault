@@ -1,0 +1,180 @@
+{
+  "Make-It-Stick": {
+    "title": "Make It Stick",
+    "author": "Peter C. Brown; Henry L. Roediger III; Mark A. McDaniel",
+    "published": "",
+    "cover_url": "https://covers.openlibrary.org/b/id/8188891-L.jpg",
+    "cover_id": 8188891,
+    "isbn": "9780674419384",
+    "openlibrary_key": "/works/OL17879515W",
+    "pages": 336,
+    "subjects": [
+      "Learning / Research",
+      "Learning",
+      "Cognition",
+      "Study skills",
+      "Cognition / Research",
+      "Research"
+    ],
+    "confidence": "high"
+  },
+  "A-Mind-for-Numbers": {
+    "title": "A Mind for Numbers",
+    "author": "Barbara Oakley",
+    "published": "",
+    "cover_url": "https://covers.openlibrary.org/b/id/8352403-L.jpg",
+    "cover_id": 8352403,
+    "isbn": "9781469061993",
+    "openlibrary_key": "/works/OL18199470W",
+    "pages": 336,
+    "subjects": [
+      "Mathematics",
+      "Study and teaching",
+      "Math anxiety",
+      "Educational psychology",
+      "Psychological aspects",
+      "Pedagogisk psykologi"
+    ],
+    "confidence": "high"
+  },
+  "Ultralearning": {
+    "title": "Ultralearning",
+    "author": "Scott Young",
+    "published": "",
+    "cover_url": "https://covers.openlibrary.org/b/id/10156205-L.jpg",
+    "cover_id": 10156205,
+    "isbn": "9780062852748",
+    "openlibrary_key": "/works/OL20846121W",
+    "pages": 304,
+    "subjects": [
+      "Psychology",
+      "Success in business",
+      "Learning",
+      "Success",
+      "Nonfiction",
+      "Self Help"
+    ],
+    "confidence": "high"
+  },
+  "Peak": {
+    "title": "Peak",
+    "author": "Anders Ericsson; Robert Pool",
+    "published": "",
+    "cover_url": "https://covers.openlibrary.org/b/id/10467082-L.jpg",
+    "cover_id": 10467082,
+    "isbn": "9781473513143",
+    "openlibrary_key": "/works/OL21817078W",
+    "pages": 336,
+    "subjects": [
+      "Excellence",
+      "Gifted persons",
+      "Performance"
+    ],
+    "confidence": "high"
+  },
+  "Range": {
+    "title": "Range",
+    "author": "David Epstein",
+    "published": "",
+    "cover_url": "https://covers.openlibrary.org/b/id/10101241-L.jpg",
+    "cover_id": 10101241,
+    "isbn": "9780593189573",
+    "openlibrary_key": "/works/OL20803380W",
+    "pages": 352,
+    "subjects": [
+      "Ability",
+      "Developmental psychology",
+      "Psychology"
+    ],
+    "confidence": "high"
+  },
+  "How-We-Learn": {
+    "title": "How We Learn",
+    "author": "Benedict Carey",
+    "published": "",
+    "cover_url": "https://covers.openlibrary.org/b/id/8967853-L.jpg",
+    "cover_id": 8967853,
+    "isbn": "9781447286349",
+    "openlibrary_key": "/works/OL20307707W",
+    "pages": 272,
+    "subjects": [
+      "Cognitive learning",
+      "nyt:education=2015-12-13",
+      "New York Times bestseller"
+    ],
+    "confidence": "high"
+  },
+  "Limitless": {
+    "title": "Limitless",
+    "author": "Jim Kwik",
+    "published": "",
+    "cover_url": "https://covers.openlibrary.org/b/id/9360116-L.jpg",
+    "cover_id": 9360116,
+    "isbn": "9781401958237",
+    "openlibrary_key": "/works/OL20687130W",
+    "pages": 344,
+    "subjects": [
+      "Success",
+      "Brain",
+      "Learning",
+      "Self-actualization (psychology)",
+      "Habit",
+      "Motivation (psychology)"
+    ],
+    "confidence": "high"
+  },
+  "Moonwalking-with-Einstein": {
+    "title": "Moonwalking with Einstein",
+    "author": "Joshua Foer",
+    "published": "",
+    "cover_url": "https://covers.openlibrary.org/b/id/14426425-L.jpg",
+    "cover_id": 14426425,
+    "isbn": "9780141032139",
+    "openlibrary_key": "/works/OL15683431W",
+    "pages": 307,
+    "subjects": [
+      "New York Times bestseller",
+      "Memory",
+      "memory improvement",
+      "mnemonics",
+      "brain training",
+      "neuroscience"
+    ],
+    "confidence": "high"
+  },
+  "Remember-It": {
+    "title": "Remember It!",
+    "author": "Nelson Dellis",
+    "published": "",
+    "cover_url": "https://covers.openlibrary.org/b/id/11298531-L.jpg",
+    "cover_id": 11298531,
+    "isbn": "9781683353430",
+    "openlibrary_key": "/works/OL19763856W",
+    "pages": 120,
+    "subjects": [
+      "Mnemonics",
+      "Memory",
+      "Thought and thinking"
+    ],
+    "confidence": "high"
+  },
+  "How-to-Become-a-Straight-A-Student": {
+    "title": "How to Become a Straight-A Student",
+    "author": "Cal Newport",
+    "published": "",
+    "cover_url": "https://covers.openlibrary.org/b/id/528648-L.jpg",
+    "cover_id": 528648,
+    "isbn": "9780767922715",
+    "openlibrary_key": "/works/OL8526580W",
+    "pages": 224,
+    "subjects": [
+      "Study skills",
+      "College student orientation",
+      "EDUCATION",
+      "REFERENCE",
+      "Personal & Practical Guides",
+      "SELF-HELP"
+    ],
+    "confidence": "high"
+  }
+}

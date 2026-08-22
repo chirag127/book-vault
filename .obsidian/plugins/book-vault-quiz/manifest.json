@@ -1,0 +1,10 @@
+{
+  "id": "book-vault-quiz",
+  "name": "Book Vault Quiz",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Interactive quiz engine for Book Vault. Parses Quiz.md files, renders clickable multiple-choice questions, scores answers, tracks per-book progress, and shows a vault-wide quiz dashboard.",
+  "author": "Book Vault",
+  "authorUrl": "",
+  "isDesktopOnly": false
+}

@@ -20,7 +20,7 @@ from pathlib import Path
 
 import httpx
 
-from .config import ROOT
+from ..core.config import ROOT
 
 CACHE = ROOT / "cache" / "zen_models.json"
 

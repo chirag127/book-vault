@@ -24,7 +24,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
-from .config import ROOT
+from ..core.config import ROOT
 
 CACHE_DIR = ROOT / "cache"
 PROVIDERS_CACHE = CACHE_DIR / "g4f_providers.json"

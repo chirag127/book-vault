@@ -1,0 +1,10 @@
+{
+  "id": "code-block-fold",
+  "name": "Code Block Fold",
+  "version": "1.0.0",
+  "minAppVersion": "0.13.0",
+  "description": "Fold and unfold code blocks in the editor with a single click.",
+  "author": "mkali",
+  "authorUrl": "https://github.com/mkali-personal",
+  "isDesktopOnly": false
+}

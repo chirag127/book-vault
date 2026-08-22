@@ -124,6 +124,8 @@ function renderBooks() {
   grid.innerHTML = "";
 
   const query = currentSearchQuery.toLowerCase().trim();
+  const queryTokens = query.split(/\s+/).filter(Boolean);
+
   const filtered = vaultData.books.filter(b => {
     // Pillar Filter
     if (currentPillar !== "all" && b.pillar !== currentPillar) return false;
@@ -132,13 +134,11 @@ function renderBooks() {
     // Reading Status Filter
     const status = userReadingStatus[b.slug] || "Unread";
     if (currentStatusFilter !== "all" && status !== currentStatusFilter) return false;
-    // Search Query Filter
-    if (query) {
-      const matchTitle = b.title.toLowerCase().includes(query);
-      const matchAuthor = b.author.toLowerCase().includes(query);
-      const matchCategory = b.category.toLowerCase().includes(query);
-      const matchSubcategory = (b.subcategory || "").toLowerCase().includes(query);
-      if (!matchTitle && !matchAuthor && !matchCategory && !matchSubcategory) return false;
+    // Search Query Filter (multi-token matching across all fields)
+    if (queryTokens.length > 0) {
+      const searchBlob = `${b.title} ${b.author} ${b.pillar} ${b.category} ${b.subcategory || ''} ${b.difficulty}`.toLowerCase();
+      const allTokensMatch = queryTokens.every(tok => searchBlob.includes(tok));
+      if (!allTokensMatch) return false;
     }
     return true;
   });
@@ -146,9 +146,9 @@ function renderBooks() {
   if (filtered.length === 0) {
     grid.innerHTML = `
       <div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--text-muted);">
-        <p style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</p>
-        <h3>No books found matching your filter criteria</h3>
-        <p style="margin-top: 0.25rem;">Try resetting search terms or difficulty filters.</p>
+        <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</p>
+        <h3>No books found matching "${currentSearchQuery}"</h3>
+        <p style="margin-top: 0.25rem;">Try searching by author (e.g. "Kahneman", "Oakley"), topic ("Logic", "Deep Work"), or resetting pillar filters.</p>
       </div>
     `;
     return;
@@ -162,30 +162,49 @@ function renderBooks() {
     const ratingStars = rating > 0 ? "★".repeat(rating) + "☆".repeat(5 - rating) : "";
 
     const recsHtml = b.recommendations && b.recommendations.length > 0 ? `
-      <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem;">
-        <span style="color: var(--c-cyan);">Related:</span> ${b.recommendations.map(r => r.title).join(", ")}
+      <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">
+        <span style="color: var(--c-cyan);">Bridge:</span> ${b.recommendations.map(r => r.title).join(", ")}
       </div>
     ` : "";
 
+    const coverUrl = b.cover_url || `https://covers.openlibrary.org/b/title/${encodeURIComponent(b.title)}-M.jpg?default=false`;
+
     card.innerHTML = `
-      <div>
-        <div class="book-top-bar">
-          <span class="book-num-badge">#${b.number}</span>
-          <span class="book-pillar-tag">${b.pillar}</span>
+      <div class="book-card-main-layout">
+        <div class="book-cover-container">
+          <img 
+            class="book-cover-img" 
+            src="${coverUrl}" 
+            alt="${b.title} cover"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="book-cover-fallback" style="display: none;">
+            <span class="book-cover-fallback-icon">📖</span>
+            <span class="book-cover-fallback-text">${b.title}</span>
+          </div>
         </div>
-        <h3 class="book-card-title">${b.title}</h3>
-        <p class="book-card-author">By ${b.author} ${b.published ? `(${b.published})` : ''}</p>
-        <div class="book-tags-row">
-          <span class="tag-pill">${b.category}</span>
-          <span class="tag-pill diff-${b.difficulty}">${b.difficulty}</span>
-          ${ratingStars ? `<span class="tag-pill" style="color: var(--c-amber);">${ratingStars}</span>` : ''}
+
+        <div class="book-card-info">
+          <div class="book-top-bar">
+            <span class="book-num-badge">#${b.number}</span>
+            <span class="book-pillar-tag" title="${b.pillar}">${b.pillar.split('&')[0].trim()}</span>
+          </div>
+          <h3 class="book-card-title">${b.title}</h3>
+          <p class="book-card-author">By ${b.author} ${b.published ? `(${b.published})` : ''}</p>
+          <div class="book-tags-row">
+            <span class="tag-pill">${b.category}</span>
+            <span class="tag-pill diff-${b.difficulty}">${b.difficulty}</span>
+            ${ratingStars ? `<span class="tag-pill" style="color: var(--c-amber);">${ratingStars}</span>` : ''}
+          </div>
+          ${recsHtml}
         </div>
-        ${recsHtml}
       </div>
 
       <div class="card-footer">
         ${b.status === "Generated" ? `
-          <button class="btn-card-read" onclick="openReader('${b.slug}')">📖 Read Summary</button>
+          <button class="btn-card-read" onclick="openReader('${b.slug}')">📖 Read</button>
+          ${b.has_quiz ? `<button class="btn-card-quiz" onclick="openBookQuiz('${b.slug}')" title="Test Knowledge Assessment">📝 Quiz</button>` : ''}
           ${b.has_audio ? `<button class="btn-card-audio" onclick="playBookAudio('${b.slug}')" title="Listen Audio Narration">🎧</button>` : ''}
         ` : `
           <button class="btn-card-read" style="background: var(--bg-surface-raised); color: var(--text-muted); cursor: not-allowed;" title="Book queued for autonomous generation">⏳ In Curriculum</button>
@@ -199,6 +218,17 @@ function renderBooks() {
 // -----------------------------------------------------------------------------
 // Reader Modal Engine
 // -----------------------------------------------------------------------------
+function openBookQuiz(slug) {
+  const book = vaultData.books.find(b => b.slug === slug);
+  if (!book) return;
+  openReader(slug);
+  // If quiz exists as a chapter, select it
+  const quizIdx = book.chapters ? book.chapters.findIndex(c => c.name.toLowerCase().includes("quiz")) : -1;
+  if (quizIdx >= 0) {
+    selectChapter(quizIdx);
+  }
+}
+
 function openReader(slug) {
   const book = vaultData.books.find(b => b.slug === slug);
   if (!book || !book.chapters || book.chapters.length === 0) return;
