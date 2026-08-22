@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import argparse
 import contextlib
+import json
 import os
 import re
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+from typing import Any
 
 from ..core.config import ConfigurationError, ROOT, load_settings
 from ..core.length import length_label, word_bounds
