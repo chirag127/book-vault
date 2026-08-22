@@ -236,9 +236,14 @@ def _generate_with_zen(
     retries: int,
 ) -> str:
     """Call OpenCode Zen directly over pooled HTTP (with Authorization header if API key provided)."""
+    msg_list = list(messages)
+    prompt_chars = sum(len(m.get("content", "")) for m in msg_list)
+    prompt_tokens = prompt_chars // 4
+    prompt_words = sum(len(m.get("content", "").split()) for m in msg_list)
+
     payload = {
         "model": provider.model,
-        "messages": list(messages),
+        "messages": msg_list,
         "temperature": settings.temperature,
         "top_p": settings.top_p,
         "max_tokens": min(settings.max_tokens, 65536),
@@ -251,6 +256,7 @@ def _generate_with_zen(
     client = _get_zen_client()
     for attempt in range(retries + 1):
         try:
+            print(f"        {dim('📤 Prompt size:')} {bold(str(prompt_words))} words | {bold(str(prompt_chars))} chars (~{bold(str(prompt_tokens))} tokens)", flush=True)
             response = client.post(f"{provider.base_url}/chat/completions", json=payload, headers=headers)
             if response.status_code in RETRYABLE_STATUS:
                 delay = _backoff_delay(attempt, base=2.0, cap=60.0)
