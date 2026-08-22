@@ -53,10 +53,28 @@ class G4fError(RuntimeError):
     """Raised when every ranked g4f provider fails."""
 
 
+# Verified working keyless g4f models and providers discovered from live benchmarks
+PREFERRED_G4F_MODELS = [
+    "command-a-03-2025",
+    "command-r-plus-08-2024",
+    "command-r-plus",
+    "command-r-08-2024",
+    "command-r",
+    "qwen-2.5-coder-32b",
+    "qwen-2.5-72b",
+    "llama-3.1-8b",
+    "gemini-1.5-flash",
+    "gemini-1.5-pro",
+    "gpt-4o-mini",
+    "gpt-4o",
+]
+
 PREFERRED_G4F_PROVIDERS = [
     "CohereForAI_C4AI_Command",
-    "HuggingSpace",
+    "AnyProvider",
     "Gemini",
+    "Groq",
+    "HuggingSpace",
 ]
 
 
@@ -251,22 +269,40 @@ def benchmark_is_fresh(max_age_hours: int = 24) -> bool:
 
 
 def generate_markdown_g4f(messages: list[dict[str, str]], retries: int = 0) -> str:
-    """Generate with the best-ranked g4f provider. One attempt per provider,
-    then move down the ranking; never retries the same provider."""
-    ranked = ranked_providers()
-    if not ranked:
-        raise G4fError("No working g4f providers in cache. Run the benchmark first.")
+    """Generate with top-performing g4f models and providers with 1 attempt each (zero retries)."""
+    from g4f.client import Client
+
+    client = Client()
     last_error: Exception | None = None
-    for attempt in range(max(1, retries + 1)):
-        for name in ranked:
-            print(f"        LLM g4f: trying {name} (rank {ranked.index(name) + 1}/{len(ranked)})", flush=True)
-            try:
-                content, seconds, _model = _call(name, messages, timeout=600.0)
-                if content.strip():
-                    print(f"        LLM g4f: {name} OK, {len(content.split())} words in {round(seconds, 1)}s", flush=True)
-                    return content.strip()
-                print(f"        LLM g4f: {name} returned empty — next provider", flush=True)
-            except Exception as exc:
-                last_error = exc
-                print(f"        LLM g4f: {name} failed ({_safe(str(exc))[:100]}) — next provider", flush=True)
-    raise G4fError(f"All ranked g4f providers failed. Last error: {last_error}")
+
+    # Stage 1: Try verified model chain directly
+    for model_name in PREFERRED_G4F_MODELS:
+        print(f"        {magenta('🤖 LLM g4f:')} trying model {cyan(model_name)}", flush=True)
+        try:
+            r = client.chat.completions.create(
+                model=model_name,
+                messages=messages,
+                timeout=180.0,
+            )
+            content = (r.choices[0].message.content or "").strip()
+            if content and len(content.split()) >= 100:
+                print(f"        {green('✓ LLM g4f:')} {cyan(model_name)} generated {bold(str(len(content.split())))} words", flush=True)
+                return content
+        except Exception as exc:
+            last_error = exc
+            print(f"        {yellow('⚠️ LLM g4f:')} model {model_name} failed: {exc}", flush=True)
+
+    # Stage 2: Try verified providers by name
+    ranked = ranked_providers() or text_provider_names()
+    for name in ranked:
+        print(f"        {magenta('🤖 LLM g4f:')} trying provider {magenta(name)}", flush=True)
+        try:
+            content, seconds, _model = _call(name, messages, timeout=180.0)
+            if content.strip():
+                print(f"        {green('✓ LLM g4f:')} {name} OK, {len(content.split())} words in {round(seconds, 1)}s", flush=True)
+                return content.strip()
+        except Exception as exc:
+            last_error = exc
+            print(f"        {yellow('⚠️ LLM g4f:')} provider {name} failed: {exc}", flush=True)
+
+    raise G4fError(f"All g4f models and providers failed. Last error: {last_error}")
