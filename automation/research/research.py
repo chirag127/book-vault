@@ -162,6 +162,33 @@ def load_research(slug_or_path: str | Path, max_age_hours: float = 72.0) -> list
         return None
 
 
+def _fetch_web_page_text(url: str, max_chars: int = 4000) -> str:
+    """Fetch and clean full webpage article content from search result URLs."""
+    if not url or not url.startswith("http") or "youtube.com" in url or "youtu.be" in url:
+        return ""
+    try:
+        resp = httpx.get(
+            url,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            },
+            timeout=7.0,
+            follow_redirects=True,
+        )
+        if resp.status_code == 200:
+            html_text = resp.text
+            # Strip scripts, styles, navigation, footer
+            cleaned = re.sub(r"<(script|style|nav|footer|header|aside)[^>]*>.*?</\1>", "", html_text, flags=re.S | re.I)
+            cleaned = re.sub(r"<[^>]+>", " ", cleaned)
+            cleaned = re.sub(r"\s+", " ", cleaned).strip()
+            if len(cleaned) > 200:
+                return cleaned[:max_chars] + "..." if len(cleaned) > max_chars else cleaned
+    except Exception:
+        pass
+    return ""
+
+
 def search_book(book: dict[str, str], settings: Settings) -> list[Source]:
     title = book.get("title", "")
     author = book.get("author", "")
@@ -248,12 +275,23 @@ def search_book(book: dict[str, str], settings: Settings) -> list[Source]:
         pass
 
     deduped = _dedupe_sources(results, max_sources=10)
-    return [
-        Source(
-            title=d.get("title", "Untitled Source"),
-            url=d.get("url", ""),
-            query=d.get("query", title),
-            content=d.get("content", ""),
+
+    # Parallel Web Page Full-Text Fetching for top 3 search results
+    def _enrich_source(item: dict[str, Any]) -> Source:
+        url = item.get("url", "")
+        content = item.get("content", "")
+        if "youtube.com" not in url and "wikipedia.org" not in url and "openlibrary.org" not in url:
+            full_page = _fetch_web_page_text(url, max_chars=3500)
+            if full_page:
+                content = f"[FULL WEBPAGE ARTICLE CONTENT]\n{full_page}"
+        return Source(
+            title=item.get("title", ""),
+            url=url,
+            query=item.get("query", ""),
+            content=content,
         )
-        for d in deduped
-    ]
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
+        enriched_sources = list(pool.map(_enrich_source, deduped))
+
+    return enriched_sources
