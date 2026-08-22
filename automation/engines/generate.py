@@ -42,6 +42,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--no-web", action="store_true", help="Create a draft without web research.")
+    parser.add_argument("--no-audio", action="store_true", help="Skip Edge-TTS audio synthesis.")
     parser.add_argument(
         "--loop",
         action="store_true",
@@ -553,6 +554,16 @@ def process_one(book: dict[str, str], all_books: list[dict[str, str]], args: arg
             say(f"  {green('✓ Canvas Mindmap:')} {dim(f'generated {c_path.name}')}")
     except Exception as exc:
         say(f"        {yellow(f'CANVAS EXPORT NOTE:')} {exc}")
+
+    # ---- Step 8: Optional Edge-TTS Audiobook MP3 Synthesis ---------------------
+    if not getattr(args, "no_audio", False):
+        try:
+            from ..audio.synthesize_audiobook import synthesize_audiobook
+            import asyncio
+            asyncio.run(synthesize_audiobook(book["slug"], output_dir=destination))
+            say(f"  {green('✓ Audio MP3:')} {dim('synthesized Audiobook.mp3 & chapters.json')}")
+        except Exception as exc:
+            say(f"        {yellow(f'AUDIO TTS NOTE:')} {exc}")
 
     total_files_count = len(list(destination.glob("*.md")))
     say(f"  {green('✨ WROTE')} {bold(str(total_files_count))} {green('files')} to {cyan(str(destination.relative_to(ROOT)))} ({bold(str(total_words))} words)")

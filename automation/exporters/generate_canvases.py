@@ -164,7 +164,7 @@ def generate_book_canvas(book_dir: Path) -> Path | None:
             "y": chap_start_y + (i * 240),
             "width": 380,
             "height": 160,
-            "color": "4",  # Green
+            "color": "3",  # Yellow / Amber for concept notes
         })
         edges.append({
             "id": _node_id(),
@@ -180,7 +180,7 @@ def generate_book_canvas(book_dir: Path) -> Path | None:
     nodes.append({
         "id": audio_id,
         "type": "text",
-        "text": f"### 🎧 Audio Edition\n\n- 🎧 [[Audio-Listening-Edition|Spoken Audio Synthesis]]\n- 🧩 [[Quiz|Knowledge Assessment Quiz]]\n- 📚 [[Flashcards|Active Recall Flashcards]]",
+        "text": f"### 🎧 Companion Editions\n\n- 🎧 [[Audio-Listening-Edition|Spoken Audio Synthesis]]\n- 🧩 [[Quiz|Knowledge Assessment Quiz]]\n- 🎴 [[Flashcards|Active Recall Flashcards]]",
         "x": side_x,
         "y": -120,
         "width": 380,
@@ -205,7 +205,7 @@ def generate_book_canvas(book_dir: Path) -> Path | None:
         "y": 100,
         "width": 380,
         "height": 140,
-        "color": "3",  # Yellow / Gold
+        "color": "6",  # Purple
     })
     edges.append({
         "id": _node_id(),
