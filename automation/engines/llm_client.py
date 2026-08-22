@@ -88,7 +88,7 @@ def build_providers(settings: Settings) -> list[Provider]:
         "nemotron-3-ultra-free",
         "laguna-s-2.1-free",
         "nemotron-3.5-lightning-free",
-        "big-pickle",
+        "x-preview-f-free",
     ]
     seen = set()
     unique_zen_models = []
