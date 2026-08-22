@@ -6,6 +6,7 @@ import re
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
 
 import httpx
@@ -38,12 +39,25 @@ class _SilentLogger:
     def error(self, msg: str) -> None: pass
 
 
+def _get_cookie_file() -> str | None:
+    """Detect presence of cookies.txt in research directory or user Downloads."""
+    candidates = [
+        Path("c:/g/book-vault/automation/research/cookies.txt"),
+        Path.home() / "Downloads" / "www.youtube.com_cookies.txt",
+        Path.home() / "Downloads" / "cookies.txt",
+    ]
+    for c in candidates:
+        if c.exists() and c.stat().st_size > 0:
+            return str(c)
+    return None
+
+
 def extract_transcript_from_yt_dlp(url: str, max_chars: int = 4000) -> str:
-    """Attempt transcript extraction using yt-dlp metadata with browser clients."""
+    """Attempt transcript extraction using yt-dlp metadata with cookiefile support."""
     try:
         import yt_dlp
 
-        ydl_opts = {
+        ydl_opts: dict[str, Any] = {
             "skip_download": True,
             "writesubtitles": True,
             "writeautomaticsub": True,
@@ -51,12 +65,11 @@ def extract_transcript_from_yt_dlp(url: str, max_chars: int = 4000) -> str:
             "quiet": True,
             "no_warnings": True,
             "logger": _SilentLogger(),
-            "extractor_args": {
-                "youtube": {
-                    "player_client": ["android", "web_creator", "web", "ios"],
-                }
-            },
         }
+        cookie_file = _get_cookie_file()
+        if cookie_file:
+            ydl_opts["cookiefile"] = cookie_file
+
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
             subs = info.get("subtitles") or info.get("automatic_captions") or {}
