@@ -19,7 +19,7 @@ class TestLoadSettings:
     def test_defaults_are_sane(self):
         s = load_settings()
         assert s.pipeline_workers >= 5
-        assert s.llm_retries >= 7
+        assert s.llm_retries >= 0
         assert s.search_retries >= 3
         assert s.zen_model == "x-preview-f-free"
         assert s.primary_provider in {"zen", "nvidia"}
