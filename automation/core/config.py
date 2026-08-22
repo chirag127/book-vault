@@ -84,7 +84,7 @@ def load_settings() -> Settings:
         primary_provider=primary,
         zen_base_url=os.getenv("OPENCODE_ZEN_BASE_URL", "https://opencode.ai/zen/v1").rstrip("/"),
         zen_model=os.getenv("OPENCODE_ZEN_MODEL", "x-preview-f-free"),
-        zen_ox_alpha_retries=_int("ZEN_OX_ALPHA_RETRIES", 3),
+        zen_ox_alpha_retries=_int("ZEN_OX_ALPHA_RETRIES", 10),
         zen_fallback_retries=_int("ZEN_FALLBACK_RETRIES", 0),
         zen_fallback_models=zen_fallback_models,
         nvidia_api_key=nvidia_key,
