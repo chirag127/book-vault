@@ -82,25 +82,14 @@ def _wait_limiter() -> None:
 
 
 def build_providers(settings: Settings) -> list[Provider]:
-    """Return the provider chain in call order."""
-    zen_models = [settings.zen_model] + settings.zen_fallback_models
-    seen = set()
-    unique_zen_models = []
-    for m in zen_models:
-        if m not in seen:
-            seen.add(m)
-            unique_zen_models.append(m)
-
-    zen_providers = [
-        Provider(
-            label="zen",
-            base_url=settings.zen_base_url,
-            api_key=settings.zen_api_key or None,
-            model=m,
-            thinking_extra=False,
-        )
-        for m in unique_zen_models
-    ]
+    """Return the provider chain in call order: 1 model for Zen, 1 for NVIDIA, then g4f multi-model."""
+    zen = Provider(
+        label="zen",
+        base_url=settings.zen_base_url,
+        api_key=settings.zen_api_key or None,
+        model=settings.zen_model,
+        thinking_extra=False,
+    )
     nvidia = Provider(
         label="nvidia",
         base_url=settings.nvidia_base_url,
@@ -111,8 +100,8 @@ def build_providers(settings: Settings) -> list[Provider]:
     if settings.primary_provider == "nvidia":
         if not nvidia.api_key:
             raise GenerationError("PRIMARY_PROVIDER=nvidia but NVIDIA_API_KEY is not set.")
-        return [nvidia] + zen_providers
-    chain = list(zen_providers)
+        return [nvidia, zen]
+    chain = [zen]
     if nvidia.api_key:
         chain.append(nvidia)
     return chain
