@@ -77,14 +77,17 @@ def load_settings() -> Settings:
     if primary == "nvidia" and not nvidia_key:
         raise ConfigurationError("PRIMARY_PROVIDER=nvidia requires NVIDIA_API_KEY in .env.")
 
-    fallback_models_raw = os.getenv("ZEN_FALLBACK_MODELS", "nemotron-3-ultra-free,laguna-s-2.1-free,nemotron-3.5-lightning-free")
+    fallback_models_raw = os.getenv(
+        "ZEN_FALLBACK_MODELS",
+        "nemotron-3-ultra-free,laguna-s-2.1-free,nemotron-3.5-lightning-free,muse-spark-1.2-contributor-free,hy3-free,big-pickle",
+    )
     zen_fallback_models = [m.strip() for m in fallback_models_raw.split(",") if m.strip()]
 
     return Settings(
         primary_provider=primary,
         zen_base_url=os.getenv("OPENCODE_ZEN_BASE_URL", "https://opencode.ai/zen/v1").rstrip("/"),
         zen_model=os.getenv("OPENCODE_ZEN_MODEL", "x-preview-f-free"),
-        zen_ox_alpha_retries=_int("ZEN_OX_ALPHA_RETRIES", 10),
+        zen_ox_alpha_retries=_int("ZEN_OX_ALPHA_RETRIES", 0),
         zen_fallback_retries=_int("ZEN_FALLBACK_RETRIES", 0),
         zen_fallback_models=zen_fallback_models,
         nvidia_api_key=nvidia_key,
