@@ -139,38 +139,47 @@ def fetch_youtube_transcript(video_id_or_url: str, max_chars: int = 4000) -> str
 def search_youtube_summaries(
     title: str, author: str, max_results: int = 3, fetch_transcripts: bool = True
 ) -> list[YouTubeVideo]:
-    """Search for top curated book summary videos and extract full transcripts/summaries."""
-    query = f"site:youtube.com {title} {author} animated book summary review"
+    """Search for top curated book summary videos using yt-dlp directly (with DDGS fallback)."""
+    clean_query = f"{title} {author} animated book summary review".strip()
     videos: list[YouTubeVideo] = []
     seen_ids: set[str] = set()
 
+    # 1. Primary Search: Native yt-dlp search (`ytsearch`)
     try:
-        with DDGS() as ddgs:
-            for r in ddgs.text(query, max_results=max_results * 2):
-                href = r.get("href", "")
-                if "youtube.com/watch" not in href and "youtu.be/" not in href:
-                    continue
-                vid_id = extract_video_id(href)
+        import yt_dlp
+
+        ydl_opts = {
+            "skip_download": True,
+            "extract_flat": "in_playlist",
+            "quiet": True,
+            "no_warnings": True,
+        }
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            search_target = f"ytsearch{max_results * 2}:{clean_query}"
+            res = ydl.extract_info(search_target, download=False)
+            entries = res.get("entries", []) if res else []
+            for e in entries:
+                vid_id = e.get("id") or extract_video_id(e.get("url", ""))
                 if not vid_id or vid_id in seen_ids:
                     continue
                 seen_ids.add(vid_id)
 
-                vid_title = r.get("title", f"{title} Summary")
-                vid_title = re.sub(r"\s*-\s*YouTube$", "", vid_title, flags=re.I)
-                body = r.get("body", "")
+                vid_title = e.get("title") or f"{title} Summary"
+                uploader = e.get("uploader") or e.get("channel") or "YouTube"
+                desc = e.get("description") or ""
 
                 transcript = ""
                 if fetch_transcripts:
                     transcript = fetch_youtube_transcript(vid_id, max_chars=3500)
-                if not transcript and body:
-                    transcript = f"[Video Summary & Chapter Notes]\n{body.strip()}"
+                if not transcript and desc:
+                    transcript = f"[Video Summary & Overview]\n{desc.strip()}"
 
                 videos.append(
                     YouTubeVideo(
                         title=vid_title,
                         url=f"https://www.youtube.com/watch?v={vid_id}",
                         video_id=vid_id,
-                        channel=body[:60] if body else "YouTube",
+                        channel=uploader,
                         transcript=transcript,
                     )
                 )
@@ -178,6 +187,43 @@ def search_youtube_summaries(
                     break
     except Exception:
         pass
+
+    # 2. Secondary Fallback: DuckDuckGo if yt-dlp search yields 0 items
+    if not videos:
+        try:
+            with DDGS() as ddgs:
+                for r in ddgs.text(f"site:youtube.com {clean_query}", max_results=max_results * 2):
+                    href = r.get("href", "")
+                    if "youtube.com/watch" not in href and "youtu.be/" not in href:
+                        continue
+                    vid_id = extract_video_id(href)
+                    if not vid_id or vid_id in seen_ids:
+                        continue
+                    seen_ids.add(vid_id)
+
+                    vid_title = r.get("title", f"{title} Summary")
+                    vid_title = re.sub(r"\s*-\s*YouTube$", "", vid_title, flags=re.I)
+                    body = r.get("body", "")
+
+                    transcript = ""
+                    if fetch_transcripts:
+                        transcript = fetch_youtube_transcript(vid_id, max_chars=3500)
+                    if not transcript and body:
+                        transcript = f"[Video Summary & Overview]\n{body.strip()}"
+
+                    videos.append(
+                        YouTubeVideo(
+                            title=vid_title,
+                            url=f"https://www.youtube.com/watch?v={vid_id}",
+                            video_id=vid_id,
+                            channel=body[:60] if body else "YouTube",
+                            transcript=transcript,
+                        )
+                    )
+                    if len(videos) >= max_results:
+                        break
+        except Exception:
+            pass
 
     return videos
 
