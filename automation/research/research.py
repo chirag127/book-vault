@@ -232,6 +232,21 @@ def search_book(book: dict[str, str], settings: Settings) -> list[Source]:
         except Exception:
             pass
 
+    # YouTube Book Summary Transcripts
+    try:
+        from .youtube import search_youtube_summaries
+        yt_vids = search_youtube_summaries(title, author, max_results=2, fetch_transcripts=True)
+        for v in yt_vids:
+            if v.transcript:
+                results.append({
+                    "title": f"YouTube Video Summary: {v.title}",
+                    "url": v.url,
+                    "query": f"{title} YouTube summary",
+                    "content": f"TRANSCRIPT OF VIDEO SUMMARY ({v.title}):\n{v.transcript}",
+                })
+    except Exception:
+        pass
+
     deduped = _dedupe_sources(results, max_sources=10)
     return [
         Source(

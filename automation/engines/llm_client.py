@@ -257,6 +257,7 @@ def _generate_with_zen(
     headers = {}
     if provider.api_key:
         headers["Authorization"] = f"Bearer {provider.api_key}"
+        headers["x-api-key"] = provider.api_key
 
     client = _get_zen_client()
     for attempt in range(retries + 1):
